@@ -1,10 +1,10 @@
 import { MongoClient } from "mongodb";
 
+let cachedClient: MongoClient;
+let cachedDb: any; // db can change
+
 export async function connectToDatabase() {
 	let uri = process.env.MONGODB_URI;
-
-	let cachedClient = null;
-	let cachedDb = null;
 
 	if (!uri) {
 		throw new Error(
