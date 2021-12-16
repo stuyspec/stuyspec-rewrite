@@ -3,7 +3,13 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { connectToDatabase } from "../db_conn";
-const Home: NextPage = (props: any) => {
+
+export interface Props {
+	articles: any;
+}
+
+const Home = (props: Props) => {
+	console.log("Props: ", props);
 	return (
 		<div className={styles.container}>
 			<Head>
