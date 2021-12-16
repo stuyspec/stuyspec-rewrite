@@ -10,7 +10,6 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<Data>
 ) {
-	await connectToDatabase();
 	const { method } = req;
 	if (method == "GET") {
 		res.json({ message: "The index of /api/" });
