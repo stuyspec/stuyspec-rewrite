@@ -1,4 +1,5 @@
+import { ObjectId } from "mongodb";
 export interface RecievedArticle {
-	_id: string;
+	_id: ObjectId | string;
 	text: string;
 }

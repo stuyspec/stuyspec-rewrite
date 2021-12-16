@@ -2,19 +2,19 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { connectToDatabase } from "../db_conn";
 import { RecievedArticle } from "../ts_types/db";
-export interface Props {
-	articles: any;
+interface Props {
+	articles: [RecievedArticle];
 }
 
 const Home = (props: Props) => {
 	console.log("Props: ", props);
 	const displayArticles: any[] = []; // Any type because this element will change often
-	const articles = JSON.parse(props.articles);
+	const articles = props.articles;
 	articles.forEach((i: RecievedArticle) => {
-		displayArticles.push(<li key={i._id}>{i.text}</li>);
+		displayArticles.push(<li key={String(i._id)}>{i.text}</li>);
 	});
 	return (
-		<div className={styles.container}>
+		<div>
 			<Head>
 				<title>StuySpec Rewrite</title>
 				<meta
@@ -39,6 +39,6 @@ export async function getServerSideProps() {
 	let articles_collection = await db.collection("articles");
 	let articles = await articles_collection.find({}).toArray();
 	return {
-		props: { articles: JSON.stringify(articles) },
+		props: { articles: JSON.parse(JSON.stringify(articles)) },
 	};
 }
