@@ -1,8 +1,7 @@
 import Head from "next/head";
 import { RecievedArticle } from "../../ts_types/db";
-import { connectToDatabase } from "../../db_conn";
+import { get_article_by_id } from "../../db";
 import { NextPageContext } from "next";
-import { ObjectId } from "mongodb";
 
 interface Props {
 	article: RecievedArticle;
@@ -31,11 +30,7 @@ export default Article;
 export async function getServerSideProps(context: NextPageContext) {
 	const article_id: string = String(context.query.article_id);
 
-	const { db } = await connectToDatabase();
-	let articles_collection = await db.collection("articles");
-	let article = await articles_collection.findOne({
-		_id: new ObjectId(article_id),
-	});
+	let article = await get_article_by_id(article_id);
 
 	return {
 		props: { article: JSON.parse(JSON.stringify(article)) },
