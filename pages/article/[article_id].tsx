@@ -9,7 +9,6 @@ interface Props {
 }
 
 const Article = (props: Props) => {
-	console.log(props);
 	const { _id, text } = props.article;
 
 	return (
