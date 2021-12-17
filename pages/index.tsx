@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import { connectToDatabase } from "../db_conn";
 import { get_articles } from "../db";
 import { RecievedArticle } from "../ts_types/db";
 interface Props {
