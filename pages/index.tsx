@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { connectToDatabase } from "../db_conn";
 import { get_articles } from "../db";
@@ -13,9 +14,13 @@ const Home = (props: Props) => {
 	const articles = props.articles;
 	articles.forEach((i) => {
 		displayArticles.push(
-			<div key={String(i._id)}>
-				<h2>{i._id}</h2>
-				<h3>{i.text}</h3>
+			<div className={styles.displayed_article} key={String(i._id)}>
+				<Link href={"/article/" + i._id} passHref>
+					<div>
+						<h2>{i._id}</h2>
+						<h3>{i.text}</h3>
+					</div>
+				</Link>
 			</div>
 		);
 	});

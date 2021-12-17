@@ -1,0 +1,26 @@
+#nav {
+	/* background-color: red; */
+	width: 100%;
+	height: 5vh;
+	display: flex;
+	align-items: center; /* Align center on Y axis */
+	justify-content: center; /* Align center on X axis */
+}
+#title {
+	font-size: 22px;
+	text-decoration: underline;
+}
+#nav * {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+	#nav * {
+		display: none;
+	}
+
+	#title {
+		display: block;
+	}
+}
