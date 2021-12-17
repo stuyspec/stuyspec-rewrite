@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { RecievedArticle } from "../../ts_types/db";
+import { RecievedArticle } from "../../ts_types/db_types";
 import { get_article_by_id } from "../../db";
 import { NextPageContext } from "next";
 
@@ -19,7 +19,7 @@ const Article = (props: Props) => {
 
 			<main>
 				<h2>Article id: {_id} </h2>
-				<h2>Article text: {text} </h2>
+				<p>Article text: {text} </p>
 			</main>
 		</div>
 	);

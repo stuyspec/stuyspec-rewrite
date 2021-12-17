@@ -1,5 +1,5 @@
 import { connectToDatabase } from "./db_conn";
-import { RecievedArticle } from "./ts_types/db";
+import { RecievedArticle } from "./ts_types/db_types";
 import { ObjectId } from "mongodb";
 
 async function get_articles(): Promise<[RecievedArticle]> {

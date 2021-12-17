@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { RecievedArticle } from "../../../ts_types/db";
+import { RecievedArticle } from "../../../ts_types/db_types";
 import { get_articles } from "../../../db";
 
 type ResponseStructure = {
