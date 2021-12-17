@@ -12,7 +12,12 @@ const Home = (props: Props) => {
 	const displayArticles: any[] = []; // Any type because this element will change often
 	const articles = props.articles;
 	articles.forEach((i) => {
-		displayArticles.push(<li key={String(i._id)}>{i.text}</li>);
+		displayArticles.push(
+			<div key={String(i._id)}>
+				<h2>{i._id}</h2>
+				<h3>{i.text}</h3>
+			</div>
+		);
 	});
 	return (
 		<div>
@@ -24,7 +29,7 @@ const Home = (props: Props) => {
 
 			<main className={styles.main}>
 				<h1>Welcome to the stuy spec rewrite in Typescript</h1>
-				<ul>{displayArticles}</ul>
+				<div>{displayArticles}</div>
 			</main>
 		</div>
 	);
