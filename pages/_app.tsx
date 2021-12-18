@@ -4,11 +4,13 @@ import Navbar from "../components/Navbar";
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<div>
-			<div id="navbar">
-				<Navbar />
-			</div>
-			<div id="main">
-				<Component {...pageProps} />
+			<div>
+				<div id="navbar">
+					<Navbar />
+				</div>
+				<div id="main">
+					<Component {...pageProps} />
+				</div>
 			</div>
 		</div>
 	);
