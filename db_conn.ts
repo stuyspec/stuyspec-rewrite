@@ -1,7 +1,7 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, Db } from "mongodb";
 declare global {
 	var client: MongoClient;
-	var db: any;
+	var db: Db;
 }
 // Global vars are used because ANYTHING else is cleared/forgotten when the file is RE-imported
 export async function connectToDatabase() {
