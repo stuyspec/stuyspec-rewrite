@@ -8,18 +8,18 @@ interface Props {
 }
 
 const Article = (props: Props) => {
-	const { _id, text } = props.article;
+	const { _id, text, title } = props.article;
 
 	return (
 		<div>
 			<Head>
-				<title>Article Title</title>
+        <title>{ title }</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main>
-				<h2>Article id: {_id} </h2>
-				<p>Article text: {text} </p>
+        <h1>{ title }</h1>
+				<p>{text}</p>
 			</main>
 		</div>
 	);

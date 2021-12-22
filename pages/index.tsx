@@ -13,7 +13,7 @@ const Home = (props: Props) => {
 	const articles = props.articles;
 	articles.forEach((i) => {
 		displayArticles.push(
-			<div className={styles.displayed_article} key={String(i._id)}>
+			<div className={styles.displayed_article} key={String(i.title)}>
 				<Link href={"/article/" + i._id} passHref>
 					<div>
 						<h2 className={styles.mini_article_title}>{i.title}</h2>
@@ -26,15 +26,15 @@ const Home = (props: Props) => {
 	return (
 		<div>
 			<Head>
-				<title>StuySpec Rewrite</title>
+				<title>The Stuyvesant Spectator</title>
 				<meta name="description" content="The Stuyvesant Spectator" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main className={styles.main}>
-				<h1 id={styles.title}>
+				{/* <h1 id={styles.title}>
 					Welcome to the stuy spec rewrite in Typescript
-				</h1>
+				</h1> */}
 				<div>{displayArticles}</div>
 			</main>
 		</div>
