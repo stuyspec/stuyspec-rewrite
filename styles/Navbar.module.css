@@ -1,6 +1,7 @@
 #nav {
 	/* background-color: red; */
 	width: 100%;
+  height: 100%;
   background-color: var(--secondary);
 	display: grid;
   grid-template-columns: 96px calc(100vw - 388px) 120px 48px 48px;
