@@ -5,7 +5,20 @@
 }
 @font-face {
 	font-family: "Lato";
-	src: url("/fonts/Lato/Lato-Regular.ttf") format("truetype");
+	src: url("/fonts/Lato/Lato-Regular.ttf") 
+    format("truetype");
+}
+
+:root {
+  --primary: #FFFFFF;
+  --secondary: #353637;
+  --accent: #5586E4;
+  --light-grey: #F4F4F4;
+  --medium-grey: #7E7E7E;
+  --dm-medium-grey: #3C3E3F;
+  --large-text: 36px;
+  --medium-text: 28px;
+  --small-text: 18px;
 }
 
 html,

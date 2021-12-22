@@ -1,9 +1,6 @@
 .displayed_article {
-	border: 1px solid black;
-	margin: auto;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	width: 95vw;
+  margin: auto;
+	width: 50vw;
 }
 #title {
 	text-align: center;
