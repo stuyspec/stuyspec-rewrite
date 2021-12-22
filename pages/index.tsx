@@ -17,7 +17,7 @@ const Home = (props: Props) => {
 				<Link href={"/article/" + i._id} passHref>
 					<div>
 						<h2 className={styles.mini_article_title}>{i.title}</h2>
-						<p>{i.text}</p>
+						<p>{i.summary}</p>
 					</div>
 				</Link>
 			</div>
