@@ -2,7 +2,7 @@ import Head from "next/head";
 import { RecievedArticle } from "../../ts_types/db_types";
 import { get_article_by_id } from "../../db";
 import { NextPageContext } from "next";
-
+import styles from "../../styles/[article_id].module.css";
 interface Props {
 	article: RecievedArticle;
 }
@@ -19,7 +19,11 @@ const Article = (props: Props) => {
 
 			<main>
 				<h2>Article id: {_id} </h2>
-				<p>Article text: {text} </p>
+				<h2>Article text:</h2>
+				<div
+					id={styles.content}
+					dangerouslySetInnerHTML={{ __html: text }}
+				></div>
 			</main>
 		</div>
 	);
