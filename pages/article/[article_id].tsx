@@ -8,22 +8,18 @@ interface Props {
 }
 
 const Article = (props: Props) => {
-	const { _id, text } = props.article;
+	const { _id, text, title } = props.article;
 
 	return (
 		<div>
 			<Head>
-				<title>Article Title</title>
+        <title>{ title }</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main>
-				<h2>Article id: {_id} </h2>
-				<h2>Article text:</h2>
-				<div
-					id={styles.content}
-					dangerouslySetInnerHTML={{ __html: text }}
-				></div>
+        		<h1>{ title }</h1>
+				<p>{text}</p>
 			</main>
 		</div>
 	);
