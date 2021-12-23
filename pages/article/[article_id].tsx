@@ -11,7 +11,6 @@ interface Props {
 
 const Article = (props: Props) => {
 	const { _id, text, title, cover_image } = props.article;
-	console.log(props.article)
 	return (
 		<div>
 			<Head>
