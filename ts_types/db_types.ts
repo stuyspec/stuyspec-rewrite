@@ -8,4 +8,5 @@ export interface RecievedArticle {
 	issue: Number;
 	section: string;
 	summary: string;
+	cover_image : string;
 }

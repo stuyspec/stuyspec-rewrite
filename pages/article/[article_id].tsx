@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
+import Image from 'next/image'
 import { RecievedArticle } from "../../ts_types/db_types";
 import { get_article_by_id } from "../../db";
 import { NextPageContext } from "next";
@@ -8,8 +10,8 @@ interface Props {
 }
 
 const Article = (props: Props) => {
-	const { _id, text, title } = props.article;
-
+	const { _id, text, title, cover_image } = props.article;
+	console.log(props.article)
 	return (
 		<div>
 			<Head>
@@ -19,6 +21,11 @@ const Article = (props: Props) => {
 
 			<main id={styles.main}>
         		<h1>{ title }</h1>
+				<div id={styles.cover_image_div}>
+					
+					<img width={"100%"} id={styles.cover_image} src={cover_image} alt={`The cover image of ${title}`}/>
+				</div>
+				
 				<div id={styles.content} dangerouslySetInnerHTML={{__html : text}}></div>
 			</main>
 		</div>
