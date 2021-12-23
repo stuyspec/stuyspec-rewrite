@@ -31,7 +31,7 @@ const Home = (props: Props) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className={styles.main}>
+			<main id={styles.main}>
 				{/* <h1 id={styles.title}>
 					Welcome to the stuy spec rewrite in Typescript
 				</h1> */}

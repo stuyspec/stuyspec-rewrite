@@ -13,13 +13,13 @@ const Article = (props: Props) => {
 	return (
 		<div>
 			<Head>
-        <title>{ title }</title>
+        		<title>{ title }</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main>
+			<main id={styles.main}>
         		<h1>{ title }</h1>
-				<p>{text}</p>
+				<div id={styles.content} dangerouslySetInnerHTML={{__html : text}}></div>
 			</main>
 		</div>
 	);
