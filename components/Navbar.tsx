@@ -12,7 +12,7 @@ const Navbar = () => {
       </h1>
       <div id={styles.subscribe}>Subscribe</div>
       <Image src="/images/dark-mode-button.svg" width="36px" height="36px" id={styles.colorModeToggle} />
-      <Image src="/images/search-button.svg" width="36px" height="36px" id={styles.searchButton} />
+      <Image src="/images/search-button.svg" width="32px" height="32px" id={styles.searchButton} />
 		</nav>
 	);
 };

@@ -41,12 +41,13 @@ a {
 	margin: 0;
 	border: 0;
 	font-display: optional;
+  overflow-x: hidden;
 }
 
 #main {
-	height: calc(100vh - 72px);
+	height: calc(100vh - 68px);
 }
 
 #navbar {
-	height: 72px;
+	height: 68px;
 }
