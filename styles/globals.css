@@ -16,9 +16,11 @@
   --light-grey: #F4F4F4;
   --medium-grey: #7E7E7E;
   --dm-medium-grey: #3C3E3F;
-  --large-text: 36px;
-  --medium-text: 28px;
-  --small-text: 18px;
+  --large-text: 2.25rem;
+  --medium-text: 1.75rem;
+  --small-text: 1.rem;
+  --primary-font: 'Playfair Display';
+  --secondary-font: 'Lato';
 }
 
 html,
@@ -27,7 +29,7 @@ body {
 	margin: 0;
 	/* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
-	font-family: "Playfair Display";
+	font-family: var(--primary-font);
 	font-display: optional;
 }
 
@@ -45,9 +47,9 @@ a {
 }
 
 #main {
-	height: calc(100vh - 68px);
+	height: calc(100vh - 72px);
 }
 
 #navbar {
-	height: 68px;
+	height: 71px;
 }
