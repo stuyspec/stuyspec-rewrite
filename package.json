@@ -1,25 +1,22 @@
 {
-  "name": "stuyspecrewritetypescript",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+  "name": "stuyspec-monorepo",
+  "version": "1.0.0",
+  "description": "New Rewrite of the Stuyvesant Specator websites",
+  "main": "index.js",
   "dependencies": {
-    "mongodb": "^4.2.2",
-    "next": "12.0.7",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
   },
-  "devDependencies": {
-    "@types/mongodb": "^4.0.7",
-    "@types/node": "^17.0.0",
-    "@types/react": "17.0.37",
-    "eslint": "8.4.1",
-    "eslint-config-next": "12.0.7",
-    "prettier": "^2.5.1",
-    "typescript": "4.5.4"
-  }
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leomet07/stuyspecrewrite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leomet07/stuyspecrewrite/issues"
+  },
+  "homepage": "https://github.com/leomet07/stuyspecrewrite#readme"
 }
