@@ -47,9 +47,9 @@ a {
 }
 
 #main {
-	height: calc(100vh - 72px);
+	height: calc(100vh - 63px);
 }
 
 #navbar {
-	height: 71px;
+	height: 63px;
 }
