@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-export interface RecievedArticle {
+export interface ReceivedArticle {
 	_id: ObjectId | string;
 	text: string;
 	title: string;

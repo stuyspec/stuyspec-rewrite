@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Image from "next/image";
-import { RecievedArticle } from "../../ts_types/db_types";
+import { ReceivedArticle } from "../../ts_types/db_types";
 import { get_article_by_slug } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[article_id].module.css";
 interface Props {
-	article: RecievedArticle;
+	article: ReceivedArticle;
 }
 
 const Article = (props: Props) => {

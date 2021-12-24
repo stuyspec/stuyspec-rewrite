@@ -2,9 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { get_articles } from "../db";
-import { RecievedArticle } from "../ts_types/db_types";
+import { ReceivedArticle } from "../ts_types/db_types";
 interface Props {
-	articles: [RecievedArticle];
+	articles: [ReceivedArticle];
 }
 
 const Home = (props: Props) => {

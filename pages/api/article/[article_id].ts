@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { RecievedArticle } from "../../../ts_types/db_types";
+import { ReceivedArticle } from "../../../ts_types/db_types";
 import { get_article_by_id } from "../../../db";
 
 type ResponseStructure = {
-	article: RecievedArticle;
+	article: ReceivedArticle;
 };
 
 export default async function handler(
