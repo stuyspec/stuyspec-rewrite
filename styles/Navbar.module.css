@@ -88,3 +88,9 @@
     place-self: center;
   }
 }
+
+@media screen and (max-width: 480px) {
+  #logo {
+    font-size: calc(var(--medium-text) * (2 / 3) - 4px);
+  }
+}
