@@ -10,3 +10,7 @@ export interface ReceivedArticle {
 	summary: string;
 	cover_image : string;
 }
+
+export interface IssuuResponse {
+	images: String[];
+}

@@ -4,4 +4,4 @@ module.exports = {
   images: {
     domains: ["stuyspec-images.s3.amazonaws.com"],
   },
-}
+  }
