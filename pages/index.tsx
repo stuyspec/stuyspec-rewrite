@@ -8,13 +8,13 @@ interface Props {
 }
 
 const Home = (props: Props) => {
-	console.log("Props: ", props);
+	// console.log("Props: ", props);
 	const displayArticles: any[] = []; // Any type because this element will change often
 	const articles = props.articles;
 	articles.forEach((i) => {
 		displayArticles.push(
-			<div className={styles.displayed_article} key={String(i.title)}>
-				<Link href={"/article/" + i._id} passHref>
+			<div className={styles.displayed_article} key={String(i._id)}>
+				<Link href={"/article/" + i.slug} passHref>
 					<div>
 						<h2 className={styles.mini_article_title}>{i.title}</h2>
 						<p>{i.summary}</p>

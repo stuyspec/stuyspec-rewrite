@@ -22,5 +22,14 @@ async function get_article_by_id(article_id: string): Promise<RecievedArticle> {
 	})) as RecievedArticle;
 	return article;
 }
-
-export { get_articles, get_article_by_id };
+async function get_article_by_slug(
+	article_slug: string
+): Promise<RecievedArticle> {
+	const { db } = await connectToDatabase();
+	let articles_collection = await db.collection("articles");
+	let article = (await articles_collection.findOne({
+		slug: article_slug,
+	})) as RecievedArticle;
+	return article;
+}
+export { get_articles, get_article_by_id, get_article_by_slug };
