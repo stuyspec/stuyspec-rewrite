@@ -221,7 +221,7 @@ const Footer = () => {
           </div>
           <div id={styles.column}>
             <Link href="https://www.facebook.com/stuyspectator">
-              <img src={images[1]} />
+              <img id={styles.archiveImage} src={images[1]} />
             </Link>
           </div>
         </div>
@@ -229,11 +229,7 @@ const Footer = () => {
           <p id={styles.left}>
             © {year} Stuyvesant Spectator Web Department. All rights reserved.
           </p>
-          <p id={styles.right}>
-            <Link href="/about/developers">
-              Designed and developed by Ivan Chen and Leonid Metlitsky
-            </Link>{" "}
-            |{" "}
+          <p id={styles.right}>           
             <Link href="https://github.com/stuyspec/stuyspec.com/issues">
               Found a bug? Report it here.
             </Link>
