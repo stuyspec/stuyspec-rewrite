@@ -95,7 +95,7 @@
   justify-self: end;
 }
 
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 1480px) {
   #grid {
     grid-template-columns: repeat(5, 1fr);
   }
