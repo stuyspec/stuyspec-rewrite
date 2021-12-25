@@ -10,22 +10,19 @@ interface Props {
 }
 
 const Article = (props: Props) => {
-	const { _id, text, title, contributors, cover_image, cover_image_contributor } = props.article;
+	const { _id, text, title, cover_image } = props.article;
 	return (
 		<div>
 			<Head>
-        <title>{ title }</title>
+        		<title>{ title }</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.main}>
-        <h1>{title}</h1>
-        <p>By {contributors}</p>
-        
+        		<h1>{ title }</h1>
 				<div id={styles.cover_image_div}>
 					
-          <img width={"100%"} id={styles.cover_image} src={cover_image} alt={`The cover image of ${title}`} />
-          <p>Photo by {cover_image_contributor}</p>
+					<img width={"100%"} id={styles.cover_image} src={cover_image} alt={`The cover image of ${title}`}/>
 				</div>
 				
 				<div id={styles.content} dangerouslySetInnerHTML={{__html : text}}></div>

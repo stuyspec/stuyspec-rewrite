@@ -12,10 +12,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<div id="navbar">
 					<Navbar />
 				</div>
-				<div id="main" >
+				<div id="main">
 					<Component {...pageProps} />
-          <Footer />
 				</div>
+				<Footer />
 			</div>
 		</div>
 	);

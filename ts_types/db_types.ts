@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-export interface RecievedArticle {
+export interface ReceivedArticle {
 	_id: ObjectId | string;
 	text: string;
   title: string;
@@ -12,4 +12,8 @@ export interface RecievedArticle {
   cover_image: string;
   cover_image_contributor: string;
   is_published: boolean;
+}
+
+export interface IssuuResponse {
+	images: String[];
 }

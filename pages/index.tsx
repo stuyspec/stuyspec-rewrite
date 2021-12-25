@@ -2,19 +2,19 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { get_articles } from "../db";
-import { RecievedArticle } from "../ts_types/db_types";
+import { ReceivedArticle } from "../ts_types/db_types";
 interface Props {
-	articles: [RecievedArticle];
+	articles: [ReceivedArticle];
 }
 
 const Home = (props: Props) => {
-	console.log("Props: ", props);
+	// console.log("Props: ", props);
 	const displayArticles: any[] = []; // Any type because this element will change often
 	const articles = props.articles;
 	articles.forEach((i) => {
 		displayArticles.push(
-			<div className={styles.displayed_article} key={String(i.title)}>
-				<Link href={"/article/" + i._id} passHref>
+			<div className={styles.displayed_article} key={String(i._id)}>
+				<Link href={"/article/" + i.slug} passHref>
 					<div>
 						<h2 className={styles.mini_article_title}>{i.title}</h2>
 						<p>{i.summary}</p>

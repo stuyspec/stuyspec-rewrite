@@ -5,22 +5,21 @@
 }
 @font-face {
 	font-family: "Lato";
-	src: url("/fonts/Lato/Lato-Regular.ttf") 
-    format("truetype");
+	src: url("/fonts/Lato/Lato-Regular.ttf") format("truetype");
 }
 
 :root {
-  --primary: #FFFFFF;
-  --secondary: #353637;
-  --accent: #5586E4;
-  --light-grey: #F4F4F4;
-  --medium-grey: #7E7E7E;
-  --dm-medium-grey: #3C3E3F;
-  --large-text: 2.25rem;
-  --medium-text: 1.75rem;
-  --small-text: 1rem;
-  --primary-font: 'Playfair Display';
-  --secondary-font: 'Lato';
+	--primary: #ffffff;
+	--secondary: #353637;
+	--accent: #5586e4;
+	--light-grey: #f4f4f4;
+	--medium-grey: #7e7e7e;
+	--dm-medium-grey: #3c3e3f;
+	--large-text: 2.25rem;
+	--medium-text: 1.75rem;
+	--small-text: 1rem;
+	--primary-font: "Playfair Display";
+	--secondary-font: "Lato";
 }
 
 html,
@@ -43,14 +42,14 @@ a {
 	margin: 0;
 	border: 0;
 	font-display: optional;
-  overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 button {
   background: none;
 }
 #main {
-	height: calc(100vh - 63px);
+	min-height: calc(100vh - 63px);
 }
 
 #navbar {

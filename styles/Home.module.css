@@ -1,5 +1,5 @@
 .displayed_article {
-  margin: auto;
+	margin: auto;
 	width: 50vw;
 }
 #title {
@@ -8,6 +8,6 @@
 .mini_article_title {
 	text-align: center;
 }
-#main{
+#main {
 	padding-top: 10px;
 }
