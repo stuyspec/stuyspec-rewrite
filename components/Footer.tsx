@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import defaultPageImage from "../public/images/blank_page.jpg";
 
 const Footer = () => {
 	const [images, setImages] = useState([]);
@@ -32,31 +33,43 @@ const Footer = () => {
 						<Link href="/">The Spectator</Link>
 					</h1>
 					<div id={styles.mediaButtons}>
-						<Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
+						<Link
+							passHref
+							href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb"
+						>
 							<i
 								className="bi bi-spotify"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link href="https://www.facebook.com/stuyspectator">
+						<Link
+							passHref
+							href="https://www.facebook.com/stuyspectator"
+						>
 							<i
 								className="bi bi-facebook"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link href="https://www.instagram.com/stuyspectator/">
+						<Link
+							passHref
+							href="https://www.instagram.com/stuyspectator/"
+						>
 							<i
 								className="bi bi-instagram"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link href="https://www.linkedin.com/company/the-stuyvesant-spectator">
+						<Link
+							passHref
+							href="https://www.linkedin.com/company/the-stuyvesant-spectator"
+						>
 							<i
 								className="bi bi-linkedin"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link href="https://github.com/stuyspec">
+						<Link passHref href="https://github.com/stuyspec">
 							<i
 								className="bi bi-github"
 								id={styles.mediaButton}
@@ -254,10 +267,18 @@ const Footer = () => {
 					</div>
 					<div id={styles.column}>
 						<Link passHref href="https://issuu.com/stuyspectator">
-							<img
+							<Image
 								alt="image 0"
+								width="968"
+								height="1496"
 								className={styles.archiveImage}
-								src={images[0]}
+								src={(() => {
+									if (images[0]) {
+										return images[0];
+									} else {
+										return defaultPageImage;
+									}
+								})()}
 							/>
 						</Link>
 					</div>
@@ -266,10 +287,18 @@ const Footer = () => {
 							passHref
 							href="https://www.facebook.com/stuyspectator"
 						>
-							<img
+							<Image
 								alt="image 1"
+								width="968"
+								height="1496"
 								className={styles.archiveImage}
-								src={images[1]}
+								src={(() => {
+									if (images[0]) {
+										return images[1];
+									} else {
+										return defaultPageImage;
+									}
+								})()}
 							/>
 						</Link>
 					</div>
