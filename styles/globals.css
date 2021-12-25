@@ -46,6 +46,9 @@ a {
   overflow-x: hidden;
 }
 
+button {
+  background: none;
+}
 #main {
 	height: calc(100vh - 63px);
 }
