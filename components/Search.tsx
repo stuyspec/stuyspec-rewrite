@@ -6,11 +6,11 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState("");
 
   function disableSearch() {
-    var buttons = document.getElementsByClassName("button");
+    var buttons = Array.from(document.getElementsByClassName("button") as HTMLCollectionOf<HTMLElement>);
     for (let ele of buttons) {
       ele.style.display = "inherit";
     }
-    document.getElementsByClassName("search")[0].style.display = "none";
+    Array.from(document.getElementsByClassName("search") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
   }
 
   function submitSearchRequest() {

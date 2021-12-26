@@ -13,11 +13,12 @@ const Navbar = () => {
   }
 
   function enableSearch() {
-    var buttons = document.getElementsByClassName("button");
+    var buttons = Array.from(document.getElementsByClassName("button") as HTMLCollectionOf<HTMLElement>);
     for (let ele of buttons) {
       ele.style.display = "none";
     }
-    document.getElementsByClassName("search")[0].style.display = "inherit";
+
+    Array.from(document.getElementsByClassName("search") as HTMLCollectionOf<HTMLElement>)[0].style.display = "inherit";
   }
 
   return (
