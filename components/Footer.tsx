@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import defaultPageImage from "../public/images/blank_page.jpg";
 
 const Footer = () => {
 	const [images, setImages] = useState([]);
@@ -33,43 +32,31 @@ const Footer = () => {
 						<Link href="/">The Spectator</Link>
 					</h1>
 					<div id={styles.mediaButtons}>
-						<Link
-							passHref
-							href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb"
-						>
+						<Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
 							<i
 								className="bi bi-spotify"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link
-							passHref
-							href="https://www.facebook.com/stuyspectator"
-						>
+						<Link href="https://www.facebook.com/stuyspectator">
 							<i
 								className="bi bi-facebook"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link
-							passHref
-							href="https://www.instagram.com/stuyspectator/"
-						>
+						<Link href="https://www.instagram.com/stuyspectator/">
 							<i
 								className="bi bi-instagram"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link
-							passHref
-							href="https://www.linkedin.com/company/the-stuyvesant-spectator"
-						>
+						<Link href="https://www.linkedin.com/company/the-stuyvesant-spectator">
 							<i
 								className="bi bi-linkedin"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link passHref href="https://github.com/stuyspec">
+						<Link href="https://github.com/stuyspec">
 							<i
 								className="bi bi-github"
 								id={styles.mediaButton}
@@ -263,52 +250,28 @@ const Footer = () => {
 							<p id={styles.subdepartment}>
 								<Link href="/about/contact">Contact</Link>
 							</p>
-						</div>
-						<div id={styles.cell}>
-							<h3
-								id={styles.department}
-								className={styles.virtualArchives}
-							>
-								<Link
-									passHref
-									href="https://issuu.com/stuyspectator"
-								>
-									Virtual Archives
-								</Link>
-							</h3>
-						</div>
+            </div>
+            <div id={styles.cell}>
+							<h3 id={styles.department} className={styles.virtualArchives}>
+								<Link passHref href="https://issuu.com/stuyspectator">Virtual Archives</Link>
+              </h3>
+            </div>
 					</div>
 					<div id={styles.column}>
 						<Link passHref href="https://issuu.com/stuyspectator">
-							<Image
+							<img
 								alt="image 0"
-								width="968"
-								height="1496"
-								className={styles.archiveImage}
-								src={(() => {
-									if (images[0]) {
-										return images[0];
-									} else {
-										return defaultPageImage;
-									}
-								})()}
+								className={styles.archiveImage1}
+								src={images[0]}
 							/>
 						</Link>
 					</div>
 					<div id={styles.column}>
 						<Link passHref href="https://issuu.com/stuyspectator">
-							<Image
+							<img
 								alt="image 1"
-								width="968"
-								height="1496"
-								className={styles.archiveImage}
-								src={(() => {
-									if (images[0]) {
-										return images[1];
-									} else {
-										return defaultPageImage;
-									}
-								})()}
+								className={styles.archiveImage2}
+								src={images[1]}
 							/>
 						</Link>
 					</div>
@@ -318,8 +281,8 @@ const Footer = () => {
 						© {year} Stuyvesant Spectator Web Department. All rights
 						reserved.
 					</p>
-					<p id={styles.right}>
-						<Link href="https://github.com/stuyspec/stuyspec.com/issues">
+          <p id={styles.right}>
+						<Link passHref href="https://github.com/stuyspec/stuyspec.com/issues">
 							Found a bug? Report it here.
 						</Link>
 					</p>
