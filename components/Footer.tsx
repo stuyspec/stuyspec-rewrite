@@ -264,6 +264,19 @@ const Footer = () => {
 								<Link href="/about/contact">Contact</Link>
 							</p>
 						</div>
+						<div id={styles.cell}>
+							<h3
+								id={styles.department}
+								className={styles.virtualArchives}
+							>
+								<Link
+									passHref
+									href="https://issuu.com/stuyspectator"
+								>
+									Virtual Archives
+								</Link>
+							</h3>
+						</div>
 					</div>
 					<div id={styles.column}>
 						<Link passHref href="https://issuu.com/stuyspectator">
@@ -283,10 +296,7 @@ const Footer = () => {
 						</Link>
 					</div>
 					<div id={styles.column}>
-						<Link
-							passHref
-							href="https://www.facebook.com/stuyspectator"
-						>
+						<Link passHref href="https://issuu.com/stuyspectator">
 							<Image
 								alt="image 1"
 								width="968"
