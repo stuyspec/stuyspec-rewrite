@@ -52,7 +52,7 @@
 /* departments */
 
 #grid {
-	margin: 32px;
+	margin: 32px 16px;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-rows: 1fr;
@@ -74,7 +74,9 @@
 	margin-bottom: 2px;
 }
 
-#archiveImage {
+#department.virtualArchives { display: none;}
+
+#archiveImage1, #archiveImage2 {
 	width: 100%;
 	height: auto;
 	max-width: 100%;
@@ -82,15 +84,9 @@
 	object-fit: contain;
 }
 
-#digitalArchives {
-	width: 100%;
-	height: 100%;
-	background-color: var(--medium-grey);
-}
-
 /* declarations */
 #declarations {
-	margin: 0 32px;
+	margin: 0 16px;
 	width: calc(100% - 64px);
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -106,16 +102,16 @@
 	#grid {
 		grid-template-columns: repeat(5, 1fr);
 	}
-	.archiveImage {
+	.archiveImage2 {
 		display: none;
 	}
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 960px) {
 	#grid {
 		grid-template-columns: repeat(4, 1fr);
 	}
-	.archiveImage {
+	.archiveImage1 {
 		display: none;
 	}
 }
@@ -143,6 +139,7 @@
 	#subdepartment {
 		display: none;
 	}
+  #department.virtualArchives { display: inherit;}
 
 	#declarations {
 		grid-template-columns: 1fr;

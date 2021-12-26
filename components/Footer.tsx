@@ -251,12 +251,20 @@ const Footer = () => {
 								<Link href="/about/contact">Contact</Link>
 							</p>
 						</div>
-					</div>
+            <div id={styles.cell}>
+              <h3 id={styles.department} className={styles.virtualArchives}>
+                <Link passHref href="https://issuu.com/stuyspectator">Virtual Archives</Link>
+              </h3>
+            </div>
+          </div>
 					<div id={styles.column}>
-						<Link passHref href="https://issuu.com/stuyspectator">
+            <Link
+              passHref
+              href="https://issuu.com/stuyspectator"
+            >
 							<img
 								alt="image 0"
-								className={styles.archiveImage}
+								className={styles.archiveImage1}
 								src={images[0]}
 							/>
 						</Link>
@@ -264,11 +272,11 @@ const Footer = () => {
 					<div id={styles.column}>
 						<Link
 							passHref
-							href="https://www.facebook.com/stuyspectator"
+							href="https://issuu.com/stuyspectator"
 						>
 							<img
 								alt="image 1"
-								className={styles.archiveImage}
+								className={styles.archiveImage2}
 								src={images[1]}
 							/>
 						</Link>
