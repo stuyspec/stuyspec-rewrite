@@ -22,16 +22,16 @@
   --primary: #ffffff;
 	--secondary: #353637;
 	--accent: #5586e4;
-	--light-grey: #f4f4f4;
-	--medium-grey: #7e7e7e;
+	--light-grey: #3c3e3f;
+	--medium-grey: #f4f4f4;
 }
 
 .light-mode {
   --primary: #353637;
 	--secondary: #ffffff;
 	--accent: #5586e4;
-	--light-grey: #3c3e3f;
-	--medium-grey: #f4f4f4;
+	--light-grey: #f4f4f4;
+	--medium-grey: #7e7e7e;
 }
 
 html,
