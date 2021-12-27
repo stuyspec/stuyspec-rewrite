@@ -4,7 +4,7 @@
   position: fixed;
   display: none;
 
-  background-color: var(--secondary);
+  background-color: var(--secondary-immutable);
 }
 
 #searchBar {
@@ -17,13 +17,13 @@
   display: grid;
   grid-template-columns: 1fr 32px;
 
-  border-bottom: 4px solid var(--primary);
+  border-bottom: 4px solid var(--primary-immutable);
 }
 
 #searchBox {
   margin: 4px;
 
-  color: var(--primary);
+  color: var(--primary-immutable);
   background-color: transparent;
   outline: none;
   
