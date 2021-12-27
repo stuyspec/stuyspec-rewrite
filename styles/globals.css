@@ -10,7 +10,6 @@
 
 :root {
   --primary-immutable: #ffffff;
-	--secondary-immutable: #353637;
 	--large-text: 2.25rem;
 	--medium-text: 1.75rem;
 	--small-text: 1rem;
@@ -19,6 +18,7 @@
 }
 
 .dark-mode {
+  --secondary-nav: #2b2b2c;
   --primary: #ffffff;
 	--secondary: #353637;
 	--accent: #5586e4;
@@ -27,6 +27,7 @@
 }
 
 .light-mode {
+  --secondary-nav: #353637;
   --primary: #353637;
 	--secondary: #ffffff;
 	--accent: #5586e4;
@@ -45,8 +46,6 @@ body {
   
   font-family: var(--primary-font);
 	font-display: optional;
-
-  transition: background-color 300ms ease-in-out;
 }
 
 a {
@@ -60,6 +59,8 @@ a {
 	border: 0;
 	font-display: optional;
 	overflow-x: hidden;
+
+  transition: background-color 250ms ease-in-out;
 }
 
 #main {

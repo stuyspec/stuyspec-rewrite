@@ -6,7 +6,7 @@
   grid-template-rows: 100%;
   column-gap: 12px;
   
-  background-color: var(--secondary-immutable);
+  background-color: var(--secondary-nav);
   align-items: center;
 }
 #hamburgerMenu {
