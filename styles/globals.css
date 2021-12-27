@@ -9,17 +9,29 @@
 }
 
 :root {
-	--primary: #ffffff;
-	--secondary: #353637;
-	--accent: #5586e4;
-	--light-grey: #f4f4f4;
-	--medium-grey: #7e7e7e;
-	--dm-medium-grey: #3c3e3f;
+  --primary-immutable: #ffffff;
+	--secondary-immutable: #353637;
 	--large-text: 2.25rem;
 	--medium-text: 1.75rem;
 	--small-text: 1rem;
 	--primary-font: "Playfair Display";
 	--secondary-font: "Lato";
+}
+
+.dark-mode {
+  --primary: #ffffff;
+	--secondary: #353637;
+	--accent: #5586e4;
+	--light-grey: #f4f4f4;
+	--medium-grey: #7e7e7e;
+}
+
+.light-mode {
+  --primary: #353637;
+	--secondary: #ffffff;
+	--accent: #5586e4;
+	--light-grey: #3c3e3f;
+	--medium-grey: #f4f4f4;
 }
 
 html,
@@ -28,8 +40,13 @@ body {
 	margin: 0;
 	/* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
-	font-family: var(--primary-font);
+  background-color: var(--secondary);
+  color: var(--primary);
+  
+  font-family: var(--primary-font);
 	font-display: optional;
+
+  transition: background-color 300ms ease-in-out;
 }
 
 a {
