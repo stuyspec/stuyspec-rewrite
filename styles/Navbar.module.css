@@ -2,7 +2,7 @@
 	width: 100%;
   padding: 12px 14px;
   display: grid;
-  grid-template-columns: 48px calc(100vw - 340px) 120px 48px 48px;
+  grid-template-columns: 48px calc(100vw - 356px) 120px 48px 48px;
   grid-template-rows: 100%;
   column-gap: 12px;
   
