@@ -1,10 +1,15 @@
 import "../styles/globals.css";
+import { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Search from "../components/Search";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    document.documentElement.className = 'light-mode';
+  });
+
 	return (
 		<div>
       <div>
