@@ -6,9 +6,6 @@ import Footer from "../components/Footer";
 import Search from "../components/Search";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    document.documentElement.className = 'light-mode';
-  });
 
 	return (
 		<div>
@@ -24,6 +21,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 			</div>
 		</div>
 	);
+}
+
+if (typeof window !== 'undefined') {
+  document.documentElement.className = 'light-mode';
 }
 
 export default MyApp;
