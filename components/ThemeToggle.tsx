@@ -13,7 +13,7 @@ const ThemeToggle = () => {
     <>
       {darkMode ? (
         <Image
-          src="/images/dark-mode-button.svg"
+          src="/images/light-mode-button.svg"
           width="36px"
           height="36px"
           onClick={toggleMode}
@@ -22,7 +22,7 @@ const ThemeToggle = () => {
         />
       ) : (
         <Image
-          src="/images/light-mode-button.svg"
+          src="/images/dark-mode-button.svg"
           width="36px"
           height="36px"
           onClick={toggleMode}
