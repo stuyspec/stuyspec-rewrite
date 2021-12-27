@@ -8,9 +8,14 @@ export default async function handler(
 	const { method, body } = req;
 
 	if (method == "GET") {
-        // fetch cover image and title from issuu
-        const images = await getImages();
-        res.json({ images });
+        // removeed for now
+        // const images = await getImages();
+        res.json({
+          "images": [
+            "https://image.isu.pub/211222040543-c98b7067d4de1b4e47945be020169e9b/jpg/page_1.jpg",
+            "https://image.isu.pub/211222040543-c98b7067d4de1b4e47945be020169e9b/jpg/page_32.jpg"
+          ]
+        });
 	}
 }
 
