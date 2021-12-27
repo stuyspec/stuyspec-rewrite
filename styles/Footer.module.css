@@ -1,6 +1,8 @@
 #footer {
 	width: 100%;
 	padding: 32px;
+
+  color: var(--secondary);
 	background-color: var(--light-grey);
 }
 
