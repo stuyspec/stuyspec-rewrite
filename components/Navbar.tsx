@@ -1,14 +1,11 @@
 import styles from "../styles/Navbar.module.css";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
+
 const Navbar = () => {
 
   function toggleMenu() {
-
-  }
-
-  function toggleMode() {
 
   }
 
@@ -37,7 +34,7 @@ const Navbar = () => {
         </Link>
       </div>
       
-      <Image src="/images/dark-mode-button.svg" width="36px" height="36px" onClick={toggleMode} id={styles.colorModeToggle} className="button" />
+      <ThemeToggle />
       <Image src="/images/search-button.svg" width="32px" height="32px" onClick={enableSearch} id={styles.searchButton} className="button" />
     </nav>
   );
