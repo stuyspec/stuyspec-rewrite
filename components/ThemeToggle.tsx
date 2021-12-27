@@ -3,10 +3,15 @@ import Image from "next/image";
 import styles from "../styles/Navbar.module.css";
 
 const ThemeToggle = () => {
+
   const [darkMode, setDarkMode] = useState(false);
+
   function toggleMode() {
     setDarkMode(!darkMode);
-    localStorage.setItem("darkMode", `${!darkMode}`);
+    localStorage.setItem("dark-mode", `${!darkMode}`);
+    if (darkMode === true) {
+      document.documentElement.className = 'light-mode';
+    } else {document.documentElement.className = 'dark-mode';}
   }
 
   return (
