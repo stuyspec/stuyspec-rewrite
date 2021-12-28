@@ -14,6 +14,18 @@ async function get_articles(num?: number): Promise<[ReceivedArticle]> {
 		.toArray()) as [ReceivedArticle];
 	return articles;
 }
+async function get_articles_by_department(department: string, num?: number): Promise<[ReceivedArticle]> {
+	const { db } = await connectToDatabase();
+	let articles_collection = await db.collection("articles");
+
+	const limit = num || 10;
+
+	let articles = (await articles_collection
+		.find({department: department,})
+		.limit(limit)
+		.toArray()) as [ReceivedArticle];
+	return articles;
+}
 async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 	const { db } = await connectToDatabase();
 	let articles_collection = await db.collection("articles");
@@ -32,4 +44,4 @@ async function get_article_by_slug(
 	})) as ReceivedArticle;
 	return article;
 }
-export { get_articles, get_article_by_id, get_article_by_slug };
+export { get_articles, get_articles_by_department, get_article_by_id, get_article_by_slug };

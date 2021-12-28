@@ -2,11 +2,11 @@
 	width: 100%;
   padding: 12px 14px;
   display: grid;
-  grid-template-columns: 48px calc(100vw - 340px) 120px 48px 48px;
+  grid-template-columns: 48px calc(100vw - 356px) 120px 48px 48px;
   grid-template-rows: 100%;
   column-gap: 12px;
   
-  background-color: var(--secondary);
+  background-color: var(--secondary-nav);
   align-items: center;
 }
 #hamburgerMenu {
@@ -25,14 +25,14 @@
 
   text-align: center;
 	font-size: var(--large-text);
-  color: var(--primary);
+  color: var(--primary-immutable);
 }
 #subscribe {
   grid-column-start: 3;
   grid-column-end: 3;
   place-self: center;
 
-  color: var(--primary);
+  color: var(--primary-immutable);
   font-family: var(--secondary-font);
   font-weight: bold;
   background-color: rgb(255, 30, 0);

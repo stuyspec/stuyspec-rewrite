@@ -1,6 +1,8 @@
 #footer {
 	width: 100%;
 	padding: 32px;
+
+  color: var(--primary);
 	background-color: var(--light-grey);
 }
 
@@ -18,7 +20,7 @@
 
 	text-align: left;
 	font-size: var(--medium-text);
-	color: var(--secondary);
+	color: var(--primary);
 }
 #mediaButtons {
 	display: grid;
