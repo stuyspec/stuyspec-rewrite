@@ -233,7 +233,7 @@ const Footer = () => {
 								<Link href="/about">About Us</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/about/charter">Our Charter</Link>
+								<Link href="/about/our-charter">Our Charter</Link>
 							</p>
 							<p id={styles.subdepartment}>
 								<Link href="/about/advertise">Advertise</Link>
