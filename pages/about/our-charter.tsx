@@ -8,7 +8,6 @@ const OurCharter: React.FC<{}> = () => {
         <title>Our Charter | The Spectator</title>
       </Head>
       <main id={styles.charterBody}>
-        <h1 style={{ textAlign: "center", fontSize: "var(--large-text)" }}>Our Charter</h1>
         <h1 style={{ marginTop: "16px" }}>The Charter of The Spectator</h1>
         Approved January, 2020 by The Spectator Editorial Board.
         <br />
@@ -625,12 +624,12 @@ const OurCharter: React.FC<{}> = () => {
           surrounding the role, selection, or responsibilities of the Managing
           Editor are not to be held applicable.
         </p>
-        <p style={{ marginTop: "8px" }}>
+        <p style={{ marginTop: "16px" }}>
           If you have any comments, questions, concerns, or suggestions
           regarding this webpage or concerning The Spectator in general, please
           e-mail us directly at{" "}
           <a href="mailto:web@stuyspec.com">web@stuyspec.com</a>.
-          <p style={{ marginTop: "8px" }}>
+          <p style={{ marginTop: "16px" }}>
             Please be aware that this webpage is currently a work in progress.
             We are still working to implement new features and update content.
             If you have access to past content that you believe should be on
