@@ -44,4 +44,19 @@ async function get_article_by_slug(
 	})) as ReceivedArticle;
 	return article;
 }
-export { get_articles, get_articles_by_department, get_article_by_id, get_article_by_slug };
+
+async function get_articles_by_author(author: string, num?: number): Promise<[ReceivedArticle]> {
+	const { db } = await connectToDatabase();
+	let articles_collection = await db.collection("articles");
+
+	const limit = num || 10;
+
+	let articles = (await articles_collection
+		.find({contributors: author})
+		.limit(limit)
+		.toArray()) as [ReceivedArticle];
+	return articles;
+}
+
+
+export { get_articles, get_articles_by_department, get_article_by_id, get_article_by_slug, get_articles_by_author };
