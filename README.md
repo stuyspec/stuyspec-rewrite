@@ -5,7 +5,21 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Set up the dotenv:
 Create a .env.local file with `MONGODB_URI={MongoDB srv uri}`
 
-First, run the development server:
+1. Clone the repository
+
+```bash
+git clone https://github.com/stuyspec/stuyspec-rewrite.git
+```
+
+2. Install all dependencies
+
+```bash
+npm install
+# or
+yarn
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
@@ -15,7 +29,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/index.tsx`. The page hot reloads as you edit the file.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/articles](http://localhost:3000/api/articles). This endpoint can be edited in `pages/api/articles/index.ts`.
 
