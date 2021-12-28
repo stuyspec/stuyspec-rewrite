@@ -2,6 +2,6 @@
 module.exports = {
 	reactStrictMode: true,
 	images: {
-		domains: ["stuyspec-images.s3.amazonaws.com", "image.isu.pub"],
+		domains: ["stuyspec-images.s3.amazonaws.com", "image.isu.pub", "cdn.discordapp.com"],
 	},
 };
