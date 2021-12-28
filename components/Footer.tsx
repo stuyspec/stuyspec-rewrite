@@ -282,7 +282,7 @@ const Footer = () => {
 						reserved.
 					</p>
           <p id={styles.right}>
-						<Link passHref href="https://github.com/stuyspec/stuyspec.com/issues">
+						<Link passHref href="https://github.com/stuyspec/stuyspec-rewrite/issues">
 							Found a bug? Report it here.
 						</Link>
 					</p>
