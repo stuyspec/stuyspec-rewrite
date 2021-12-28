@@ -8,8 +8,8 @@ const OurCharter: React.FC<{}> = () => {
         <title>Our Charter | The Spectator</title>
       </Head>
       <main id={styles.charterBody}>
-        <h1 style={{ textAlign: "center" }}>Our Charter</h1>
-        <h1>The Charter of The Spectator</h1>
+        <h1 style={{ textAlign: "center", fontSize: "var(--large-text)" }}>Our Charter</h1>
+        <h1 style={{ marginTop: "16px" }}>The Charter of The Spectator</h1>
         Approved January, 2020 by The Spectator Editorial Board.
         <br />
         <h2>
@@ -543,17 +543,21 @@ const OurCharter: React.FC<{}> = () => {
         </ol>
         <h3>H. Grounds for Removal from Position</h3>
         <ol>
-          If an Editor shows significant signs of inadequacy in his/her position
-          for any reason, including being unable to handle his/her work, leaking
-          sensitive information, condoning plagiarism or failure to follow the
-          guidelines set forth in the Charter, his/her position will be
-          reconsidered as per the guidelines set forth under &#167;III.C.
+          <li>
+            If an Editor shows significant signs of inadequacy in his/her position
+            for any reason, including being unable to handle his/her work, leaking
+            sensitive information, condoning plagiarism or failure to follow the
+            guidelines set forth in the Charter, his/her position will be
+            reconsidered as per the guidelines set forth under &#167;III.C.
+          </li>
         </ol>
         <h3>I. Obituary Policy</h3>
         <ol>
-          The Spectator will cover stories involving the death of current
-          students, administration and alumni, including photographs, when
-          possible, and relevant facts concerning the death.
+          <li>
+            The Spectator will cover stories involving the death of current
+            students, administration and alumni, including photographs, when
+            possible, and relevant facts concerning the death.
+          </li>
         </ol>
         <h3>J. Reporting on Crime</h3>
         <ol>
@@ -614,19 +618,19 @@ const OurCharter: React.FC<{}> = () => {
             Business Managers, Humor Editors, and Layout Editors.
           </li>
         </ol>
-        <div style={{ textAlign: "center" }}>——————</div>
+        <div style={{ textAlign: "center", margin: "16px" }}>——————</div>
         <p>
           *In every instance that the term Managing Editor is used, it is
           assumed that one exists. If this is not the case, the regulations
           surrounding the role, selection, or responsibilities of the Managing
           Editor are not to be held applicable.
         </p>
-        <p>
+        <p style={{ marginTop: "8px" }}>
           If you have any comments, questions, concerns, or suggestions
           regarding this webpage or concerning The Spectator in general, please
           e-mail us directly at{" "}
           <a href="mailto:web@stuyspec.com">web@stuyspec.com</a>.
-          <p>
+          <p style={{ marginTop: "8px" }}>
             Please be aware that this webpage is currently a work in progress.
             We are still working to implement new features and update content.
             If you have access to past content that you believe should be on
