@@ -88,11 +88,11 @@ const DevelopersPage = () => {
           ))}
         </div>
 
-        <h1>Maintainers of The Spectator&apos;s Website</h1>
+        <h1>Maintainers</h1>
         <div
           style={{
             display: "flex",
-            flexDirection: 'column',
+            flexDirection: "column",
             flexWrap: "wrap",
             justifyContent: "center",
           }}
