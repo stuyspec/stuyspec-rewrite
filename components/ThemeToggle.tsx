@@ -15,6 +15,7 @@ const ThemeToggle = () => {
         <Image
           src="/images/dark-mode-button.svg"
           width="36px"
+          alt="dark mode button"
           height="36px"
           onClick={toggleMode}
           id={styles.colorModeToggle}
@@ -24,6 +25,7 @@ const ThemeToggle = () => {
         <Image
           src="/images/light-mode-button.svg"
           width="36px"
+          alt="light mode button"
           height="36px"
           onClick={toggleMode}
           id={styles.colorModeToggle}
