@@ -2,7 +2,7 @@
 	width: 100%;
 	padding: 32px;
 
-  color: var(--primary);
+	color: var(--primary);
 	background-color: var(--light-grey);
 }
 
@@ -76,9 +76,12 @@
 	margin-bottom: 2px;
 }
 
-#department.virtualArchives { display: none;}
+#department.virtualArchives {
+	display: none;
+}
 
-#archiveImage1, #archiveImage2 {
+#archiveImage1,
+#archiveImage2 {
 	width: 100%;
 	height: auto;
 	max-width: 100%;
@@ -141,7 +144,9 @@
 	#subdepartment {
 		display: none;
 	}
-  #department.virtualArchives { display: inherit;}
+	#department.virtualArchives {
+		display: inherit;
+	}
 
 	#declarations {
 		grid-template-columns: 1fr;

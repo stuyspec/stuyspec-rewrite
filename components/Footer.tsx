@@ -32,31 +32,43 @@ const Footer = () => {
 						<Link href="/">The Spectator</Link>
 					</h1>
 					<div id={styles.mediaButtons}>
-						<Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
+						<Link
+							href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb"
+							passHref
+						>
 							<i
 								className="bi bi-spotify"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link href="https://www.facebook.com/stuyspectator">
+						<Link
+							href="https://www.facebook.com/stuyspectator"
+							passHref
+						>
 							<i
 								className="bi bi-facebook"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link href="https://www.instagram.com/stuyspectator/">
+						<Link
+							href="https://www.instagram.com/stuyspectator/"
+							passHref
+						>
 							<i
 								className="bi bi-instagram"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link href="https://www.linkedin.com/company/the-stuyvesant-spectator">
+						<Link
+							href="https://www.linkedin.com/company/the-stuyvesant-spectator"
+							passHref
+						>
 							<i
 								className="bi bi-linkedin"
 								id={styles.mediaButton}
 							/>
 						</Link>
-						<Link href="https://github.com/stuyspec">
+						<Link href="https://github.com/stuyspec" passHref>
 							<i
 								className="bi bi-github"
 								id={styles.mediaButton}
@@ -233,7 +245,9 @@ const Footer = () => {
 								<Link href="/about">About Us</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/about/our-charter">Our Charter</Link>
+								<Link href="/about/our-charter">
+									Our Charter
+								</Link>
 							</p>
 							<p id={styles.subdepartment}>
 								<Link href="/about/advertise">Advertise</Link>
@@ -250,12 +264,20 @@ const Footer = () => {
 							<p id={styles.subdepartment}>
 								<Link href="/about/contact">Contact</Link>
 							</p>
-            </div>
-            <div id={styles.cell}>
-							<h3 id={styles.department} className={styles.virtualArchives}>
-								<Link passHref href="https://issuu.com/stuyspectator">Virtual Archives</Link>
-              </h3>
-            </div>
+						</div>
+						<div id={styles.cell}>
+							<h3
+								id={styles.department}
+								className={styles.virtualArchives}
+							>
+								<Link
+									passHref
+									href="https://issuu.com/stuyspectator"
+								>
+									Virtual Archives
+								</Link>
+							</h3>
+						</div>
 					</div>
 					<div id={styles.column}>
 						<Link passHref href="https://issuu.com/stuyspectator">
@@ -281,8 +303,11 @@ const Footer = () => {
 						© {year} Stuyvesant Spectator Web Department. All rights
 						reserved.
 					</p>
-          <p id={styles.right}>
-						<Link passHref href="https://github.com/stuyspec/stuyspec-rewrite/issues">
+					<p id={styles.right}>
+						<Link
+							passHref
+							href="https://github.com/stuyspec/stuyspec-rewrite/issues"
+						>
 							Found a bug? Report it here.
 						</Link>
 					</p>
