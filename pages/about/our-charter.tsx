@@ -8,7 +8,7 @@ const OurCharter: React.FC<{}> = () => {
         <title>Our Charter | The Spectator</title>
       </Head>
       <main id={styles.charterBody}>
-        <h1 style={{ textAlign: "center" }}>Our Charter</h1>
+        <h1 id={styles.title}>Our Charter</h1>
         <h1>The Charter of The Spectator</h1>
         Approved January, 2020 by The Spectator Editorial Board.
         <br />
@@ -614,7 +614,7 @@ const OurCharter: React.FC<{}> = () => {
             Business Managers, Humor Editors, and Layout Editors.
           </li>
         </ol>
-        <div style={{ textAlign: "center" }}>——————</div>
+        <div id={styles.title}>——————</div>
         <p>
           *In every instance that the term Managing Editor is used, it is
           assumed that one exists. If this is not the case, the regulations
