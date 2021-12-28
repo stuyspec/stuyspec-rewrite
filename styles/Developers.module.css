@@ -9,5 +9,6 @@
 
 #pageBody a {
     text-decoration: none;
-    color: rgb(115, 151, 235);
+    color: var(--accent);
+    /* rgb(115, 151, 235); */
 }
