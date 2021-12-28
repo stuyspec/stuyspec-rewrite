@@ -1,5 +1,6 @@
 #content p {
 	margin-bottom: 10px;
+	font-size: 1.1em;
 }
 
 #main {
@@ -13,6 +14,16 @@
 
 #cover_image_div {
 	text-align: center;
+}
+.authors {
+	margin: 0;
+	margin-bottom: 0.5vh;
+	font-size: 1.3em;
+	font-weight: bolder;
+}
+.cover_image_contributor {
+	margin-bottom: 1vh;
+	text-align: right;
 }
 @media screen and (max-width: 840px) {
 	#main {

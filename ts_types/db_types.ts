@@ -4,12 +4,13 @@ export interface ReceivedArticle {
 	text: string;
 	title: string;
 	slug: string;
-	volume: Number;
-	issue: Number;
-	section: string;
+	volume: number;
+	issue: number;
+	section_id: number;
 	summary: string;
 	cover_image: string;
 	cover_image_contributor: string;
+	contributors: string[];
 }
 
 export interface IssuuResponse {
