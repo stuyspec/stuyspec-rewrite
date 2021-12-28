@@ -4,7 +4,7 @@
   position: fixed;
   display: none;
 
-  background-color: var(--secondary-immutable);
+  background-color: var(--secondary-nav);
 }
 
 #searchBar {
