@@ -2,10 +2,10 @@
 	margin-bottom: 10px;
 }
 
-#main{
+#main {
 	padding-top: 10px;
 	width: 50vw;
-	min-width: 450px;
+
 	margin: auto;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -13,4 +13,9 @@
 
 #cover_image_div {
 	text-align: center;
-} 
+}
+@media screen and (max-width: 840px) {
+	#main {
+		width: 90vw;
+	}
+}

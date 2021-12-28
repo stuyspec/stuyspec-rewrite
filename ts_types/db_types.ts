@@ -8,7 +8,8 @@ export interface ReceivedArticle {
 	issue: Number;
 	section: string;
 	summary: string;
-	cover_image : string;
+	cover_image: string;
+	cover_image_contributor: string;
 }
 
 export interface IssuuResponse {

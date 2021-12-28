@@ -12,10 +12,10 @@ export default async function handler(
 ) {
 	const { method, query, body } = req;
 
-  if (method == "GET") {
-    let department : string = String(query.department)
+	if (method == "GET") {
+		let department: string = String(query.department);
 		let articles = await get_articles_by_department(department, body.max);
-    console.log(department);
-    res.json({ articles: JSON.parse(JSON.stringify(articles)) });
+		console.log(department);
+		res.json({ articles: JSON.parse(JSON.stringify(articles)) });
 	}
 }
