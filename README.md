@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+The **new** client-side application of The Stuyvesant Spectator, built using various modern technologies including NextJS, Typescript, and MongoDB
+
 ## Getting Started
 
 Set up the dotenv:
