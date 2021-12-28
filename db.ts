@@ -58,5 +58,18 @@ async function get_articles_by_author(author: string, num?: number): Promise<[Re
 	return articles;
 }
 
+async function get_articles_by_query(query: string, num?: number): Promise<[ReceivedArticle]> {
+	const { db } = await connectToDatabase();
+	let articles_collection = await db.collection("articles");
+
+	const limit = num || 10;
+
+	let articles = (await articles_collection
+		.find({$text: {$search: query}})
+		.limit(limit)
+		.toArray()) as [ReceivedArticle];
+	return articles;
+}
+
 
 export { get_articles, get_articles_by_department, get_article_by_id, get_article_by_slug, get_articles_by_author };
