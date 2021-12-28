@@ -40,9 +40,10 @@ const DevelopersPage = () => {
     name: string;
     role: string;
     year: string;
+    github: string;
   }> = [
-    { name: "John Doe", role: "Editor", year: "2027" },
-    { name: "Jane Doe", role: "Developer", year: "2027" },
+    { name: "John Doe", github: '', role: "Editor", year: "2027" },
+    { name: "Jane Doe", github: '', role: "Developer", year: "2027" },
   ];
 
   function truncateYear(year: string) {
