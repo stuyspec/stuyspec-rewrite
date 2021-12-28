@@ -1,3 +1,13 @@
 #profileImage img {
     border-radius: 50%;
 }
+
+#pageBody {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#pageBody a {
+    text-decoration: none;
+    color: rgb(115, 151, 235);
+}
