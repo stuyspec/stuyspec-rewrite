@@ -34,3 +34,8 @@
     width: 90vw;
   }
 }
+
+#articleBar {
+  /* justify-content: space-between; */
+  /* display: flex; */
+}

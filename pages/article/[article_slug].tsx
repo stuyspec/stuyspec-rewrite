@@ -32,16 +32,20 @@ const Article = (props: Props) => {
 
       <main id={styles.main}>
         <h1>{title}</h1>
-        <h3 className={styles.authors}>
-          {section} | By {contributors.join(", ")}
-        </h3>
-        {providers.map((provider) => (
-          <ShareButton
-            key={provider}
-            provider={provider}
-            url={`https://stuyspec.com/article/${props.article.slug}`}
-          />
-        ))}
+        <div>
+          <h3 className={styles.authors}>
+            {section} | By {contributors.join(", ")}
+          </h3>
+          <div>
+            {providers.map((provider) => (
+              <ShareButton
+                key={provider}
+                provider={provider}
+                url={`https://stuyspec.com/article/${props.article.slug}`}
+              />
+            ))}
+          </div>
+        </div>
         <div id={styles.cover_image_div}>
           <img
             width={"100%"}
