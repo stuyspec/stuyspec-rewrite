@@ -1,0 +1,15 @@
+#container {
+  display: flex;
+}
+
+#title {
+  text-align: left;
+  font-size: calc(var(--large-text) + 4px);
+}
+
+#scrollbar {
+  margin: auto;
+  width: 4px;
+  height: calc(100vh - (63px + 64px));
+  background-color: var(--accent);
+}
