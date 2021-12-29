@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../../styles/Developers.module.css";
+import Sidebar from "../../components/Sidebar";
 
 const DevelopersPage = () => {
   const developers: Array<{
@@ -57,73 +58,76 @@ const DevelopersPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div id={styles.pageBody}>
-        <h1>Major Contributors of The Spectator&apos;s Website</h1>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          {developers.map((developer, key) => (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                margin: "1rem",
-              }}
-              key={key}
-            >
-              <div id={styles.profileImage}>
-                <Image
-                  src={developer.image}
-                  width={128}
-                  height={128}
-                  alt={developer.name}
-                />
-              </div>
-              <h3>
-                <a href={`https://github.com/${developer.github}`} className="discrete-link">
-                  {developer.name}
-                  {truncateYear(developer.year)}
-                </a>
-              </h3>
-              <h4 style={{ marginTop: "8px"}}>{developer.role}</h4>
-            </div>
-          ))}
-        </div>
-
-        <h1>Maintainers</h1>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          {maintainers.map((maintainer, key) => (
-            <>
+        <div id={styles.sidebar}><Sidebar /></div>
+        <div id={styles.body}>
+          <h1>Primary Developers</h1>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {developers.map((developer, key) => (
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  margin: "0",
+                  margin: "1rem",
                 }}
                 key={key}
               >
+                <div id={styles.profileImage}>
+                  <Image
+                    src={developer.image}
+                    width={128}
+                    height={128}
+                    alt={developer.name}
+                  />
+                </div>
                 <h3>
-                  <a href={`https://github.com/${maintainer.github}`}  className="discrete-link">
-                    {maintainer.name}
-                    {truncateYear(maintainer.year)}
+                  <a href={`https://github.com/${developer.github}`} className="discrete-link">
+                    {developer.name}
+                    {truncateYear(developer.year)}
                   </a>
                 </h3>
-                <h4>{maintainer.role}</h4>
+                <h4 style={{ marginTop: "8px"}}>{developer.role}</h4>
               </div>
-            </>
-          ))}
+            ))}
+          </div>
+
+          <h1>Maintainers</h1>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {maintainers.map((maintainer, key) => (
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    margin: "0",
+                  }}
+                  key={key}
+                >
+                  <h3>
+                    <a href={`https://github.com/${maintainer.github}`}  className="discrete-link">
+                      {maintainer.name}
+                      {truncateYear(maintainer.year)}
+                    </a>
+                  </h3>
+                  <h4>{maintainer.role}</h4>
+                </div>
+              </>
+            ))}
+          </div>
         </div>
       </div>
     </>

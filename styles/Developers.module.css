@@ -3,6 +3,19 @@
 }
 
 #pageBody {
-    text-align: center;
-    margin-top: 1rem;
+  display: grid;
+  grid-template-columns: calc(25% + 32px) calc(75% - 32px);
+  margin: 2rem;
+
+  text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  #pageBody {
+    grid-template-columns: 1fr;
+  }
+  
+  #sidebar { 
+    display: none;
+  }
 }
