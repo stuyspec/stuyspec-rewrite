@@ -54,7 +54,7 @@
 /* departments */
 
 #grid {
-	margin: 32px 16px;
+	margin: 16px 16px;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-rows: 1fr;

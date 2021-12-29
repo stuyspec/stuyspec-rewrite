@@ -84,10 +84,12 @@ const DevelopersPage = () => {
                 />
               </div>
               <h3>
-                <a href={`https://github.com/${developer.github}`}>{developer.name}</a>
-                {truncateYear(developer.year)}
+                <a href={`https://github.com/${developer.github}`} className="discrete-link">
+                  {developer.name}
+                  {truncateYear(developer.year)}
+                </a>
               </h3>
-              <h4>{developer.role}</h4>
+              <h4 style={{ marginTop: "8px"}}>{developer.role}</h4>
             </div>
           ))}
         </div>
@@ -108,15 +110,15 @@ const DevelopersPage = () => {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  margin: "1rem",
+                  margin: "0",
                 }}
                 key={key}
               >
                 <h3>
-                  <a href={`https://github.com/${maintainer.github}`}>
+                  <a href={`https://github.com/${maintainer.github}`}  className="discrete-link">
                     {maintainer.name}
+                    {truncateYear(maintainer.year)}
                   </a>
-                  {truncateYear(maintainer.year)}
                 </h3>
                 <h4>{maintainer.role}</h4>
               </div>

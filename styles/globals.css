@@ -10,6 +10,7 @@
 
 :root {
 	--primary-immutable: #ffffff;
+  --accent: #408CFF;
 	--large-text: 2.25rem;
 	--medium-text: 1.75rem;
 	--small-text: 1rem;
@@ -21,7 +22,6 @@
 	--secondary-nav: #2b2b2c;
 	--primary: #ffffff;
 	--secondary: #353637;
-	--accent: #5586e4;
 	--light-grey: #3c3e3f;
 	--medium-grey: #f4f4f4;
 }
@@ -30,7 +30,6 @@
 	--secondary-nav: #353637;
 	--primary: #353637;
 	--secondary: #ffffff;
-	--accent: #5586e4;
 	--light-grey: #f4f4f4;
 	--medium-grey: #7e7e7e;
 }
@@ -75,4 +74,26 @@ li {
 
 #navbar {
 	height: 63px;
+}
+
+.link {
+  background: 
+    linear-gradient(to right, var(--primary), var(--primary)),
+    linear-gradient(to right, var(--accent), var(--accent));
+  background-size: 100% 0.1em, 0 0.1em;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 250ms;
+}
+.link:hover, .link:focus {
+  background-size: 0 0.1em, 100% 0.1em;
+}
+
+.discrete-link {
+  color: inherit;
+  text-decoration: underline 0.15em var(--secondary);
+  transition: text-decoration-color 250ms;
+}
+.discrete-link:hover, .discrete-link:focus {
+  text-decoration-color: var(--accent);
 }
