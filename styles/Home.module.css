@@ -11,3 +11,6 @@
 #main {
 	padding-top: 10px;
 }
+#main p {
+  font-family: var(--alternate-primary-font);
+}

@@ -303,7 +303,7 @@ const Footer = () => {
 						© {year} Stuyvesant Spectator Web Department. All rights
 						reserved.
 					</p>
-					<p id={styles.right}>
+					<p id={styles.right} className="link">
 						<Link
 							passHref
 							href="https://github.com/stuyspec/stuyspec-rewrite/issues"

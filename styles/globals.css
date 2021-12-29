@@ -16,6 +16,7 @@
 	--small-text: 1rem;
 	--primary-font: "Playfair Display";
 	--secondary-font: "Lato";
+  --alternate-primary-font: Georgia;
 }
 
 .dark-mode {

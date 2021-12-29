@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ReceivedArticle } from "../../ts_types/db_types";
 import { get_article_by_slug } from "../../db";
 import { NextPageContext } from "next";
-import styles from "../../styles/[article_id].module.css";
+import styles from "../../styles/[article_slug].module.css";
 import { all_sections } from "../../globals/globals";
 interface Props {
 	article: ReceivedArticle;
@@ -29,9 +29,9 @@ const Article = (props: Props) => {
 
 			<main id={styles.main}>
 				<h1>{title}</h1>
-				<p className={styles.authors}>
+				<h3 className={styles.authors}>
 					{section} | By {contributors.join(", ")}
-				</p>
+				</h3>
 				<div id={styles.cover_image_div}>
 					<img
 						width={"100%"}
