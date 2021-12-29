@@ -6,11 +6,11 @@ const StaffPage = () => {
       <Head>
         <title>The Spectator | Staff</title>
       </Head>
-        <div className="staff-page">
-            <div className="staff-page-header">
-                <h1>Staff</h1>
-            </div>
+      <div className="staff-page">
+        <div className="staff-page-header">
+          <h1>Staff</h1>
         </div>
+      </div>
     </>
   );
 };

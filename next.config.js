@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 
-const securityHeaders = [{
-	key: 'X-DNS-Prefetch-Control',
-	value: 'on'
-  }
-  ];
+const securityHeaders = [
+  {
+    key: "X-DNS-Prefetch-Control",
+    value: "on",
+  },
+];
 
 module.exports = {
   reactStrictMode: true,

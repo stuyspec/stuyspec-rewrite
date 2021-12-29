@@ -43,8 +43,8 @@ const DevelopersPage = () => {
     year: string;
     github: string;
   }> = [
-    { name: "John Doe", github: '', role: "Editor", year: "2027" },
-    { name: "Jane Doe", github: '', role: "Developer", year: "2027" },
+    { name: "John Doe", github: "", role: "Editor", year: "2027" },
+    { name: "Jane Doe", github: "", role: "Developer", year: "2027" },
   ];
 
   function truncateYear(year: string) {
@@ -58,7 +58,9 @@ const DevelopersPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div id={styles.pageBody}>
-        <div id={styles.sidebar}><Sidebar /></div>
+        <div id={styles.sidebar}>
+          <Sidebar />
+        </div>
         <div id={styles.body}>
           <h1>Primary Developers</h1>
           <div
@@ -87,12 +89,15 @@ const DevelopersPage = () => {
                   />
                 </div>
                 <h3>
-                  <a href={`https://github.com/${developer.github}`} className="discrete-link">
+                  <a
+                    href={`https://github.com/${developer.github}`}
+                    className="discrete-link"
+                  >
                     {developer.name}
                     {truncateYear(developer.year)}
                   </a>
                 </h3>
-                <h4 style={{ marginTop: "8px"}}>{developer.role}</h4>
+                <h4 style={{ marginTop: "8px" }}>{developer.role}</h4>
               </div>
             ))}
           </div>
@@ -118,7 +123,10 @@ const DevelopersPage = () => {
                   key={key}
                 >
                   <h3>
-                    <a href={`https://github.com/${maintainer.github}`}  className="discrete-link">
+                    <a
+                      href={`https://github.com/${maintainer.github}`}
+                      className="discrete-link"
+                    >
                       {maintainer.name}
                       {truncateYear(maintainer.year)}
                     </a>

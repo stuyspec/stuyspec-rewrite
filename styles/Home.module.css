@@ -1,15 +1,15 @@
 .displayed_article {
-	margin: auto;
-	width: 80vw;
+  margin: auto;
+  width: 80vw;
 }
 #title {
-	text-align: center;
+  text-align: center;
 }
 .mini_article_title {
-	text-align: center;
+  text-align: center;
 }
 #main {
-	padding-top: 10px;
+  padding-top: 10px;
 }
 #main p {
   font-family: var(--alternate-primary-font);

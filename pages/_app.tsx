@@ -6,25 +6,24 @@ import Footer from "../components/Footer";
 import Search from "../components/Search";
 
 function MyApp({ Component, pageProps }: AppProps) {
-
-	return (
-		<div>
+  return (
+    <div>
       <div>
         <Search />
-				<div id="navbar">
-					<Navbar />
-				</div>
-				<div id="main">
-					<Component {...pageProps} />
-				</div>
-				<Footer />
-			</div>
-		</div>
-	);
+        <div id="navbar">
+          <Navbar />
+        </div>
+        <div id="main">
+          <Component {...pageProps} />
+        </div>
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
-if (typeof window !== 'undefined') {
-  document.documentElement.className = 'light-mode';
+if (typeof window !== "undefined") {
+  document.documentElement.className = "light-mode";
 }
 
 export default MyApp;

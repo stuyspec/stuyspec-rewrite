@@ -543,11 +543,12 @@ const OurCharter: React.FC<{}> = () => {
         <h3>H. Grounds for Removal from Position</h3>
         <ol>
           <li>
-            If an Editor shows significant signs of inadequacy in his/her position
-            for any reason, including being unable to handle his/her work, leaking
-            sensitive information, condoning plagiarism or failure to follow the
-            guidelines set forth in the Charter, his/her position will be
-            reconsidered as per the guidelines set forth under &#167;III.C.
+            If an Editor shows significant signs of inadequacy in his/her
+            position for any reason, including being unable to handle his/her
+            work, leaking sensitive information, condoning plagiarism or failure
+            to follow the guidelines set forth in the Charter, his/her position
+            will be reconsidered as per the guidelines set forth under
+            &#167;III.C.
           </li>
         </ol>
         <h3>I. Obituary Policy</h3>

@@ -1,5 +1,5 @@
 #profileImage img {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 #pageBody {
@@ -14,8 +14,8 @@
   #pageBody {
     grid-template-columns: 1fr;
   }
-  
-  #sidebar { 
+
+  #sidebar {
     display: none;
   }
 }
