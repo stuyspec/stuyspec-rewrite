@@ -1,5 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaRegEnvelope,
+} from "react-icons/fa";
+
 // create social media share button
 interface ShareButtonProps {
   url: string;
@@ -14,23 +21,35 @@ const shareUrls: shareTypes = {
   facebook: "https://www.facebook.com/sharer/sharer.php?u=",
   twitter: "https://twitter.com/intent/tweet?url=",
   linkedin: "https://www.linkedin.com/shareArticle?mini=true&url=",
-  email: "mailto:?subject=&body=",
+  email: "mailto:?subject=Check%20out%20this%20article!&body=",
 };
 
 const ShareButton = ({ url, provider }: ShareButtonProps) => {
+  const returnIcon = () => {
+    switch (provider) {
+      case "facebook":
+        return <FaFacebook 
+        size={36}
+        />;
+      case "twitter":
+        return <FaTwitter size={36} />;
+      case "linkedin":
+        return <FaLinkedin size={36}/>;
+      case "email":
+        return <FaRegEnvelope size={36} />;
+      default:
+        return <FaRegEnvelope size={36}/>;
+    }
+  };
+
   return (
     <a
       href={shareUrls[provider] + url}
       target="_blank"
       rel="noopener noreferrer"
+      style={{ marginLeft: "1rem" }}
     >
-      <Image
-        src={`/images/${provider}.svg`}
-        alt={provider}
-        width="36px"
-        height="36px"
-        className="share-button"
-      />
+      {returnIcon()}
     </a>
   );
 };
