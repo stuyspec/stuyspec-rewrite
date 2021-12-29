@@ -45,7 +45,7 @@ const ShareButton = ({ url, provider }: ShareButtonProps) => {
       href={shareUrls[provider] + url}
       target="_blank"
       rel="noopener noreferrer"
-      style={{ marginLeft: "1rem" }}
+      style={{ marginRight: "1rem" }}
     >
       {returnIcon()}
     </a>
