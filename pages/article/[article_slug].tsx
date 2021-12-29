@@ -22,6 +22,7 @@ const Article = (props: Props) => {
     cover_image_contributor,
   } = props.article;
   const section = all_sections[section_id];
+  const providers = ["facebook", "twitter", "linkedin", "email"];
   return (
     <div>
       <Head>
@@ -34,18 +35,13 @@ const Article = (props: Props) => {
         <h3 className={styles.authors}>
           {section} | By {contributors.join(", ")}
         </h3>
-        <ShareButton
-          url={`https://stuyspec.com/article/${props.article.slug}`}
-          provider="facebook"
-        />
-        <ShareButton
-          url={`https://stuyspec.com/article/${props.article.slug}`}
-          provider="twitter"
-        />
-        <ShareButton
-          url={`https://stuyspec.com/article/${props.article.slug}`}
-          provider="linkedin"
-        />
+        {providers.map((provider) => (
+          <ShareButton
+            key={provider}
+            provider={provider}
+            url={`https://stuyspec.com/article/${props.article.slug}`}
+          />
+        ))}
         <div id={styles.cover_image_div}>
           <img
             width={"100%"}
