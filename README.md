@@ -4,9 +4,6 @@ The **new** client-side application of The Stuyvesant Spectator, built using var
 
 ## Getting Started
 
-Set up the dotenv:
-Create a .env.local file with `MONGODB_URI={MongoDB srv uri}`
-
 1. Clone the repository
 
 ```bash
@@ -21,7 +18,15 @@ npm install
 yarn
 ```
 
-3. Run the development server:
+3. Set up the .env.local 
+Create a .env.local file, with MONGODB_URI being the credentials for your development mongodb database
+
+```bash
+# In .env.local
+MONGODB_URI=mongodb+srv://...
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
