@@ -3,14 +3,14 @@ import { ReceivedArticle } from "../../../ts_types/db_types";
 import { get_articles_by_department } from "../../../db";
 
 type ResponseStructure = {
-  articles: [ReceivedArticle];
+	articles: [ReceivedArticle];
 };
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseStructure>
+	req: NextApiRequest,
+	res: NextApiResponse<ResponseStructure>
 ) {
-  const { method, query, body } = req;
+	const { method, query, body } = req;
 
   if (method == "GET") {
     let department: string = String(query.department);
