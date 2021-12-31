@@ -1,5 +1,5 @@
 {
-  "name": "stuyspecrewrite-typescript",
+  "name": "stuyspecrewrite",
   "private": true,
   "scripts": {
     "dev": "next dev",
