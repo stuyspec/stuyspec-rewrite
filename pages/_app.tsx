@@ -6,24 +6,28 @@ import Footer from "../components/Footer";
 import Search from "../components/Search";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <div>
-      <div>
-        <Search />
-        <div id="navbar">
-          <Navbar />
-        </div>
-        <div id="main">
-          <Component {...pageProps} />
-        </div>
-        <Footer />
-      </div>
-    </div>
-  );
-}
-
-if (typeof window !== "undefined") {
-  document.documentElement.className = "light-mode";
+	useEffect(() => {
+		const darkMode = localStorage.getItem("dark-mode");
+		if (!darkMode) {
+			document.documentElement.className = "light-mode";
+		} else {
+			document.documentElement.className = "dark-mode";
+		}
+	});
+	return (
+		<div>
+			<div>
+				<Search />
+				<div id="navbar">
+					<Navbar />
+				</div>
+				<div id="main">
+					<Component {...pageProps} />
+				</div>
+				<Footer />
+			</div>
+		</div>
+	);
 }
 
 export default MyApp;
