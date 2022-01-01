@@ -88,9 +88,9 @@ async function get_staff(query: string): Promise<RecievedStaff> {
   const { db } = await connectToDatabase();
   let staff_collection = await db.collection("staff");
 
-  let staff = (await staff_collection
-    .findOne({ slug: query })
-  ) as RecievedStaff;
+  let staff = (await staff_collection.findOne({
+    slug: query,
+  })) as RecievedStaff;
   return staff;
 }
 
@@ -100,5 +100,5 @@ export {
   get_article_by_id,
   get_article_by_slug,
   get_articles_by_author,
-  get_staff
+  get_staff,
 };

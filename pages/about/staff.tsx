@@ -4,7 +4,7 @@ const StaffPage = () => {
   return (
     <>
       <Head>
-        <title>The Spectator | Staff</title>
+        <title>Staff | The Spectator</title>
       </Head>
       <div className="staff-page">
         <div className="staff-page-header">

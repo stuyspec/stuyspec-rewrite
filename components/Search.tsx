@@ -5,7 +5,6 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState("");
 
   function disableSearch() {
-    console.log("clicked");
     let buttons = Array.from(
       document.getElementsByClassName("button") as HTMLCollectionOf<HTMLElement>
     );

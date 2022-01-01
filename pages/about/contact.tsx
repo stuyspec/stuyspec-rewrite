@@ -4,7 +4,7 @@ const ContactPage = () => {
   return (
     <>
       <Head>
-        <title>The Spectator | Contact</title>
+        <title>Contact | The Spectator</title>
       </Head>
       <div style={{ textAlign: "center" }} className="contact-page">
         <p>
