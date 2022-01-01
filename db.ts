@@ -1,6 +1,8 @@
 import { connectToDatabase } from "./db_conn";
-import { ReceivedArticle } from "./ts_types/db_types";
+import { ReceivedArticle, RecievedStaff } from "./ts_types/db_types";
 import { ObjectId } from "mongodb";
+
+// articles
 
 async function get_articles(num?: number): Promise<[ReceivedArticle]> {
   const { db } = await connectToDatabase();
@@ -80,10 +82,23 @@ async function get_articles_by_query(
   return articles;
 }
 
+// staff
+
+async function get_staff(query: string): Promise<RecievedStaff> {
+  const { db } = await connectToDatabase();
+  let staff_collection = await db.collection("staff");
+
+  let staff = (await staff_collection
+    .findOne({ slug: query })
+  ) as RecievedStaff;
+  return staff;
+}
+
 export {
   get_articles,
   get_articles_by_department,
   get_article_by_id,
   get_article_by_slug,
   get_articles_by_author,
+  get_staff
 };
