@@ -15,7 +15,8 @@ export default async function handler(
   if (method == "GET") {
     let department: string = String(query.department);
     let articles = await get_articles_by_department(department, body.max);
-    console.log(department);
     res.json({ articles: JSON.parse(JSON.stringify(articles)) });
+  } else {
+    res.status(400);
   }
 }
