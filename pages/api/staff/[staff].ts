@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { RecievedStaff } from "../../../ts_types/db_types";
+import { ReceivedStaff } from "../../../ts_types/db_types";
 import { get_staff } from "../../../db";
 
 type ResponseStructure = {
-  staff: [RecievedStaff];
+  staff: [ReceivedStaff];
 };
 
 export default async function handler(

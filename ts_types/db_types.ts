@@ -17,7 +17,7 @@ export interface IssuuResponse {
   images: String[];
 }
 
-export interface RecievedStaff {
+export interface ReceivedStaff {
   _id: ObjectId | string;
   id: number;
   provider: string;
