@@ -19,8 +19,7 @@ export interface IssuuResponse {
 
 export interface ReceivedStaff {
   _id: ObjectId | string;
-  first_name: string;
-  last_name: string;
+  name: string;
   email: string;
   position: string;
   role: string;
