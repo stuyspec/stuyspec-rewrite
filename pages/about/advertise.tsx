@@ -10,6 +10,7 @@ interface Props {
 const Advertise = (props: Props) => {
 
   const { name, email } = props.manager;
+  const mailto = "mailto:" + email;
   
   return (
     <>
@@ -82,7 +83,7 @@ const Advertise = (props: Props) => {
           <p style={{ marginTop: "1rem", marginLeft: "2rem", fontFamily: "Georgia" }}>
             Manager: {name}
             <div style={{margin: "4px"}} />
-            Email: {email}
+            Email: <a href={mailto} className="link">{email}</a>
           </p>
         </div>
       </div>
