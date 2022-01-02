@@ -22,6 +22,8 @@ export interface ReceivedStaff {
   first_name: string;
   last_name: string;
   email: string;
+  position: string;
+  role: string;
   description: string;
   pfp_url: string;
   years : number[];
