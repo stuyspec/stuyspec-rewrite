@@ -10,7 +10,7 @@
 
 :root {
   --primary-immutable: #ffffff;
-  --accent: #408cff;
+  --accent: #4283e4;
   --large-text: 2.25rem;
   --medium-text: 1.75rem;
   --small-text: 1rem;
@@ -35,6 +35,8 @@
   --medium-grey: #7e7e7e;
 }
 
+::selection { background: var(--accent); }
+
 html,
 body {
   padding: 0;
@@ -46,8 +48,6 @@ body {
 
   font-family: var(--primary-font);
   font-display: optional;
-
-  transition: background-color 250ms ease-in-out;
 }
 
 a {
@@ -67,6 +67,8 @@ li {
   border: 0;
   font-display: optional;
   overflow-x: hidden;
+
+  transition: background-color 250ms ease-in-out;
 }
 
 #main {
