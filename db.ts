@@ -92,6 +92,14 @@ async function get_staff_by_id(_id: string): Promise<ReceivedStaff> {
   return staff;
 }
 
+async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
+  const { db } = await connectToDatabase();
+  let staff_collection = await db.collection("staff");
+
+  let staff = (await staff_collection.findOne({position: position})) as ReceivedStaff;
+  return staff;
+}
+
 export {
   get_articles,
   get_articles_by_department,
@@ -99,4 +107,5 @@ export {
   get_article_by_slug,
   get_articles_by_author,
   get_staff_by_id,
+  get_staff_by_position,
 };
