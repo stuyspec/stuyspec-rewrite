@@ -1,4 +1,6 @@
 import Head from "next/head";
+import styles from "../../styles/Staff.module.css"
+import SideBar from "../../components/Sidebar";
 
 const StaffPage = () => {
   return (
@@ -7,9 +9,7 @@ const StaffPage = () => {
         <title>Staff | The Spectator</title>
       </Head>
       <div className="staff-page">
-        <div className="staff-page-header">
-          <h1>Staff</h1>
-        </div>
+        <div id={styles.sidebar}><SideBar /></div>
       </div>
     </>
   );

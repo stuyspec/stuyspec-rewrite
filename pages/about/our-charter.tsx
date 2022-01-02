@@ -629,7 +629,7 @@ const OurCharter: React.FC<{}> = () => {
           If you have any comments, questions, concerns, or suggestions
           regarding this webpage or concerning The Spectator in general, please
           e-mail us directly at{" "}
-          <a href="mailto:web@stuyspec.com">web@stuyspec.com</a>.
+          <a className="link" href="mailto:web@stuyspec.com">web@stuyspec.com</a>.
           <p style={{ marginTop: "16px" }}>
             Please be aware that this webpage is currently a work in progress.
             We are still working to implement new features and update content.
