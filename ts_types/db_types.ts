@@ -19,19 +19,9 @@ export interface IssuuResponse {
 
 export interface ReceivedStaff {
   _id: ObjectId | string;
-  id: number;
-  provider: string;
-  uid: string;
   first_name: string;
-  image: string;
-  email: string;
-  thumbnail: string;
   last_name: string;
-  slug: string;
+  email: string;
   description: string;
-  security_level: number;
-  profile_picture_file_name: string;
-  profile_picture_content_type: string;
-  profile_picture_file_size: string;
-  profile_picture_updated_at: string;
+  pfp_url: string;
 }

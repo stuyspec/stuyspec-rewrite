@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { ReceivedStaff } from "../../../ts_types/db_types";
-import { get_staff } from "../../../db";
+import { get_staff_by_id } from "../../../db";
 
 type ResponseStructure = {
-  staff: [ReceivedStaff];
+  member: ReceivedStaff;
 };
 
 export default async function handler(
@@ -13,9 +13,9 @@ export default async function handler(
   const { method, query } = req;
 
   if (method == "GET") {
-    let slug: string = String(query.staff);
-    let staff = await get_staff(slug);
-    res.json({ staff: JSON.parse(JSON.stringify(staff)) });
+    let id: string = String(query.staff);
+    let member = await get_staff_by_id(id);
+    res.json({ member: JSON.parse(JSON.stringify(member)) });
   } else {
     res.status(400);
   }
