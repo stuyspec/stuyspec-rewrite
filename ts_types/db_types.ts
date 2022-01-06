@@ -37,3 +37,14 @@ export type Department =
 	| "artsandentertainment"
 	| "media"
 	| "spec+";
+export const DepartmentsArray = [
+	"news",
+	"features",
+	"opinions",
+	"science",
+	"humor",
+	"sports",
+	"artsandentertainment",
+	"media",
+	"spec+",
+];
