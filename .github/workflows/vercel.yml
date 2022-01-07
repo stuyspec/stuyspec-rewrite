@@ -19,9 +19,9 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
-            - run: npm ci
+            - run: npm i
             - run: npm run build
             - run: npm i -g vercel
             - name: "Upload build to production"
               env: { VERCEL_AUTH_TOKEN: "${{ secrets.VERCEL_AUTH_TOKEN }}" }
-              run: vercel --prod --token $VERCEL_AUTH_TOKEN
+              run: vercel --prod --confirm --token $VERCEL_AUTH_TOKEN
