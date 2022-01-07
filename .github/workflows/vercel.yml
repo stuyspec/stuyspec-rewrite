@@ -13,8 +13,6 @@ jobs:
                 node-version: [16.x]
 
         steps:
-            env:
-                VERCEL_AUTH_TOKEN: ${{ secrets.VERCEL_AUTH_TOKEN }}
             - uses: actions/checkout@v2
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
@@ -25,9 +23,5 @@ jobs:
             - run: npm run build
             - run: npm i -g vercel
             - name: "Upload build to production"
-              env:
-                  {
-                      VERCEL_AUTH_TOKEN: "${{ secrets.VERCEL_AUTH_TOKEN }}" 
-                  }
+              env: { VERCEL_AUTH_TOKEN: "${{ secrets.VERCEL_AUTH_TOKEN }}" }
               run: vercel --prod --token $VERCEL_AUTH_TOKEN
-            
