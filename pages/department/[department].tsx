@@ -22,7 +22,7 @@ const Article = (props: Props) => {
 			<main id={styles.main}>
 				<h1 id={styles.departmentTitle}> {props.department} </h1>
 				<div id={styles.devDisplay}>
-					<h2>Dev Display</h2>
+					<h2>Development Display</h2>
 					{props.articles.length > 0 ? (
 						<div>
 							{props.articles.map((v) => (
