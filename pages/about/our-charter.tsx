@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../../styles/Charter.module.css";
 
 const OurCharter: React.FC<{}> = () => {
   return (
@@ -7,7 +6,7 @@ const OurCharter: React.FC<{}> = () => {
       <Head>
         <title>Our Charter | The Spectator</title>
       </Head>
-      <main id={styles.charterBody}>
+      <main style={{ margin: "2rem 8rem" }}>
         <h1 style={{ marginTop: "16px" }}>The Charter of The Spectator</h1>
         Approved January, 2020 by The Spectator Editorial Board.
         <br />
@@ -15,7 +14,7 @@ const OurCharter: React.FC<{}> = () => {
           I. Statement of Purpose
           <br />
         </h2>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             The goal of The Spectator, the school newspaper of Stuyvesant High
             School, is to inform the Stuyvesant community, including students,
@@ -51,7 +50,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h2>II. The Spectator Staff</h2>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             <b>Editor in Chief</b>: In general, two Editors-in-Chief share all
             responsibilities noted in this charter and act as the leaders of The
@@ -182,7 +181,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h2>III. Operating Procedures</h2>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             <b>Production of the Newspaper</b>: Department Editors will first
             determine Pasteup for each issue, assigning the writing and
@@ -306,7 +305,7 @@ const OurCharter: React.FC<{}> = () => {
         </ol>
         <h2>IV. Policies & Guidelines</h2>
         <h3>A. Ethics</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             As an agent of the free press, The Spectator will act in accordance
             with First Amendment principles.
@@ -338,7 +337,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>B. Content Policy</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             The Spectator will report the news accurately, thoroughly and in an
             unbiased way, using honest methods to gather news. The Editors will
@@ -389,7 +388,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>C. Maintaining Independence</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             The Spectator will remain free of outside interests, investments or
             business relationships that may compromise the credibility of its
@@ -413,7 +412,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>D. Corrections Policy</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             All factual errors, including misidentifications and misspellings of
             names and titles, must be corrected. The Corrections Box is a
@@ -430,7 +429,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>E. Letters Policy</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             The Spectator encourages Letters to the Editor so that readers may
             participate in a scholastic free press in an open forum.
@@ -451,7 +450,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>F. Independence from the Student Union</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             Editors or Editors-in-Chief of The Spectator cannot run for or hold
             the positions of Student Union President or Vice President, Senior
@@ -476,7 +475,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>G. Conflicts of Interest</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             Staffers must not write non-Opinions articles on their own teachers
             or on activities in which they are involved.
@@ -541,7 +540,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>H. Grounds for Removal from Position</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             If an Editor shows significant signs of inadequacy in his/her
             position for any reason, including being unable to handle his/her
@@ -552,7 +551,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>I. Obituary Policy</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             The Spectator will cover stories involving the death of current
             students, administration and alumni, including photographs, when
@@ -599,7 +598,7 @@ const OurCharter: React.FC<{}> = () => {
           </li>
         </ol>
         <h3>K. Advertisements Policy</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             The Spectator reserves the right to turn away any advertisements at
             the discretion of the Business Managers.
@@ -618,8 +617,8 @@ const OurCharter: React.FC<{}> = () => {
             Business Managers, Humor Editors, and Layout Editors.
           </li>
         </ol>
-        <div style={{ textAlign: "center", margin: "16px" }}>——————</div>
-        <p>
+        <div style={{ textAlign: "center", margin: "16px", fontFamily: "Georgia" }}>——————</div>
+        <p style={{ fontFamily: "Georgia" }}>
           *In every instance that the term Managing Editor is used, it is
           assumed that one exists. If this is not the case, the regulations
           surrounding the role, selection, or responsibilities of the Managing
