@@ -25,7 +25,7 @@ const DevelopersPage = () => {
       year: "2025",
       github: "leomet07",
       image:
-        "https://cdn.discordapp.com/avatars/426703074157920266/b48738825b6be755d98be7b97af3d449.png?size=256",
+        "https://cdn.discordapp.com/avatars/426703074157920266/d3490e284e9254345f7e23158b5d6686.webp?size=256",
     },
     {
       name: "Ivan Chen",
@@ -33,7 +33,7 @@ const DevelopersPage = () => {
       year: "2024",
       github: "anivanchen",
       image:
-        "https://cdn.discordapp.com/avatars/695729168343629844/fb8e8f749485685fa9f5c62f56f330f2.png?size=256",
+        "https://cdn.discordapp.com/avatars/695729168343629844/f4df801dc96eb786fa050272ba5fdfac.webp?size=256",
     },
   ];
 

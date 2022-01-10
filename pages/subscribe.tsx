@@ -50,7 +50,7 @@ const Subscribe = () => {
 					name="email"
 					type="email"
 					id={styles.input}
-					placeholder="Email..."
+					placeholder="Email"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 				/>
