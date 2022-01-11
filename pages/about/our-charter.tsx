@@ -1,13 +1,14 @@
 import Head from "next/head";
+import styles from "../../styles/About.module.css";
 
-const OurCharter: React.FC<{}> = () => {
+const OurCharter = () => {
   return (
     <>
       <Head>
         <title>Our Charter | The Spectator</title>
       </Head>
-      <main style={{ margin: "2rem 8rem" }}>
-        <h1 style={{ marginTop: "16px" }}>The Charter of The Spectator</h1>
+      <main id={styles.container}>
+        <h1>The Charter of The Spectator</h1>
         Approved January, 2020 by The Spectator Editorial Board.
         <br />
         <h2>

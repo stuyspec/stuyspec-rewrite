@@ -5,6 +5,7 @@
 	display: none;
 
 	background-color: var(--secondary-nav);
+  z-index: 1000;
 }
 
 #searchBar {

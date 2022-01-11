@@ -1,4 +1,5 @@
 import Head from "next/head";
+import styles from "../../styles/About.module.css"
 
 const Sponsors = () => {
   return (
@@ -6,12 +7,8 @@ const Sponsors = () => {
       <Head>
         <title>Sponsors | The Spectator</title>
       </Head>
-      <div style={{
-        margin: "2rem 8rem",
-        textAlign: "left", 
-        display: "flex",
-      }}
-        className="sponsors-page"
+      <div
+        id={styles.container}
       >
         <div style={{ margin: "auto" }}>
           <h1 style={{ fontSize: "var(--large-text)"}}>Sponsors</h1>

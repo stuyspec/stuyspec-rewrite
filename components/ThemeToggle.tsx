@@ -22,7 +22,6 @@ const ThemeToggle = () => {
 	});
 
 	function toggleTheme() {
-		console.log("pressed");
 		if (theme === "dark") {
 			document.documentElement.className = "light-mode";
 			setTheme("light");

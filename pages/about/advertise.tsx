@@ -1,5 +1,6 @@
 
 import Head from "next/head";
+import styles from "../../styles/About.module.css"
 import { ReceivedStaff } from "../../ts_types/db_types";
 import { get_staff_by_position } from "../../db";
 
@@ -17,12 +18,8 @@ const Advertise = (props: Props) => {
       <Head>
         <title>Advertise | The Spectator</title>
       </Head>
-      <div style={{
-        margin: "2rem 8rem",
-        textAlign: "left", 
-        display: "flex",
-      }}
-        className="advertise-page"
+      <div
+        id={styles.container}
       >
         <div style={{ margin: "auto" }}>
           <h1 style={{ fontSize: "var(--large-text)" }}>Advertise</h1>
