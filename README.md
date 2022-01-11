@@ -1,3 +1,15 @@
+# stuyspec.com
+
+[![.github/workflows/vercel.yml](https://github.com/stuyspec/stuyspecrewrite/actions/workflows/vercel.yml/badge.svg)](https://github.com/stuyspec/stuyspecrewrite/actions/workflows/vercel.yml)
+![license](https://img.shields.io/github/license/stuyspec/stuyspecrewrite)
+![release](https://img.shields.io/github/v/release/stuyspec/stuyspecrewrite)
+
+## Contributing
+
+We welcome pull requests from Spec Web developers and seasoned JavaScript developers alike! Please follow [these steps](CONTRIBUTING.md) to contribute.
+
+#
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 The **new** client-side application of The Stuyvesant Spectator, built using various modern technologies including NextJS, Typescript, and MongoDB
