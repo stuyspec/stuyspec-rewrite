@@ -20,7 +20,7 @@ const Article = (props: Props) => {
 			</Head>
 
 			<main id={styles.main}>
-				<h1 id={styles.departmentTitle}> {props.department} </h1>
+        <h1 id={styles.departmentTitle}> {props.department} </h1>
 				<div id={styles.devDisplay}>
 					<h2>Development Display</h2>
 					{props.articles.length > 0 ? (

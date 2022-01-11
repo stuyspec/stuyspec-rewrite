@@ -81,51 +81,51 @@ const Footer = () => {
 					<div id={styles.column}>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/news">News</Link>
+								<Link href="/department/news">News</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/news/campaign-coverage">
+								<Link href="/department/news/campaign-coverage">
 									Campaign Coverage
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/news/1031-terror-attack">
+								<Link href="/department/news/1031-terror-attack">
 									10/31 Terror Attack
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/news/black-lives-matter">
+								<Link href="/department/news/black-lives-matter">
 									Black Lives Matter
 								</Link>
 							</p>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/features">Features</Link>
+								<Link href="/department/features">Features</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/features/voices">VOICES</Link>
+								<Link href="/department/features/voices">VOICES</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/features/911">9/11</Link>
+								<Link href="/department/features/911">9/11</Link>
 							</p>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/opinions">Opinions</Link>
+								<Link href="/department/opinions">Opinions</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/opinions/blacklivesmatter">
+								<Link href="/department/opinions/blacklivesmatter">
 									#BlackLivesMatter
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/opinions/staff-editorials">
+								<Link href="/department/opinions/staff-editorials">
 									Staff Editorials
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/opinions/writing-competition">
+								<Link href="/department/opinions/writing-competition">
 									Writing Competition
 								</Link>
 							</p>
@@ -134,43 +134,43 @@ const Footer = () => {
 					<div id={styles.column}>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/science">Science</Link>
+								<Link href="/department/science">Science</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/science/at-stuy">
+								<Link href="/department/science/at-stuy">
 									Science at Stuy
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/science/coronavirus-pandemic">
+								<Link href="/department/science/coronavirus-pandemic">
 									Coronavirus Pandemic
 								</Link>
 							</p>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/humor">Humor</Link>
+								<Link href="/department/humor">Humor</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/humor/disrespectator">
+								<Link href="/department/humor/disrespectator">
 									Disrespectator
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/humor/spooktator">Spooktator</Link>
+								<Link href="/department/humor/spooktator">Spooktator</Link>
 							</p>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/sports">Sports</Link>
+								<Link href="/department/sports">Sports</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/sports/professional">
+								<Link href="/department/sports/professional">
 									Professional Sports
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/sports/at-stuy">
+								<Link href="/department/sports/at-stuy">
 									Sports At Stuy
 								</Link>
 							</p>
@@ -179,63 +179,63 @@ const Footer = () => {
 					<div id={styles.column}>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/ae">Arts and Entertainment</Link>
+								<Link href="/department/ae">Arts and Entertainment</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/fashion">Fashion</Link>
+								<Link href="/department/ae/fashion">Fashion</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/art">Art</Link>
+								<Link href="/department/ae/art">Art</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/culture">Culture</Link>
+								<Link href="/department/ae/culture">Culture</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/film">Film</Link>
+								<Link href="/department/ae/film">Film</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/food">Food</Link>
+								<Link href="/department/ae/food">Food</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/literature">Literature</Link>
+								<Link href="/department/ae/literature">Literature</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/music">Music</Link>
+								<Link href="/department/ae/music">Music</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/television">Television</Link>
+								<Link href="/department/ae/television">Television</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/theatere">Theater</Link>
+								<Link href="/department/ae/theatere">Theater</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/thinkpiece">Thinkpiece</Link>
+								<Link href="/department/ae/thinkpiece">Thinkpiece</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/sing">SING!</Link>
+								<Link href="/department/ae/sing">SING!</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/ae/stc">STC</Link>
+								<Link href="/department/ae/stc">STC</Link>
 							</p>
 						</div>
 					</div>
 					<div id={styles.column}>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/media">Media</Link>
+								<Link href="/department/media">Media</Link>
 							</h3>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/spec-plus">Spec+</Link>
+								<Link href="/department/spec-plus">Spec+</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/spec-plus/quarenzine">
+								<Link href="/department/spec-plus/quarenzine">
 									Quarenzine
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/spec-plus/undercurrents">
+								<Link href="/department/spec-plus/undercurrents">
 									Undercurrents
 								</Link>
 							</p>
