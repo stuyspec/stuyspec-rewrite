@@ -114,7 +114,8 @@ export {
 	get_articles_by_department,
 	get_article_by_id,
 	get_article_by_slug,
-	get_articles_by_author,
+  get_articles_by_author,
+  get_articles_by_query,
 	get_staff_by_id,
 	get_staff_by_position,
 };
