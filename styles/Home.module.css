@@ -1,16 +1,116 @@
-.displayed_article {
-  margin: auto;
-  width: 80vw;
-}
-#title {
-  text-align: center;
-}
-.mini_article_title {
-  text-align: center;
-}
-#main {
-  padding-top: 10px;
-}
 #main p {
   font-family: var(--alternate-primary-font);
+}
+
+#main {
+  height: auto;
+  margin: 2rem;
+}
+
+#landingScreen {
+  height: calc(100vh - 63px - 3rem);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 1rem;
+}
+#heroStory {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 7;
+
+  text-align: center;
+  cursor: pointer;
+
+  transition: color 150ms ease;
+}
+#heroStory:hover, #heroStory:active {
+  color: var(--medium-grey);
+}
+#infoBar {
+  grid-column-start: 5;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  border-top: 1px solid var(--medium-gray);
+  border-bottom: 1px solid var(--medium-gray);
+}
+#latestArticles {
+  grid-column-start: 5;
+  grid-column-end: 7;
+  grid-row-start: 3;
+  grid-row-end: 7;
+  text-align: left;
+}
+
+#heroImageContainer {
+  width: auto;
+}
+#heroImage {
+  object-fit: contain;
+  width: 100%;
+  max-height: 56vh;
+}
+#departmentBar {
+  position: relative;
+  top: -24px;
+  max-width: 15rem;
+  margin: auto;
+  padding: 0.5rem;
+
+  color: var(--primary-immutable);
+  background-color: var(--accent);
+
+  font-size: calc(var(--medium-text) / 1.5);
+  font-family: var(--secondary-font);
+}
+#heroStory h1, #heroStory p {
+  margin: 1rem;
+}
+#heroStory #summary {
+  font-size: calc(var(--medium-text) / 1.5);
+}
+#heroStory #writers {
+  font-family: var(--secondary-font);
+}
+#downArrow {
+  font-size: 1rem;
+  -moz-animation: arrowBob 2s infinite;
+  -webkit-animation: arrowBob 2s infinite;
+  animation: arrowBob 2s infinite;
+}
+
+#title {
+  font-size: var(--medium-text);
+}
+#articleInfo {
+  margin-top: 0.5rem;
+  font-size: calc(var(--small-text) * 0.8);
+  color: var(--medium-grey);
+  font-family: var(--alternate-primary-font);
+}
+#summary {
+  margin-top: 0.5rem;
+  font-size: var(--small-text);
+  font-family: var(--alternate-primary-font);
+}
+
+#article {
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+#article:hover, #article:active {
+  color: var(--medium-grey);
+}
+
+@media screen and (max-width: 720px) {
+  #landingScreen {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  #infoBar {
+    display: none;
+  }
 }
