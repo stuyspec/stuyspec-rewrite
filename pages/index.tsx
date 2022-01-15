@@ -16,7 +16,7 @@ const Home = (props: Props) => {
   const displayArticles: any[] = []; // Any type because this element will change often
   const articles = props.articles;
   articles.forEach((i) => {
-    var dateFromID = function (objectId: string | ObjectId) {
+    var dateFromID = function (objectId: any) {
       return new Date(parseInt(objectId.substring(0, 8), 16) * 1000).toString().split(" ").slice(0, 4).join(" ");
     };    
     displayArticles.push(
