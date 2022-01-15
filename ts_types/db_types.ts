@@ -8,8 +8,6 @@ export interface ReceivedArticle {
 	volume: number;
 	issue: number;
   section_id: number;
-  department: string;
-  subdepartment: string;
 	summary: string;
   cover_image: string;
   cover_image_summary: string;
