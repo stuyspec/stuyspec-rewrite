@@ -31,13 +31,31 @@ const Home = (props: Props) => {
           </h2>
         </Link>
         <div id={styles.inline} style={{ fontFamily: "var(--secondary-font)" }}>
-          <p
-            id={styles.articleInfoWriters}
-            style={{ color: "var(--primary)" }}
-            className="discrete-link"
-          >
-            {i.contributors.join(", ")}
-          </p>
+          {i.contributors.map((contributor: string, index: number) => {
+            let separator = ", ";
+            if (index === i.contributors.length - 2) {
+              separator = " & ";
+            } else if (index === i.contributors.length - 1) {
+              separator = "";
+            }
+            return (
+              <>
+                <p
+                  id={styles.articleInfoWriters}
+                  style={{ color: "var(--primary)" }}
+                  className="discrete-link"
+                  key={contributor}
+                >
+                  {contributor}
+                </p>
+                <p
+                  id={styles.contributorSeparator}
+                >
+                {separator}
+                </p>
+              </>
+            );
+          })}
           <p id={styles.articleInfoDate} style={{ marginLeft: "1rem" }}>
             {dateFromID(i._id)}
           </p>
