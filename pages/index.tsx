@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,7 +8,7 @@ import { ReceivedArticle } from "../ts_types/db_types";
 import { all_sections } from "../globals/globals";
 import Separator from "../components/Separator";
 interface Props {
-  articles: [ReceivedArticle];
+	articles: [ReceivedArticle];
 }
 
 const Home = (props: Props) => {
@@ -35,18 +36,18 @@ const Home = (props: Props) => {
     );
   });
 
-  const heroArticle = articles[0];
+	const heroArticle = articles[0];
 
-  return (
-    <div>
-      <Head>
-        <title>The Stuyvesant Spectator</title>
-        <meta name="description" content="The Stuyvesant Spectator" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+	return (
+		<div>
+			<Head>
+				<title>The Stuyvesant Spectator</title>
+				<meta name="description" content="The Stuyvesant Spectator" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 
-      <main id={styles.main}>
-        <div id={styles.landingScreen}>
+			<main id={styles.main}>
+				<div id={styles.landingScreen}>
 
             <div id={styles.heroStory}>
               <div id={styles.heroImageContainer}>
@@ -63,42 +64,40 @@ const Home = (props: Props) => {
               <Image src="/images/down-arrow.svg" width="24px" height="24px" />
             </div>
 
-          <div id={styles.infoBar}>
-            <Separator />
-            <div id={styles.announcements}>
-              <div id={styles.countdown}>
-                <p><h1>h</h1>days until {"christmas break"}</p>
-              </div>
-            </div>
-            <div style={{transform: "rotate(90deg)"}}><Separator /></div>
-            <div id={styles.weather}>
-              snow yay
-            </div>
-            <Separator />
-          </div>
+					<div id={styles.infoBar}>
+						<Separator />
+						<div id={styles.announcements}>
+							<div id={styles.countdown}>
+								<p>
+									<h1>h</h1>days until {"christmas break"}
+								</p>
+							</div>
+						</div>
+						<div style={{ transform: "rotate(90deg)" }}>
+							<Separator />
+						</div>
+						<div id={styles.weather}>snow yay</div>
+						<Separator />
+					</div>
 
-          <div id={styles.latestArticles}>
-            <h1 id={styles.heading}>Latest</h1>
-            <Separator />
-            <div>{displayArticles.slice(1)}</div>
-          </div>
-        </div>
-        <div id={styles.articles}>
-
-        </div>
-        <div id={styles.articles}>
-
-        </div>
-      </main>
-    </div>
-  );
+					<div id={styles.latestArticles}>
+						<h1 id={styles.heading}>Latest</h1>
+						<Separator />
+						<div>{displayArticles.slice(1)}</div>
+					</div>
+				</div>
+				<div id={styles.articles}></div>
+				<div id={styles.articles}></div>
+			</main>
+		</div>
+	);
 };
 
 export default Home;
 
 export async function getServerSideProps() {
-  let articles = await get_articles();
-  return {
-    props: { articles: JSON.parse(JSON.stringify(articles)) },
-  };
+	let articles = await get_articles();
+	return {
+		props: { articles: JSON.parse(JSON.stringify(articles)) },
+	};
 }
