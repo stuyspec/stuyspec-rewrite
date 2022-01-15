@@ -7,9 +7,9 @@ const ThemeToggle = () => {
 
 	function getTheme() {
 		if (typeof window !== "undefined") {
-			return localStorage.getItem("theme");
+			return localStorage.getItem("theme") || "dark";
 		} else {
-			return "light";
+			return "dark";
 		}
 	}
 
