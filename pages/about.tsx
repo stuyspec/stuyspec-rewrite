@@ -7,7 +7,7 @@ const Fourzerofour = (props: any) => {
     name: string;
     link: string;
     summary: string;
-    image: string;
+    image: string
   }> = [
     {
       name: "Our Charter",
@@ -61,7 +61,7 @@ const Fourzerofour = (props: any) => {
           {pages.map((page, key) => (
             <div id={styles.item} key={key}>
               <a href={`/about${page.link}`}>
-                <img id={styles.image} src={`${page.image}`} />
+                <img id={styles.image} src={`https://cdn.discordapp.com/attachments/899120514801496074/931962289765109860/wQphsDZeCTdygAAAABJRU5ErkJggg.png`} />
                 <h2>{page.name}</h2>
                 <p>{page.summary}</p>
               </a>
