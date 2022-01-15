@@ -7,6 +7,8 @@ import { NextPageContext } from "next";
 import styles from "../../styles/[article_slug].module.css";
 import { all_sections } from "../../globals/globals";
 import ShareButton from "../../components/ShareButton";
+import romanize from "../../components/Romanize";
+import SubscribeForm from "../../components/SubscribeForm"
 
 interface Props {
 	article: ReceivedArticle;
@@ -17,12 +19,17 @@ const Article = (props: Props) => {
 		text,
 		title,
 		cover_image,
-		section_id,
+    section_id,
+    volume,
+	  issue,
 		contributors,
-		cover_image_contributor,
-	} = props.article;
-	const section = all_sections[section_id];
-	const providers = ["facebook", "twitter", "linkedin", "email"];
+    cover_image_summary,
+    cover_image_contributor,
+    cover_image_source,
+  } = props.article;
+  
+  const providers = ["facebook", "twitter", "linkedin", "email"];
+  
 	return (
 		<div>
 			<Head>
@@ -30,38 +37,52 @@ const Article = (props: Props) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main id={styles.main}>
-				<h1>{title}</h1>
-				<div>
-					<h3 className={styles.authors}>
-						{section} | By {contributors.join(", ")}
-					</h3>
-					<div>
-						{providers.map((provider) => (
-							<ShareButton
-								key={provider}
-								provider={provider}
-								url={`https://stuyspec.com/article/${props.article.slug}`}
-							/>
-						))}
-					</div>
-				</div>
-				<div id={styles.cover_image_div}>
-					<img
-						width={"100%"}
-						id={styles.cover_image}
-						src={cover_image}
-						alt="Cover Image"
-					/>
-				</div>
-				<p className={styles.cover_image_contributor}>
-					By {cover_image_contributor}
-				</p>
+      <main id={styles.main}>
+        <div id={styles.staffInfo}>
 
-				<div
-					id={styles.content}
-					dangerouslySetInnerHTML={{ __html: text }}
-				></div>
+        </div>
+        <div id={styles.article}>
+          <h1 id={styles.title}>{title}</h1>
+          <div id={styles.infoBar}>
+            <h3 id={styles.authors}>By {contributors.join(", ")}</h3>
+            <div id={styles.shareButtons}>
+              {providers.map((provider) => (
+                <ShareButton
+                  key={provider}
+                  provider={provider}
+                  url={`https://stuyspec.com/article/${props.article.slug}`}
+                />
+              ))}
+            </div>
+          </div>
+          <div id={styles.cover_image_div}>
+            <img
+              width={"100%"}
+              id={styles.cover_image}
+              src={cover_image}
+              alt="Cover Image"
+            />
+          </div>
+          <p id={styles.coverImageInfo}>
+            {cover_image_summary}
+            { " " + cover_image_contributor + " " + cover_image_source }
+          </p>
+
+          <div
+            id={styles.content}
+            dangerouslySetInnerHTML={{ __html: text }}
+          ></div>
+
+          <p style={{fontStyle: "italic"}}>Article appears in print in Volume {romanize(volume)}, Issue {issue}</p>
+          <div style={{
+            display: "flex",
+          }}>
+            <SubscribeForm />
+          </div>
+        </div>
+        <div id={styles.advertisements}>
+          
+        </div>
 			</main>
 		</div>
 	);

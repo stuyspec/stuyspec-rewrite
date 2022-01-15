@@ -28,15 +28,15 @@ const ShareButton = ({ url, provider }: ShareButtonProps) => {
   const returnIcon = () => {
     switch (provider) {
       case "facebook":
-        return <FaFacebook size={36} />;
+        return <FaFacebook size={24} />;
       case "twitter":
-        return <FaTwitter size={36} />;
+        return <FaTwitter size={24} />;
       case "linkedin":
-        return <FaLinkedin size={36} />;
+        return <FaLinkedin size={24} />;
       case "email":
-        return <FaRegEnvelope size={36} />;
+        return <FaRegEnvelope size={24} />;
       default:
-        return <FaRegEnvelope size={36} />;
+        return <FaRegEnvelope size={24} />;
     }
   };
 

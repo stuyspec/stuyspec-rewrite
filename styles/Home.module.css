@@ -21,12 +21,13 @@
   grid-row-end: 7;
 
   text-align: center;
-  cursor: pointer;
-
-  transition: color 150ms ease;
 }
-#heroStory:hover, #heroStory:active {
-  color: var(--medium-grey);
+#heroStory h1 {
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+#heroStory h1:active {
+  opacity: 0.85;
 }
 #infoBar {
   grid-column-start: 5;
@@ -81,14 +82,27 @@
   animation: arrowBob 2s infinite;
 }
 
-#title {
-  font-size: var(--medium-text);
+#inline {
+  display: flex;
 }
-#articleInfo {
+
+#title {
+  cursor: pointer;
+  font-size: var(--medium-text);
+  transition: all 150ms ease;
+}
+#title:active {
+  opacity: 0.85;
+}
+#articleInfo, #articleInfoWriters, #articleInfoDate {
   margin-top: 0.5rem;
   font-size: calc(var(--small-text) * 0.8);
   color: var(--medium-grey);
   font-family: var(--alternate-primary-font);
+  cursor: pointer;
+}
+#articleInfoDate {
+  cursor: default;
 }
 #summary {
   margin-top: 0.5rem;
@@ -96,12 +110,10 @@
   font-family: var(--alternate-primary-font);
 }
 
-#article {
-  cursor: pointer;
-  transition: color 150ms ease;
-}
-#article:hover, #article:active {
-  color: var(--medium-grey);
+@media screen and (max-width: 1480px) {
+  #articleInfoDate {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 720px) {

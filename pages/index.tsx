@@ -15,15 +15,21 @@ const Home = (props: Props) => {
   const displayArticles: any[] = []; // Any type because this element will change often
   const articles = props.articles;
   articles.forEach((i) => {
+    var dateFromID = function (objectId: string | ObjectId) {
+      return new Date(parseInt(objectId.substring(0, 8), 16) * 1000).toString().split(" ").slice(0, 4).join(" ");
+    };    
     displayArticles.push(
       <div id={styles.article} key={String(i._id)}>
-        <Link href={ "/article/" + i.slug } passHref>
-          <div>
-            <h2 id={styles.title}>{ i.title }</h2>
-            <p id={styles.articleInfo}>{ i.contributors.join(", ") }</p>
-            <p id={styles.summary}>{ i.summary }</p>
-            <p id={styles.articleInfo}>{ all_sections[i.section_id] }</p>
-          </div>
+        <Link href={"/article/" + i.slug}>
+          <h2 id={styles.title} className="discrete-link">{i.title}</h2>
+        </Link>
+        <div id={styles.inline} style={{fontFamily: "var(--secondary-font)"}}>
+          <p id={styles.articleInfoWriters} style={{color: "var(--primary)"}} className="discrete-link">{ i.contributors.join(", ") }</p>
+          <p id={styles.articleInfoDate} style={{marginLeft: "1rem"}}>{ dateFromID(i._id) }</p>
+        </div>
+        <p id={styles.summary}>{i.summary}</p>
+        <Link href={`/department/${all_sections[i.section_id]}`} passHref>
+          <p id={styles.articleInfo} className="discrete-link">{ all_sections[i.section_id] }</p>
         </Link>
       </div>
     );
@@ -42,19 +48,20 @@ const Home = (props: Props) => {
       <main id={styles.main}>
         <div id={styles.landingScreen}>
 
-          <Link passHref href={"/article/" + heroArticle.slug}>
             <div id={styles.heroStory}>
               <div id={styles.heroImageContainer}>
                 <img id={styles.heroImage} src={heroArticle.cover_image} />
                 <div id={styles.departmentBar}>{ all_sections[heroArticle.section_id] }</div>
               </div>
-                
-              <h1>{heroArticle.title}</h1>
+
+            <Link passHref href={"/article/" + heroArticle.slug}>
+              <h1 className="discrete-link">{heroArticle.title}</h1>
+            </Link>
+
               <p id={styles.writers}>{heroArticle.contributors.join(", ")}</p>
               <p id={styles.summary}>{heroArticle.summary}</p>
               <Image src="/images/down-arrow.svg" width="24px" height="24px" />
             </div>
-          </Link>
 
           <div id={styles.infoBar}>
             <Separator />
