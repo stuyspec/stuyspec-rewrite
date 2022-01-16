@@ -230,8 +230,8 @@ const Footer = () => {
 								<Link href="/department/spec-plus">Spec+</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/department/spec-plus/quarenzine">
-									Quarenzine
+								<Link href="/department/spec-plus/quaranzine">
+									Quaranzine
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
