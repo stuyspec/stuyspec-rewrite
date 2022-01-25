@@ -1,18 +1,20 @@
 import { ObjectId } from "mongodb";
+
+export type mongoObjectId = ObjectId | string;
 export interface ReceivedArticle {
-	_id: ObjectId | string;
+	_id: mongoObjectId;
 	text: string;
 	title: string;
-  slug: string;
-  contributors: string[];
+	slug: string;
+	contributors: string[];
 	volume: number;
 	issue: number;
-  section_id: number;
+	section_id: number;
 	summary: string;
-  cover_image: string;
-  cover_image_summary: string;
-  cover_image_contributor: string;
-  cover_image_source: string;
+	cover_image: string;
+	cover_image_summary: string;
+	cover_image_contributor: string;
+	cover_image_source: string;
 }
 
 export interface IssuuResponse {

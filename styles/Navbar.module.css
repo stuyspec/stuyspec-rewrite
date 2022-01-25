@@ -12,19 +12,17 @@
 	display: flex;
 	align-items: center;
 }
-#hamburgerMenu {
-	align-self: right;
-
-	justify-self: start;
-	margin-right: auto;
+#subscribe_parent {
+	margin-left: auto;
 }
 #logo_container {
 	font-size: var(--large-text);
 	color: var(--primary-immutable);
 	justify-self: center;
-
+	width: 250px;
+	text-align: center;
 	position: absolute;
-	top: 3%; /* position the top  edge of the element at the middle of the parent */
+	top: 32px; /* position the top  edge of the element at the middle of the parent */
 	left: 50%; /* position the left edge of the element at the middle of the parent */
 
 	transform: translate(-50%, -50%);
@@ -73,14 +71,8 @@
 	#nav {
 		grid-template-columns: 48px calc(100% - 188px) 56px 56px;
 	}
-	#hamburgerMenu {
-		align-self: right;
-
-		justify-self: start;
-		margin-right: 0;
-	}
 	#logo_container {
-		font-size: 1.5rem;
+		font-size: 2rem;
 		position: static;
 
 		transform: none;
@@ -88,8 +80,10 @@
 		margin-right: auto;
 		width: fit-content;
 		margin-left: 10px;
+		width: 140px;
+		text-align: center;
 	}
-	#subscribe {
+	#subscribe_parent {
 		display: none;
 	}
 	#colorModeToggle {
@@ -101,6 +95,9 @@
 		grid-column-start: 4;
 		grid-column-end: 4;
 		place-self: center;
+	}
+	#logo_the {
+		display: none;
 	}
 }
 

@@ -25,7 +25,7 @@ const Navbar = () => {
 
 	return (
 		<nav id={styles.nav}>
-			<div id={styles.hamburgerMenu} className="button">
+			{/* <div id={styles.hamburgerMenu} className="button">
 				<Image
 					src="/images/hamburger-menu.svg"
 					width="24px"
@@ -35,14 +35,20 @@ const Navbar = () => {
 					className="button"
 					alt="More options menu button"
 				/>
-			</div>
+			</div> */}
 
 			<span id={styles.logo_container}>
-				<Link href="/">The Spectator</Link>
+				<Link passHref href="/">
+					<div>
+						<span id={styles.logo_the}>The </span>Spectator
+					</div>
+				</Link>
 			</span>
-			<Link passHref href="/subscribe">
-				<div id={styles.subscribe}>Subscribe</div>
-			</Link>
+			<div id={styles.subscribe_parent}>
+				<Link passHref href="/subscribe">
+					<div id={styles.subscribe}>Subscribe</div>
+				</Link>
+			</div>
 
 			<ThemeToggle />
 			<Image

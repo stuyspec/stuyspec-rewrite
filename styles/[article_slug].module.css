@@ -1,30 +1,30 @@
 #main {
-	width: 80vw;
-  padding: 1rem;
+	width: 60vw;
+	padding-top: 0.5rem;
+	margin: auto;
 }
 
 #title {
-  margin: 2rem 0 1rem 0;
-  font-size: var(--large-text)
+	font-size: var(--large-text);
 }
 
 #infoBar {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  align-self: center;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+	align-self: center;
 
-  margin-bottom: 2rem;
-  font-family: var(--secondary-font);
+	margin-bottom: 0.5rem;
+	font-family: var(--secondary-font);
 }
 
 #authors {
 	font-size: var(--small-text);
 }
-#shareButtons { 
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+#shareButtons {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 #main p {
@@ -34,44 +34,25 @@
 #content p {
 	margin: 1rem 0;
 	font-size: var(--small-text);
+	color: var(--primary) !important;
 }
 
 #cover_image_div {
 	text-align: center;
+	width: 100%;
+
+	margin: auto;
 }
 #coverImageInfo {
-  color: var(--medium-grey);
-  font-family: var(--secondary-font);
+	color: var(--medium-grey);
+	font-family: var(--secondary-font);
 }
 @media screen and (max-width: 840px) {
 	#main {
-		width: 100vw;
+		width: 90vw;
 	}
-  #title {
-    margin: 1rem 0;
-    font-size: var(--medium-text);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  #main {
-    padding: 0rem;
-  }
-  #title {
-    margin: 1rem 1rem 0 1rem;
-    font-size: calc(var(--medium-text) / 1.25);
-  }
-  #shareButtons {
-    display: none;
-  }
-  #infoBar {
-    grid-template-columns: 1fr;
-    margin: 0 1rem 1rem 1rem;
-  }
-  #coverImageInfo { 
-    margin: 1rem;
-  }
-  #content p {
-    margin: 1rem;
-  }
+	#title {
+		margin: 1rem 0;
+		font-size: var(--medium-text);
+	}
 }
