@@ -36,18 +36,11 @@ const Home = (props: Props) => {
 				>
 					{article_iterator.contributors.map(
 						(contributor: string, index: number) => {
-							let separator = ", ";
-							if (
-								index ===
-								article_iterator.contributors.length - 2
-							) {
-								separator = " & ";
-							} else if (
+							let separator =
 								index ===
 								article_iterator.contributors.length - 1
-							) {
-								separator = "";
-							}
+									? ""
+									: ",";
 
 							return (
 								<div key={index}>
@@ -58,10 +51,10 @@ const Home = (props: Props) => {
 										key={contributor}
 									>
 										{contributor}
-									</p>
-									<p id={styles.contributorSeparator}>
 										{separator}
+										&nbsp;
 									</p>
+									{/* <p id={styles.contributorSeparator}></p> */}
 								</div>
 							);
 						}
