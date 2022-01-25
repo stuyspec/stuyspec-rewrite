@@ -11,6 +11,7 @@
 
 	display: flex;
 	align-items: center;
+	overflow: hidden;
 }
 #subscribe_parent {
 	margin-left: auto;
@@ -82,7 +83,7 @@
 		margin-right: auto;
 		width: fit-content;
 		margin-left: 10px;
-		width: 140px;
+		width: 220px;
 		text-align: center;
 	}
 	#subscribe_parent {
@@ -98,13 +99,14 @@
 		grid-column-end: 4;
 		place-self: center;
 	}
-	#logo_the {
-		display: none;
-	}
-}
 
-@media screen and (max-width: 480px) {
-	#logo {
-		font-size: calc(var(--medium-text) * (2 / 3) - 4px);
+	@media screen and (max-width: 480px) {
+		#logo_container {
+			width: 140px;
+		}
+
+		#logo_the {
+			display: none;
+		}
 	}
 }

@@ -33,7 +33,7 @@
 
 #content p {
 	margin: 1rem 0;
-	font-size: var(--small-text);
+	font-size: 1.2rem;
 	color: var(--primary) !important;
 }
 
@@ -52,7 +52,14 @@
 		width: 90vw;
 	}
 	#title {
-		margin: 1rem 0;
+		/* margin: 1rem 0; */
 		font-size: var(--medium-text);
 	}
+}
+#subsribe_insert {
+	/* width: 400px; */
+	margin: auto;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }

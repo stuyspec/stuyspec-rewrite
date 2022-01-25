@@ -76,16 +76,12 @@ const Article = (props: Props) => {
 						id={styles.content}
 						dangerouslySetInnerHTML={{ __html: text }}
 					></div>
-
 					<p style={{ fontStyle: "italic" }}>
 						Article appears in print in Volume {romanize(volume)},
 						Issue {issue}
 					</p>
-					<div
-						style={{
-							display: "flex",
-						}}
-					>
+
+					<div id={styles.subsribe_insert}>
 						<SubscribeForm />
 					</div>
 				</div>

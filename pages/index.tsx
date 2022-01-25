@@ -54,7 +54,6 @@ const Home = (props: Props) => {
 										{separator}
 										&nbsp;
 									</p>
-									{/* <p id={styles.contributorSeparator}></p> */}
 								</div>
 							);
 						}
