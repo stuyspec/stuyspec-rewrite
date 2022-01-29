@@ -1,9 +1,8 @@
 import styles from "../styles/Subscribe.module.css";
 import { useState } from "react";
-
+import subscribe_button_styles from "../styles/SubscribeButton.module.css";
 const SubscribeForm = () => {
-
-  const [email, setEmail] = useState("");
+	const [email, setEmail] = useState("");
 	const [subscribeState, setSubscribeState] = useState("idle");
 	const [errorMsg, setErrorMsg] = useState(null);
 
@@ -32,36 +31,36 @@ const SubscribeForm = () => {
 		}
 	};
 
-  return (
-    <>
-      <input
-        required
-        name="email"
-        type="email"
-        id={styles.input}
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br />
-      <button
-        disabled={subscribeState === "Loading"}
-        type="submit"
-        id={styles.button}
-        onClick={subscribe}
-      >
-        Subscribe
-      </button>
-      {subscribeState === "Error" && (
-        <p id={styles.text}>Error: {errorMsg}</p>
-      )}
-      {subscribeState === "Success" && (
-        <p id={styles.text}>
-          Awesome sauce!!! You&apos;ve been subscribed!
-        </p>
-      )}
-    </>
-  )
-}
+	return (
+		<>
+			<input
+				required
+				name="email"
+				type="email"
+				id={styles.input}
+				placeholder="Email"
+				value={email}
+				onChange={(e) => setEmail(e.target.value)}
+			/>
+			<br />
+			<button
+				disabled={subscribeState === "Loading"}
+				type="submit"
+				id={subscribe_button_styles.subscribe}
+				onClick={subscribe}
+			>
+				Subscribe
+			</button>
+			{subscribeState === "Error" && (
+				<p id={styles.text}>Error: {errorMsg}</p>
+			)}
+			{subscribeState === "Success" && (
+				<p id={styles.text}>
+					Awesome sauce!!! You&apos;ve been subscribed!
+				</p>
+			)}
+		</>
+	);
+};
 
 export default SubscribeForm;

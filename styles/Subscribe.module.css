@@ -1,22 +1,22 @@
 #container {
 	width: 100%;
 	margin: auto;
-  padding: 1rem;
-  position: relative;
-  top: 25vh;
+	padding: 1rem;
+	position: relative;
+	top: 25vh;
 
 	text-align: center;
 }
 
 #container > * {
-  margin: 1rem;
+	margin: 1rem;
 }
 #heading {
-  font-size: var(--large-text);
+	font-size: var(--large-text);
 }
 #text {
-  font-size: var(--small-text);
-  font-family: var(--alternate-primary-font);
+	font-size: var(--small-text);
+	font-family: var(--alternate-primary-font);
 }
 
 #input {
@@ -25,7 +25,7 @@
 	color: var(--primary);
 	background-color: transparent;
 	border-bottom: 2px solid var(--primary);
-  outline: none;
+	outline: none;
 
 	text-align: center;
 	width: 50vw;
@@ -36,7 +36,7 @@
 	color: var(--primary-immutable);
 	font-family: var(--secondary-font);
 	font-weight: bold;
-	background-color: rgb(255, 30, 0);
+	background-color: #db2b39;
 	padding: 10px 20px;
 	border-radius: 10px;
 	font-size: var(--small-text);
@@ -44,5 +44,5 @@
 	transition: all 150ms ease;
 }
 #button:hover {
-	background-color: rgb(214, 56, 35);
+	background-color: rgb(160, 42, 26);
 }

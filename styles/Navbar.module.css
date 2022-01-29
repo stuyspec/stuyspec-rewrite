@@ -30,16 +30,6 @@
 	cursor: pointer;
 }
 
-#subscribe {
-	color: var(--primary-immutable);
-	font-family: var(--secondary-font);
-	font-weight: bold;
-	background-color: rgb(255, 30, 0);
-	padding: 10px 20px;
-	border-radius: 10px;
-	font-size: var(--small-text);
-	cursor: pointer;
-}
 #colorModeToggle {
 	grid-column-start: 4;
 	grid-column-end: 4;

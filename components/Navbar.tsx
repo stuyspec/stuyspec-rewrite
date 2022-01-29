@@ -2,6 +2,7 @@ import styles from "../styles/Navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
+import SubscribeButton from "./SubscribeButton";
 
 const Navbar = () => {
 	function toggleMenu() {}
@@ -45,9 +46,7 @@ const Navbar = () => {
 				</Link>
 			</span>
 			<div id={styles.subscribe_parent}>
-				<Link passHref href="/subscribe">
-					<div id={styles.subscribe}>Subscribe</div>
-				</Link>
+				<SubscribeButton />
 			</div>
 
 			<ThemeToggle />

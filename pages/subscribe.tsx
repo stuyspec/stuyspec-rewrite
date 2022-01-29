@@ -3,7 +3,6 @@ import styles from "../styles/Subscribe.module.css";
 import SubscribeForm from "../components/SubscribeForm";
 
 const Subscribe = () => {
-
 	return (
 		<>
 			<Head>
@@ -17,7 +16,7 @@ const Subscribe = () => {
 				<p id={styles.text}>
 					Subscribe to The Spectator&apos;s biweekly newsletter!
 				</p>
-        <SubscribeForm />
+				<SubscribeForm />
 			</main>
 		</>
 	);
