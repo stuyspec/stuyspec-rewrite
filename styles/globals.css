@@ -23,16 +23,15 @@
 	--secondary-nav: #272525;
 	--primary: #ffffff;
 	--secondary: #1a1919;
-	--light-grey: #3c3e3f;
+	--light-grey: #222324;
 	--medium-grey: #f4f4f4;
 }
-/* #1A1919 */
 
 .light-mode {
 	--secondary-nav: #2e2e2e;
 	--primary: #353637;
-	--secondary: #ffffff;
-	--light-grey: #f4f4f4;
+	--secondary: #f6f6f6;
+	--light-grey: #e4e2e2;
 	--medium-grey: #7e7e7e;
 }
 
