@@ -4,6 +4,7 @@ import { Department, ReceivedArticle } from "../../ts_types/db_types";
 import { get_articles_by_department } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
+import Link from "next/link";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -26,10 +27,16 @@ const Article = (props: Props) => {
 					{props.articles.length > 0 ? (
 						<div>
 							{props.articles.map((v) => (
-								<div key={v._id as any}>
-									<h3>{v.title}</h3>
-									<h4>By {v.contributors.join(", ")}</h4>
-								</div>
+								<Link
+									key={v._id as any}
+									href={"/article/" + v.slug}
+									passHref
+								>
+									<div>
+										<h3>{v.title}</h3>
+										<h4>By {v.contributors.join(", ")}</h4>
+									</div>
+								</Link>
 							))}
 						</div>
 					) : (
