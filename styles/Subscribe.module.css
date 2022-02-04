@@ -15,7 +15,7 @@
 	font-size: var(--large-text);
 }
 #text {
-	font-size: var(--small-text);
+	font-size: var(--medium-text);
 	font-family: var(--alternate-primary-font);
 }
 
