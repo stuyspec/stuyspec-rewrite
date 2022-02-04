@@ -9,6 +9,7 @@ import { all_sections } from "../../globals/globals";
 import ShareButton from "../../components/ShareButton";
 import romanize from "../../components/Romanize";
 import SubscribeForm from "../../components/SubscribeForm";
+import Link from "next/link";
 
 interface Props {
 	article: ReceivedArticle;
@@ -38,8 +39,18 @@ const Article = (props: Props) => {
 			</Head>
 
 			<main id={styles.main}>
-				<div id={styles.staffInfo}></div>
 				<div id={styles.article}>
+					<p id={styles.section}>
+						<Link
+							href={
+								"/department/" +
+								String(all_sections[section_id]).toLowerCase()
+							}
+							passHref
+						>
+							{all_sections[section_id]}
+						</Link>
+					</p>
 					<h1 id={styles.title}>{title}</h1>
 
 					<div id={styles.infoBar}>

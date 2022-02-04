@@ -1,6 +1,6 @@
 #main {
 	width: 60vw;
-	padding-top: 0.5rem;
+	/* padding-top: 0.5rem; */
 	margin: auto;
 }
 
@@ -62,4 +62,12 @@
 	text-align: center;
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+
+#section {
+	text-transform: uppercase;
+	font-family: sans-serif !important;
+	font-weight: 600;
+	font-size: 1.2rem;
+	margin-top: 15px;
 }
