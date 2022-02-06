@@ -46,7 +46,10 @@ const Home = (props: Props) => {
 								<div key={index}>
 									<p
 										id={styles.articleInfoWriters}
-										style={{ color: "var(--primary)" }}
+                    style={{
+                      color: "var(--primary)",
+                      fontFamily: "var(--secondary-font)",
+                    }}
 										className="discrete-link"
 										key={contributor}
 									>
@@ -72,7 +75,11 @@ const Home = (props: Props) => {
 					}`}
 					passHref
 				>
-					<p id={styles.articleInfo} className="discrete-link">
+          <p
+            id={styles.articleInfo}
+            className="discrete-link"
+            style={{ fontFamily: "var(--secondary-font)", }}
+          >
 						{all_sections[article_iterator.section_id]}
 					</p>
 				</Link>
@@ -100,7 +107,14 @@ const Home = (props: Props) => {
 								src={heroArticle.cover_image}
 							/>
 							<div id={styles.departmentBar}>
-								{all_sections[heroArticle.section_id]}
+                <Link
+                  href={`/department/${
+                    all_sections[heroArticle.section_id]
+                  }`}
+                  passHref
+                >
+                  {all_sections[heroArticle.section_id]}
+                </Link>
 							</div>
 						</div>
 
@@ -110,9 +124,41 @@ const Home = (props: Props) => {
 							</h1>
 						</Link>
 
-						<p id={styles.writers}>
-							{heroArticle.contributors.join(", ")}
-						</p>
+            <div
+              id={styles.inline}
+              style={{
+                justifyContent: "center",
+              }}
+            >
+            {heroArticle.contributors.map(
+						(contributor: string, index: number) => {
+							let separator =
+								index ===
+								heroArticle.contributors.length - 1
+									? ""
+									: ",";
+
+							return (
+								<div key={index}>
+									<p
+										id={styles.articleInfoWriters}
+                    style={{
+                      color: "var(--primary)",
+                      fontFamily: "var(--secondary-font)",
+                      margin: "0",
+                    }}
+										className="discrete-link"
+										key={contributor}
+									>
+										{contributor}
+										{separator}
+										&nbsp;
+									</p>
+								</div>
+							);
+						}
+					)}
+						</div>
 						<p id={styles.summary}>{heroArticle.summary}</p>
 						<Image
 							alt="down arrow"
@@ -140,7 +186,7 @@ const Home = (props: Props) => {
 					<div id={styles.latestArticles}>
 						<h1 id={styles.heading}>Latest</h1>
 						<Separator />
-						<div>{displayArticles.slice(1)}</div>
+						<div>{displayArticles.slice(1, 3)}</div>
 					</div>
 				</div>
 				<div id={styles.articles}></div>

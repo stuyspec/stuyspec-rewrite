@@ -9,8 +9,7 @@ const OurCharter = () => {
       </Head>
       <main id={styles.container}>
         <h1>The Charter of The Spectator</h1>
-        Approved January, 2020 by The Spectator Editorial Board.
-        <br />
+        <p style={{ fontFamily: "Georgia" }}>Approved January, 2020 by The Spectator Editorial Board.</p>
         <h2>
           I. Statement of Purpose
           <br />
@@ -560,7 +559,7 @@ const OurCharter = () => {
           </li>
         </ol>
         <h3>J. Reporting on Crime</h3>
-        <ol>
+        <ol style={{ fontFamily: "Georgia" }}>
           <li>
             If a student or faculty member is accused of a crime, The Spectator
             will report on it based on accepted professional protocol.
@@ -625,7 +624,7 @@ const OurCharter = () => {
           surrounding the role, selection, or responsibilities of the Managing
           Editor are not to be held applicable.
         </p>
-        <p style={{ marginTop: "16px" }}>
+        <p style={{ marginTop: "16px", fontFamily: "Georgia" }}>
           If you have any comments, questions, concerns, or suggestions
           regarding this webpage or concerning The Spectator in general, please
           e-mail us directly at{" "}
