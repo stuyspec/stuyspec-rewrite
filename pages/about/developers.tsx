@@ -29,7 +29,7 @@ const DevelopersPage = () => {
     },
     {
       name: "Ivan Chen",
-      role: "Developer",
+      role: "Designer & Developer",
       year: "2024",
       github: "anivanchen",
       image:

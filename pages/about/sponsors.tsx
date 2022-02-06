@@ -27,10 +27,10 @@ const Sponsors = () => {
             For benefits of sponsorship, please see the below
             document.
           </p>
-          <div style={{ textAlign: "center" }}>
+          <div id={styles.issuu} style={{ textAlign: "center" }}>
             <iframe
               src="//e.issuu.com/embed.html#30896636/52588541"
-              style={{ width: "450px", height: "600px", margin: "16px" }}
+              style={{ width: "100%", height: "100%" }}
             />
           </div>
         </div>

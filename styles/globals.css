@@ -97,7 +97,7 @@ li {
 
 .discrete-link {
 	color: inherit;
-	text-decoration: underline 0.1em var(--secondary);
+	text-decoration: underline 0.15em var(--secondary);
 	transition: text-decoration-color 250ms;
 }
 .discrete-link:hover,
