@@ -67,10 +67,6 @@
 	grid-row-end: 7;
 	text-align: left;
 }
-
-#heroImageContainer {
-	width: auto;
-}
 #heroImage {
 	object-fit: contain;
 	width: 100%;
@@ -80,6 +76,7 @@
 	position: relative;
 	top: -24px;
 	max-width: 15rem;
+  width: auto;
 	margin: auto;
 	padding: 0.5rem;
 
@@ -95,9 +92,6 @@
 }
 #heroStory #summary {
 	font-size: calc(var(--medium-text) / 1.5);
-}
-#heroStory #writers {
-	font-family: var(--secondary-font);
 }
 #downArrow {
 	font-size: 1rem;
@@ -125,7 +119,7 @@
 	margin-top: 0.5rem;
 	font-size: calc(var(--small-text) * 0.8);
 	color: var(--medium-grey);
-	font-family: var(--alternate-primary-font);
+	font-family: var(--secondary-font);
 	cursor: pointer;
 }
 
