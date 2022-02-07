@@ -19,7 +19,6 @@ function dateFromID(objectId: mongoObjectId) {
 		.join(" ");
 }
 const Home = (props: Props) => {
-	// console.log("Props: ", props);
 	const displayArticles: any[] = []; // Any type because this element will change often
 	const articles = props.articles;
 	articles.forEach((article_iterator) => {
