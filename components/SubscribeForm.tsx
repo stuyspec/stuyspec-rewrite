@@ -17,7 +17,6 @@ const SubscribeForm = () => {
 				body: JSON.stringify({ email }),
 			});
 			const rjson = await r.json();
-			console.log(rjson);
 			if (rjson.message == "success") {
 				setSubscribeState("Success");
 				setEmail("");
