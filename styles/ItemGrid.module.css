@@ -2,22 +2,15 @@
   margin: 2rem 8rem;
 }
 #grid {
-  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
-#item {
-  transition: color 150ms ease;
-}
-#item:hover, #item:active {
-  color: var(--medium-grey);
-}
 #image {
   width: 100%;
-  height: 256px;
+  height: 228px;
   overflow-y: hidden;
-  object-fit: contain;
+  object-fit: cover;
 }
 #textCentered {
   text-align: center;
@@ -26,11 +19,29 @@
   font-family: var(--alternate-primary-font);
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1280px) {
+  #container { 
+    margin: 1.5rem 2rem 3rem 2rem;
+  }
+}
+
+@media screen and (max-width: 1080px) {
   #container { 
     margin: 1.5rem 2rem 3rem 2rem;
   }
   #grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #container { 
+    margin: 1.5rem 2rem 3rem 2rem;
+  }
+  #grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #image { 
+    height: 256px;
   }
 }

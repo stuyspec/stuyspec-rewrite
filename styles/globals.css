@@ -58,6 +58,10 @@ a {
 	text-decoration: none;
 }
 
+p {
+  font-family: var(--alternate-primary-font);
+}
+
 h2,
 h3,
 li {
@@ -93,6 +97,7 @@ li {
 .link:hover,
 .link:focus {
 	background-size: 0 0.1em, 100% 0.1em;
+  cursor: pointer;
 }
 
 .discrete-link {
@@ -103,4 +108,5 @@ li {
 .discrete-link:hover,
 .discrete-link:focus {
 	text-decoration-color: var(--accent);
+  cursor: pointer;
 }
