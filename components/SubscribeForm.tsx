@@ -52,7 +52,7 @@ const SubscribeForm = () => {
       >
         Subscribe
       </button>
-      {subscribeState === "Error" && <p id={styles.text}>Error: {errorMsg}</p>}
+      {subscribeState === "Error" && <p id={styles.text}>Error: An Error Occured</p>}
       {subscribeState === "Success" && (
         <p id={styles.text}>Awesome sauce!!! You&apos;ve been subscribed!</p>
       )}
