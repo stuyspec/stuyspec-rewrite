@@ -1,14 +1,10 @@
 import styles from "../styles/Navbar.module.css";
 import Link from "next/link";
-import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
+import SubscribeButton from "./SubscribeButton";
 import CollapsibleSearch from "./CollapsibleSearch";
-import SubscribeModal from "./SubscribeModal";
-import { useState } from "react";
-import SubscribeButton from "../styles/SubscribeButton.module.css";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   function toggleMenu() {}
 
   function enableSearch() {
@@ -46,10 +42,7 @@ const Navbar = () => {
         </Link>
       </span>
       <div id={styles.subscribe_parent}>
-        <button className={styles.primaryBtn} onClick={() => setIsOpen(true)}>
-          Open Modal
-        </button>
-        {isOpen && <SubscribeModal setIsOpen={setIsOpen} />}
+        <SubscribeButton />
       </div>
 
       <ThemeToggle />
