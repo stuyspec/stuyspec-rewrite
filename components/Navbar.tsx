@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import SubscribeButton from "./SubscribeButton";
-
+import CollapsibleSearch from "./CollapsibleSearch";
 const Navbar = () => {
 	function toggleMenu() {}
 
@@ -50,15 +50,7 @@ const Navbar = () => {
 			</div>
 
 			<ThemeToggle />
-			<Image
-				alt="Search"
-				src="/images/search-button.svg"
-				width="32px"
-				height="32px"
-				onClick={enableSearch}
-				id={styles.searchButton}
-				className="button"
-			/>
+			<CollapsibleSearch />
 		</nav>
 	);
 };
