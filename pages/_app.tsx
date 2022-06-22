@@ -5,20 +5,20 @@ import Footer from "../components/Footer";
 import Search from "../components/Search";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <div>
-      <div>
-        <Search />
-        <div id="navbar">
-          <Navbar />
-        </div>
-        <div id="main">
-          <Component {...pageProps} />
-        </div>
-        <Footer />
-      </div>
-    </div>
-  );
+	return (
+		<div>
+			<div>
+				<Search />
+				<div id="navbar">
+					<Navbar />
+				</div>
+				<div id="main">
+					<Component {...pageProps} />
+				</div>
+				<Footer />
+			</div>
+		</div>
+	);
 }
 
 export default MyApp;

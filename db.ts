@@ -114,11 +114,11 @@ async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
 
 export {
 	get_articles,
-  get_articles_by_department,
+	get_articles_by_department,
 	get_article_by_id,
 	get_article_by_slug,
-  get_articles_by_author,
-  get_articles_by_query,
+	get_articles_by_author,
+	get_articles_by_query,
 	get_staff_by_id,
 	get_staff_by_position,
 };
