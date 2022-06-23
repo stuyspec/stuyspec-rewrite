@@ -7,17 +7,11 @@ import { get_articles } from "../db";
 import { ReceivedArticle, mongoObjectId } from "../ts_types/db_types";
 import { all_sections } from "../globals/globals";
 import Separator from "../components/Separator";
+import dateFromID from "../utils/dateFromID";
 interface Props {
 	articles: [ReceivedArticle];
 }
-function dateFromID(objectId: mongoObjectId) {
-	objectId = String(objectId);
-	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000)
-		.toString()
-		.split(" ")
-		.slice(0, 4)
-		.join(" ");
-}
+
 const Home = (props: Props) => {
 	// console.log("Props: ", props);
 	const displayArticles: any[] = []; // Any type because this element will change often
