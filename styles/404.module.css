@@ -1,3 +1,26 @@
 #main {
-  text-align: center;
+    height: calc(100vh - 65px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#button {
+    margin: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent);
+    border-radius: 8px;
+    color: var(--secondary);
+    transition: all 250ms ease;
+}
+
+#button:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+#button:active {
+    opacity: 0.8;
 }
