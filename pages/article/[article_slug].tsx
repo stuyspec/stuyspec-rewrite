@@ -7,9 +7,10 @@ import { NextPageContext } from "next";
 import styles from "../../styles/[article_slug].module.css";
 import { all_sections } from "../../globals/globals";
 import ShareButton from "../../components/ShareButton";
-import romanize from "../../components/Romanize";
+import romanize from "../../utils/Romanize";
 import SubscribeForm from "../../components/SubscribeForm";
 import Link from "next/link";
+import RecommendedArticles from "../../components/RecommendedArticles";
 
 interface Props {
 	article: ReceivedArticle;
@@ -56,7 +57,8 @@ const Article = (props: Props) => {
 					<div id={styles.infoBar}>
 						<h3 id={styles.authors}>
 							By {contributors.join(", ")}
-						</h3>
+                        </h3>
+                        
 						<div id={styles.shareButtons}>
 							{providers.map((provider) => (
 								<ShareButton
@@ -87,14 +89,20 @@ const Article = (props: Props) => {
 						id={styles.content}
 						dangerouslySetInnerHTML={{ __html: text }}
 					></div>
-					<p style={{ fontStyle: "italic" }}>
+                    <p style={{
+                        fontStyle: "italic",
+                        paddingBottom: "0.5rem",
+                        borderBottom: "2px solid var(--light-grey)",
+                    }}>
 						Article appears in print in Volume {romanize(volume)},
 						Issue {issue}
 					</p>
 
-					<div id={styles.subsribe_insert}>
+					{/* <div id={styles.subsribe_insert}>
 						<SubscribeForm />
-					</div>
+					</div> */}
+
+                    {/* <RecommendedArticles /> */}
 				</div>
 				<div id={styles.advertisements}></div>
 			</main>
