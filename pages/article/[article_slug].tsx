@@ -10,7 +10,7 @@ import ShareButton from "../../components/ShareButton";
 import romanize from "../../utils/Romanize";
 import SubscribeForm from "../../components/SubscribeForm";
 import Link from "next/link";
-import RecommendedArticles from "../../components/RecommendedArticles";
+// import RecommendedArticles from "../../components/RecommendedArticles";
 
 interface Props {
 	article: ReceivedArticle;
@@ -57,8 +57,8 @@ const Article = (props: Props) => {
 					<div id={styles.infoBar}>
 						<h3 id={styles.authors}>
 							By {contributors.join(", ")}
-                        </h3>
-                        
+						</h3>
+
 						<div id={styles.shareButtons}>
 							{providers.map((provider) => (
 								<ShareButton
@@ -89,11 +89,13 @@ const Article = (props: Props) => {
 						id={styles.content}
 						dangerouslySetInnerHTML={{ __html: text }}
 					></div>
-                    <p style={{
-                        fontStyle: "italic",
-                        paddingBottom: "0.5rem",
-                        borderBottom: "2px solid var(--light-grey)",
-                    }}>
+					<p
+						style={{
+							fontStyle: "italic",
+							paddingBottom: "0.5rem",
+							borderBottom: "2px solid var(--light-grey)",
+						}}
+					>
 						Article appears in print in Volume {romanize(volume)},
 						Issue {issue}
 					</p>
@@ -102,7 +104,7 @@ const Article = (props: Props) => {
 						<SubscribeForm />
 					</div> */}
 
-                    {/* <RecommendedArticles /> */}
+					{/* <RecommendedArticles /> */}
 				</div>
 				<div id={styles.advertisements}></div>
 			</main>
