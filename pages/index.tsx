@@ -81,7 +81,7 @@ const Home = (props: Props) => {
 		);
 	});
 
-	const heroArticle = articles[0];
+	const heroArticle = articles[articles.length - 1];
 
 	return (
 		<div>
