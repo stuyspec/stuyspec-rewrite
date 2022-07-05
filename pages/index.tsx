@@ -181,7 +181,14 @@ const Home = (props: Props) => {
 					<div id={styles.latestArticles}>
 						<h1 id={styles.heading}>Latest</h1>
 						<Separator />
-						<div>{displayArticles.slice(1, 3)}</div>
+						<div>
+							{displayArticles
+								.slice(
+									displayArticles.length - 3,
+									displayArticles.length - 1
+								)
+								.reverse()}
+						</div>
 					</div>
 				</div>
 				<div id={styles.articles}></div>

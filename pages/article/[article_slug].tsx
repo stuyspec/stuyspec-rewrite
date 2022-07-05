@@ -70,20 +70,28 @@ const Article = (props: Props) => {
 						</div>
 					</div>
 
-					<div id={styles.cover_image_div}>
-						<img
-							width={"100%"}
-							id={styles.cover_image}
-							src={cover_image}
-							alt="Cover Image"
-						/>
-					</div>
-					<p id={styles.coverImageInfo}>
-						{cover_image_summary}
-						{cover_image_contributor +
-							" " +
-							(cover_image_source ? cover_image_source : "")}
-					</p>
+					{cover_image /* Only check for cover image to decide visibility as some articles do not have image info */ ? (
+						<>
+							<div id={styles.cover_image_div}>
+								<img
+									width={"100%"}
+									id={styles.cover_image}
+									src={cover_image}
+									alt="Cover Image"
+								/>
+							</div>
+							<p id={styles.coverImageInfo}>
+								{cover_image_summary}
+								{cover_image_contributor +
+									" " +
+									(cover_image_source
+										? cover_image_source
+										: "")}
+							</p>
+						</>
+					) : (
+						<></>
+					)}
 
 					<div
 						id={styles.content}
