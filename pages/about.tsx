@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
-import styles from "../styles/ItemGrid.module.css";
+import styles from "../styles/AboutItemGrid.module.css";
+import Image from "next/image";
+import one_hundred_years_logo from "../public/images/100years_logo.png";
 
-const Fourzerofour = (props: any) => {
+const AboutUs = (props: any) => {
 	const pages: Array<{
 		name: string;
 		link: string;
@@ -54,7 +56,7 @@ const Fourzerofour = (props: any) => {
 	return (
 		<div>
 			<Head>
-				<title>Error!</title>
+				<title>About Us</title>
 				<meta name="description" content="The Stuyvesant Spectator" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
@@ -65,9 +67,10 @@ const Fourzerofour = (props: any) => {
 					{pages.map((page, key) => (
 						<div id={styles.item} key={key}>
 							<a href={`/about${page.link}`}>
-								<img
+								<Image
 									id={styles.image}
-									src={`https://cdn.discordapp.com/attachments/899120514801496074/931962289765109860/wQphsDZeCTdygAAAABJRU5ErkJggg.png`}
+									alt="The Stuyvesant Spectator: 100 years of journalism"
+									src={one_hundred_years_logo}
 								/>
 								<h2>{page.name}</h2>
 								<p>{page.summary}</p>
@@ -80,4 +83,4 @@ const Fourzerofour = (props: any) => {
 	);
 };
 
-export default Fourzerofour;
+export default AboutUs;

@@ -1,0 +1,35 @@
+#container {
+	margin: 2rem 8rem;
+}
+#grid {
+	margin-top: 2rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2rem;
+}
+#item {
+	max-width: 400px;
+	text-align: center;
+	transition: color 150ms ease;
+	margin: auto;
+}
+#item:hover,
+#item:active {
+	color: var(--medium-grey);
+}
+
+#textCentered {
+	text-align: center;
+}
+#container p {
+	font-family: var(--alternate-primary-font);
+}
+
+@media screen and (max-width: 1120px) {
+	#container {
+		margin: 1.5rem 2rem 3rem 2rem;
+	}
+	#grid {
+		grid-template-columns: 1fr;
+	}
+}
