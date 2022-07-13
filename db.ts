@@ -91,13 +91,22 @@ async function get_articles_by_query(
 }
 
 // staff
-
 async function get_staff_by_id(_id: string): Promise<ReceivedStaff> {
 	const { db } = await connectToDatabase();
 	let staff_collection = await db.collection("staff");
 
 	let staff = (await staff_collection.findOne({
 		_id: new ObjectId(_id),
+	})) as ReceivedStaff;
+	return staff;
+}
+
+async function get_staff_by_slug(slug: string): Promise<ReceivedStaff> {
+	const { db } = await connectToDatabase();
+	let staff_collection = await db.collection("staff");
+
+	let staff = (await staff_collection.findOne({
+		slug: slug,
 	})) as ReceivedStaff;
 	return staff;
 }
@@ -121,4 +130,5 @@ export {
 	get_articles_by_query,
 	get_staff_by_id,
 	get_staff_by_position,
+	get_staff_by_slug,
 };
