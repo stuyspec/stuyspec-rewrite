@@ -30,6 +30,7 @@ export interface ReceivedStaff {
 	description: string;
 	pfp_url: string;
 	years: number[];
+	slug: string;
 }
 export type Department =
 	| "news"
