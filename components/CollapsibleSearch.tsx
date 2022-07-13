@@ -17,7 +17,7 @@ const CollapsibleSearch = () => {
 	return (
 		<>
 			<div className="field">
-				<p className="control">
+				<div className="control">
 					<div
 						style={{
 							display: searchBar ? "none" : "block",
@@ -50,7 +50,7 @@ const CollapsibleSearch = () => {
 						onBlur={onSearchBlur}
 						onSubmit={submitSearchRequest}
 					/>
-				</p>
+				</div>
 			</div>
 		</>
 	);
