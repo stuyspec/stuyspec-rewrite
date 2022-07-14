@@ -5,6 +5,7 @@ import { get_articles_by_department } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
 import Link from "next/link";
+import generate_contributors_jsx from "../../utils/GenerateContributorsJSX";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -34,7 +35,12 @@ const Article = (props: Props) => {
 								>
 									<div>
 										<h3>{v.title}</h3>
-										<h4>By {v.contributors.join(", ")}</h4>
+										<h4 id={styles.authors_div}>
+											By&nbsp;
+											{generate_contributors_jsx(
+												v.contributors
+											)}
+										</h4>
 									</div>
 								</Link>
 							))}

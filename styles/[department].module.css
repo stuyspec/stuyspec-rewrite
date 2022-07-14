@@ -6,3 +6,6 @@
 	margin: auto;
 	text-align: center;
 }
+#authors_div {
+	display: inline-flex;
+}
