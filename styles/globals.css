@@ -99,6 +99,7 @@ li {
 	color: inherit;
 	text-decoration: underline 0.15em var(--secondary);
 	transition: text-decoration-color 250ms;
+	cursor: pointer;
 }
 .discrete-link:hover,
 .discrete-link:focus {

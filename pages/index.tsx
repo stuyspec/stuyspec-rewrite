@@ -4,7 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { get_articles } from "../db";
-import { ReceivedArticle, mongoObjectId } from "../ts_types/db_types";
+import {
+	ReceivedArticle,
+	mongoObjectId,
+	ReceivedStaff,
+} from "../ts_types/db_types";
 import { all_sections } from "../globals/globals";
 import Separator from "../components/Separator";
 import dateFromID from "../utils/dateFromID";
@@ -16,6 +20,34 @@ const Home = (props: Props) => {
 	// console.log("Props: ", props);
 	const displayArticles: any[] = []; // Any type because this element will change often
 	const articles = props.articles;
+
+	const generate_contributors_jsx = (contributors: ReceivedStaff[]) => {
+		return contributors.map((contributor: ReceivedStaff, index: number) => {
+			let separator = index === contributors.length - 1 ? "" : ",";
+
+			return (
+				<div key={index}>
+					<Link
+						id={styles.articleInfoWriters}
+						style={{
+							color: "var(--primary)",
+							fontFamily: "var(--secondary-font)",
+						}}
+						key={String(contributor._id)}
+						href={"/staff/" + contributor.slug}
+						passHref
+					>
+						<span className="discrete-link">
+							{contributor.name}
+							{separator}
+							&nbsp;
+						</span>
+					</Link>
+				</div>
+			);
+		});
+	};
+
 	articles.forEach((article_iterator) => {
 		displayArticles.push(
 			<div id={styles.article} key={String(article_iterator._id)}>
@@ -28,33 +60,7 @@ const Home = (props: Props) => {
 					id={styles.inline}
 					style={{ fontFamily: "var(--secondary-font)" }}
 				>
-					{article_iterator.contributors.map(
-						(contributor: string, index: number) => {
-							let separator =
-								index ===
-								article_iterator.contributors.length - 1
-									? ""
-									: ",";
-
-							return (
-								<div key={index}>
-									<p
-										id={styles.articleInfoWriters}
-										style={{
-											color: "var(--primary)",
-											fontFamily: "var(--secondary-font)",
-										}}
-										className="discrete-link"
-										key={contributor}
-									>
-										{contributor}
-										{separator}
-										&nbsp;
-									</p>
-								</div>
-							);
-						}
-					)}
+					{generate_contributors_jsx(article_iterator.contributors)}
 					<p
 						id={styles.articleInfoDate}
 						style={{ marginLeft: "1rem" }}
@@ -124,34 +130,8 @@ const Home = (props: Props) => {
 								justifyContent: "center",
 							}}
 						>
-							{heroArticle.contributors.map(
-								(contributor: string, index: number) => {
-									let separator =
-										index ===
-										heroArticle.contributors.length - 1
-											? ""
-											: ",";
-
-									return (
-										<div key={index}>
-											<p
-												id={styles.articleInfoWriters}
-												style={{
-													color: "var(--primary)",
-													fontFamily:
-														"var(--secondary-font)",
-													margin: "0",
-												}}
-												className="discrete-link"
-												key={contributor}
-											>
-												{contributor}
-												{separator}
-												&nbsp;
-											</p>
-										</div>
-									);
-								}
+							{generate_contributors_jsx(
+								heroArticle.contributors
 							)}
 						</div>
 						<p id={styles.summary}>{heroArticle.summary}</p>
