@@ -139,12 +139,6 @@
 	font-family: var(--alternate-primary-font);
 }
 
-@media screen and (max-width: 1480px) {
-	#articleInfoDate {
-		display: none;
-	}
-}
-
 @media screen and (max-width: 860px) {
 	#landingScreen {
 		height: auto;

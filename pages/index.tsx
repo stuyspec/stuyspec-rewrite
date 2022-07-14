@@ -35,13 +35,10 @@ const Home = (props: Props) => {
 					style={{ fontFamily: "var(--secondary-font)" }}
 				>
 					{generate_contributors_jsx(article_iterator.contributors)}
-					<p
-						id={styles.articleInfoDate}
-						style={{ marginLeft: "1rem" }}
-					>
-						{dateFromID(article_iterator._id)}
-					</p>
 				</div>
+				<p id={styles.articleInfoDate}>
+					{dateFromID(article_iterator._id)}
+				</p>
 				<p id={styles.summary}>{article_iterator.summary}</p>
 				<Link
 					href={`/department/${
