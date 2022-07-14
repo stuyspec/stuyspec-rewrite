@@ -12,6 +12,7 @@ import {
 import { all_sections } from "../globals/globals";
 import Separator from "../components/Separator";
 import dateFromID from "../utils/dateFromID";
+import generate_contributors_jsx from "../utils/GenerateContributorsJSX";
 interface Props {
 	articles: [ReceivedArticle];
 }
@@ -20,33 +21,6 @@ const Home = (props: Props) => {
 	// console.log("Props: ", props);
 	const displayArticles: any[] = []; // Any type because this element will change often
 	const articles = props.articles;
-
-	const generate_contributors_jsx = (contributors: ReceivedStaff[]) => {
-		return contributors.map((contributor: ReceivedStaff, index: number) => {
-			let separator = index === contributors.length - 1 ? "" : ",";
-
-			return (
-				<div key={index}>
-					<Link
-						id={styles.articleInfoWriters}
-						style={{
-							color: "var(--primary)",
-							fontFamily: "var(--secondary-font)",
-						}}
-						key={String(contributor._id)}
-						href={"/staff/" + contributor.slug}
-						passHref
-					>
-						<span className="discrete-link">
-							{contributor.name}
-							{separator}
-							&nbsp;
-						</span>
-					</Link>
-				</div>
-			);
-		});
-	};
 
 	articles.forEach((article_iterator) => {
 		displayArticles.push(

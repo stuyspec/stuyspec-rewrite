@@ -19,6 +19,7 @@
 }
 
 #authors {
+	display: flex;
 	font-size: var(--small-text);
 }
 #shareButtons {

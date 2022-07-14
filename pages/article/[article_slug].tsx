@@ -11,6 +11,7 @@ import romanize from "../../utils/Romanize";
 import SubscribeForm from "../../components/SubscribeForm";
 import Link from "next/link";
 // import RecommendedArticles from "../../components/RecommendedArticles";
+import generate_contributors_jsx from "../../utils/GenerateContributorsJSX";
 
 interface Props {
 	article: ReceivedArticle;
@@ -56,7 +57,7 @@ const Article = (props: Props) => {
 
 					<div id={styles.infoBar}>
 						<h3 id={styles.authors}>
-							By {contributors.join(", ")}
+							By&nbsp;{generate_contributors_jsx(contributors)}
 						</h3>
 
 						<div id={styles.shareButtons}>
