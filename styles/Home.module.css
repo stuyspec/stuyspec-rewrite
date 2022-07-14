@@ -76,7 +76,7 @@
 	position: relative;
 	top: -24px;
 	max-width: 15rem;
-  width: auto;
+	width: auto;
 	margin: auto;
 	padding: 0.5rem;
 
@@ -100,8 +100,9 @@
 	animation: arrowBob 2s infinite;
 }
 
-#inline {
+.authors {
 	display: flex;
+	font-family: var(--secondary-font);
 }
 
 #title {

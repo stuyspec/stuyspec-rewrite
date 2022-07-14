@@ -31,7 +31,7 @@ const Home = (props: Props) => {
 					</h2>
 				</Link>
 				<div
-					id={styles.inline}
+					className={styles.authors}
 					style={{ fontFamily: "var(--secondary-font)" }}
 				>
 					{generate_contributors_jsx(article_iterator.contributors)}
@@ -99,7 +99,7 @@ const Home = (props: Props) => {
 						</Link>
 
 						<div
-							id={styles.inline}
+							className={styles.authors}
 							style={{
 								justifyContent: "center",
 							}}
