@@ -6,7 +6,7 @@ export interface ReceivedArticle {
 	text: string;
 	title: string;
 	slug: string;
-	contributors: string[];
+	contributors: ReceivedStaff[];
 	volume: number;
 	issue: number;
 	section_id: number;

@@ -40,10 +40,27 @@ async function get_articles_by_department(
 
 async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 	const { db } = await connectToDatabase();
-	let articles_collection = await db.collection("articles");
-	let article = (await articles_collection.findOne({
-		_id: new ObjectId(article_id),
-	})) as ReceivedArticle;
+	let articles_collection = db.collection("articles");
+
+	const article = (
+		await articles_collection
+			.aggregate([
+				{
+					$match: { _id: new ObjectId(article_id) },
+				},
+
+				{
+					$lookup: {
+						from: "staff",
+						localField: "contributors",
+						foreignField: "_id",
+						as: "contributors",
+					},
+				},
+			])
+			.toArray()
+	)[0] as ReceivedArticle;
+
 	return article;
 }
 
