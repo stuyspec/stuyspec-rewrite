@@ -56,6 +56,10 @@
 		/* margin: 1rem 0; */
 		font-size: var(--medium-text);
 	}
+
+	#infoBar {
+		display: block;
+	}
 }
 #subsribe_insert {
 	/* width: 400px; */
