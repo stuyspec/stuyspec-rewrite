@@ -20,11 +20,15 @@ const StaffMember = (props: Props) => {
 			</Head>
 
 			<main id={styles.main}>
-				<h1>Staff ID: {staff_member._id}</h1>
-				<h1>Slug (Legacy): {staff_member.slug}</h1>
-				<h1>Name: {staff_member.name}</h1>
-				<h1>Email: {staff_member.email}</h1>
-				<h2>Description: {staff_member.description}</h2>
+				<h1 id={styles.name}>
+					{staff_member.name}{" "}
+					<span id={styles.slug}>({staff_member.slug})</span>
+				</h1>
+
+				<a href={"mailto:" + staff_member.email} id={styles.email}>
+					{staff_member.email}
+				</a>
+				<p id={styles.description}>{staff_member.description}</p>
 			</main>
 		</div>
 	);

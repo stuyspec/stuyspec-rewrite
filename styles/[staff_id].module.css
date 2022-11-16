@@ -1,6 +1,30 @@
 #main {
-	text-align: center;
+	/* text-align: center; */
 	width: 94vw;
 	max-width: 1000px;
 	margin: auto;
+	font-size: 1.5rem;
+}
+
+#name {
+	margin-top: 40px;
+	font-size: 2.5rem;
+}
+
+#email {
+	text-decoration: underline;
+}
+
+#slug {
+	font-size: 1.4rem;
+}
+
+#description {
+	margin-top: 20px;
+}
+
+@media screen and (max-width: 900px) {
+	#slug {
+		display: block;
+	}
 }
