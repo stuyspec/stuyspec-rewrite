@@ -18,7 +18,7 @@ async function get_articles(num?: number): Promise<[ReceivedArticle]> {
 		.aggregate([
 			{
 				$lookup: {
-					from: "staff",
+					from: "staffs",
 					localField: "contributors",
 					foreignField: "_id",
 					as: "contributors",
@@ -49,7 +49,7 @@ async function get_articles_by_department(
 
 			{
 				$lookup: {
-					from: "staff",
+					from: "staffs",
 					localField: "contributors",
 					foreignField: "_id",
 					as: "contributors",
@@ -74,7 +74,7 @@ async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 
 				{
 					$lookup: {
-						from: "staff",
+						from: "staffs",
 						localField: "contributors",
 						foreignField: "_id",
 						as: "contributors",
@@ -101,7 +101,7 @@ async function get_article_by_slug(
 
 				{
 					$lookup: {
-						from: "staff",
+						from: "staffs",
 						localField: "contributors",
 						foreignField: "_id",
 						as: "contributors",
@@ -141,7 +141,7 @@ async function get_articles_by_query(
 
 			{
 				$lookup: {
-					from: "staff",
+					from: "staffs",
 					localField: "contributors",
 					foreignField: "_id",
 					as: "contributors",
@@ -156,7 +156,7 @@ async function get_articles_by_query(
 // staff
 async function get_staff_by_id(_id: string): Promise<ReceivedStaff> {
 	const { db } = await connectToDatabase();
-	let staff_collection = await db.collection("staff");
+	let staff_collection = await db.collection("staffs");
 
 	let staff = (await staff_collection.findOne({
 		_id: new ObjectId(_id),
@@ -166,7 +166,7 @@ async function get_staff_by_id(_id: string): Promise<ReceivedStaff> {
 
 async function get_staff_by_slug(slug: string): Promise<ReceivedStaff> {
 	const { db } = await connectToDatabase();
-	let staff_collection = await db.collection("staff");
+	let staff_collection = await db.collection("staffs");
 
 	let staff = (await staff_collection.findOne({
 		slug: slug,
@@ -176,7 +176,7 @@ async function get_staff_by_slug(slug: string): Promise<ReceivedStaff> {
 
 async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
 	const { db } = await connectToDatabase();
-	let staff_collection = await db.collection("staff");
+	let staff_collection = await db.collection("staffs");
 
 	let staff = (await staff_collection.findOne({
 		position: position,
