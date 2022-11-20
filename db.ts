@@ -6,6 +6,11 @@ import {
 } from "./ts_types/db_types";
 import { ObjectId } from "mongodb";
 
+function fixArticleCoverImage(v: any) {
+	// $lookup ALWAYS creates an array into the specified "as" field, even if the "localField" is a singular element
+	v.cover_image_contributor = v.cover_image_contributor[0];
+	return v;
+}
 // articles
 
 async function get_articles(num?: number): Promise<[ReceivedArticle]> {
@@ -14,19 +19,29 @@ async function get_articles(num?: number): Promise<[ReceivedArticle]> {
 
 	const limit = num || 10;
 
-	let articles = (await articles_collection
-		.aggregate([
-			{
-				$lookup: {
-					from: "staffs",
-					localField: "contributors",
-					foreignField: "_id",
-					as: "contributors",
+	let articles = (
+		await articles_collection
+			.aggregate([
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "contributors",
+						foreignField: "_id",
+						as: "contributors",
+					},
 				},
-			},
-		])
-		.limit(limit)
-		.toArray()) as [ReceivedArticle];
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "cover_image_contributor",
+						foreignField: "_id",
+						as: "cover_image_contributor",
+					},
+				},
+			])
+			.limit(limit)
+			.toArray()
+	).map(fixArticleCoverImage) as [ReceivedArticle];
 
 	return articles;
 }
@@ -41,23 +56,33 @@ async function get_articles_by_department(
 	const limit = num || 10;
 	const department_id = DepartmentsArray.findIndex((a) => a == department);
 
-	let articles = (await articles_collection
-		.aggregate([
-			{
-				$match: { section_id: department_id },
-			},
-
-			{
-				$lookup: {
-					from: "staffs",
-					localField: "contributors",
-					foreignField: "_id",
-					as: "contributors",
+	let articles = (
+		await articles_collection
+			.aggregate([
+				{
+					$match: { section_id: department_id },
 				},
-			},
-		])
-		.limit(limit)
-		.toArray()) as [ReceivedArticle];
+
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "contributors",
+						foreignField: "_id",
+						as: "contributors",
+					},
+				},
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "cover_image_contributor",
+						foreignField: "_id",
+						as: "cover_image_contributor",
+					},
+				},
+			])
+			.limit(limit)
+			.toArray()
+	).map(fixArticleCoverImage) as [ReceivedArticle];
 	return articles;
 }
 
@@ -80,9 +105,17 @@ async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 						as: "contributors",
 					},
 				},
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "cover_image_contributor",
+						foreignField: "_id",
+						as: "cover_image_contributor",
+					},
+				},
 			])
 			.toArray()
-	)[0] as ReceivedArticle;
+	).map(fixArticleCoverImage)[0] as ReceivedArticle;
 
 	return article;
 }
@@ -107,9 +140,17 @@ async function get_article_by_slug(
 						as: "contributors",
 					},
 				},
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "cover_image_contributor",
+						foreignField: "_id",
+						as: "cover_image_contributor",
+					},
+				},
 			])
 			.toArray()
-	)[0] as ReceivedArticle;
+	).map(fixArticleCoverImage)[0] as ReceivedArticle;
 	return article;
 }
 
@@ -135,21 +176,31 @@ async function get_articles_by_query(
 
 	const limit = num || 10;
 
-	let articles = (await articles_collection
-		.aggregate([
-			{ $search: query },
+	let articles = (
+		await articles_collection
+			.aggregate([
+				{ $search: query },
 
-			{
-				$lookup: {
-					from: "staffs",
-					localField: "contributors",
-					foreignField: "_id",
-					as: "contributors",
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "contributors",
+						foreignField: "_id",
+						as: "contributors",
+					},
 				},
-			},
-		])
-		.limit(limit)
-		.toArray()) as [ReceivedArticle];
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "cover_image_contributor",
+						foreignField: "_id",
+						as: "cover_image_contributor",
+					},
+				},
+			])
+			.limit(limit)
+			.toArray()
+	).map(fixArticleCoverImage) as [ReceivedArticle];
 	return articles;
 }
 

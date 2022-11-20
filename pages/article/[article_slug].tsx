@@ -81,14 +81,17 @@ const Article = (props: Props) => {
 									alt="Cover Image"
 								/>
 							</div>
-							<p id={styles.coverImageInfo}>
+							<div id={styles.coverImageInfo}>
 								{cover_image_summary}
-								{cover_image_contributor +
-									" " +
+
+								{generate_contributors_jsx([
+									cover_image_contributor,
+								])}
+								{" " +
 									(cover_image_source
 										? cover_image_source
 										: "")}
-							</p>
+							</div>
 						</>
 					) : (
 						<></>
