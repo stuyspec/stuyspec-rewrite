@@ -8,7 +8,7 @@ export default function generate_contributors_jsx(
 		let separator = index === contributors.length - 1 ? "" : ",";
 
 		return (
-			<div key={index}>
+			<span key={index}>
 				<Link
 					style={{
 						color: "var(--primary)",
@@ -24,7 +24,7 @@ export default function generate_contributors_jsx(
 						&nbsp;
 					</span>
 				</Link>
-			</div>
+			</span>
 		);
 	});
 }
