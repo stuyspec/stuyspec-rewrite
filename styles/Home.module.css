@@ -63,7 +63,7 @@
 #latestArticles {
 	grid-column-start: 5;
 	grid-column-end: 7;
-	grid-row-start: 3;
+	grid-row-start: 1;
 	grid-row-end: 7;
 	text-align: left;
 }
