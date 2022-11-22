@@ -12,7 +12,8 @@
 	display: flex;
 	align-items: center;
 	overflow: hidden;
-    position: fixed;
+	position: fixed;
+	z-index: 3;
 }
 #subscribe_parent {
 	margin-left: auto;

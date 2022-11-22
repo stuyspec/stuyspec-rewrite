@@ -85,6 +85,7 @@
 
 	font-size: calc(var(--medium-text) / 1.5);
 	font-family: var(--secondary-font);
+	z-index: 2;
 }
 #heroStory h1,
 #heroStory p {
@@ -98,6 +99,7 @@
 	-moz-animation: arrowBob 2s infinite;
 	-webkit-animation: arrowBob 2s infinite;
 	animation: arrowBob 2s infinite;
+	z-index: 2;
 }
 
 .authors {
