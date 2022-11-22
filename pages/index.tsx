@@ -12,7 +12,7 @@ import {
 import { all_sections } from "../globals/globals";
 import Separator from "../components/Separator";
 import dateFromID from "../utils/dateFromID";
-import generate_contributors_jsx from "../utils/GenerateContributorsJSX";
+import generate_contributors_jsx from "../components/GenerateContributorsJSX";
 interface Props {
 	articles: [ReceivedArticle];
 }

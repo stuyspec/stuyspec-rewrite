@@ -11,7 +11,7 @@ import romanize from "../../utils/Romanize";
 import SubscribeForm from "../../components/SubscribeForm";
 import Link from "next/link";
 // import RecommendedArticles from "../../components/RecommendedArticles";
-import generate_contributors_jsx from "../../utils/GenerateContributorsJSX";
+import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
 
 interface Props {
 	article: ReceivedArticle;

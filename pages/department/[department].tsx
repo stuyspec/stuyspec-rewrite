@@ -5,7 +5,7 @@ import { get_articles_by_department } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
 import Link from "next/link";
-import generate_contributors_jsx from "../../utils/GenerateContributorsJSX";
+import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
 
 interface Props {
 	articles: ReceivedArticle[];

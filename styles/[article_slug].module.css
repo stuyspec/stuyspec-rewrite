@@ -9,23 +9,29 @@
 }
 
 #infoBar {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 1rem;
+	display: flex;
+	justify-content: space-between;
 	align-self: center;
 
 	margin-bottom: 0.5rem;
 	font-family: var(--secondary-font);
 }
 
+@media screen and (max-width: 1220px) {
+	#infoBar {
+		display: block;
+	}
+}
+
 #authors {
-	display: flex;
 	font-size: var(--small-text);
 }
 #shareButtons {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	margin-top: 10px;
+	padding-top: 3px;
 }
 
 #main p {
@@ -48,6 +54,7 @@
 	color: var(--medium-grey);
 	font-family: var(--secondary-font);
 }
+
 @media screen and (max-width: 840px) {
 	#main {
 		width: 90vw;
@@ -55,10 +62,6 @@
 	#title {
 		/* margin: 1rem 0; */
 		font-size: var(--medium-text);
-	}
-
-	#infoBar {
-		display: block;
 	}
 }
 #subsribe_insert {
