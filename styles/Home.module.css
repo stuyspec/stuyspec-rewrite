@@ -30,32 +30,6 @@
 	opacity: 0.85;
 }
 
-#infoBar {
-	grid-column-start: 5;
-	grid-column-end: 7;
-	grid-row-start: 1;
-	grid-row-end: 3;
-	border-top: 1px solid var(--medium-gray);
-	border-bottom: 1px solid var(--medium-gray);
-	max-width: 400px;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-#infoBar::-webkit-scrollbar-track {
-	border-radius: 10px;
-	background-color: #f5f5f5;
-}
-
-#infoBar::-webkit-scrollbar {
-	width: 10px;
-	background-color: #f5f5f5;
-}
-
-#infoBar::-webkit-scrollbar-thumb {
-	background-color: rgb(116, 112, 112);
-}
-
 /*
  *  STYLE 3
  */
@@ -146,9 +120,6 @@
 		height: auto;
 		display: flex;
 		flex-direction: column;
-	}
-	#infoBar {
-		display: none;
 	}
 }
 
