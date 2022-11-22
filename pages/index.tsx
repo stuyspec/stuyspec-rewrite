@@ -22,43 +22,57 @@ const Home = (props: Props) => {
 	const displayArticles: any[] = []; // Any type because this element will change often
 	const articles = props.articles;
 
-	articles.forEach((article_iterator) => {
-		displayArticles.push(
-			<div id={styles.article} key={String(article_iterator._id)}>
-				<Link passHref href={"/article/" + article_iterator.slug}>
-					<h2 id={styles.title} className="discrete-link">
-						{article_iterator.title}
-					</h2>
-				</Link>
-				<div
-					className={styles.authors}
-					style={{ fontFamily: "var(--secondary-font)" }}
-				>
-					{generate_contributors_jsx(article_iterator.contributors)}
-				</div>
-				<p id={styles.articleInfoDate}>
-					{dateFromID(article_iterator._id)}
-				</p>
-				<p id={styles.summary}>{article_iterator.summary}</p>
-				<Link
-					href={`/department/${
-						all_sections[article_iterator.section_id]
-					}`}
-					passHref
-				>
-					<p
-						id={styles.articleInfo}
-						className="discrete-link"
+	// Find hero article
+	let heroArticleIndex = articles.length - 1; // Default to the last article
+	for (let i = articles.length - 1; i >= 0; i--) {
+		const article = articles[i];
+		if (article.cover_image_contributor) {
+			heroArticleIndex = i;
+			break;
+		}
+	}
+	let heroArticle = articles[heroArticleIndex];
+
+	articles
+		.slice(0) // .slice(0) first so that we make a copy of the articles array to mutate later with the second .splice()
+		.slice(0, heroArticleIndex)
+		.forEach((article_iterator, index) => {
+			displayArticles.push(
+				<div id={styles.article} key={String(article_iterator._id)}>
+					<Link passHref href={"/article/" + article_iterator.slug}>
+						<h2 id={styles.title} className="discrete-link">
+							{article_iterator.title}
+						</h2>
+					</Link>
+					<div
+						className={styles.authors}
 						style={{ fontFamily: "var(--secondary-font)" }}
 					>
-						{all_sections[article_iterator.section_id]}
+						{generate_contributors_jsx(
+							article_iterator.contributors
+						)}
+					</div>
+					<p id={styles.articleInfoDate}>
+						{dateFromID(article_iterator._id)}
 					</p>
-				</Link>
-			</div>
-		);
-	});
-
-	const heroArticle = articles[articles.length - 1];
+					<p id={styles.summary}>{article_iterator.summary}</p>
+					<Link
+						href={`/department/${
+							all_sections[article_iterator.section_id]
+						}`}
+						passHref
+					>
+						<p
+							id={styles.articleInfo}
+							className="discrete-link"
+							style={{ fontFamily: "var(--secondary-font)" }}
+						>
+							{all_sections[article_iterator.section_id]}
+						</p>
+					</Link>
+				</div>
+			);
+		});
 
 	return (
 		<div>
@@ -114,28 +128,13 @@ const Home = (props: Props) => {
 						/>
 					</div>
 
-					<div id={styles.infoBar}>
-						<table id={styles.announcements_table}>
-							<tbody>
-								<tr>
-									<td>Alfreds Futterkiste</td>
-									<td>Maria Anders</td>
-								</tr>
-								<tr>
-									<td>Centro comercial Moctezuma</td>
-									<td>Francisco Chang</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
 					<div id={styles.latestArticles}>
 						<h1 id={styles.heading}>Latest</h1>
 						<Separator />
 						<div>
 							{displayArticles
 								.slice(
-									displayArticles.length - 3,
+									displayArticles.length - 4,
 									displayArticles.length - 1
 								)
 								.reverse()}
