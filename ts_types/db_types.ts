@@ -39,9 +39,10 @@ export type Department =
 	| "science"
 	| "humor"
 	| "sports"
-	| "artsandentertainment"
+	| "ae"
 	| "media"
-	| "spec+";
+	| "spec-plus";
+
 export const DepartmentsArray = [
 	"news",
 	"features",
@@ -49,7 +50,19 @@ export const DepartmentsArray = [
 	"science",
 	"humor",
 	"sports",
-	"artsandentertainment",
+	"ae",
 	"media",
-	"spec+",
+	"spec-plus",
+];
+
+export const DepartmentsArrayDisplay = [
+	"News",
+	"Features",
+	"Opinions",
+	"Science",
+	"Humor",
+	"Sports",
+	"Arts and Entertainment",
+	"Media",
+	"Spec+",
 ];
