@@ -91,11 +91,12 @@ const Advertise = (props: Props) => {
 export async function getServerSideProps() {
 
   let manager = await get_staff_by_position("business manager");
-  if (manager) {
-    return {
-      props: { manager: JSON.parse(JSON.stringify(manager)) }
-    }
-  } else { return { notFound: true } }
+    if (manager) {
+        return {
+            props: { manager: JSON.parse(JSON.stringify(manager)) }
+        }
+    } else return {props: {manager: {name: "Error: Not found", email: "Error: Not found"}}}
+//   } else { return { notFound: true } }
   
 }
 
