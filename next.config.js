@@ -12,6 +12,7 @@ module.exports = {
   images: {
     domains: [
       "stuyspec-images.s3.amazonaws.com",
+      "stuyspec-media.s3.amazonaws.com",
       "image.isu.pub",
       "cdn.discordapp.com",
     ],
