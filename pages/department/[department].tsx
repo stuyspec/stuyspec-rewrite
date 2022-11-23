@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Image from "next/image";
 import {
@@ -19,7 +20,24 @@ interface Props {
 
 const Article = (props: Props) => {
 	console.log("department props: ", props);
-	const department_display = props.department_display;
+    
+    const articlesWithPhotos: ReceivedArticle[] = [];
+    const articlesWithoutPhotos: ReceivedArticle[] = [];
+
+    const splitArticles = () => {
+        props.articles.forEach(article => {
+            if (article.cover_image) {
+                articlesWithPhotos.push(article);
+            } else {
+                articlesWithoutPhotos.push(article);
+            }
+        })
+    }
+
+    splitArticles();
+
+    console.log(articlesWithPhotos);
+
 	return (
 		<div>
 			<Head>
@@ -28,29 +46,79 @@ const Article = (props: Props) => {
 			</Head>
 
 			<main id={styles.main}>
-				<h1 id={styles.departmentTitle}>{props.department_display}</h1>
-				<div id={styles.devDisplay}>
-					<h2>Development Display</h2>
-					{props.articles.length > 0 ? (
-						<div>
-							{props.articles.map((v) => (
-								<Link
-									key={v._id as any}
-									href={"/article/" + v.slug}
-									passHref
-								>
-									<div>
-										<h3>{v.title}</h3>
-										<h4 id={styles.authors_div}>
-											By&nbsp;
-											{generate_contributors_jsx(
-												v.contributors
-											)}
-										</h4>
-									</div>
-								</Link>
+                <h1 id={styles.departmentTitle}>{props.department_display}</h1>
+                <div>
+					{articlesWithPhotos.length > 0 ? (
+						<div className={styles.grid}>
+                            {articlesWithPhotos.map((article) => (
+                                <div className={styles.item} key={article._id as any}>
+                                    <Link
+                                        href={"/article/" + article.slug}
+                                        passHref
+                                    >
+                                        <div className={styles.item_text}>
+                                            <Image
+                                                id={styles.image}
+                                                alt={article.cover_image_summary}
+                                                src={article.cover_image}
+                                                height="750"
+                                                width="750"
+                                            />
+                                            <h2>{article.title}</h2>
+                                            <div className={styles.authors}>
+                                                {generate_contributors_jsx(
+                                                    article.contributors
+                                                )}
+                                            </div>
+                                            <p className={styles.summary}>{article.summary}</p>
+                                            <p className={styles.article_volume_issue}>
+                                                {"Volume " + article.volume + " Issue " + article.issue}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                </div>
 							))}
 						</div>
+                        
+					) : (
+						<div>
+							<h2>
+								No articles were found under that department
+							</h2>
+						</div>
+                    )}
+                    </div>
+                    
+                    <div>
+					{articlesWithoutPhotos.length > 0 ? (
+						<div className={styles.grid}>
+                            {articlesWithoutPhotos.map((article) => (
+                                <div
+                                    className={styles.item}
+                                    key={article._id as any}
+                                    style={{gridColumn: "span 2"}}
+                                >
+                                    <Link
+                                        href={"/article/" + article.slug}
+                                        passHref
+                                    >
+                                        <div className={styles.item_text}>
+                                            <h2>{article.title}</h2>
+                                            <div className={styles.authors}>
+                                                {generate_contributors_jsx(
+                                                    article.contributors
+                                                )}
+                                            </div>
+                                            <p className={styles.summary}>{article.summary}</p>
+                                            <p className={styles.article_volume_issue}>
+                                                {"Volume " + article.volume + " Issue " + article.issue}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                </div>
+							))}
+						</div>
+                        
 					) : (
 						<div>
 							<h2>
@@ -84,7 +152,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
 	const department_display = DepartmentsArrayDisplay[department_id];
 
-	let articles = await get_articles_by_department(department_param);
+	let articles = await get_articles_by_department(department_param, 30);
 	if (articles) {
 		return {
 			props: {
