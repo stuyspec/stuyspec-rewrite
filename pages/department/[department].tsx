@@ -12,6 +12,7 @@ import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
+import groupByImageExists from "../../utils/groupArticles"
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -19,20 +20,10 @@ interface Props {
 }
 
 const Article = (props: Props) => {    
-    const articlesWithPhotos: ReceivedArticle[] = [];
-    const articlesWithoutPhotos: ReceivedArticle[] = [];
-
-    const splitArticles = () => {
-        props.articles.forEach(article => {
-            if (article.cover_image) {
-                articlesWithPhotos.push(article);
-            } else {
-                articlesWithoutPhotos.push(article);
-            }
-        })
-    }
-
-    splitArticles();
+    
+    const grouping = groupByImageExists(props.articles);
+    const articlesWithPhotos: ReceivedArticle[] = grouping["withPhotos"];
+    const articlesWithoutPhotos: ReceivedArticle[] = grouping["withoutPhotos"];
 
 	return (
 		<div>
