@@ -18,9 +18,7 @@ interface Props {
 	department_display: string;
 }
 
-const Article = (props: Props) => {
-	console.log("department props: ", props);
-    
+const Article = (props: Props) => {    
     const articlesWithPhotos: ReceivedArticle[] = [];
     const articlesWithoutPhotos: ReceivedArticle[] = [];
 
@@ -35,8 +33,6 @@ const Article = (props: Props) => {
     }
 
     splitArticles();
-
-    console.log(articlesWithPhotos);
 
 	return (
 		<div>
