@@ -70,7 +70,7 @@ const Article = (props: Props) => {
 					) : (
 						<div>
 							<h2>
-								No articles were found under that department
+								No articles were found with a photo.
 							</h2>
 						</div>
                     )}
@@ -109,7 +109,7 @@ const Article = (props: Props) => {
 					) : (
 						<div>
 							<h2>
-								No articles were found under that department
+								No articles were found without a photo.
 							</h2>
 						</div>
 					)}
