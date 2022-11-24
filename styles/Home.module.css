@@ -42,6 +42,7 @@
 	text-align: left;
 }
 #heroImage {
+	cursor: pointer;
 	object-fit: contain;
 	width: 100%;
 	max-height: 56vh;
@@ -141,4 +142,8 @@
 }
 #announcements_table tr {
 	table-layout: fixed;
+}
+
+#down_arrow {
+	cursor: pointer;
 }

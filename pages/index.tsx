@@ -86,11 +86,16 @@ const Home = (props: Props) => {
 				<div id={styles.landingScreen}>
 					<div id={styles.heroStory}>
 						<div id={styles.heroImageContainer}>
-							<img
-								alt="big image"
-								id={styles.heroImage}
-								src={heroArticle.cover_image}
-							/>
+							<Link
+								passHref
+								href={"/article/" + heroArticle.slug}
+							>
+								<img
+									alt="big image"
+									id={styles.heroImage}
+									src={heroArticle.cover_image}
+								/>
+							</Link>
 							<div id={styles.departmentBar}>
 								<Link
 									href={`/department/${
@@ -119,13 +124,20 @@ const Home = (props: Props) => {
 								heroArticle.contributors
 							)}
 						</div>
-						<p id={styles.summary}>{heroArticle.summary}</p>
-						<Image
-							alt="down arrow"
-							src="/images/down-arrow.svg"
-							width="24px"
-							height="24px"
-						/>
+						<Link passHref href={"/article/" + heroArticle.slug}>
+							<p className="discrete-link" id={styles.summary}>
+								{heroArticle.summary}
+							</p>
+						</Link>
+						<Link passHref href={"/article/" + heroArticle.slug}>
+							<Image
+								id={styles.down_arrow}
+								alt="down arrow"
+								src="/images/down-arrow.svg"
+								width="24px"
+								height="24px"
+							/>
+						</Link>
 					</div>
 
 					<div id={styles.latestArticles}>
