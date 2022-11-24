@@ -55,7 +55,11 @@ const Home = (props: Props) => {
 					<p id={styles.articleInfoDate}>
 						{dateFromID(article_iterator._id)}
 					</p>
-					<p id={styles.summary}>{article_iterator.summary}</p>
+					<Link passHref href={"/article/" + article_iterator.slug}>
+						<p id={styles.summary} className="discrete-link">
+							{article_iterator.summary}
+						</p>
+					</Link>
 					<Link
 						href={`/department/${
 							all_sections[article_iterator.section_id]
@@ -130,13 +134,15 @@ const Home = (props: Props) => {
 							</p>
 						</Link>
 						<Link passHref href={"/article/" + heroArticle.slug}>
-							<Image
-								id={styles.down_arrow}
-								alt="down arrow"
-								src="/images/down-arrow.svg"
-								width="24px"
-								height="24px"
-							/>
+							<span>
+								<Image
+									id={styles.down_arrow}
+									alt="down arrow"
+									src="/images/down-arrow.svg"
+									width="24px"
+									height="24px"
+								/>
+							</span>
 						</Link>
 					</div>
 
