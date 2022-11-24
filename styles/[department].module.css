@@ -53,6 +53,13 @@
 		margin: 2rem;
 		grid-template-columns: repeat(2, 1fr);
 	}
+	/* On mobile screen sizes, don't have active or hover effects, is far too distracting */
+	.item:hover {
+		transform: scale(1);
+	}
+	.item:active {
+		transform: scale(1);
+	}
 }
 
 @media screen and (max-width: 480px) {
