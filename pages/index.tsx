@@ -152,7 +152,7 @@ const Home = (props: Props) => {
 						<div>
 							{displayArticles
 								.slice(
-									displayArticles.length - 4,
+									displayArticles.length - 5,
 									displayArticles.length - 1
 								)
 								.reverse()}
