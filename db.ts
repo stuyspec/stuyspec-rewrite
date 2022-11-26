@@ -235,6 +235,17 @@ async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
 	return staff;
 }
 
+async function get_staff_by_query(query: any): Promise<ReceivedStaff> {
+	const { db } = await connectToDatabase();
+	let staff_collection = await db.collection("staffs");
+
+	let staff = (await staff_collection.findOne(
+		query
+	)) as unknown as ReceivedStaff;
+
+	return staff;
+}
+
 export {
 	get_articles,
 	get_articles_by_department,
@@ -245,4 +256,5 @@ export {
 	get_staff_by_id,
 	get_staff_by_position,
 	get_staff_by_slug,
+	get_staff_by_query,
 };
