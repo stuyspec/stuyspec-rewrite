@@ -123,8 +123,16 @@ const Dash = (props: Props) => {
 						value="Edit description"
 					/>
 				</form>
-				<form onSubmit={handlePasswordSubmit}>
+				{props.user.first_time_login !== false ? (
+					<h1 id={styles.change_request}>
+						PLEASE CHANGE YOUR PASSWORD AWAY FROM THE CURRENT WEAK
+						PASSWORD
+					</h1>
+				) : (
 					<h2>Change your password</h2>
+				)}
+
+				<form onSubmit={handlePasswordSubmit}>
 					<input
 						onChange={(e) => {
 							setPasswordOne(e.target.value);

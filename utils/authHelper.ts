@@ -1,4 +1,8 @@
-import { get_staff_by_id, UNSAFE_get_staff_by_query } from "../db";
+import {
+	get_staff_by_id,
+	UNSAFE_get_staff_by_query,
+	update_staff_by_query,
+} from "../db";
 import jwt from "jsonwebtoken";
 import { ReceivedStaff } from "../ts_types/db_types";
 import { ThrownError } from "../ts_types/api_types";
@@ -25,7 +29,7 @@ export async function login(email: string, password: string) {
 		throw e;
 	}
 
-	const UNSAFE_attempted_staff = await UNSAFE_get_staff_by_query({
+	let UNSAFE_attempted_staff = await UNSAFE_get_staff_by_query({
 		email,
 	});
 
@@ -35,16 +39,27 @@ export async function login(email: string, password: string) {
 		throw e;
 	}
 
-	// Password authentication
-	const isPasswordCorrect = await bcrypt.compare(
-		password,
-		UNSAFE_attempted_staff.password
-	);
+	if (
+		UNSAFE_attempted_staff.first_time_login !== false // true or undefined count are valid
+	) {
+		if (password != UNSAFE_attempted_staff.name) {
+			// For first time login after migration, allow to login with first name and change password
+			const e = new ThrownError(`First time login password is incorrect`);
+			e.statusCode = 400;
+			throw e;
+		}
+	} else {
+		// Password authentication
+		const isPasswordCorrect = await bcrypt.compare(
+			password,
+			UNSAFE_attempted_staff.password
+		);
 
-	if (!isPasswordCorrect) {
-		const e = new ThrownError(`Password is incorrect`);
-		e.statusCode = 400;
-		throw e;
+		if (!isPasswordCorrect) {
+			const e = new ThrownError(`Password is incorrect`);
+			e.statusCode = 400;
+			throw e;
+		}
 	}
 
 	const user = UNSAFE_attempted_staff as any;

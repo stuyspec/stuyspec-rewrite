@@ -42,3 +42,6 @@
 .button:hover {
 	background-color: rgb(160, 42, 26);
 }
+#change_request {
+	color: red;
+}

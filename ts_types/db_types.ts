@@ -31,6 +31,7 @@ export interface ReceivedStaff {
 	pfp_url: string;
 	years: number[];
 	slug: string;
+	first_time_login: boolean | undefined;
 }
 export interface UnsafeReceivedStaff extends ReceivedStaff {
 	password: string;

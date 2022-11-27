@@ -46,6 +46,7 @@ export default async function handler(
 				// Use 14 rounds instead of 10 because hardware is faster now and can do more in 1-2 seconds of acceptable wait
 				const hashedPassword = await bcrypt.hash(password, salt);
 				body.password = hashedPassword;
+				body.first_time_login = false;
 			}
 
 			const new_staff = await update_staff_by_query(
