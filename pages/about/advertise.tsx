@@ -1,9 +1,9 @@
 import Head from "next/head";
 import styles from "../../styles/About.module.css";
-import { ReceivedStaff } from "../../ts_types/db_types";
+import { defaultProps, ReceivedStaff } from "../../ts_types/db_types";
 import { get_staff_by_position } from "../../db";
 
-interface Props {
+interface Props extends defaultProps {
 	manager: ReceivedStaff;
 }
 

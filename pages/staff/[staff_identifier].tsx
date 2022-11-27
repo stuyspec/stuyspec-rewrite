@@ -1,11 +1,15 @@
 import Head from "next/head";
-import { mongoObjectId, ReceivedStaff } from "../../ts_types/db_types";
+import {
+	defaultProps,
+	mongoObjectId,
+	ReceivedStaff,
+} from "../../ts_types/db_types";
 
 import { NextPageContext } from "next";
 import styles from "../../styles/[staff_id].module.css";
 import { get_staff_by_id, get_staff_by_slug } from "../../db";
 
-interface Props {
+interface Props extends defaultProps {
 	staff_identifier: mongoObjectId;
 	staff: ReceivedStaff;
 }

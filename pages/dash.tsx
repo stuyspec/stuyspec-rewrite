@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { FormEvent, useState } from "react";
 import styles from "../styles/Dash.module.css";
-import { ReceivedStaff } from "../ts_types/db_types";
+import { defaultProps, ReceivedStaff } from "../ts_types/db_types";
 import getServerUrl from "../utils/getServerUrl";
 
 export function tokenToAuthHeader(token: string) {
@@ -10,7 +10,7 @@ export function tokenToAuthHeader(token: string) {
 	};
 }
 
-interface Props {
+interface Props extends defaultProps {
 	user: ReceivedStaff;
 	token: string;
 }

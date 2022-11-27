@@ -3,8 +3,9 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import SubscribeButton from "./SubscribeButton";
 import CollapsibleSearch from "./CollapsibleSearch";
+import { defaultProps } from "../ts_types/db_types";
 
-const Navbar = () => {
+const Navbar = (props: defaultProps) => {
 	function toggleMenu() {}
 
 	function enableSearch() {
@@ -24,6 +25,7 @@ const Navbar = () => {
 		)[0].style.display = "inherit";
 	}
 
+	console.log("Token inside of navbar: ", props.token);
 	return (
 		<nav id={styles.nav}>
 			{/* <div id={styles.hamburgerMenu} className="button">

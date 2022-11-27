@@ -8,12 +8,13 @@ import {
 	ReceivedArticle,
 	mongoObjectId,
 	ReceivedStaff,
+	defaultProps,
 } from "../ts_types/db_types";
 import { all_sections } from "../globals/globals";
 import Separator from "../components/Separator";
 import dateFromID from "../utils/dateFromID";
 import generate_contributors_jsx from "../components/GenerateContributorsJSX";
-interface Props {
+interface Props extends defaultProps {
 	articles: [ReceivedArticle];
 }
 
