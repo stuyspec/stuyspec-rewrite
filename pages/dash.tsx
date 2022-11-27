@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { FormEvent, useState } from "react";
 import styles from "../styles/Dash.module.css";
 import { ReceivedStaff } from "../ts_types/db_types";
 import getServerUrl from "../utils/getServerUrl";
@@ -11,9 +12,40 @@ export function tokenToAuthHeader(token: string) {
 
 interface Props {
 	user: ReceivedStaff;
+	token: string;
 }
 
 const Dash = (props: Props) => {
+	const [description, setDescription] = useState("");
+	const [validDescription, setValidDescription] = useState(
+		props.user.description
+	);
+
+	const handleFormSubmit = async (e: FormEvent) => {
+		e.preventDefault();
+		if (description == "") {
+			return;
+		}
+
+		const body = { description };
+		const request = await fetch("/api/auth/edit_account", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Bearer: " + props.token,
+			},
+			body: JSON.stringify(body),
+		});
+
+		if (request.ok) {
+			const rjson = await request.json();
+			const new_user = rjson.new as ReceivedStaff;
+			if (new_user) {
+				setValidDescription(new_user.description);
+				setDescription("");
+			}
+		}
+	};
 	return (
 		<>
 			<Head>
@@ -28,6 +60,25 @@ const Dash = (props: Props) => {
 			<main id={styles.container}>
 				<h1 id={styles.heading}>User Dashboard</h1>
 				<h2>Hello, {props.user.name}</h2>
+				<h2>Current Description: {validDescription}</h2>
+				<form onSubmit={handleFormSubmit}>
+					<input
+						onChange={(e) => {
+							setDescription(e.target.value);
+						}}
+						className={styles.input}
+						type="text"
+						value={description}
+						placeholder="New description..."
+						required
+					/>
+					<br />
+					<input
+						className={styles.button}
+						type="submit"
+						value="Edit description"
+					/>
+				</form>
 			</main>
 		</>
 	);
@@ -36,9 +87,8 @@ const Dash = (props: Props) => {
 export default Dash;
 
 export async function getServerSideProps(ctx: any) {
-	console.log("here?");
 	const token = ctx.req.headers.cookie?.split("token=")[1];
-	console.log("Token: ", token);
+
 	if (!token) {
 		ctx.res.writeHead(301, { Location: "/" });
 		ctx.res.end();
@@ -55,6 +105,7 @@ export async function getServerSideProps(ctx: any) {
 		return {
 			props: {
 				user: rjson.user,
+				token: token,
 			},
 		};
 	} else {
