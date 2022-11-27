@@ -84,12 +84,3 @@ export async function verify(authValue: string | undefined) {
 		throw e;
 	}
 }
-
-export function cookieToAuthHeader(ctx: any) {
-	return {
-		headers: {
-			authorization:
-				"Bearer " + ctx.req.headers.cookie.replace("token=", ""),
-		},
-	};
-}

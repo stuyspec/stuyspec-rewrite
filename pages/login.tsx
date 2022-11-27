@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { FormEvent, useState } from "react";
 import styles from "../styles/Login.module.css";
+import Router from "next/router";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -18,8 +19,7 @@ const Login = () => {
 
 		if (request.ok) {
 			const rjson = await request.json();
-
-			console.log(request);
+			Router.push("/dash");
 		}
 	};
 	return (

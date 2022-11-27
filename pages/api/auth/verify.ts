@@ -17,11 +17,10 @@ export default async function handler(
 
 	if (method == "POST" || method == "GET") {
 		const authValue = req.headers.authorization;
-
 		try {
 			// validate the JWT specified in the "Bearer: <JWT>" authorization header
 			const user = await verify(authValue);
-
+			res.setHeader("Cache-Control", "no-store");
 			res.json({
 				message: "Successfully verified this user",
 				user: user,
