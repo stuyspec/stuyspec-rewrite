@@ -245,6 +245,27 @@ async function get_staff_by_query(query: any): Promise<ReceivedStaff> {
 
 	return staff;
 }
+async function update_staff_by_query(
+	_id: string,
+	update: any
+): Promise<ReceivedStaff> {
+	const { db } = await connectToDatabase();
+	let staff_collection = await db.collection("staffs");
+
+	let staff = (
+		await staff_collection.findOneAndUpdate(
+			{
+				_id: new ObjectId(_id),
+			},
+			{ $set: update },
+			{
+				returnDocument: "after",
+			}
+		)
+	).value as unknown as ReceivedStaff;
+
+	return staff;
+}
 
 export {
 	get_articles,
@@ -257,4 +278,5 @@ export {
 	get_staff_by_position,
 	get_staff_by_slug,
 	get_staff_by_query,
+	update_staff_by_query,
 };
