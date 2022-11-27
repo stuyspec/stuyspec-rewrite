@@ -32,6 +32,10 @@ export interface ReceivedStaff {
 	years: number[];
 	slug: string;
 }
+export interface UnsafeReceivedStaff extends ReceivedStaff {
+	password?: string;
+}
+
 export type Department =
 	| "news"
 	| "features"

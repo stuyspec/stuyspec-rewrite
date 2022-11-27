@@ -2,6 +2,7 @@ import { connectToDatabase } from "./db_conn";
 import {
 	ReceivedArticle,
 	ReceivedStaff,
+	UnsafeReceivedStaff,
 	DepartmentsArray,
 } from "./ts_types/db_types";
 import { ObjectId } from "mongodb";
@@ -36,6 +37,12 @@ async function get_articles(num?: number): Promise<[ReceivedArticle]> {
 						localField: "cover_image_contributor",
 						foreignField: "_id",
 						as: "cover_image_contributor",
+					},
+				},
+				{
+					$project: {
+						contributors: { password: 0 },
+						cover_image_contributor: { password: 0 },
 					},
 				},
 			])
@@ -79,6 +86,12 @@ async function get_articles_by_department(
 						as: "cover_image_contributor",
 					},
 				},
+				{
+					$project: {
+						contributors: { password: 0 },
+						cover_image_contributor: { password: 0 },
+					},
+				},
 			])
 			.limit(limit)
 			.toArray()
@@ -111,6 +124,12 @@ async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 						localField: "cover_image_contributor",
 						foreignField: "_id",
 						as: "cover_image_contributor",
+					},
+				},
+				{
+					$project: {
+						contributors: { password: 0 },
+						cover_image_contributor: { password: 0 },
 					},
 				},
 			])
@@ -146,6 +165,12 @@ async function get_article_by_slug(
 						localField: "cover_image_contributor",
 						foreignField: "_id",
 						as: "cover_image_contributor",
+					},
+				},
+				{
+					$project: {
+						contributors: { password: 0 },
+						cover_image_contributor: { password: 0 },
 					},
 				},
 			])
@@ -197,6 +222,12 @@ async function get_articles_by_query(
 						as: "cover_image_contributor",
 					},
 				},
+				{
+					$project: {
+						contributors: { password: 0 },
+						cover_image_contributor: { password: 0 },
+					},
+				},
 			])
 			.limit(limit)
 			.toArray()
@@ -209,9 +240,19 @@ async function get_staff_by_id(_id: string): Promise<ReceivedStaff> {
 	const { db } = await connectToDatabase();
 	let staff_collection = await db.collection("staffs");
 
-	let staff = (await staff_collection.findOne({
-		_id: new ObjectId(_id),
-	})) as ReceivedStaff;
+	let staff = (
+		await staff_collection
+			.aggregate([
+				{ $match: { _id: new ObjectId(_id) } },
+				{
+					$project: {
+						password: 0,
+					},
+				},
+			])
+			.toArray()
+	)[0] as ReceivedStaff;
+
 	return staff;
 }
 
@@ -219,9 +260,18 @@ async function get_staff_by_slug(slug: string): Promise<ReceivedStaff> {
 	const { db } = await connectToDatabase();
 	let staff_collection = await db.collection("staffs");
 
-	let staff = (await staff_collection.findOne({
-		slug: slug,
-	})) as ReceivedStaff;
+	let staff = (
+		await staff_collection
+			.aggregate([
+				{ $match: { slug: slug } },
+				{
+					$project: {
+						password: 0,
+					},
+				},
+			])
+			.toArray()
+	)[0] as ReceivedStaff;
 	return staff;
 }
 
@@ -229,9 +279,18 @@ async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
 	const { db } = await connectToDatabase();
 	let staff_collection = await db.collection("staffs");
 
-	let staff = (await staff_collection.findOne({
-		position: position,
-	})) as ReceivedStaff;
+	let staff = (
+		await staff_collection
+			.aggregate([
+				{ $match: { position: position } },
+				{
+					$project: {
+						password: 0,
+					},
+				},
+			])
+			.toArray()
+	)[0] as ReceivedStaff;
 	return staff;
 }
 
@@ -239,9 +298,18 @@ async function get_staff_by_query(query: any): Promise<ReceivedStaff> {
 	const { db } = await connectToDatabase();
 	let staff_collection = await db.collection("staffs");
 
-	let staff = (await staff_collection.findOne(
-		query
-	)) as unknown as ReceivedStaff;
+	let staff = (
+		await staff_collection
+			.aggregate([
+				{ $match: query },
+				{
+					$project: {
+						password: 0,
+					},
+				},
+			])
+			.toArray()
+	)[0] as ReceivedStaff;
 
 	return staff;
 }
@@ -262,9 +330,11 @@ async function update_staff_by_query(
 				returnDocument: "after",
 			}
 		)
-	).value as unknown as ReceivedStaff;
+	).value as unknown as UnsafeReceivedStaff;
 
-	return staff;
+	delete staff.password;
+
+	return staff as ReceivedStaff;
 }
 
 export {
