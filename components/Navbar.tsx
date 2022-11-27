@@ -4,7 +4,8 @@ import ThemeToggle from "./ThemeToggle";
 import SubscribeButton from "./SubscribeButton";
 import CollapsibleSearch from "./CollapsibleSearch";
 import { defaultProps } from "../ts_types/db_types";
-
+import { FaUserCircle } from "react-icons/fa";
+import { MdOutlineLogin } from "react-icons/md";
 const Navbar = (props: defaultProps) => {
 	function toggleMenu() {}
 
@@ -53,9 +54,17 @@ const Navbar = (props: defaultProps) => {
 
 			<div>
 				{props.token ? (
-					<Link href="/login">user icon</Link>
+					<Link passHref href="/dash">
+						<span>
+							<FaUserCircle id={styles.user_icon} />
+						</span>
+					</Link>
 				) : (
-					<Link href="/login">Log in</Link>
+					<Link passHref href="/login">
+						<span>
+							<MdOutlineLogin id={styles.user_icon} />
+						</span>
+					</Link>
 				)}
 			</div>
 			<ThemeToggle />
