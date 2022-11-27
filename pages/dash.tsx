@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Router from "next/router";
 import { FormEvent, useState } from "react";
 import styles from "../styles/Dash.module.css";
 import { defaultProps, ReceivedStaff } from "../ts_types/db_types";
@@ -46,6 +47,20 @@ const Dash = (props: Props) => {
 			}
 		}
 	};
+
+	const logoutHandler = async () => {
+		const request = await fetch("/api/auth/logout", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		if (request.ok) {
+			Router.push("/");
+		}
+	};
+
 	return (
 		<>
 			<Head>
@@ -79,6 +94,9 @@ const Dash = (props: Props) => {
 						value="Edit description"
 					/>
 				</form>
+				<button className={styles.button} onClick={logoutHandler}>
+					Logout
+				</button>
 			</main>
 		</>
 	);
