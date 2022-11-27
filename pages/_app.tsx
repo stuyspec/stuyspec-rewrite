@@ -20,7 +20,7 @@ function MyApp(props: MyAppProps) {
 				<div id="main">
 					<Component {...pageProps} token={token} />
 				</div>
-				<Footer />
+				<Footer token={token} />
 			</div>
 		</div>
 	);
