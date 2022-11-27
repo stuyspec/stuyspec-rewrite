@@ -56,13 +56,13 @@ const Navbar = (props: defaultProps) => {
 				{props.token ? (
 					<Link passHref href="/dash">
 						<span>
-							<FaUserCircle id={styles.user_icon} />
+							<FaUserCircle className={styles.user_icon} />
 						</span>
 					</Link>
 				) : (
 					<Link passHref href="/login">
 						<span>
-							<MdOutlineLogin id={styles.user_icon} />
+							<MdOutlineLogin className={styles.user_icon} />
 						</span>
 					</Link>
 				)}
