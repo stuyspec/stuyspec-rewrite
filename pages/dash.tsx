@@ -17,12 +17,14 @@ interface Props extends defaultProps {
 }
 
 const Dash = (props: Props) => {
+	const [passwordOne, setPasswordOne] = useState("");
+	const [passwordTwo, setPasswordTwo] = useState("");
 	const [description, setDescription] = useState("");
 	const [validDescription, setValidDescription] = useState(
 		props.user.description
 	);
 
-	const handleFormSubmit = async (e: FormEvent) => {
+	const handleDescriptionSubmit = async (e: FormEvent) => {
 		e.preventDefault();
 		if (description == "") {
 			return;
@@ -45,6 +47,33 @@ const Dash = (props: Props) => {
 				setValidDescription(new_user.description);
 				setDescription("");
 			}
+		}
+	};
+	const handlePasswordSubmit = async (e: FormEvent) => {
+		e.preventDefault();
+		if (
+			passwordOne == "" ||
+			passwordTwo == "" ||
+			passwordOne != passwordTwo
+		) {
+			return;
+		}
+
+		const body = { password: passwordOne };
+		const request = await fetch("/api/auth/edit_account", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Bearer: " + props.token,
+			},
+			body: JSON.stringify(body),
+		});
+
+		if (request.ok) {
+			const rjson = await request.json();
+			console.log(rjson);
+			setPasswordOne("");
+			setPasswordTwo("");
 		}
 	};
 
@@ -76,7 +105,7 @@ const Dash = (props: Props) => {
 				<h1 id={styles.heading}>User Dashboard</h1>
 				<h2>Hello, {props.user.name}</h2>
 				<h2>Current Description: {validDescription}</h2>
-				<form onSubmit={handleFormSubmit}>
+				<form onSubmit={handleDescriptionSubmit}>
 					<input
 						onChange={(e) => {
 							setDescription(e.target.value);
@@ -92,6 +121,36 @@ const Dash = (props: Props) => {
 						className={styles.button}
 						type="submit"
 						value="Edit description"
+					/>
+				</form>
+				<form onSubmit={handlePasswordSubmit}>
+					<h2>Change your password</h2>
+					<input
+						onChange={(e) => {
+							setPasswordOne(e.target.value);
+						}}
+						className={styles.input}
+						type="password"
+						value={passwordOne}
+						required
+						placeholder="Enter a strong and complicated password..."
+					/>
+					<br />
+					<input
+						onChange={(e) => {
+							setPasswordTwo(e.target.value);
+						}}
+						className={styles.input}
+						type="password"
+						value={passwordTwo}
+						required
+						placeholder="Enter that password again..."
+					/>
+					<br />
+					<input
+						className={styles.button}
+						type="submit"
+						value="Change password"
 					/>
 				</form>
 				<button className={styles.button} onClick={logoutHandler}>
