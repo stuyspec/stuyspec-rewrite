@@ -26,7 +26,6 @@ const Navbar = (props: defaultProps) => {
 		)[0].style.display = "inherit";
 	}
 
-	console.log("Token inside of navbar: ", props.token);
 	return (
 		<nav id={styles.nav}>
 			{/* <div id={styles.hamburgerMenu} className="button">
