@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { ThrownError } from "../../../ts_types/api_types";
 import { ReceivedStaff } from "../../../ts_types/db_types";
 import { login } from "../../../utils/authHelper";
+import { serialize } from "cookie";
 
 type ResponseStructure = {
 	message: string;
@@ -20,6 +21,12 @@ export default async function handler(
 
 		try {
 			const { user, token } = await login(email);
+
+			// Set cookie
+			res.setHeader(
+				"Set-Cookie",
+				serialize("token", token, { path: "/", httpOnly: true })
+			);
 
 			res.json({
 				message: "Successfully logged in this user: ",

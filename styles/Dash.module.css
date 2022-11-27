@@ -1,0 +1,16 @@
+#container {
+	width: 100%;
+	margin: auto;
+	padding: 1rem;
+	position: relative;
+	top: 25vh;
+
+	text-align: center;
+}
+
+#container > * {
+	margin: 1rem;
+}
+#heading {
+	font-size: var(--large-text);
+}
