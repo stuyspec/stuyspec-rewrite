@@ -62,9 +62,10 @@
 	opacity: 0.5;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 940px) {
 	#nav {
 		grid-template-columns: 48px calc(100% - 188px) 56px 56px;
+		column-gap: 1.5rem;
 	}
 	#logo_container {
 		font-size: 2rem;
@@ -104,6 +105,6 @@
 }
 
 #user_icon {
-	height: 30px;
-	width: 30px;
+	height: 36px;
+	width: 36px;
 }
