@@ -31,9 +31,12 @@ MyApp.getInitialProps = async (ctx: any) => {
 	try {
 		token = ctx.ctx.req.headers.cookie?.split("token=")[1] || null;
 	} catch (e: any) {
-		console.log("My app: ", ctx);
-		console.log(e);
-		console.log("Current token: ", token);
+		if (typeof window !== "undefined") {
+			console.log(
+				"Client! Get cookies by JS from document cookie storage"
+			);
+			token = window.document.cookie?.split("token=")[1];
+		}
 	}
 
 	return {

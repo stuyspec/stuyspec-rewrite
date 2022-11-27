@@ -25,7 +25,7 @@ export default async function handler(
 			// Set cookie
 			res.setHeader(
 				"Set-Cookie",
-				serialize("token", token, { path: "/", httpOnly: true })
+				serialize("token", token, { path: "/" })
 			);
 
 			res.json({
