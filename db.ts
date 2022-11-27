@@ -294,22 +294,15 @@ async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
 	return staff;
 }
 
-async function get_staff_by_query(query: any): Promise<ReceivedStaff> {
+async function UNSAFE_get_staff_by_query(
+	query: any
+): Promise<UnsafeReceivedStaff> {
 	const { db } = await connectToDatabase();
 	let staff_collection = await db.collection("staffs");
 
 	let staff = (
-		await staff_collection
-			.aggregate([
-				{ $match: query },
-				{
-					$project: {
-						password: 0,
-					},
-				},
-			])
-			.toArray()
-	)[0] as ReceivedStaff;
+		await staff_collection.aggregate([{ $match: query }]).toArray()
+	)[0] as UnsafeReceivedStaff;
 
 	return staff;
 }
@@ -320,7 +313,7 @@ async function update_staff_by_query(
 	const { db } = await connectToDatabase();
 	let staff_collection = await db.collection("staffs");
 
-	let staff = (
+	let UNSAFE_staff = (
 		await staff_collection.findOneAndUpdate(
 			{
 				_id: new ObjectId(_id),
@@ -332,6 +325,7 @@ async function update_staff_by_query(
 		)
 	).value as unknown as UnsafeReceivedStaff;
 
+	const staff = UNSAFE_staff as any;
 	delete staff.password;
 
 	return staff as ReceivedStaff;
@@ -347,6 +341,6 @@ export {
 	get_staff_by_id,
 	get_staff_by_position,
 	get_staff_by_slug,
-	get_staff_by_query,
+	UNSAFE_get_staff_by_query,
 	update_staff_by_query,
 };

@@ -1,9 +1,10 @@
-import { get_staff_by_id, get_staff_by_query } from "../db";
+import { get_staff_by_id, UNSAFE_get_staff_by_query } from "../db";
 import jwt from "jsonwebtoken";
 import { ReceivedStaff } from "../ts_types/db_types";
 import { ThrownError } from "../ts_types/api_types";
+import bcrypt from "bcryptjs";
 
-export async function login(email: string) {
+export async function login(email: string, password: string) {
 	if (!process.env.JWT_PRIVATE_KEY) {
 		const e = new ThrownError(
 			"PRIVATE KEY FOR JSONWEBTOKEN NOT SPECIFIED IN SERVER ENV"
@@ -14,24 +15,40 @@ export async function login(email: string) {
 	const JWT_PRIVATE_KEY = String(process.env.JWT_PRIVATE_KEY);
 
 	if (!email) {
-		const e = new ThrownError("Staff email not specified");
+		const e = new ThrownError("Staff account email not specified");
 		e.statusCode = 404;
 		throw e;
 	}
+	if (!password) {
+		const e = new ThrownError("Staff account password not specified");
+		e.statusCode = 400;
+		throw e;
+	}
 
-	const attempted_staff = (await get_staff_by_query({
+	const UNSAFE_attempted_staff = await UNSAFE_get_staff_by_query({
 		email,
-	})) as ReceivedStaff;
+	});
 
-	if (!attempted_staff) {
+	if (!UNSAFE_attempted_staff) {
 		const e = new ThrownError(`Staff with email of ${email} not found`);
 		e.statusCode = 404;
 		throw e;
 	}
 
-	const user = attempted_staff;
+	// Password authentication
+	const isPasswordCorrect = await bcrypt.compare(
+		password,
+		UNSAFE_attempted_staff.password
+	);
 
-	// TODO: Add password authentication
+	if (!isPasswordCorrect) {
+		const e = new ThrownError(`Password is incorrect`);
+		e.statusCode = 400;
+		throw e;
+	}
+
+	const user = UNSAFE_attempted_staff as any;
+	delete user.password; // do not return password hash
 
 	const token = jwt.sign(
 		{

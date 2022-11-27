@@ -18,9 +18,10 @@ export default async function handler(
 
 	if (method == "POST" || method == "GET") {
 		const email = body.email;
+		const password = body.password;
 
 		try {
-			const { user, token } = await login(email);
+			const { user, token } = await login(email, password);
 
 			// Set cookie
 			res.setHeader(

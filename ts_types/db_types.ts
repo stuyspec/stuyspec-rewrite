@@ -33,7 +33,7 @@ export interface ReceivedStaff {
 	slug: string;
 }
 export interface UnsafeReceivedStaff extends ReceivedStaff {
-	password?: string;
+	password: string;
 }
 
 export type Department =
