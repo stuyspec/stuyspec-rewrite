@@ -6,13 +6,14 @@ import { defaultProps } from "../ts_types/db_types";
 
 const Login = (props: defaultProps) => {
 	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const handleFormSubmit = async (e: FormEvent) => {
 		e.preventDefault();
-		if (email == "") {
+		if (email == "" || password == "") {
 			return;
 		}
-		console.log("Email: ", email);
-		const body = { email };
+
+		const body = { email, password };
 		const request = await fetch("/api/auth/login", {
 			method: "POST",
 			headers: {
@@ -50,7 +51,14 @@ const Login = (props: defaultProps) => {
 						placeholder="...@stuy.edu"
 					/>
 					<br />
-					{/* <input className={styles.input} type="password" required/> */}
+					<input
+						onChange={(e) => {
+							setPassword(e.target.value);
+						}}
+						className={styles.input}
+						type="password"
+						required
+					/>
 					<br />
 					<input className={styles.button} type="submit" />
 				</form>
