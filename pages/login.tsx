@@ -7,6 +7,9 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const handleFormSubmit = async (e: FormEvent) => {
 		e.preventDefault();
+		if (email == "") {
+			return;
+		}
 		console.log("Email: ", email);
 		const body = { email };
 		const request = await fetch("/api/auth/login", {
@@ -42,9 +45,11 @@ const Login = () => {
 						}}
 						className={styles.input}
 						type="email"
+						required
+						placeholder="...@stuy.edu"
 					/>
 					<br />
-					{/* <input className={styles.input} type="password" /> */}
+					{/* <input className={styles.input} type="password" required/> */}
 					<br />
 					<input className={styles.button} type="submit" />
 				</form>
