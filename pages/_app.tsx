@@ -27,8 +27,15 @@ function MyApp(props: MyAppProps) {
 }
 
 MyApp.getInitialProps = async (ctx: any) => {
-	const token: string | null =
-		ctx.ctx.req.headers.cookie?.split("token=")[1] || null;
+	let token: string | null = null;
+	try {
+		token = ctx.ctx.req.headers.cookie?.split("token=")[1] || null;
+	} catch (e: any) {
+		console.log("My app: ", ctx);
+		console.log(e);
+		console.log("Current token: ", token);
+	}
+
 	return {
 		token,
 	};

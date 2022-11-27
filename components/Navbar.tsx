@@ -51,6 +51,13 @@ const Navbar = (props: defaultProps) => {
 				<SubscribeButton />
 			</div>
 
+			<div>
+				{props.token ? (
+					<Link href="/login">user icon</Link>
+				) : (
+					<Link href="/login">Log in</Link>
+				)}
+			</div>
 			<ThemeToggle />
 			<CollapsibleSearch />
 		</nav>

@@ -2,8 +2,9 @@ import Head from "next/head";
 import { FormEvent, useState } from "react";
 import styles from "../styles/Login.module.css";
 import Router from "next/router";
+import { defaultProps } from "../ts_types/db_types";
 
-const Login = () => {
+const Login = (props: defaultProps) => {
 	const [email, setEmail] = useState("");
 	const handleFormSubmit = async (e: FormEvent) => {
 		e.preventDefault();
