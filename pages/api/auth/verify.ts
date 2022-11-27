@@ -7,6 +7,7 @@ type ResponseStructure = {
 	message: string;
 	user?: ReceivedStaff;
 	token?: string;
+	stack?: string;
 };
 
 export default async function handler(
@@ -30,6 +31,7 @@ export default async function handler(
 			res.statusCode = e.statusCode || 500;
 			res.json({
 				message: e.message,
+				stack: e.stack,
 			});
 		}
 	} else {

@@ -60,7 +60,7 @@ export async function verify(authValue: string | undefined) {
 		throw e;
 	}
 
-	const body_token = authValue.replaceAll(/Bearer: /g, "");
+	const body_token = String(authValue).replaceAll(/Bearer: /g, "");
 	const decoded: any = jwt.verify(body_token, JWT_PRIVATE_KEY);
 
 	if (decoded) {
