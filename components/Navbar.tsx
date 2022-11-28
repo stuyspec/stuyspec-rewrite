@@ -40,18 +40,24 @@ const Navbar = (props: defaultProps) => {
 				/>
 			</div> */}
 
-			<span id={styles.logo_container}>
+			<span
+				id={styles.logo_container}
+				className={styles.clickable_nav_element}
+			>
 				<Link passHref href="/">
 					<div>
 						<span id={styles.logo_the}>The </span>Spectator
 					</div>
 				</Link>
 			</span>
-			<div id={styles.subscribe_parent}>
+			<div
+				id={styles.subscribe_parent}
+				className={styles.clickable_nav_element}
+			>
 				<SubscribeButton />
 			</div>
 
-			<div>
+			<div className={styles.clickable_nav_element}>
 				{props.token ? (
 					<Link passHref href="/dash">
 						<span>
@@ -66,8 +72,12 @@ const Navbar = (props: defaultProps) => {
 					</Link>
 				)}
 			</div>
-			<ThemeToggle />
-			<CollapsibleSearch />
+			<div className={styles.clickable_nav_element}>
+				<ThemeToggle />
+			</div>
+			<div className={styles.clickable_nav_element}>
+				<CollapsibleSearch />
+			</div>
 		</nav>
 	);
 };

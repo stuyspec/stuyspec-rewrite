@@ -46,19 +46,22 @@
 #hamburgerMenu,
 #subscribe,
 #colorModeToggle,
-#searchButton {
+#searchButton,
+.clickable_nav_element {
 	transition: all 150ms ease;
 }
 #hamburgerMenu:hover,
 #subscribe:hover,
 #colorModeToggle:hover,
-#searchButton:hover {
+#searchButton:hover,
+.clickable_nav_element:hover {
 	opacity: 0.75;
 }
 #hamburgerMenu:active,
 #subscribe:active,
 #colorModeToggle:active,
-#searchButton:active {
+#searchButton:active,
+.clickable_nav_element:active {
 	opacity: 0.5;
 }
 
@@ -107,4 +110,8 @@
 .user_icon {
 	height: 36px;
 	width: 36px;
+}
+
+.clickable_nav_element {
+	cursor: pointer;
 }
