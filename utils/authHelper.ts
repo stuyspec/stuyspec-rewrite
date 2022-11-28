@@ -43,7 +43,7 @@ export async function login(email: string, password: string) {
 		UNSAFE_attempted_staff.first_time_login !== false // true or undefined count are valid
 	) {
 		if (password != UNSAFE_attempted_staff.name) {
-			// For first time login after migration, allow to login with first name and change password
+			// For first time login after migration, allow to login with full name (with capitalizations) and change password
 			const e = new ThrownError(`First time login password is incorrect`);
 			e.statusCode = 400;
 			throw e;
