@@ -184,56 +184,12 @@ async function get_articles_by_author(
 	author_id: mongoObjectId,
 	num?: number
 ): Promise<[ReceivedArticle]> {
-	const { db } = await connectToDatabase();
-	let articles_collection = await db.collection("articles");
-
-	const limit = num || 10;
-
-	// let articles = (
-	// 	await articles_collection
-	// 		.aggregate([
-	// 			{
-	// 				$match: {
-	// 					contributors: new ObjectId(String(author_id)),
-	// 				},
-	// 			},
-
-	// 			{
-	// 				$lookup: {
-	// 					from: "staffs",
-	// 					localField: "contributors",
-	// 					foreignField: "_id",
-	// 					as: "contributors",
-	// 				},
-	// 			},
-	// 			{
-	// 				$lookup: {
-	// 					from: "staffs",
-	// 					localField: "cover_image_contributor",
-	// 					foreignField: "_id",
-	// 					as: "cover_image_contributor",
-	// 				},
-	// 			},
-	// 			{
-	// 				$project: {
-	// 					contributors: { password: 0 },
-	// 					cover_image_contributor: { password: 0 },
-	// 				},
-	// 			},
-	// 		])
-
-	// 		.toArray()
-	// ).map(fixArticleCoverImage) as unknown as [ReceivedArticle];
-
-	// let articles = (
-	// 	await articles_collection.find({
-	// 		contributors: new ObjectId(String(author_id)),
-	// 	})
-	// ).toArray() as unknown as [ReceivedArticle];
-
-	let articles = await get_articles_by_query({
-		contributors: new ObjectId(String(author_id)),
-	});
+	let articles = await get_articles_by_query(
+		{
+			contributors: new ObjectId(String(author_id)),
+		},
+		num
+	);
 
 	return articles;
 }
