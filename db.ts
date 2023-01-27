@@ -4,6 +4,7 @@ import {
 	ReceivedStaff,
 	UnsafeReceivedStaff,
 	DepartmentsArray,
+	mongoObjectId,
 } from "./ts_types/db_types";
 import { ObjectId } from "mongodb";
 
@@ -179,21 +180,66 @@ async function get_article_by_slug(
 	return article;
 }
 
-// TODO: Find all articles by a contributor
-// async function get_articles_by_author(
-// 	author: string,
-// 	num?: number
-// ): Promise<[ReceivedArticle]> {
-// 	const { db } = await connectToDatabase();
-// 	let articles_collection = await db.collection("articles");
+async function get_articles_by_author(
+	author_id: mongoObjectId,
+	num?: number
+): Promise<[ReceivedArticle]> {
+	const { db } = await connectToDatabase();
+	let articles_collection = await db.collection("articles");
 
-// 	const limit = num || 10;
+	const limit = num || 10;
 
-// 	return articles;
-// }
+	// let articles = (
+	// 	await articles_collection
+	// 		.aggregate([
+	// 			{
+	// 				$match: {
+	// 					contributors: new ObjectId(String(author_id)),
+	// 				},
+	// 			},
+
+	// 			{
+	// 				$lookup: {
+	// 					from: "staffs",
+	// 					localField: "contributors",
+	// 					foreignField: "_id",
+	// 					as: "contributors",
+	// 				},
+	// 			},
+	// 			{
+	// 				$lookup: {
+	// 					from: "staffs",
+	// 					localField: "cover_image_contributor",
+	// 					foreignField: "_id",
+	// 					as: "cover_image_contributor",
+	// 				},
+	// 			},
+	// 			{
+	// 				$project: {
+	// 					contributors: { password: 0 },
+	// 					cover_image_contributor: { password: 0 },
+	// 				},
+	// 			},
+	// 		])
+
+	// 		.toArray()
+	// ).map(fixArticleCoverImage) as unknown as [ReceivedArticle];
+
+	// let articles = (
+	// 	await articles_collection.find({
+	// 		contributors: new ObjectId(String(author_id)),
+	// 	})
+	// ).toArray() as unknown as [ReceivedArticle];
+
+	let articles = await get_articles_by_query({
+		contributors: new ObjectId(String(author_id)),
+	});
+
+	return articles;
+}
 
 async function get_articles_by_query(
-	query: string,
+	query: any,
 	num?: number
 ): Promise<[ReceivedArticle]> {
 	const { db } = await connectToDatabase();
@@ -204,7 +250,7 @@ async function get_articles_by_query(
 	let articles = (
 		await articles_collection
 			.aggregate([
-				{ $search: query },
+				{ $match: query },
 
 				{
 					$lookup: {
@@ -336,7 +382,7 @@ export {
 	get_articles_by_department,
 	get_article_by_id,
 	get_article_by_slug,
-	// get_articles_by_author,
+	get_articles_by_author,
 	get_articles_by_query,
 	get_staff_by_id,
 	get_staff_by_position,

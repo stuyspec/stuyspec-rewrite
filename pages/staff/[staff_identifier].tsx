@@ -7,7 +7,11 @@ import {
 
 import { NextPageContext } from "next";
 import styles from "../../styles/[staff_id].module.css";
-import { get_staff_by_id, get_staff_by_slug } from "../../db";
+import {
+	get_articles_by_author,
+	get_staff_by_id,
+	get_staff_by_slug,
+} from "../../db";
 
 interface Props extends defaultProps {
 	staff_identifier: mongoObjectId;
@@ -49,6 +53,11 @@ export async function getServerSideProps(context: NextPageContext) {
 	} else {
 		staff = await get_staff_by_slug(staff_identifier); // Getting staff by slug is default, for legacy support
 	}
+
+	const staff_articles = await get_articles_by_author(staff._id);
+
+	console.log("ARTICLES BY THIS STAFF: ", staff_articles);
+
 	if (staff) {
 		return {
 			props: {
