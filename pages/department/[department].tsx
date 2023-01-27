@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
-import Image from "next/image";
+
 import {
 	defaultProps,
 	Department,
@@ -11,9 +11,7 @@ import {
 import { get_articles_by_department } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
-import Link from "next/link";
-import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
-import groupByImageExists from "../../utils/groupArticles";
+import GridArticleDisplay from "../../components/GridArticleDisplay";
 
 interface Props extends defaultProps {
 	articles: ReceivedArticle[];
@@ -21,10 +19,6 @@ interface Props extends defaultProps {
 }
 
 const Article = (props: Props) => {
-	const grouping = groupByImageExists(props.articles);
-	const articlesWithPhotos: ReceivedArticle[] = grouping["withPhotos"];
-	const articlesWithoutPhotos: ReceivedArticle[] = grouping["withoutPhotos"];
-
 	return (
 		<div>
 			<Head>
@@ -34,103 +28,7 @@ const Article = (props: Props) => {
 
 			<main id={styles.main}>
 				<h1 id={styles.departmentTitle}>{props.department_display}</h1>
-				<div>
-					{articlesWithPhotos.length > 0 ? (
-						<div className={styles.grid}>
-							{articlesWithPhotos.map((article) => (
-								<div
-									className={styles.item}
-									key={article._id as any}
-								>
-									<Link
-										href={"/article/" + article.slug}
-										passHref
-									>
-										<div className={styles.item_text}>
-											<Image
-												id={styles.image}
-												alt={
-													article.cover_image_summary
-												}
-												src={article.cover_image}
-												height="750"
-												width="750"
-											/>
-											<h2>{article.title}</h2>
-											<div className={styles.authors}>
-												{generate_contributors_jsx(
-													article.contributors
-												)}
-											</div>
-											<p className={styles.summary}>
-												{article.summary}
-											</p>
-											<p
-												className={
-													styles.article_volume_issue
-												}
-											>
-												{"Volume " +
-													article.volume +
-													" Issue " +
-													article.issue}
-											</p>
-										</div>
-									</Link>
-								</div>
-							))}
-						</div>
-					) : (
-						<div>
-							<h2>No articles were found with a photo.</h2>
-						</div>
-					)}
-				</div>
-
-				<div>
-					{articlesWithoutPhotos.length > 0 ? (
-						<div className={styles.grid}>
-							{articlesWithoutPhotos.map((article) => (
-								<div
-									className={styles.item}
-									key={article._id as any}
-									style={{ gridColumn: "span 2" }}
-								>
-									<Link
-										href={"/article/" + article.slug}
-										passHref
-									>
-										<div className={styles.item_text}>
-											<h2>{article.title}</h2>
-											<div className={styles.authors}>
-												{generate_contributors_jsx(
-													article.contributors
-												)}
-											</div>
-											<p className={styles.summary}>
-												{article.summary}
-											</p>
-											<p
-												className={
-													styles.article_volume_issue
-												}
-											>
-												{"Volume " +
-													article.volume +
-													" Issue " +
-													article.issue}
-											</p>
-										</div>
-									</Link>
-								</div>
-							))}
-						</div>
-					) : (
-						<div>
-							<h2>No articles were found without a photo.</h2>
-						</div>
-					)}
-				</div>
+				<GridArticleDisplay articles={props.articles} />
 			</main>
 		</div>
 	);

@@ -3,6 +3,7 @@ import {
 	defaultProps,
 	mongoObjectId,
 	ReceivedStaff,
+	ReceivedArticle,
 } from "../../ts_types/db_types";
 
 import { NextPageContext } from "next";
@@ -12,14 +13,17 @@ import {
 	get_staff_by_id,
 	get_staff_by_slug,
 } from "../../db";
+import GridArticleDisplay from "../../components/GridArticleDisplay";
 
 interface Props extends defaultProps {
 	staff_identifier: mongoObjectId;
 	staff: ReceivedStaff;
+	staff_articles: ReceivedArticle[];
 }
 
 const StaffMember = (props: Props) => {
 	const staff_member = props.staff;
+
 	return (
 		<div>
 			<Head>
@@ -37,6 +41,8 @@ const StaffMember = (props: Props) => {
 					{staff_member.email}
 				</a>
 				<p id={styles.description}>{staff_member.description}</p>
+
+				<GridArticleDisplay articles={props.staff_articles} />
 			</main>
 		</div>
 	);
@@ -54,7 +60,8 @@ export async function getServerSideProps(context: NextPageContext) {
 		staff = await get_staff_by_slug(staff_identifier); // Getting staff by slug is default, for legacy support
 	}
 
-	const staff_articles = await get_articles_by_author(staff._id);
+	let staff_articles = await get_articles_by_author(staff._id);
+	staff_articles = JSON.parse(JSON.stringify(staff_articles));
 
 	console.log("ARTICLES BY THIS STAFF: ", staff_articles);
 
@@ -63,6 +70,7 @@ export async function getServerSideProps(context: NextPageContext) {
 			props: {
 				staff: JSON.parse(JSON.stringify(staff)),
 				staff_identifier: staff_identifier,
+				staff_articles: staff_articles,
 			},
 		};
 	} else {

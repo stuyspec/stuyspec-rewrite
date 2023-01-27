@@ -1,0 +1,65 @@
+.grid {
+	margin: 2rem 8rem 4rem 8rem;
+	text-align: left;
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: auto;
+	grid-auto-flow: row;
+	gap: 2rem;
+}
+
+.item {
+	cursor: pointer;
+	transition: all ease 150ms;
+}
+.item:hover {
+	transform: scale(0.99);
+}
+.item:active {
+	transform: scale(0.9);
+}
+
+#image {
+	object-fit: cover;
+	width: 100%;
+	max-height: 56vh;
+}
+
+.authors,
+.summary,
+.article_volume_issue {
+	margin-top: 0.5rem;
+	font-family: var(--secondary-font);
+}
+
+.article_volume_issue {
+	color: var(--medium-grey);
+	font-size: calc(var(--small-text) * 0.8);
+}
+
+@media screen and (max-width: 1480px) {
+	.grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (max-width: 960px) {
+	.grid {
+		margin: 2rem;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	/* On mobile screen sizes, don't have active or hover effects, is far too distracting */
+	.item:hover {
+		transform: scale(1);
+	}
+	.item:active {
+		transform: scale(1);
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
