@@ -1,7 +1,7 @@
 import { ReceivedArticle, ReceivedStaff } from "../ts_types/db_types";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "../styles/gridArticleDisplay.module.css";
+import styles from "../styles/GridArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
 
