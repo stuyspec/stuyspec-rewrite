@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import {
 	defaultProps,
@@ -14,9 +13,7 @@ import {
 	get_staff_by_id,
 	get_staff_by_slug,
 } from "../../db";
-import GridArticleDisplay from "../../components/GridArticleDisplay";
-import Link from "next/link";
-import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
+import ListArticleDisplay from "../../components/ListArticleDisplay";
 
 interface Props extends defaultProps {
 	staff_identifier: mongoObjectId;
@@ -45,48 +42,7 @@ const StaffMember = (props: Props) => {
 				</a>
 				<p id={styles.description}>{staff_member.description}</p>
 
-				<section id={styles.list_view}>
-					{props.staff_articles.map((article) => (
-						<div className={styles.item} key={article._id as any}>
-							<Link href={"/article/" + article.slug} passHref>
-								<div className={styles.inner_item}>
-									<div className={styles.item_left}>
-										<h2>{article.title}</h2>
-										<div className={styles.authors}>
-											{generate_contributors_jsx(
-												article.contributors
-											)}
-										</div>
-										<p className={styles.summary}>
-											{article.summary}
-										</p>
-										<p
-											className={
-												styles.article_volume_issue
-											}
-										>
-											{"Volume " +
-												article.volume +
-												" Issue " +
-												article.issue}
-										</p>
-									</div>
-									{article.cover_image ? (
-										<img
-											width={"100%"}
-											id={styles.cover_image}
-											src={article.cover_image}
-											alt="Cover Image"
-											className={styles.image}
-										/>
-									) : (
-										<></>
-									)}
-								</div>
-							</Link>
-						</div>
-					))}
-				</section>
+				<ListArticleDisplay articles={props.staff_articles} />
 			</main>
 		</div>
 	);

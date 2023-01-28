@@ -27,32 +27,3 @@
 		display: block;
 	}
 }
-
-#list_view {
-	margin-top: 25px;
-}
-
-#list_view .item {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	border-top: 1px solid black;
-	padding-top: 15px;
-}
-
-#list_view .inner_item {
-	display: flex;
-	width: 100%;
-	justify-content: space-between;
-	min-height: 135px;
-}
-
-#list_view .image {
-	margin-left: 20px;
-	height: 135px;
-	width: auto;
-}
-@media screen and (max-width: 940px) {
-	#list_view .image {
-		display: none;
-	}
-}
