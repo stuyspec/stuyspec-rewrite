@@ -5,7 +5,7 @@
 #list_view .item {
 	margin-top: 15px;
 	margin-bottom: 15px;
-	border-top: 1px solid black;
+	border-top: 1px solid var(--primary);
 	padding-top: 15px;
 }
 
