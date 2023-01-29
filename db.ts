@@ -1,4 +1,5 @@
-import { connectToDatabase } from "./db_conn";
+import clientPromise from "./db_conn";
+
 import {
 	ReceivedArticle,
 	ReceivedStaff,
@@ -16,7 +17,7 @@ function fixArticleCoverImage(v: any) {
 // articles
 
 async function get_articles(num?: number): Promise<[ReceivedArticle]> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
@@ -58,7 +59,7 @@ async function get_articles_by_department(
 	department: string,
 	num?: number
 ): Promise<[ReceivedArticle]> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
@@ -101,7 +102,7 @@ async function get_articles_by_department(
 }
 
 async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let articles_collection = db.collection("articles");
 
 	const article = (
@@ -143,7 +144,7 @@ async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 async function get_article_by_slug(
 	article_slug: string
 ): Promise<ReceivedArticle> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 	let article = (
 		await articles_collection
@@ -198,7 +199,7 @@ async function get_articles_by_query(
 	query: any,
 	num?: number
 ): Promise<[ReceivedArticle]> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
@@ -239,7 +240,7 @@ async function get_articles_by_query(
 
 // staff
 async function get_staff_by_id(_id: string): Promise<ReceivedStaff> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let staff_collection = await db.collection("staffs");
 
 	let staff = (
@@ -259,7 +260,7 @@ async function get_staff_by_id(_id: string): Promise<ReceivedStaff> {
 }
 
 async function get_staff_by_slug(slug: string): Promise<ReceivedStaff> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let staff_collection = await db.collection("staffs");
 
 	let staff = (
@@ -278,7 +279,7 @@ async function get_staff_by_slug(slug: string): Promise<ReceivedStaff> {
 }
 
 async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let staff_collection = await db.collection("staffs");
 
 	let staff = (
@@ -299,7 +300,7 @@ async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
 async function UNSAFE_get_staff_by_query(
 	query: any
 ): Promise<UnsafeReceivedStaff> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let staff_collection = await db.collection("staffs");
 
 	let staff = (
@@ -312,7 +313,7 @@ async function update_staff_by_query(
 	_id: string,
 	update: any
 ): Promise<ReceivedStaff> {
-	const { db } = await connectToDatabase();
+	const db = (await clientPromise).db();
 	let staff_collection = await db.collection("staffs");
 
 	let UNSAFE_staff = (
