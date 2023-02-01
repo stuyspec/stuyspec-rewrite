@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Search from "../components/Search";
+import Script from "next/script";
 
 interface MyAppProps extends AppProps {
 	token: string | null;
@@ -21,6 +22,12 @@ function MyApp(props: MyAppProps) {
 					<Component {...pageProps} token={token} />
 				</div>
 				<Footer token={token} />
+				<Script
+					async
+					defer
+					data-website-id="a620d392-1679-4bc0-947b-2c0b32974fc3"
+					src="https://umami-fork-alpha.vercel.app/umami.js"
+				></Script>
 			</div>
 		</div>
 	);
