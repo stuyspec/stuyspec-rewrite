@@ -40,6 +40,19 @@ const Login = (props: defaultProps) => {
 
 			<main id={styles.container}>
 				<h1 id={styles.heading}>Login</h1>
+				<div id={styles.login_help}>
+					<p>
+						For contributors (writers, artists, or photographers)
+						logging in for the first time, your password is your
+						first and last name (not including your middle name).
+					</p>
+					<p>
+						For example, someone named John Martin Doe will have a
+						password of <i>John Doe</i>&nbsp;&nbsp;(including the
+						space and capatalization).
+					</p>
+				</div>
+
 				<form onSubmit={handleFormSubmit}>
 					<input
 						onChange={(e) => {
