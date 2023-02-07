@@ -8,6 +8,11 @@
 	src: url("/fonts/Lato/Lato-Regular.ttf") format("truetype");
 }
 
+@font-face {
+	font-family: "Old English Text MT";
+	src: url("/fonts/OldEnglishTextMT/OldEnglishTextMT.ttf") format("truetype");
+}
+
 :root {
 	--primary-immutable: #ffffff;
 	--accent: #4283e4;
