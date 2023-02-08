@@ -84,3 +84,8 @@
 	font-size: 1.2rem;
 	margin-top: 15px;
 }
+
+#issue_volume_text {
+	font-size: var(--small-text);
+	font-family: var(--secondary-font);
+}

@@ -54,14 +54,13 @@ const Article = (props: Props) => {
 						</Link>
 					</p>
 					<h1 id={styles.title}>{title}</h1>
-
+					<h3 id={styles.issue_volume_text}>
+						Issue {props.article.issue}, Volume{" "}
+						{props.article.volume}
+					</h3>
 					<div id={styles.infoBar}>
 						<h3 id={styles.authors}>
 							By&nbsp;{generate_contributors_jsx(contributors)}
-						</h3>
-						<h3 id={styles.authors}>
-							Issue {props.article.issue}, Volume{" "}
-							{props.article.volume}
 						</h3>
 
 						<div id={styles.shareButtons}>
