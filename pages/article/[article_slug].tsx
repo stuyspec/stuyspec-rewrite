@@ -59,6 +59,10 @@ const Article = (props: Props) => {
 						<h3 id={styles.authors}>
 							By&nbsp;{generate_contributors_jsx(contributors)}
 						</h3>
+						<h3 id={styles.authors}>
+							Issue {props.article.issue}, Volume{" "}
+							{props.article.volume}
+						</h3>
 
 						<div id={styles.shareButtons}>
 							{providers.map((provider) => (
