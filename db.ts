@@ -238,6 +238,26 @@ async function get_articles_by_query(
 	return articles;
 }
 
+async function get_media_by_author(author_id: mongoObjectId, num?: number) {
+	let articles = await get_articles_by_query(
+		{
+			cover_image_contributor: new ObjectId(String(author_id)),
+		},
+		num
+	);
+
+	const media = articles.map((v) => {
+		return {
+			cover_image: v.cover_image,
+			cover_image_summary: v.cover_image_summary,
+			cover_image_source: v.cover_image_source,
+			article_slug: v.slug,
+		};
+	});
+
+	return media;
+}
+
 // staff
 async function get_staff_by_id(_id: string): Promise<ReceivedStaff> {
 	const db = (await clientPromise).db();
@@ -346,4 +366,5 @@ export {
 	get_staff_by_slug,
 	UNSAFE_get_staff_by_query,
 	update_staff_by_query,
+	get_media_by_author,
 };

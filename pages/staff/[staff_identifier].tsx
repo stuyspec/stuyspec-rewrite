@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import {
 	defaultProps,
@@ -12,18 +13,25 @@ import {
 	get_articles_by_author,
 	get_staff_by_id,
 	get_staff_by_slug,
+	get_media_by_author,
 } from "../../db";
 import ListArticleDisplay from "../../components/ListArticleDisplay";
+import Link from "next/link";
 
 interface Props extends defaultProps {
 	staff_identifier: mongoObjectId;
 	staff: ReceivedStaff;
 	staff_articles: ReceivedArticle[];
+	staff_media: {
+		cover_image: string;
+		cover_image_summary: string;
+		cover_image_source: string;
+		article_slug: string;
+	}[];
 }
 
 const StaffMember = (props: Props) => {
 	const staff_member = props.staff;
-
 	return (
 		<div>
 			<Head>
@@ -43,6 +51,23 @@ const StaffMember = (props: Props) => {
 				<p id={styles.description}>{staff_member.description}</p>
 
 				<ListArticleDisplay articles={props.staff_articles} />
+
+				<h2>{props.staff.name}&apos;s art, photos, and other media:</h2>
+				<section id={styles.media_display}>
+					{props.staff_media.map((v, index) => (
+						<div key={index}>
+							<Link passHref href={"/article/" + v.article_slug}>
+								<img
+									src={v.cover_image}
+									alt={
+										v.cover_image_summary ||
+										`${props.staff.name}'s work`
+									}
+								/>
+							</Link>
+						</div>
+					))}
+				</section>
 			</main>
 		</div>
 	);
@@ -51,7 +76,7 @@ const StaffMember = (props: Props) => {
 export default StaffMember;
 
 export async function getServerSideProps(context: NextPageContext) {
-	let staff_identifier = String(context.query.staff_identifier);
+	let staff_identifier = String(context.query.staff_identifier).toLowerCase();
 
 	let staff: ReceivedStaff;
 	if (context.query.identifier_type == "id") {
@@ -63,7 +88,8 @@ export async function getServerSideProps(context: NextPageContext) {
 	let staff_articles = await get_articles_by_author(staff._id);
 	staff_articles = JSON.parse(JSON.stringify(staff_articles));
 
-	console.log("ARTICLES BY THIS STAFF: ", staff_articles);
+	let staff_media = await get_media_by_author(staff._id);
+	staff_media = JSON.parse(JSON.stringify(staff_media));
 
 	if (staff) {
 		return {
@@ -71,6 +97,7 @@ export async function getServerSideProps(context: NextPageContext) {
 				staff: JSON.parse(JSON.stringify(staff)),
 				staff_identifier: staff_identifier,
 				staff_articles: staff_articles,
+				staff_media: staff_media,
 			},
 		};
 	} else {

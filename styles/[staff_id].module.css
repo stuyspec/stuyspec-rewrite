@@ -27,3 +27,36 @@
 		display: block;
 	}
 }
+
+#media_display {
+	display: grid;
+	grid-template-columns: repeat(3, 32%);
+	grid-column-gap: 1%;
+	justify-content: space-between;
+	align-content: center;
+	margin-top: 15px;
+}
+
+#media_display div {
+	max-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+#media_display div img {
+	width: 100%;
+	cursor: pointer;
+}
+
+@media (max-width: 950px) {
+	#media_display {
+		grid-template-columns: repeat(2, 50%);
+	}
+}
+
+@media (max-width: 700px) {
+	#media_display {
+		grid-template-columns: repeat(1, 100%);
+	}
+}
