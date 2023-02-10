@@ -52,22 +52,34 @@ const StaffMember = (props: Props) => {
 
 				<ListArticleDisplay articles={props.staff_articles} />
 
-				<h2>{props.staff.name}&apos;s art, photos, and other media:</h2>
-				<section id={styles.media_display}>
-					{props.staff_media.map((v, index) => (
-						<div key={index}>
-							<Link passHref href={"/article/" + v.article_slug}>
-								<img
-									src={v.cover_image}
-									alt={
-										v.cover_image_summary ||
-										`${props.staff.name}'s work`
-									}
-								/>
-							</Link>
-						</div>
-					))}
-				</section>
+				{props.staff_media.length > 0 ? (
+					<>
+						<h2>
+							{props.staff.name}&apos;s art, photos, and other
+							media:
+						</h2>
+						<section id={styles.media_display}>
+							{props.staff_media.map((v, index) => (
+								<div key={index}>
+									<Link
+										passHref
+										href={"/article/" + v.article_slug}
+									>
+										<img
+											src={v.cover_image}
+											alt={
+												v.cover_image_summary ||
+												`${props.staff.name}'s work`
+											}
+										/>
+									</Link>
+								</div>
+							))}
+						</section>
+					</>
+				) : (
+					<></>
+				)}
 			</main>
 		</div>
 	);
