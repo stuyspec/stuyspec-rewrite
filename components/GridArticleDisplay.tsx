@@ -21,11 +21,11 @@ export default function GridArticleDisplay(props: {
 								className={styles.item}
 								key={article._id as any}
 							>
-								<Link
-									href={"/article/" + article.slug}
-									passHref
-								>
-									<div className={styles.item_text}>
+								<div className={styles.item_text}>
+									<Link
+										href={"/article/" + article.slug}
+										passHref
+									>
 										<Image
 											id={styles.image}
 											alt={article.cover_image_summary}
@@ -33,27 +33,40 @@ export default function GridArticleDisplay(props: {
 											height="750"
 											width="750"
 										/>
-										<h2>{article.title}</h2>
-										<div className={styles.authors}>
-											{generate_contributors_jsx(
-												article.contributors
-											)}
-										</div>
-										<p className={styles.summary}>
-											{article.summary}
-										</p>
+									</Link>
+									<Link
+										href={"/article/" + article.slug}
+										passHref
+									>
+										<h2 className="discrete-link">
+											{article.title}
+										</h2>
+									</Link>
+									<div className={styles.authors}>
+										{generate_contributors_jsx(
+											article.contributors
+										)}
+									</div>
+									<Link
+										href={"/article/" + article.slug}
+										passHref
+									>
 										<p
 											className={
-												styles.article_volume_issue
+												styles.summary +
+												" discrete-link"
 											}
 										>
-											{"Volume " +
-												article.volume +
-												" Issue " +
-												article.issue}
+											{article.summary}
 										</p>
-									</div>
-								</Link>
+									</Link>
+									<p className={styles.article_volume_issue}>
+										{"Volume " +
+											article.volume +
+											" Issue " +
+											article.issue}
+									</p>
+								</div>
 							</div>
 						))}
 					</div>

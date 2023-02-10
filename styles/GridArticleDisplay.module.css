@@ -13,12 +13,12 @@
 	cursor: pointer;
 	transition: all ease 150ms;
 }
-.item:hover {
+/* .item:hover {
 	transform: scale(0.99);
 }
 .item:active {
 	transform: scale(0.9);
-}
+} */
 
 #image {
 	object-fit: cover;
