@@ -140,8 +140,8 @@ const Home = (props: Props) => {
 									id={styles.down_arrow}
 									alt="down arrow"
 									src="/images/down-arrow.svg"
-									width="24px"
-									height="24px"
+									width={24}
+									height={24}
 								/>
 							</span>
 						</Link>

@@ -30,8 +30,8 @@ export default function GridArticleDisplay(props: {
 											id={styles.image}
 											alt={article.cover_image_summary}
 											src={article.cover_image}
-											height="750"
-											width="750"
+											height={750}
+											width={750}
 										/>
 									</Link>
 									<Link

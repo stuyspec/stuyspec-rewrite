@@ -40,9 +40,9 @@ const ThemeToggle = () => {
 			{theme === "dark" ? (
 				<Image
 					src="/images/light-mode-button.svg"
-					width="36px"
+					width={36}
 					alt="theme toggle button"
-					height="36px"
+					height={36}
 					onClick={toggleTheme}
 					id={styles.colorModeToggle}
 					className="button"
@@ -50,9 +50,9 @@ const ThemeToggle = () => {
 			) : (
 				<Image
 					src="/images/dark-mode-button.svg"
-					width="36px"
+					width={36}
 					alt="theme toggle button"
-					height="36px"
+					height={36}
 					onClick={toggleTheme}
 					id={styles.colorModeToggle}
 					className="button"
