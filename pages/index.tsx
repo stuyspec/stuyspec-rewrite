@@ -99,6 +99,7 @@ const Home = (props: Props) => {
 									id={styles.heroImage}
 									src={heroArticle.cover_image}
 									sizes="800px"
+									quality={90}
 									fill
 								/>
 							</Link>

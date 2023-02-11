@@ -83,6 +83,7 @@ const Article = (props: Props) => {
 									src={cover_image}
 									alt="Cover Image"
 									sizes="1100px"
+									quality={95}
 								/>
 							</div>
 							<div id={styles.coverImageInfo}>
