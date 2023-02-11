@@ -54,7 +54,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
 	const department_display = DepartmentsArrayDisplay[department_id];
 
-	let articles = await get_articles_by_department(department_param, 30);
+	let articles = await get_articles_by_department(department_param, 100);
 	if (articles) {
 		return {
 			props: {
