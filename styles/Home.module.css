@@ -118,11 +118,14 @@
 	font-family: var(--alternate-primary-font);
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 900px) {
 	#landingScreen {
 		height: auto;
 		display: flex;
 		flex-direction: column;
+	}
+	#main {
+		margin: 0.75rem;
 	}
 }
 
