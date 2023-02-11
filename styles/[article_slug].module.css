@@ -49,10 +49,21 @@
 
 #cover_image_div {
 	text-align: center;
-	width: 100%;
-
 	margin: auto;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	position: relative;
+	overflow: "hidden";
 }
+
+#cover_image {
+	object-fit: contain;
+	width: 100% !important;
+	position: relative !important;
+	height: unset !important;
+}
+
 #coverImageInfo {
 	color: var(--medium-grey);
 	font-family: var(--secondary-font);

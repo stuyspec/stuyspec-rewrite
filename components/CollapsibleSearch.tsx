@@ -28,8 +28,8 @@ const CollapsibleSearch = () => {
 						<Image
 							alt="Search"
 							src="/images/search-button.svg"
-							width="32px"
-							height="32px"
+							width={32}
+							height={32}
 							onClick={onSearchFocus}
 							className="button"
 						/>

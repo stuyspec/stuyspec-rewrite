@@ -44,9 +44,18 @@
 	margin-bottom: 20px;
 }
 
-#media_display div img {
-	width: 100%;
+.media {
 	cursor: pointer;
+	object-fit: contain;
+	width: 100% !important;
+	position: relative !important;
+	height: unset !important;
+}
+
+.media_container {
+	object-fit: contain;
+	position: relative;
+	width: 100%;
 }
 
 @media (max-width: 950px) {

@@ -77,11 +77,12 @@ const Article = (props: Props) => {
 					{cover_image /* Only check for cover image to decide visibility as some articles do not have image info */ ? (
 						<>
 							<div id={styles.cover_image_div}>
-								<img
-									width={"100%"}
+								<Image
+									fill
 									id={styles.cover_image}
 									src={cover_image}
 									alt="Cover Image"
+									sizes="1100px"
 								/>
 							</div>
 							<div id={styles.coverImageInfo}>

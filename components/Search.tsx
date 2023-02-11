@@ -29,8 +29,8 @@ const Search = () => {
 					<Image
 						src="/images/exit-button.svg"
 						alt="exit"
-						width="48px"
-						height="48px"
+						width={48}
+						height={48}
 						id={styles.exitButton}
 					/>
 				</div>
@@ -47,8 +47,8 @@ const Search = () => {
 						<Image
 							alt="send search"
 							src="/images/search-arrow.svg"
-							width="32px"
-							height="32px"
+							width={32}
+							height={32}
 						/>
 					</i>
 				</div>

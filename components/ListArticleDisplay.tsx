@@ -16,38 +16,48 @@ export default function ListArticleDisplay(props: {
 		<section id={styles.list_view}>
 			{props.articles.map((article) => (
 				<div className={styles.item} key={article._id as any}>
-					<Link href={"/article/" + article.slug} passHref>
-						<div className={styles.inner_item}>
-							<div className={styles.item_left}>
-								<h2>{article.title}</h2>
-								<div className={styles.authors}>
-									{generate_contributors_jsx(
-										article.contributors
-									)}
-								</div>
-								<p className={styles.summary}>
-									{article.summary}
-								</p>
-								<p className={styles.article_volume_issue}>
-									{"Volume " +
-										article.volume +
-										" Issue " +
-										article.issue}
-								</p>
+					<div className={styles.inner_item}>
+						<div className={styles.item_left}>
+							<h2>
+								<Link
+									href={"/article/" + article.slug}
+									className="discrete-link"
+								>
+									{article.title}
+								</Link>
+							</h2>
+							<div className={styles.authors}>
+								{generate_contributors_jsx(
+									article.contributors
+								)}
 							</div>
-							{article.cover_image ? (
-								<img
-									width={"100%"}
-									id={styles.cover_image}
-									src={article.cover_image}
-									alt="Cover Image"
-									className={styles.image}
-								/>
-							) : (
-								<></>
-							)}
+							<p className={styles.summary}>
+								<Link
+									href={"/article/" + article.slug}
+									className="discrete-link"
+								>
+									{article.summary}
+								</Link>
+							</p>
+							<p className={styles.article_volume_issue}>
+								{"Volume " +
+									article.volume +
+									" Issue " +
+									article.issue}
+							</p>
 						</div>
-					</Link>
+						{article.cover_image ? (
+							<img
+								width={"100%"}
+								id={styles.cover_image}
+								src={article.cover_image}
+								alt="Cover Image"
+								className={styles.image}
+							/>
+						) : (
+							<></>
+						)}
+					</div>
 				</div>
 			))}
 		</section>

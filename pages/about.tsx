@@ -3,6 +3,7 @@ import Head from "next/head";
 import styles from "../styles/AboutItemGrid.module.css";
 import Image from "next/image";
 import one_hundred_years_logo from "../public/images/100years_logo.png";
+import Link from "next/link";
 
 const AboutUs = (props: any) => {
 	const pages: Array<{
@@ -66,15 +67,17 @@ const AboutUs = (props: any) => {
 				<div id={styles.grid}>
 					{pages.map((page, key) => (
 						<div id={styles.item} key={key}>
-							<a href={`/about${page.link}`}>
-								<Image
-									id={styles.image}
-									alt="The Stuyvesant Spectator: 100 years of journalism"
-									src={one_hundred_years_logo}
-								/>
-								<h2>{page.name}</h2>
-								<p>{page.summary}</p>
-							</a>
+							<Link passHref href={`/about${page.link}`}>
+								<>
+									<Image
+										id={styles.image}
+										alt="The Stuyvesant Spectator: 100 years of journalism"
+										src={one_hundred_years_logo}
+									/>
+									<h2>{page.name}</h2>
+									<p>{page.summary}</p>
+								</>
+							</Link>
 						</div>
 					))}
 				</div>
