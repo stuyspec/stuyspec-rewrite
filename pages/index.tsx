@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
@@ -95,10 +94,11 @@ const Home = (props: Props) => {
 								passHref
 								href={"/article/" + heroArticle.slug}
 							>
-								<img
+								<Image
 									alt="big image"
 									id={styles.heroImage}
 									src={heroArticle.cover_image}
+									fill
 								/>
 							</Link>
 							<div id={styles.departmentBar}>
