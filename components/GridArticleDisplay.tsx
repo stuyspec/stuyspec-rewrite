@@ -26,13 +26,20 @@ export default function GridArticleDisplay(props: {
 										href={"/article/" + article.slug}
 										passHref
 									>
-										<Image
-											id={styles.image}
-											alt={article.cover_image_summary}
-											src={article.cover_image}
-											height={750}
-											width={750}
-										/>
+										<div className={styles.image_container}>
+											<Image
+												id={styles.image}
+												alt={
+													article.cover_image_summary ||
+													`Image for ${article.title} article`
+												}
+												src={article.cover_image}
+												fill
+												sizes="(min-width: 66em) 33vw,
+												(min-width: 44em) 50vw,
+												100vw"
+											/>
+										</div>
 									</Link>
 									<Link
 										href={"/article/" + article.slug}
@@ -86,32 +93,33 @@ export default function GridArticleDisplay(props: {
 								key={article._id as any}
 								style={{ gridColumn: "span 2" }}
 							>
-								<Link
-									href={"/article/" + article.slug}
-									passHref
-								>
-									<div className={styles.item_text}>
+								<div className={styles.item_text}>
+									<Link
+										href={"/article/" + article.slug}
+										passHref
+									>
 										<h2>{article.title}</h2>
-										<div className={styles.authors}>
-											{generate_contributors_jsx(
-												article.contributors
-											)}
-										</div>
+									</Link>
+									<div className={styles.authors}>
+										{generate_contributors_jsx(
+											article.contributors
+										)}
+									</div>
+									<Link
+										href={"/article/" + article.slug}
+										passHref
+									>
 										<p className={styles.summary}>
 											{article.summary}
 										</p>
-										<p
-											className={
-												styles.article_volume_issue
-											}
-										>
-											{"Volume " +
-												article.volume +
-												" Issue " +
-												article.issue}
-										</p>
-									</div>
-								</Link>
+									</Link>
+									<p className={styles.article_volume_issue}>
+										{"Volume " +
+											article.volume +
+											" Issue " +
+											article.issue}
+									</p>
+								</div>
 							</div>
 						))}
 					</div>
