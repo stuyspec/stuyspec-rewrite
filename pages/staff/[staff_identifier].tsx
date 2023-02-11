@@ -17,6 +17,7 @@ import {
 } from "../../db";
 import ListArticleDisplay from "../../components/ListArticleDisplay";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props extends defaultProps {
 	staff_identifier: mongoObjectId;
@@ -65,13 +66,17 @@ const StaffMember = (props: Props) => {
 										passHref
 										href={"/article/" + v.article_slug}
 									>
-										<img
-											src={v.cover_image}
-											alt={
-												v.cover_image_summary ||
-												`${props.staff.name}'s work`
-											}
-										/>
+										<div className={styles.media_container}>
+											<Image
+												className={styles.media}
+												src={v.cover_image}
+												alt={
+													v.cover_image_summary ||
+													`${props.staff.name}'s work`
+												}
+												fill
+											/>
+										</div>
 									</Link>
 								</div>
 							))}
