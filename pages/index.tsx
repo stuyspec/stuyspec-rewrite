@@ -98,6 +98,7 @@ const Home = (props: Props) => {
 									alt="big image"
 									id={styles.heroImage}
 									src={heroArticle.cover_image}
+									sizes="800px"
 									fill
 								/>
 							</Link>

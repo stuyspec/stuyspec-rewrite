@@ -75,6 +75,7 @@ const StaffMember = (props: Props) => {
 													`${props.staff.name}'s work`
 												}
 												fill
+												sizes="330px"
 											/>
 										</div>
 									</Link>
