@@ -55,8 +55,9 @@ const Article = (props: Props) => {
 					</p>
 					<h1 id={styles.title}>{title}</h1>
 					<h3 id={styles.issue_volume_text}>
-						Issue {props.article.issue}, Volume{" "}
-						{props.article.volume}
+						<Link href={`/volume/${volume}/issue/${issue}`}>
+							Issue {issue}, Volume {volume}
+						</Link>
 					</h3>
 					<div id={styles.infoBar}>
 						<h3 id={styles.authors}>

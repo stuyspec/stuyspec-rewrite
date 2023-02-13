@@ -40,10 +40,12 @@ export default function ListArticleDisplay(props: {
 								</Link>
 							</p>
 							<p className={styles.article_volume_issue}>
-								{"Volume " +
-									article.volume +
-									" Issue " +
-									article.issue}
+								<Link
+									href={`/volume/${article.volume}/issue/${article.issue}`}
+								>
+									Issue {article.issue}, Volume{" "}
+									{article.volume}
+								</Link>
 							</p>
 						</div>
 						{article.cover_image ? (

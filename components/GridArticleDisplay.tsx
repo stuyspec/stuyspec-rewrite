@@ -68,10 +68,12 @@ export default function GridArticleDisplay(props: {
 										</p>
 									</Link>
 									<p className={styles.article_volume_issue}>
-										{"Volume " +
-											article.volume +
-											" Issue " +
-											article.issue}
+										<Link
+											href={`/volume/${article.volume}/issue/${article.issue}`}
+										>
+											Issue {article.issue}, Volume{" "}
+											{article.volume}
+										</Link>
 									</p>
 								</div>
 							</div>
