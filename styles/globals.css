@@ -13,6 +13,34 @@
 	src: url("/fonts/OldEnglishTextMT/OldEnglishTextMT.ttf") format("truetype");
 }
 
+@font-face {
+	font-family: "Minion Pro";
+	src: url("/fonts/MinionPro/MinionPro_Regular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Minion Pro";
+	src: url("/fonts/MinionPro/MinionPro_Italic.ttf") format("truetype");
+	font-style: italic;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Minion Pro";
+	src: url("/fonts/MinionPro/MinionPro_Bold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: "Minion Pro";
+	src: url("/fonts/MinionPro/MinionPro_Bold_Italic.ttf") format("truetype");
+	font-style: italic;
+	font-weight: bold;
+}
+
 :root {
 	--primary-immutable: #ffffff;
 	--accent: #4283e4;
@@ -21,7 +49,7 @@
 	--small-text: 1rem;
 	--primary-font: "Playfair Display";
 	--secondary-font: "Lato";
-	--alternate-primary-font: Georgia;
+	--alternate-primary-font: "Minion Pro", Georgia;
 }
 
 .dark-mode {
