@@ -7,7 +7,6 @@ const Error = () => {
 			<Head>
 				<title>Error!</title>
 				<meta name="description" content="The Stuyvesant Spectator" />
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.main}>

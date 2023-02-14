@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Search from "../components/Search";
 import Script from "next/script";
+import Head from "next/head";
 
 interface MyAppProps extends AppProps {
 	token: string | null;
@@ -13,6 +14,9 @@ function MyApp(props: MyAppProps) {
 	let { Component, pageProps, token } = props;
 	return (
 		<div>
+			<Head>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 			<div>
 				<Search />
 				<div id="navbar">

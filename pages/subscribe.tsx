@@ -8,7 +8,6 @@ const Subscribe = () => {
 			<Head>
 				<title>Subscribe | The Spectator</title>
 				<meta name="description" content="The Stuyvesant Spectator" />
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.container}>

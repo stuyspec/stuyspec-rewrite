@@ -37,7 +37,6 @@ const StaffMember = (props: Props) => {
 		<div>
 			<Head>
 				<title>{staff_member.name}</title>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.main}>

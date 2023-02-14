@@ -98,7 +98,6 @@ const Dash = (props: Props) => {
 					name="description"
 					content="Staff dashboard for The Stuyvesant Spectator"
 				/>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.container}>

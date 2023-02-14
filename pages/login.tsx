@@ -35,7 +35,6 @@ const Login = (props: defaultProps) => {
 					name="description"
 					content="Staff login for The Stuyvesant Spectator"
 				/>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.container}>

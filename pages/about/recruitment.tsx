@@ -107,7 +107,6 @@ const RecruitmentPage = () => {
 		<>
 			<Head>
 				<title>Developers | The Spectator</title>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div id={styles.pageBody}>
 				<div id={styles.sidebar}>

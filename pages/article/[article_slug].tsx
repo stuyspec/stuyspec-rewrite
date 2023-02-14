@@ -38,7 +38,6 @@ const Article = (props: Props) => {
 		<div>
 			<Head>
 				<title>{title}</title>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.main}>

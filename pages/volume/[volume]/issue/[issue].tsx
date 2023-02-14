@@ -20,7 +20,6 @@ const Issue_Component = (props: Props) => {
 					name="description"
 					content={`Volume ${props.volume} Issue ${props.issue} by The Stuyvesant Spectator`}
 				/>
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.main}>

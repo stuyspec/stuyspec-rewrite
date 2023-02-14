@@ -12,16 +12,19 @@ const Fourzerofour = (props: any) => {
 			<Head>
 				<title>Error!</title>
 				<meta name="description" content="The Stuyvesant Spectator" />
-				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
 			<main id={styles.main}>
 				<h1>Error!</h1>
-                {location ? (
-                    <>
-                        <h2>The page <code>{location}</code> cannot be found.</h2>
-                        <Link passHref href="/"><div id={styles.button}>Back to Home</div></Link>
-                    </>
+				{location ? (
+					<>
+						<h2>
+							The page <code>{location}</code> cannot be found.
+						</h2>
+						<Link passHref href="/">
+							<div id={styles.button}>Back to Home</div>
+						</Link>
+					</>
 				) : (
 					<h2>This page doesn&apos;t exist!</h2>
 				)}
