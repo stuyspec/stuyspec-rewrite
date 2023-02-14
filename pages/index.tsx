@@ -5,11 +5,10 @@ import styles from "../styles/Home.module.css";
 import { get_articles } from "../db";
 import {
 	ReceivedArticle,
-	mongoObjectId,
-	ReceivedStaff,
 	defaultProps,
+	DepartmentsArray,
+	DepartmentsArrayDisplay,
 } from "../ts_types/db_types";
-import { all_sections } from "../globals/globals";
 import Separator from "../components/Separator";
 import dateFromID from "../utils/dateFromID";
 import generate_contributors_jsx from "../components/GenerateContributorsJSX";
@@ -62,7 +61,7 @@ const Home = (props: Props) => {
 					</Link>
 					<Link
 						href={`/department/${
-							all_sections[article_iterator.section_id]
+							DepartmentsArray[article_iterator.section_id]
 						}`}
 						passHref
 					>
@@ -71,7 +70,11 @@ const Home = (props: Props) => {
 							className="discrete-link"
 							style={{ fontFamily: "var(--secondary-font)" }}
 						>
-							{all_sections[article_iterator.section_id]}
+							{
+								DepartmentsArrayDisplay[
+									article_iterator.section_id
+								]
+							}
 						</p>
 					</Link>
 				</div>
@@ -106,11 +109,11 @@ const Home = (props: Props) => {
 							<div id={styles.departmentBar}>
 								<Link
 									href={`/department/${
-										all_sections[heroArticle.section_id]
+										DepartmentsArray[heroArticle.section_id]
 									}`}
 									passHref
 								>
-									{all_sections[heroArticle.section_id]}
+									{DepartmentsArray[heroArticle.section_id]}
 								</Link>
 							</div>
 						</div>

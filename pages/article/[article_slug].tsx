@@ -1,16 +1,17 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Image from "next/image";
-import { defaultProps, ReceivedArticle } from "../../ts_types/db_types";
+import {
+	defaultProps,
+	ReceivedArticle,
+	DepartmentsArrayDisplay,
+	DepartmentsArray,
+} from "../../ts_types/db_types";
 import { get_article_by_slug } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[article_slug].module.css";
-import { all_sections } from "../../globals/globals";
 import ShareButton from "../../components/ShareButton";
 import romanize from "../../utils/Romanize";
-import SubscribeForm from "../../components/SubscribeForm";
 import Link from "next/link";
-// import RecommendedArticles from "../../components/RecommendedArticles";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
 
 interface Props extends defaultProps {
@@ -46,11 +47,13 @@ const Article = (props: Props) => {
 						<Link
 							href={
 								"/department/" +
-								String(all_sections[section_id]).toLowerCase()
+								String(
+									DepartmentsArray[section_id]
+								).toLowerCase()
 							}
 							passHref
 						>
-							{all_sections[section_id]}
+							{DepartmentsArrayDisplay[section_id]}
 						</Link>
 					</p>
 					<h1 id={styles.title}>{title}</h1>
