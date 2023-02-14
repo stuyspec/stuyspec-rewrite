@@ -40,7 +40,14 @@
 	grid-row-start: 1;
 	grid-row-end: 7;
 	text-align: left;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
+
+#latestArticles::-webkit-scrollbar {
+	display: none;
+}
+
 #heroImage {
 	cursor: pointer;
 	object-fit: contain;
