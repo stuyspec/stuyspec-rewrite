@@ -29,7 +29,7 @@ function MyApp(props: MyAppProps) {
 				<Script
 					async
 					defer
-					data-website-id="a620d392-1679-4bc0-947b-2c0b32974fc3"
+					data-website-id="5e1e1ba5-caa7-45b6-b0e3-32770484ac70"
 					src="https://umami-fork-alpha.vercel.app/umami.js"
 				></Script>
 			</div>
