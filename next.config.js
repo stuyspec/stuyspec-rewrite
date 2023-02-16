@@ -16,6 +16,7 @@ module.exports = {
 			"image.isu.pub",
 			"cdn.discordapp.com",
 		],
+		unoptimized: true,
 	},
 	async headers() {
 		return [
