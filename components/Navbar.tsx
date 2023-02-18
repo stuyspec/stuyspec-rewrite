@@ -1,7 +1,7 @@
 import styles from "../styles/Navbar.module.css";
+import subscribe_button_styles from "../styles/SubscribeButton.module.css";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
-import SubscribeButton from "./SubscribeButton";
 import CollapsibleSearch from "./CollapsibleSearch";
 
 const Navbar = () => {
@@ -52,7 +52,9 @@ const Navbar = () => {
 				id={styles.subscribe_parent}
 				className={styles.clickable_nav_element}
 			>
-				<SubscribeButton />
+				<p id={subscribe_button_styles.subscribe}>
+					<Link href="/subscribe">Subscribe</Link>
+				</p>
 			</div>
 
 			<div className={styles.clickable_nav_element}>

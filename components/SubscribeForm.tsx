@@ -32,7 +32,7 @@ const SubscribeForm = () => {
 	};
 
 	return (
-		<>
+		<div className={styles.subscribe_form}>
 			<br />
 			<input
 				required
@@ -60,7 +60,7 @@ const SubscribeForm = () => {
 					Awesome sauce!!! You&apos;ve been subscribed!
 				</p>
 			)}
-		</>
+		</div>
 	);
 };
 
