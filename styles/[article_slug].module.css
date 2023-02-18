@@ -38,7 +38,7 @@
 }
 
 #main p {
-	font-family: var(--alternate-primary-font);
+	font-family: var(--primary-font);
 }
 
 #content p {
@@ -65,7 +65,6 @@
 }
 
 #coverImageInfo {
-	color: var(--medium-grey);
 	font-family: var(--secondary-font);
 }
 

@@ -16,7 +16,6 @@
 }
 #text {
 	font-size: var(--medium-text);
-	font-family: var(--alternate-primary-font);
 }
 
 #input {

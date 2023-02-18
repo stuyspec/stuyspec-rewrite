@@ -47,9 +47,8 @@
 	--large-text: 2.25rem;
 	--medium-text: 1.75rem;
 	--small-text: 1rem;
-	--primary-font: "Playfair Display";
+	--primary-font: "Minion Pro", Georgia;
 	--secondary-font: "Lato";
-	--alternate-primary-font: "Minion Pro", Georgia;
 }
 
 .dark-mode {

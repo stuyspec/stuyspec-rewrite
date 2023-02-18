@@ -21,6 +21,7 @@
 	text-align: left;
 	font-size: var(--medium-text);
 	color: var(--primary);
+	font-family: "Old English Text MT";
 }
 #mediaButtons {
 	display: grid;
@@ -96,7 +97,6 @@
 	width: calc(100% - 64px);
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	font-family: var(--alternate-primary-font);
 }
 #declarations p {
 	font-size: calc(var(--small-text) / 1.5);

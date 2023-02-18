@@ -13,7 +13,6 @@ export default function generate_contributors_jsx(
 					<span key={index}>
 						<Link
 							style={{
-								color: "var(--primary)",
 								fontFamily: "var(--secondary-font)",
 							}}
 							key={String(contributor._id)}

@@ -21,9 +21,6 @@
 #textCentered {
 	text-align: center;
 }
-#container p {
-	font-family: var(--alternate-primary-font);
-}
 
 @media screen and (max-width: 1120px) {
 	#container {
