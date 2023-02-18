@@ -112,7 +112,11 @@ const Home = (props: Props) => {
 									}`}
 									passHref
 								>
-									{DepartmentsArray[heroArticle.section_id]}
+									{
+										DepartmentsArrayDisplay[
+											heroArticle.section_id
+										]
+									}
 								</Link>
 							</div>
 						</div>
