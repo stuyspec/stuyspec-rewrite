@@ -1,7 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import {
-	defaultProps,
 	mongoObjectId,
 	ReceivedStaff,
 	ReceivedArticle,
@@ -19,7 +17,7 @@ import ListArticleDisplay from "../../components/ListArticleDisplay";
 import Link from "next/link";
 import Image from "next/image";
 
-interface Props extends defaultProps {
+interface Props {
 	staff_identifier: mongoObjectId;
 	staff: ReceivedStaff;
 	staff_articles: ReceivedArticle[];

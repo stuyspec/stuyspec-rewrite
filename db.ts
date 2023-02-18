@@ -317,43 +317,6 @@ async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
 	return staff;
 }
 
-async function UNSAFE_get_staff_by_query(
-	query: any
-): Promise<UnsafeReceivedStaff> {
-	const db = (await clientPromise).db();
-	let staff_collection = await db.collection("staffs");
-
-	let staff = (
-		await staff_collection.aggregate([{ $match: query }]).toArray()
-	)[0] as UnsafeReceivedStaff;
-
-	return staff;
-}
-async function update_staff_by_query(
-	_id: string,
-	update: any
-): Promise<ReceivedStaff> {
-	const db = (await clientPromise).db();
-	let staff_collection = await db.collection("staffs");
-
-	let UNSAFE_staff = (
-		await staff_collection.findOneAndUpdate(
-			{
-				_id: new ObjectId(_id),
-			},
-			{ $set: update },
-			{
-				returnDocument: "after",
-			}
-		)
-	).value as unknown as UnsafeReceivedStaff;
-
-	const staff = UNSAFE_staff as any;
-	delete staff.password;
-
-	return staff as ReceivedStaff;
-}
-
 export {
 	get_articles,
 	get_articles_by_department,
@@ -364,7 +327,5 @@ export {
 	get_staff_by_id,
 	get_staff_by_position,
 	get_staff_by_slug,
-	UNSAFE_get_staff_by_query,
-	update_staff_by_query,
 	get_media_by_author,
 };

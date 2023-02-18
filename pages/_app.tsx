@@ -6,12 +6,8 @@ import Search from "../components/Search";
 import Script from "next/script";
 import Head from "next/head";
 
-interface MyAppProps extends AppProps {
-	token: string | null;
-}
-
-function MyApp(props: MyAppProps) {
-	let { Component, pageProps, token } = props;
+function MyApp(props: AppProps) {
+	let { Component, pageProps } = props;
 	return (
 		<div>
 			<Head>
@@ -20,12 +16,12 @@ function MyApp(props: MyAppProps) {
 			<div>
 				<Search />
 				<div id="navbar">
-					<Navbar token={token} />
+					<Navbar />
 				</div>
 				<div id="main">
-					<Component {...pageProps} token={token} />
+					<Component {...pageProps} />
 				</div>
-				<Footer token={token} />
+				<Footer />
 				<Script
 					async
 					defer
@@ -36,23 +32,5 @@ function MyApp(props: MyAppProps) {
 		</div>
 	);
 }
-
-MyApp.getInitialProps = async (ctx: any) => {
-	let token: string | null = null;
-	try {
-		token = ctx.ctx.req.headers.cookie?.split("token=")[1] || null;
-	} catch (e: any) {
-		if (typeof window !== "undefined") {
-			console.log(
-				"Client! Get cookies by JS from document cookie storage"
-			);
-			token = window.document.cookie?.split("token=")[1];
-		}
-	}
-
-	return {
-		token,
-	};
-};
 
 export default MyApp;

@@ -3,9 +3,9 @@ import Head from "next/head";
 import GridArticleDisplay from "../../../../components/GridArticleDisplay";
 import { get_articles_by_query } from "../../../../db";
 import styles from "../../../../styles/Issue.module.css";
-import { defaultProps, ReceivedArticle } from "../../../../ts_types/db_types";
+import { ReceivedArticle } from "../../../../ts_types/db_types";
 
-interface Props extends defaultProps {
+interface Props {
 	articles: ReceivedArticle[];
 	volume: number;
 	issue: number;

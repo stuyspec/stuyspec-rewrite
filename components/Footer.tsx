@@ -11,9 +11,8 @@ import {
 	BsLinkedin,
 	BsGithub,
 } from "react-icons/bs";
-import { defaultProps } from "../ts_types/db_types";
 
-const Footer = (props: defaultProps) => {
+const Footer = () => {
 	const [images, setImages] = useState([]);
 	const year = new Date().getFullYear();
 	const getImages = async () => {

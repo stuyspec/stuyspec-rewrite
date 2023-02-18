@@ -71,7 +71,3 @@ export const DepartmentsArrayDisplay = [
 	"Media",
 	"Spec+",
 ];
-
-export interface defaultProps {
-	token: string | null;
-}

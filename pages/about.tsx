@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import styles from "../styles/AboutItemGrid.module.css";
 import Image from "next/image";

@@ -1,6 +1,5 @@
 import Head from "next/head";
 import {
-	defaultProps,
 	Department,
 	DepartmentsArray,
 	DepartmentsArrayDisplay,
@@ -11,7 +10,7 @@ import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
 import GridArticleDisplay from "../../components/GridArticleDisplay";
 
-interface Props extends defaultProps {
+interface Props {
 	articles: ReceivedArticle[];
 	department_display: string;
 }

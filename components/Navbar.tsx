@@ -3,10 +3,8 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import SubscribeButton from "./SubscribeButton";
 import CollapsibleSearch from "./CollapsibleSearch";
-import { defaultProps } from "../ts_types/db_types";
-import { FaUserCircle } from "react-icons/fa";
-import { MdOutlineLogin } from "react-icons/md";
-const Navbar = (props: defaultProps) => {
+
+const Navbar = () => {
 	function toggleMenu() {}
 
 	function enableSearch() {
@@ -57,21 +55,6 @@ const Navbar = (props: defaultProps) => {
 				<SubscribeButton />
 			</div>
 
-			<div className={styles.clickable_nav_element}>
-				{props.token ? (
-					<Link passHref href="/dash">
-						<span>
-							<FaUserCircle className={styles.user_icon} />
-						</span>
-					</Link>
-				) : (
-					<Link passHref href="/login">
-						<span>
-							<MdOutlineLogin className={styles.user_icon} />
-						</span>
-					</Link>
-				)}
-			</div>
 			<div className={styles.clickable_nav_element}>
 				<ThemeToggle />
 			</div>

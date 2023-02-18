@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import {
-	defaultProps,
 	ReceivedArticle,
 	DepartmentsArrayDisplay,
 	DepartmentsArray,
@@ -14,7 +13,7 @@ import romanize from "../../utils/Romanize";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
 
-interface Props extends defaultProps {
+interface Props {
 	article: ReceivedArticle;
 }
 

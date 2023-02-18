@@ -5,14 +5,13 @@ import styles from "../styles/Home.module.css";
 import { get_articles } from "../db";
 import {
 	ReceivedArticle,
-	defaultProps,
 	DepartmentsArray,
 	DepartmentsArrayDisplay,
 } from "../ts_types/db_types";
 import Separator from "../components/Separator";
 import dateFromID from "../utils/dateFromID";
 import generate_contributors_jsx from "../components/GenerateContributorsJSX";
-interface Props extends defaultProps {
+interface Props {
 	articles: [ReceivedArticle];
 }
 
