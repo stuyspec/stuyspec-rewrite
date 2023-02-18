@@ -9,7 +9,6 @@ import { get_article_by_slug } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[article_slug].module.css";
 import ShareButton from "../../components/ShareButton";
-import romanize from "../../utils/Romanize";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
 
@@ -112,20 +111,6 @@ const Article = (props: Props) => {
 						id={styles.content}
 						dangerouslySetInnerHTML={{ __html: text }}
 					></div>
-					<p
-						style={{
-							fontStyle: "italic",
-							paddingBottom: "0.5rem",
-							borderBottom: "2px solid var(--light-grey)",
-						}}
-					>
-						Article appears in print in Volume {romanize(volume)},
-						Issue {issue}
-					</p>
-
-					{/* <div id={styles.subsribe_insert}>
-						<SubscribeForm />
-					</div> */}
 
 					{/* <RecommendedArticles /> */}
 				</div>
