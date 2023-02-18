@@ -35,14 +35,6 @@
 
 	transition: all 150ms ease;
 }
-#mediaButton:hover {
-	transform: scale(1.05);
-	opacity: 0.9;
-}
-#mediaButton:active {
-	transform: scale(0.95);
-	opacity: 0.5;
-}
 
 #separator {
 	width: 100%;

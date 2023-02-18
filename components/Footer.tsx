@@ -33,26 +33,21 @@ const Footer = () => {
 						<Link href="/">The Spectator</Link>
 					</h1>
 					<div id={styles.mediaButtons}>
-						<BsSpotify
-							href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb"
-							id={styles.mediaButton}
-						/>
-						<BsFacebook
-							href="https://www.facebook.com/stuyspectator"
-							id={styles.mediaButton}
-						/>
-						<BsInstagram
-							href="https://www.instagram.com/stuyspectator/"
-							id={styles.mediaButton}
-						/>
-						<BsLinkedin
-							href="https://www.linkedin.com/company/the-stuyvesant-spectator"
-							id={styles.mediaButton}
-						/>
-						<BsGithub
-							href="https://github.com/stuyspec"
-							id={styles.mediaButton}
-						/>
+						<Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
+							<BsSpotify id={styles.mediaButton} />
+						</Link>
+						<Link href="https://www.facebook.com/stuyspectator">
+							<BsFacebook id={styles.mediaButton} />
+						</Link>
+						<Link href="https://www.instagram.com/stuyspectator/">
+							<BsInstagram id={styles.mediaButton} />
+						</Link>
+						<Link href="https://www.linkedin.com/company/the-stuyvesant-spectator">
+							<BsLinkedin id={styles.mediaButton} />
+						</Link>
+						<Link href="https://github.com/stuyspec">
+							<BsGithub id={styles.mediaButton} />
+						</Link>
 					</div>
 				</div>
 				<div id={styles.separator}></div>
