@@ -52,9 +52,9 @@ const Navbar = () => {
 				id={styles.subscribe_parent}
 				className={styles.clickable_nav_element}
 			>
-				<p id={subscribe_button_styles.subscribe}>
-					<Link href="/subscribe">Subscribe</Link>
-				</p>
+				<Link href="/subscribe">
+					<p id={subscribe_button_styles.subscribe}>Subscribe</p>
+				</Link>
 			</div>
 
 			<div className={styles.clickable_nav_element}>
