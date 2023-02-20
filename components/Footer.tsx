@@ -29,9 +29,9 @@ const Footer = () => {
 		<>
 			<footer id={styles.footer}>
 				<div id={styles.socialsBar}>
-					<h1 id={styles.logo}>
+					<p id={styles.logo}>
 						<Link href="/">The Spectator</Link>
-					</h1>
+					</p>
 					<div id={styles.mediaButtons}>
 						<Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
 							<BsSpotify id={styles.mediaButton} />
