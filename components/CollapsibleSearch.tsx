@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
+import Router from "next/router";
 
 const CollapsibleSearch = () => {
 	const [searchValue, setSearchValue] = useState("");
 	const [searchBar, setSearchBar] = useState(false);
+	const textInput = useRef<HTMLInputElement>(null);
 
 	const onSearchBlur = () => {
 		setSearchBar(false);
@@ -11,13 +13,19 @@ const CollapsibleSearch = () => {
 
 	const onSearchFocus = () => {
 		setSearchBar(true);
+		// Set timeout for 1ms to focus text input AFTER it renders
+		setTimeout(() => {
+			textInput.current?.focus();
+		}, 1);
 	};
-	function submitSearchRequest() {}
+	function submitSearchRequest() {
+		Router.push(String("/search?query=" + searchValue));
+	}
 
 	return (
 		<>
 			<div className="field">
-				<div className="control">
+				<form className="control" onSubmit={submitSearchRequest}>
 					<div
 						style={{
 							display: searchBar ? "none" : "block",
@@ -48,9 +56,10 @@ const CollapsibleSearch = () => {
 						onFocus={onSearchFocus}
 						onChange={(e) => setSearchValue(e.target.value)}
 						onBlur={onSearchBlur}
-						onSubmit={submitSearchRequest}
+						autoFocus
+						ref={textInput}
 					/>
-				</div>
+				</form>
 			</div>
 		</>
 	);

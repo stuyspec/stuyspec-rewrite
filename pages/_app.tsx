@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Search from "../components/Search";
 import Script from "next/script";
 import Head from "next/head";
 
@@ -14,7 +13,6 @@ function MyApp(props: AppProps) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div>
-				<Search />
 				<div id="navbar">
 					<Navbar />
 				</div>

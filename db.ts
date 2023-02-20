@@ -237,6 +237,57 @@ async function get_articles_by_query(
 	).map(fixArticleCoverImage) as [ReceivedArticle];
 	return articles;
 }
+async function get_articles_by_string_query(
+	query: string,
+	num?: number
+): Promise<[ReceivedArticle]> {
+	const db = (await clientPromise).db();
+	let articles_collection = await db.collection("articles");
+
+	const limit = num || 10;
+
+	let articles = (
+		await articles_collection
+			.aggregate([
+				{
+					$search: {
+						index: "articles_search_index",
+						text: {
+							query: query,
+							path: {
+								wildcard: "*",
+							},
+						},
+					},
+				},
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "contributors",
+						foreignField: "_id",
+						as: "contributors",
+					},
+				},
+				{
+					$lookup: {
+						from: "staffs",
+						localField: "cover_image_contributor",
+						foreignField: "_id",
+						as: "cover_image_contributor",
+					},
+				},
+				{
+					$project: {
+						contributors: { password: 0 },
+						cover_image_contributor: { password: 0 },
+					},
+				},
+			])
+			.limit(limit)
+			.toArray()
+	).map(fixArticleCoverImage) as [ReceivedArticle];
+	return articles;
+}
 
 async function get_media_by_author(author_id: mongoObjectId, num?: number) {
 	let articles = await get_articles_by_query(
@@ -328,4 +379,5 @@ export {
 	get_staff_by_position,
 	get_staff_by_slug,
 	get_media_by_author,
+	get_articles_by_string_query,
 };
