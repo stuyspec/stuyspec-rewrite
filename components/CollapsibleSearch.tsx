@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import Image from "next/image";
 import Router from "next/router";
 
@@ -18,7 +18,8 @@ const CollapsibleSearch = () => {
 			textInput.current?.focus();
 		}, 1);
 	};
-	function submitSearchRequest() {
+	function submitSearchRequest(e: FormEvent) {
+		e.preventDefault();
 		Router.push(String("/search?query=" + searchValue));
 	}
 
