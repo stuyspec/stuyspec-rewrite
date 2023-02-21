@@ -26,7 +26,7 @@ const Home = (props: Props) => {
 export default Home;
 
 export async function getServerSideProps() {
-	let articles = await get_articles(20);
+	let articles = await get_articles(19);
 	return {
 		props: { articles: JSON.parse(JSON.stringify(articles)) },
 	};
