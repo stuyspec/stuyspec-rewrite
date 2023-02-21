@@ -1,3 +1,11 @@
+#main {
+	height: auto;
+	padding-bottom: 2rem;
+	width: 95vw;
+	max-width: 1600px;
+	margin: auto;
+}
+
 #departmentTitle {
 	margin-top: 2rem;
 	text-align: center;

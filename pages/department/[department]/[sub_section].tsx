@@ -8,7 +8,7 @@ import {
 import { get_articles_by_query } from "../../../db";
 import { NextPageContext } from "next";
 import styles from "../../../styles/[department].module.css";
-import GridArticleDisplay from "../../../components/GridArticleDisplay";
+import MixedArticleDisplay from "../../../components/MixedArticleDisplay";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -27,7 +27,7 @@ const SubSection = (props: Props) => {
 				<h1 id={styles.departmentTitle}>
 					{props.sub_section} by {props.department}
 				</h1>
-				<GridArticleDisplay articles={props.articles} />
+				<MixedArticleDisplay articles={props.articles} />
 			</main>
 		</div>
 	);
@@ -55,7 +55,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
 	let articles = await get_articles_by_query(
 		{ sub_section: sub_section_param },
-		100
+		19
 	);
 	if (articles.length > 0) {
 		return {

@@ -8,7 +8,7 @@ import {
 import { get_articles_by_department } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
-import GridArticleDisplay from "../../components/GridArticleDisplay";
+import MixedArticleDisplay from "../../components/MixedArticleDisplay";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -24,7 +24,7 @@ const Article = (props: Props) => {
 
 			<main id={styles.main}>
 				<h1 id={styles.departmentTitle}>{props.department_display}</h1>
-				<GridArticleDisplay articles={props.articles} />
+				<MixedArticleDisplay articles={props.articles} />
 			</main>
 		</div>
 	);
@@ -50,7 +50,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
 	const department_display = DepartmentsArrayDisplay[department_id];
 
-	let articles = await get_articles_by_department(department_param, 100);
+	let articles = await get_articles_by_department(department_param, 19);
 	if (articles.length > 0) {
 		return {
 			props: {
