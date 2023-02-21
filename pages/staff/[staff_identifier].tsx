@@ -52,7 +52,7 @@ const StaffMember = (props: Props) => {
 
 				{props.staff_media.length > 0 ? (
 					<>
-						<h2>
+						<h2 id={styles.media_subheading}>
 							{props.staff.name}&apos;s art, photos, and other
 							media:
 						</h2>

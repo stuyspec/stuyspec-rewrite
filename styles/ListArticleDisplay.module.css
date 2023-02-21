@@ -21,6 +21,10 @@
 	height: 135px;
 	width: auto;
 }
+
+#list_view h2 {
+	margin-top: 1rem;
+}
 @media screen and (max-width: 940px) {
 	#list_view .image {
 		display: none;

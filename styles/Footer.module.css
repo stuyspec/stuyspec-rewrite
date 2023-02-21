@@ -6,6 +6,10 @@
 	background-color: var(--light-grey);
 }
 
+#footer h3 {
+	margin-top: 1rem;
+}
+
 /* socials bar */
 #socialsBar {
 	margin: 0 0 16px 16px;

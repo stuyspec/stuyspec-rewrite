@@ -90,12 +90,6 @@ a {
 	text-decoration: none;
 }
 
-h2,
-h3,
-li {
-	margin-top: 16px;
-}
-
 * {
 	box-sizing: border-box;
 	margin: 0;

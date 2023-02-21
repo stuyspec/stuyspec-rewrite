@@ -44,6 +44,10 @@
 	margin-bottom: 20px;
 }
 
+#media_subheading {
+	margin-top: 1rem;
+}
+
 .media {
 	cursor: pointer;
 	object-fit: contain;

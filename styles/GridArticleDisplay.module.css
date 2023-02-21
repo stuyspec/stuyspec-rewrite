@@ -13,6 +13,11 @@
 	cursor: pointer;
 	transition: all ease 150ms;
 }
+
+.item h2 {
+	margin-top: 1rem;
+}
+
 /* .item:hover {
 	transform: scale(0.99);
 }
