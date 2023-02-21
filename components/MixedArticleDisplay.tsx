@@ -78,12 +78,17 @@ function CenterArticle(props: {
 export default function MixedArticleDisplay(props: {
 	articles: ReceivedArticle[];
 }) {
+	const num_articles_each_side = 8;
+	const num_articles_with_images = 3;
 	const grouping = groupByImageExists(props.articles);
 	const articlesWithPhotos: ReceivedArticle[] = grouping["withPhotos"]
 		.sort((a, b) => b.volume - a.volume)
-		.sort((a, b) => b.issue - a.issue);
-	const articlesWithoutPhotos: ReceivedArticle[] = grouping["withoutPhotos"];
-	const num_articles_each_side = 5;
+		.sort((a, b) => b.issue - a.issue)
+		.slice(0)
+		.slice(0, num_articles_with_images);
+	const articlesWithoutPhotos: ReceivedArticle[] = grouping[
+		"withoutPhotos"
+	].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
 
 	return (
 		<div id={styles.mixed_article_view}>
@@ -95,7 +100,7 @@ export default function MixedArticleDisplay(props: {
 						<CenterArticle key={index} article={article} />
 					))}
 			</section>
-			<section id={styles.center}>
+			<section id={styles.center_desktop}>
 				<div className={styles.top}>
 					{articlesWithPhotos
 						.slice(0)
@@ -111,7 +116,7 @@ export default function MixedArticleDisplay(props: {
 				<div className={styles.bottom}>
 					{articlesWithPhotos
 						.slice(0)
-						.slice(1, 3)
+						.slice(1, num_articles_with_images)
 						.map((article_iterator, index) => (
 							<CenterArticle
 								key={index}
@@ -127,6 +132,18 @@ export default function MixedArticleDisplay(props: {
 					.slice(num_articles_each_side, num_articles_each_side * 2)
 					.map((article, index) => (
 						<CenterArticle key={index} article={article} />
+					))}
+			</section>
+			<section id={styles.top_mobile}>
+				{articlesWithPhotos
+					.slice(0)
+					.slice(0, num_articles_with_images)
+					.map((article_iterator, index) => (
+						<CenterArticle
+							key={index}
+							article={article_iterator}
+							display_image
+						/>
 					))}
 			</section>
 		</div>
