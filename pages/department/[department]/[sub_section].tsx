@@ -57,7 +57,7 @@ export async function getServerSideProps(context: NextPageContext) {
 		{ sub_section: sub_section_param },
 		100
 	);
-	if (articles) {
+	if (articles.length > 0) {
 		return {
 			props: {
 				articles: JSON.parse(JSON.stringify(articles)),

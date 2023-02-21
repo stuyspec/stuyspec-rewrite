@@ -51,7 +51,7 @@ export async function getServerSideProps(context: NextPageContext) {
 	const department_display = DepartmentsArrayDisplay[department_id];
 
 	let articles = await get_articles_by_department(department_param, 100);
-	if (articles) {
+	if (articles.length > 0) {
 		return {
 			props: {
 				articles: JSON.parse(JSON.stringify(articles)),
