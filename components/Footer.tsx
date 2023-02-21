@@ -85,7 +85,7 @@ const Footer = () => {
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/department/features/911">
+								<Link href="/department/features/9-11">
 									9/11
 								</Link>
 							</p>
@@ -149,12 +149,12 @@ const Footer = () => {
 								<Link href="/department/sports">Sports</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/department/sports/professional">
+								<Link href="/department/sports/professional-sports">
 									Professional Sports
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/department/sports/at-stuy">
+								<Link href="/department/sports/sports-at-stuyvesant">
 									Sports At Stuy
 								</Link>
 							</p>
@@ -200,7 +200,7 @@ const Footer = () => {
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/department/ae/theatere">
+								<Link href="/department/ae/theater">
 									Theater
 								</Link>
 							</p>
@@ -210,7 +210,7 @@ const Footer = () => {
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/department/ae/sing">SING!</Link>
+								<Link href="/department/ae/sing!">SING!</Link>
 							</p>
 							<p id={styles.subdepartment}>
 								<Link href="/department/ae/stc">STC</Link>
