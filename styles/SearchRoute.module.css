@@ -3,3 +3,7 @@
 	max-width: 1000px;
 	margin: auto;
 }
+
+#main h2 {
+	margin-top: 2rem;
+}
