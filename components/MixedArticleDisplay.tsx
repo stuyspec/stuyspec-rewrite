@@ -78,17 +78,14 @@ function CenterArticle(props: {
 export default function MixedArticleDisplay(props: {
 	articles: ReceivedArticle[];
 }) {
-	const num_articles_each_side = 8;
-	const num_articles_with_images = 3;
 	const grouping = groupByImageExists(props.articles);
 	const articlesWithPhotos: ReceivedArticle[] = grouping["withPhotos"]
 		.sort((a, b) => b.volume - a.volume)
-		.sort((a, b) => b.issue - a.issue)
-		.slice(0)
-		.slice(0, num_articles_with_images);
-	const articlesWithoutPhotos: ReceivedArticle[] = grouping[
-		"withoutPhotos"
-	].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
+		.sort((a, b) => b.issue - a.issue);
+
+	const articlesWithoutPhotos: ReceivedArticle[] = grouping["withoutPhotos"];
+	// ].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
+	const num_articles_each_side = Math.floor(articlesWithoutPhotos.length / 2);
 
 	return (
 		<div id={styles.mixed_article_view}>
@@ -116,7 +113,7 @@ export default function MixedArticleDisplay(props: {
 				<div className={styles.bottom}>
 					{articlesWithPhotos
 						.slice(0)
-						.slice(1, num_articles_with_images)
+						.slice(1)
 						.map((article_iterator, index) => (
 							<CenterArticle
 								key={index}
@@ -129,22 +126,19 @@ export default function MixedArticleDisplay(props: {
 			<section id={styles.right}>
 				{articlesWithoutPhotos
 					.slice(0)
-					.slice(num_articles_each_side, num_articles_each_side * 2)
+					.slice(num_articles_each_side)
 					.map((article, index) => (
 						<CenterArticle key={index} article={article} />
 					))}
 			</section>
 			<section id={styles.top_mobile}>
-				{articlesWithPhotos
-					.slice(0)
-					.slice(0, num_articles_with_images)
-					.map((article_iterator, index) => (
-						<CenterArticle
-							key={index}
-							article={article_iterator}
-							display_image
-						/>
-					))}
+				{articlesWithPhotos.slice(0).map((article_iterator, index) => (
+					<CenterArticle
+						key={index}
+						article={article_iterator}
+						display_image
+					/>
+				))}
 			</section>
 		</div>
 	);

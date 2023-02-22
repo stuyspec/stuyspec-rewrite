@@ -37,11 +37,12 @@
 
 #center_desktop .bottom {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 #center_desktop .bottom div {
 	padding: 10px;
-	flex: 1;
+	flex: 50%;
 }
 
 .centerImage {
