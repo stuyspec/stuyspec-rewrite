@@ -81,7 +81,6 @@
 	#right .article,
 	#top_mobile .article {
 		padding-bottom: 10px;
-		margin-bottom: 10px;
 		margin-top: 10px;
 		border-bottom: 1px solid var(--medium-grey);
 	}
