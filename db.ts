@@ -16,12 +16,16 @@ function fixArticleCoverImage(v: any) {
 }
 // articles
 
-async function get_articles(num?: number): Promise<[ReceivedArticle]> {
+async function get_articles(
+	num?: number,
+	skip_num?: number
+): Promise<[ReceivedArticle]> {
 	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
-
+	const skip = skip_num || 0;
+	console.log("Skip, ", skip);
 	let articles = (
 		await articles_collection
 			.aggregate([
@@ -48,6 +52,7 @@ async function get_articles(num?: number): Promise<[ReceivedArticle]> {
 					},
 				},
 			])
+			.skip(skip)
 			.limit(limit)
 			.toArray()
 	).map(fixArticleCoverImage) as [ReceivedArticle];

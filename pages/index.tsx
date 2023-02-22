@@ -8,6 +8,16 @@ interface Props {
 	articles: [ReceivedArticle];
 }
 
+async function fetch_addtional_articles(skip?: number, max?: number) {
+	const request = await fetch("/api/articles", {
+		method: "POST",
+		body: JSON.stringify({ skip: skip, max: max }),
+	});
+	const json = await request.json();
+	const articles = json.articles as ReceivedArticle[];
+	return articles;
+}
+
 const Home = (props: Props) => {
 	return (
 		<div>
@@ -20,6 +30,7 @@ const Home = (props: Props) => {
 				<MixedArticleDisplay
 					articles={props.articles}
 					display_department={true}
+					additional_article_function={fetch_addtional_articles}
 				/>
 			</main>
 		</div>

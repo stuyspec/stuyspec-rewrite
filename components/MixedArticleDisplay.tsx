@@ -8,6 +8,7 @@ import Image from "next/image";
 import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
+import { useState } from "react";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;
@@ -83,91 +84,134 @@ function CenterArticle(props: {
 export default function MixedArticleDisplay(props: {
 	articles: ReceivedArticle[];
 	display_department?: boolean;
+	additional_article_function?: any;
 }) {
 	const grouping = groupByImageExists(props.articles);
-	const articlesWithPhotos: ReceivedArticle[] = grouping["withPhotos"]
-		.sort((a, b) => b.volume - a.volume)
-		.sort((a, b) => b.issue - a.issue);
+	let [articlesWithPhotos, setArticlesWithPhotos] = useState(
+		grouping["withPhotos"]
+			.sort((a, b) => b.volume - a.volume)
+			.sort((a, b) => b.issue - a.issue)
+	);
 
-	const articlesWithoutPhotos: ReceivedArticle[] = grouping["withoutPhotos"];
+	let [articlesWithoutPhotos, setArticlesWithoutPhotos] = useState(
+		grouping.withoutPhotos
+	);
 	// ].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
 	const num_articles_each_side = Math.floor(articlesWithoutPhotos.length / 2);
 
-	let sorted_articles = props.articles
+	let process_sorted_articles = props.articles
 		.slice(0)
 		.sort((a, b) => b.volume - a.volume)
 		.sort((a, b) => b.issue - a.issue);
-	sorted_articles.splice(
-		sorted_articles.findIndex((v) => v._id == articlesWithPhotos[0]._id),
+	process_sorted_articles.splice(
+		process_sorted_articles.findIndex(
+			(v) => v._id == articlesWithPhotos[0]._id
+		),
 		1
 	);
 
-	sorted_articles = [articlesWithPhotos[0], ...sorted_articles];
+	process_sorted_articles = [
+		articlesWithPhotos[0],
+		...process_sorted_articles,
+	];
+
+	let [sorted_articles, setSorted_articles] = useState(
+		process_sorted_articles
+	);
+
+	const handle_load_more = async () => {
+		if (props.additional_article_function) {
+			const articles = (await props.additional_article_function(
+				sorted_articles.length,
+				sorted_articles.length
+			)) as ReceivedArticle[];
+			setSorted_articles(
+				sorted_articles
+					.concat(articles)
+					.sort((a, b) => b.volume - a.volume)
+					.sort((a, b) => b.issue - a.issue)
+			);
+			const grouping = groupByImageExists(
+				sorted_articles.concat(articles)
+			);
+			setArticlesWithPhotos(grouping.withPhotos);
+			setArticlesWithoutPhotos(grouping.withoutPhotos);
+		}
+	};
 
 	return (
-		<div id={styles.mixed_article_view}>
-			<section id={styles.left}>
-				{articlesWithoutPhotos
-					.slice(0)
-					.slice(0, num_articles_each_side)
-					.map((article, index) => (
-						<CenterArticle
-							key={index}
-							article={article}
-							display_department={props.display_department}
-						/>
-					))}
-			</section>
-			<section id={styles.center_desktop}>
-				<div className={styles.top}>
-					{articlesWithPhotos
+		<div id={styles.mixed_article_view_container}>
+			<div id={styles.mixed_article_view}>
+				<section id={styles.left}>
+					{articlesWithoutPhotos
 						.slice(0)
-						.slice(0, 1)
-						.map((article_iterator, index) => (
+						.slice(0, num_articles_each_side)
+						.map((article, index) => (
 							<CenterArticle
 								key={index}
-								article={article_iterator}
-								display_image
+								article={article}
 								display_department={props.display_department}
 							/>
 						))}
-				</div>
-				<div className={styles.bottom}>
-					{articlesWithPhotos
+				</section>
+				<section id={styles.center_desktop}>
+					<div className={styles.top}>
+						{articlesWithPhotos
+							.slice(0)
+							.slice(0, 1)
+							.map((article_iterator, index) => (
+								<CenterArticle
+									key={index}
+									article={article_iterator}
+									display_image
+									display_department={
+										props.display_department
+									}
+								/>
+							))}
+					</div>
+					<div className={styles.bottom}>
+						{articlesWithPhotos
+							.slice(0)
+							.slice(1)
+							.map((article_iterator, index) => (
+								<CenterArticle
+									key={index}
+									article={article_iterator}
+									display_image
+									display_department={
+										props.display_department
+									}
+								/>
+							))}
+					</div>
+				</section>
+				<section id={styles.right}>
+					{articlesWithoutPhotos
 						.slice(0)
-						.slice(1)
-						.map((article_iterator, index) => (
+						.slice(num_articles_each_side)
+						.map((article, index) => (
 							<CenterArticle
 								key={index}
-								article={article_iterator}
-								display_image
+								article={article}
 								display_department={props.display_department}
 							/>
 						))}
-				</div>
-			</section>
-			<section id={styles.right}>
-				{articlesWithoutPhotos
-					.slice(0)
-					.slice(num_articles_each_side)
-					.map((article, index) => (
+				</section>
+				<section id={styles.top_mobile}>
+					{sorted_articles.slice(0).map((article_iterator, index) => (
 						<CenterArticle
 							key={index}
-							article={article}
+							article={article_iterator}
+							display_image
 							display_department={props.display_department}
 						/>
 					))}
-			</section>
-			<section id={styles.top_mobile}>
-				{sorted_articles.slice(0).map((article_iterator, index) => (
-					<CenterArticle
-						key={index}
-						article={article_iterator}
-						display_image
-						display_department={props.display_department}
-					/>
-				))}
-			</section>
+				</section>
+			</div>
+			<button onClick={handle_load_more} id={styles.load_more_button}>
+				Load more
+			</button>
 		</div>
 	);
 }
