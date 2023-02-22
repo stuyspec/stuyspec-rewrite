@@ -13,9 +13,23 @@ import MixedArticleDisplay from "../../components/MixedArticleDisplay";
 interface Props {
 	articles: ReceivedArticle[];
 	department_display: string;
+	section_id: number;
 }
 
 const Article = (props: Props) => {
+	const fetch_addtional_articles = async (skip?: number, max?: number) => {
+		const request = await fetch("/api/articles", {
+			method: "POST",
+			body: JSON.stringify({
+				query: { section_id: props.section_id },
+				skip: skip,
+				max: max,
+			}),
+		});
+		const json = await request.json();
+		const articles = json.articles as ReceivedArticle[];
+		return articles;
+	};
 	return (
 		<div>
 			<Head>
@@ -27,6 +41,7 @@ const Article = (props: Props) => {
 				<MixedArticleDisplay
 					articles={props.articles}
 					display_department={false}
+					additional_article_function={fetch_addtional_articles}
 				/>
 			</main>
 		</div>
@@ -59,6 +74,7 @@ export async function getServerSideProps(context: NextPageContext) {
 			props: {
 				articles: JSON.parse(JSON.stringify(articles)),
 				department_display: department_display,
+				section_id: department_id,
 			},
 		};
 	} else {

@@ -202,12 +202,14 @@ async function get_articles_by_author(
 
 async function get_articles_by_query(
 	query: any,
-	num?: number
+	num?: number,
+	skip_num?: number
 ): Promise<[ReceivedArticle]> {
 	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
+	const skip = skip_num || 0;
 
 	let articles = (
 		await articles_collection
@@ -237,6 +239,7 @@ async function get_articles_by_query(
 					},
 				},
 			])
+			.skip(skip)
 			.limit(limit)
 			.toArray()
 	).map(fixArticleCoverImage) as [ReceivedArticle];
