@@ -368,6 +368,25 @@ async function get_staff_by_position(position: string): Promise<ReceivedStaff> {
 	return staff;
 }
 
+async function get_staffs_by_query(query: any): Promise<ReceivedStaff[]> {
+	const db = (await clientPromise).db();
+	let staff_collection = await db.collection("staffs");
+
+	let staff = (await staff_collection
+		.aggregate([
+			{ $match: query },
+			{
+				$project: {
+					password: 0,
+				},
+			},
+		])
+		.toArray()) as ReceivedStaff[];
+	return staff;
+}
+
+// { $match: query },
+
 export {
 	get_articles,
 	get_articles_by_department,
@@ -378,6 +397,7 @@ export {
 	get_staff_by_id,
 	get_staff_by_position,
 	get_staff_by_slug,
+	get_staffs_by_query,
 	get_media_by_author,
 	get_articles_by_string_query,
 };
