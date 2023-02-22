@@ -17,7 +17,7 @@ function CenterArticle(props: {
 	const article = props.article;
 	return (
 		<div className={styles.article} key={String(article._id)}>
-			{props.display_image ? (
+			{props.display_image && article.cover_image ? (
 				<Link passHref href={"/article/" + article.slug}>
 					<div className={styles.centerImageContainer}>
 						<Image
@@ -93,6 +93,17 @@ export default function MixedArticleDisplay(props: {
 	// ].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
 	const num_articles_each_side = Math.floor(articlesWithoutPhotos.length / 2);
 
+	let sorted_articles = props.articles
+		.slice(0)
+		.sort((a, b) => b.volume - a.volume)
+		.sort((a, b) => b.issue - a.issue);
+	sorted_articles.splice(
+		sorted_articles.findIndex((v) => v._id == articlesWithPhotos[0]._id),
+		1
+	);
+
+	sorted_articles = [articlesWithPhotos[0], ...sorted_articles];
+
 	return (
 		<div id={styles.mixed_article_view}>
 			<section id={styles.left}>
@@ -148,7 +159,7 @@ export default function MixedArticleDisplay(props: {
 					))}
 			</section>
 			<section id={styles.top_mobile}>
-				{articlesWithPhotos.slice(0).map((article_iterator, index) => (
+				{sorted_articles.slice(0).map((article_iterator, index) => (
 					<CenterArticle
 						key={index}
 						article={article_iterator}
