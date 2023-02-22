@@ -17,7 +17,10 @@ const Home = (props: Props) => {
 			</Head>
 
 			<main id={styles.main}>
-				<MixedArticleDisplay articles={props.articles} />
+				<MixedArticleDisplay
+					articles={props.articles}
+					display_department={true}
+				/>
 			</main>
 		</div>
 	);

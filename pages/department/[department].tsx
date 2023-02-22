@@ -24,7 +24,10 @@ const Article = (props: Props) => {
 
 			<main id={styles.main}>
 				<h1 id={styles.departmentTitle}>{props.department_display}</h1>
-				<MixedArticleDisplay articles={props.articles} />
+				<MixedArticleDisplay
+					articles={props.articles}
+					display_department={false}
+				/>
 			</main>
 		</div>
 	);

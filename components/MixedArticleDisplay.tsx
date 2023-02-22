@@ -12,6 +12,7 @@ import generate_contributors_jsx from "./GenerateContributorsJSX";
 function CenterArticle(props: {
 	article: ReceivedArticle;
 	display_image?: boolean;
+	display_department?: boolean;
 }) {
 	const article = props.article;
 	return (
@@ -32,20 +33,24 @@ function CenterArticle(props: {
 			) : (
 				<></>
 			)}
-			<Link
-				href={`/department/${DepartmentsArray[article.section_id]}`}
-				passHref
-			>
-				<p
-					id={styles.articleInfo}
-					className={styles.department + " discrete-link"}
-					style={{
-						fontFamily: "var(--secondary-font)",
-					}}
+			{props.display_department ? (
+				<Link
+					href={`/department/${DepartmentsArray[article.section_id]}`}
+					passHref
 				>
-					{DepartmentsArrayDisplay[article.section_id]}
-				</p>
-			</Link>
+					<p
+						id={styles.articleInfo}
+						className={styles.department + " discrete-link"}
+						style={{
+							fontFamily: "var(--secondary-font)",
+						}}
+					>
+						{DepartmentsArrayDisplay[article.section_id]}
+					</p>
+				</Link>
+			) : (
+				<></>
+			)}
 			<Link passHref href={"/article/" + article.slug}>
 				<h2 id={styles.title} className="discrete-link">
 					{article.title}
@@ -77,6 +82,7 @@ function CenterArticle(props: {
 
 export default function MixedArticleDisplay(props: {
 	articles: ReceivedArticle[];
+	display_department?: boolean;
 }) {
 	const grouping = groupByImageExists(props.articles);
 	const articlesWithPhotos: ReceivedArticle[] = grouping["withPhotos"]
@@ -94,7 +100,11 @@ export default function MixedArticleDisplay(props: {
 					.slice(0)
 					.slice(0, num_articles_each_side)
 					.map((article, index) => (
-						<CenterArticle key={index} article={article} />
+						<CenterArticle
+							key={index}
+							article={article}
+							display_department={props.display_department}
+						/>
 					))}
 			</section>
 			<section id={styles.center_desktop}>
@@ -107,6 +117,7 @@ export default function MixedArticleDisplay(props: {
 								key={index}
 								article={article_iterator}
 								display_image
+								display_department={props.display_department}
 							/>
 						))}
 				</div>
@@ -119,6 +130,7 @@ export default function MixedArticleDisplay(props: {
 								key={index}
 								article={article_iterator}
 								display_image
+								display_department={props.display_department}
 							/>
 						))}
 				</div>
@@ -128,7 +140,11 @@ export default function MixedArticleDisplay(props: {
 					.slice(0)
 					.slice(num_articles_each_side)
 					.map((article, index) => (
-						<CenterArticle key={index} article={article} />
+						<CenterArticle
+							key={index}
+							article={article}
+							display_department={props.display_department}
+						/>
 					))}
 			</section>
 			<section id={styles.top_mobile}>
@@ -137,6 +153,7 @@ export default function MixedArticleDisplay(props: {
 						key={index}
 						article={article_iterator}
 						display_image
+						display_department={props.display_department}
 					/>
 				))}
 			</section>

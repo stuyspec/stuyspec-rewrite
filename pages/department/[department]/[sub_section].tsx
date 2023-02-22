@@ -27,7 +27,10 @@ const SubSection = (props: Props) => {
 				<h1 id={styles.departmentTitle}>
 					{props.sub_section} by {props.department}
 				</h1>
-				<MixedArticleDisplay articles={props.articles} />
+				<MixedArticleDisplay
+					articles={props.articles}
+					display_department={false}
+				/>
 			</main>
 		</div>
 	);
