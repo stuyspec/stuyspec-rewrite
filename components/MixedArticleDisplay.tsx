@@ -8,7 +8,7 @@ import Image from "next/image";
 import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;
@@ -86,15 +86,22 @@ export default function MixedArticleDisplay(props: {
 	display_department?: boolean;
 	additional_article_function?: any;
 }) {
+	console.log(props.articles[0].section_id);
+
+	let image_articles = Math.floor(props.articles.length / 4);
 	const grouping = groupByImageExists(props.articles);
 	let [articlesWithPhotos, setArticlesWithPhotos] = useState(
 		grouping["withPhotos"]
+			.slice(0)
+			.slice(0, image_articles)
 			.sort((a, b) => b.volume - a.volume)
 			.sort((a, b) => b.issue - a.issue)
 	);
 
 	let [articlesWithoutPhotos, setArticlesWithoutPhotos] = useState(
-		grouping.withoutPhotos
+		grouping.withoutPhotos.concat(
+			grouping.withPhotos.slice(0).slice(image_articles)
+		)
 	);
 	// ].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
 	const num_articles_each_side = Math.floor(articlesWithoutPhotos.length / 2);
@@ -119,12 +126,53 @@ export default function MixedArticleDisplay(props: {
 		process_sorted_articles
 	);
 
+	useEffect(() => {
+		let image_articles = Math.floor(props.articles.length / 4);
+		const grouping = groupByImageExists(props.articles);
+		setArticlesWithPhotos(
+			grouping["withPhotos"]
+				.slice(0)
+				.slice(0, image_articles)
+				.sort((a, b) => b.volume - a.volume)
+				.sort((a, b) => b.issue - a.issue)
+		);
+
+		setArticlesWithoutPhotos(
+			grouping.withoutPhotos.concat(
+				grouping.withPhotos.slice(0).slice(image_articles)
+			)
+		);
+		// ].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
+		const num_articles_each_side = Math.floor(
+			articlesWithoutPhotos.length / 2
+		);
+
+		let process_sorted_articles = props.articles
+			.slice(0)
+			.sort((a, b) => b.volume - a.volume)
+			.sort((a, b) => b.issue - a.issue);
+		process_sorted_articles.splice(
+			process_sorted_articles.findIndex(
+				(v) => v._id == grouping["withPhotos"][0]._id
+			),
+			1
+		);
+
+		process_sorted_articles = [
+			grouping["withPhotos"][0],
+			...process_sorted_articles,
+		];
+
+		setSorted_articles(process_sorted_articles);
+	}, [props.articles, articlesWithoutPhotos.length]);
+
 	const handle_load_more = async () => {
 		if (props.additional_article_function) {
 			const articles = (await props.additional_article_function(
 				sorted_articles.length,
 				sorted_articles.length
 			)) as ReceivedArticle[];
+
 			setSorted_articles(
 				sorted_articles.concat(
 					articles
@@ -132,13 +180,25 @@ export default function MixedArticleDisplay(props: {
 						.sort((a, b) => b.issue - a.issue)
 				)
 			);
+
+			image_articles =
+				image_articles + Math.floor(sorted_articles.length / 3);
+
 			const grouping = groupByImageExists(
 				sorted_articles.concat(articles)
 			);
-			setArticlesWithPhotos(grouping.withPhotos);
-			setArticlesWithoutPhotos(grouping.withoutPhotos);
+			setArticlesWithPhotos(
+				grouping.withPhotos.slice(0).slice(0, image_articles)
+			);
+			setArticlesWithoutPhotos(
+				grouping.withoutPhotos.concat(
+					grouping.withPhotos.slice(0).slice(image_articles)
+				)
+			);
 		}
 	};
+
+	console.log("After all: ", sorted_articles[0].section_id);
 
 	return (
 		<div id={styles.mixed_article_view_container}>
