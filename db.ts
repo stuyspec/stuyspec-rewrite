@@ -3,7 +3,6 @@ import clientPromise from "./db_conn";
 import {
 	ReceivedArticle,
 	ReceivedStaff,
-	UnsafeReceivedStaff,
 	DepartmentsArray,
 	mongoObjectId,
 } from "./ts_types/db_types";
@@ -15,50 +14,6 @@ function fixArticleCoverImage(v: any) {
 	return v;
 }
 // articles
-
-async function get_articles(
-	num?: number,
-	skip_num?: number
-): Promise<[ReceivedArticle]> {
-	const db = (await clientPromise).db();
-	let articles_collection = await db.collection("articles");
-
-	const limit = num || 10;
-	const skip = skip_num || 0;
-	console.log("Skip, ", skip);
-	let articles = (
-		await articles_collection
-			.aggregate([
-				{
-					$lookup: {
-						from: "staffs",
-						localField: "contributors",
-						foreignField: "_id",
-						as: "contributors",
-					},
-				},
-				{
-					$lookup: {
-						from: "staffs",
-						localField: "cover_image_contributor",
-						foreignField: "_id",
-						as: "cover_image_contributor",
-					},
-				},
-				{
-					$project: {
-						contributors: { password: 0 },
-						cover_image_contributor: { password: 0 },
-					},
-				},
-			])
-			.skip(skip)
-			.limit(limit)
-			.toArray()
-	).map(fixArticleCoverImage) as [ReceivedArticle];
-
-	return articles;
-}
 
 async function get_articles_by_department(
 	department: string,
@@ -399,10 +354,7 @@ async function get_staffs_by_query(query: any): Promise<ReceivedStaff[]> {
 	return staff;
 }
 
-// { $match: query },
-
 export {
-	get_articles,
 	get_articles_by_department,
 	get_article_by_id,
 	get_article_by_slug,

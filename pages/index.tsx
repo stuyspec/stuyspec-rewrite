@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { get_articles } from "../db";
+import { get_articles_by_query } from "../db";
 import { ReceivedArticle } from "../ts_types/db_types";
 
 import MixedArticleDisplay from "../components/MixedArticleDisplay";
@@ -40,7 +40,7 @@ const Home = (props: Props) => {
 export default Home;
 
 export async function getServerSideProps() {
-	let articles = await get_articles(42);
+	let articles = await get_articles_by_query({}, 42);
 	return {
 		props: { articles: JSON.parse(JSON.stringify(articles)) },
 	};
