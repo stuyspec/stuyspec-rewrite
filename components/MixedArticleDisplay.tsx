@@ -243,9 +243,13 @@ export default function MixedArticleDisplay(props: {
 						))}
 				</section>
 			</div>
-			<button onClick={handle_load_more} id={styles.load_more_button}>
-				Load more
-			</button>
+			{props.additional_article_function ? (
+				<button onClick={handle_load_more} id={styles.load_more_button}>
+					Load more
+				</button>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 }
