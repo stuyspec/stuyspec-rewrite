@@ -58,7 +58,7 @@ docker build -t stuyspecrewrite .
 Next, run the built container.
 
 ```bash
-docker run -p 3000:3000 stuyspecrewrite
+docker run -p 127.0.0.1:3000:3000 stuyspecrewrite
 ```
 
 ## Contributing
