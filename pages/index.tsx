@@ -11,6 +11,9 @@ interface Props {
 async function fetch_addtional_articles(skip?: number, max?: number) {
 	const request = await fetch("/api/articles", {
 		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
 		body: JSON.stringify({ skip: skip, max: max }),
 	});
 	const json = await request.json();

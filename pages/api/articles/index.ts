@@ -13,12 +13,11 @@ export default async function handler(
 	let { method, body } = req;
 
 	if (method == "GET" || method == "POST") {
-		body = JSON.parse(body || "{}");
 		let articles = await get_articles_by_query(
 			body.query || {},
 			body.max,
 			body.skip,
-			true
+			body.fetch_text
 		);
 		res.json({ articles: JSON.parse(JSON.stringify(articles)) });
 	}

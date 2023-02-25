@@ -21,6 +21,9 @@ const SubSection = (props: Props) => {
 	const fetch_addtional_articles = async (skip?: number, max?: number) => {
 		const request = await fetch("/api/articles", {
 			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
 			body: JSON.stringify({
 				query: { sub_section: props.sub_section },
 				skip: skip,
