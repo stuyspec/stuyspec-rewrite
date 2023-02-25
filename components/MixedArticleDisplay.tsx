@@ -8,7 +8,7 @@ import Image from "next/image";
 import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;
@@ -86,125 +86,96 @@ export default function MixedArticleDisplay(props: {
 	display_department?: boolean;
 	additional_article_function?: any;
 }) {
-	console.log(props.articles[0].section_id);
-
-	let image_articles = Math.floor(props.articles.length / 4);
-	const grouping = groupByImageExists(props.articles);
-	let [articlesWithPhotos, setArticlesWithPhotos] = useState(
-		grouping["withPhotos"]
-			.slice(0)
-			.slice(0, image_articles)
-			.sort((a, b) => b.volume - a.volume)
-			.sort((a, b) => b.issue - a.issue)
-	);
-
-	let [articlesWithoutPhotos, setArticlesWithoutPhotos] = useState(
-		grouping.withoutPhotos.concat(
-			grouping.withPhotos.slice(0).slice(image_articles)
-		)
-	);
-	// ].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
-	const num_articles_each_side = Math.floor(articlesWithoutPhotos.length / 2);
-
-	let process_sorted_articles = props.articles
-		.slice(0)
-		.sort((a, b) => b.volume - a.volume)
-		.sort((a, b) => b.issue - a.issue);
-	process_sorted_articles.splice(
-		process_sorted_articles.findIndex(
-			(v) => v._id == articlesWithPhotos[0]._id
-		),
-		1
-	);
-
-	process_sorted_articles = [
-		articlesWithPhotos[0],
-		...process_sorted_articles,
-	];
-
-	let [sorted_articles, setSorted_articles] = useState(
-		process_sorted_articles
-	);
-
-	useEffect(() => {
-		let image_articles = Math.floor(props.articles.length / 4);
-		const grouping = groupByImageExists(props.articles);
-		setArticlesWithPhotos(
-			grouping["withPhotos"]
+	const returnProcessedArticles = useCallback(
+		(articles_input: ReceivedArticle[]) => {
+			let image_articles = Math.floor(articles_input.length / 4);
+			const grouping = groupByImageExists(articles_input);
+			const articlesWithPhotos = grouping["withPhotos"]
 				.slice(0)
 				.slice(0, image_articles)
 				.sort((a, b) => b.volume - a.volume)
-				.sort((a, b) => b.issue - a.issue)
-		);
+				.sort((a, b) => b.issue - a.issue);
 
-		setArticlesWithoutPhotos(
-			grouping.withoutPhotos.concat(
+			const articlesWithoutPhotos = grouping.withoutPhotos.concat(
 				grouping.withPhotos.slice(0).slice(image_articles)
-			)
-		);
-		// ].concat(grouping["withPhotos"].slice(0).slice(num_articles_with_images));
-		const num_articles_each_side = Math.floor(
-			articlesWithoutPhotos.length / 2
-		);
+			);
 
-		let process_sorted_articles = props.articles
-			.slice(0)
-			.sort((a, b) => b.volume - a.volume)
-			.sort((a, b) => b.issue - a.issue);
-		process_sorted_articles.splice(
-			process_sorted_articles.findIndex(
-				(v) => v._id == grouping["withPhotos"][0]._id
-			),
-			1
-		);
+			let process_sorted_articles = articles_input
+				.slice(0)
+				.sort((a, b) => b.volume - a.volume)
+				.sort((a, b) => b.issue - a.issue);
+			process_sorted_articles.splice(
+				process_sorted_articles.findIndex(
+					(v) => v._id == grouping["withPhotos"][0]._id
+				),
+				1
+			);
 
-		process_sorted_articles = [
-			grouping["withPhotos"][0],
-			...process_sorted_articles,
-		];
+			process_sorted_articles = [
+				grouping["withPhotos"][0],
+				...process_sorted_articles,
+			];
 
-		setSorted_articles(process_sorted_articles);
-	}, [props.articles, articlesWithoutPhotos.length]);
+			return {
+				articlesWithPhotos,
+				articlesWithoutPhotos,
+				sortedArticles: process_sorted_articles,
+			};
+		},
+		[]
+	);
+
+	const [articlesProcessed, setArticlesProcessed] = useState(
+		returnProcessedArticles(props.articles)
+	);
+
+	useEffect(() => {
+		setArticlesProcessed(returnProcessedArticles(props.articles));
+	}, [props.articles, returnProcessedArticles]);
+
+	const num_articles_each_side = Math.floor(
+		articlesProcessed.articlesWithoutPhotos.length / 2
+	);
 
 	const handle_load_more = async () => {
 		if (props.additional_article_function) {
 			const articles = (await props.additional_article_function(
-				sorted_articles.length,
-				sorted_articles.length
+				articlesProcessed.sortedArticles.length,
+				articlesProcessed.sortedArticles.length
 			)) as ReceivedArticle[];
 
-			setSorted_articles(
-				sorted_articles.concat(
-					articles
-						.sort((a, b) => b.volume - a.volume)
-						.sort((a, b) => b.issue - a.issue)
-				)
+			const sorted_articles = articlesProcessed.sortedArticles.concat(
+				articles
+					.sort((a, b) => b.volume - a.volume)
+					.sort((a, b) => b.issue - a.issue)
 			);
+			const image_articles = Math.floor(articles.length / 3.5);
+			const grouping = groupByImageExists(articles);
+			const articles_with_photos =
+				articlesProcessed.articlesWithPhotos.concat(
+					grouping.withPhotos.slice(0).slice(0, image_articles)
+				);
 
-			image_articles =
-				image_articles + Math.floor(sorted_articles.length / 3);
+			const articles_without_photos =
+				articlesProcessed.articlesWithoutPhotos.concat(
+					grouping.withoutPhotos.concat(
+						grouping.withPhotos.slice(0).slice(image_articles)
+					)
+				);
 
-			const grouping = groupByImageExists(
-				sorted_articles.concat(articles)
-			);
-			setArticlesWithPhotos(
-				grouping.withPhotos.slice(0).slice(0, image_articles)
-			);
-			setArticlesWithoutPhotos(
-				grouping.withoutPhotos.concat(
-					grouping.withPhotos.slice(0).slice(image_articles)
-				)
-			);
+			setArticlesProcessed({
+				articlesWithPhotos: articles_with_photos,
+				articlesWithoutPhotos: articles_without_photos,
+				sortedArticles: sorted_articles,
+			});
 		}
 	};
-
-	console.log("After all: ", sorted_articles[0].section_id);
 
 	return (
 		<div id={styles.mixed_article_view_container}>
 			<div id={styles.mixed_article_view}>
 				<section id={styles.left}>
-					{articlesWithoutPhotos
+					{articlesProcessed.articlesWithoutPhotos
 						.slice(0)
 						.slice(0, num_articles_each_side)
 						.map((article, index) => (
@@ -217,7 +188,7 @@ export default function MixedArticleDisplay(props: {
 				</section>
 				<section id={styles.center_desktop}>
 					<div className={styles.top}>
-						{articlesWithPhotos
+						{articlesProcessed.articlesWithPhotos
 							.slice(0)
 							.slice(0, 1)
 							.map((article_iterator, index) => (
@@ -232,7 +203,7 @@ export default function MixedArticleDisplay(props: {
 							))}
 					</div>
 					<div className={styles.bottom}>
-						{articlesWithPhotos
+						{articlesProcessed.articlesWithPhotos
 							.slice(0)
 							.slice(1)
 							.map((article_iterator, index) => (
@@ -248,7 +219,7 @@ export default function MixedArticleDisplay(props: {
 					</div>
 				</section>
 				<section id={styles.right}>
-					{articlesWithoutPhotos
+					{articlesProcessed.articlesWithoutPhotos
 						.slice(0)
 						.slice(num_articles_each_side)
 						.map((article, index) => (
@@ -260,14 +231,16 @@ export default function MixedArticleDisplay(props: {
 						))}
 				</section>
 				<section id={styles.top_mobile}>
-					{sorted_articles.slice(0).map((article_iterator, index) => (
-						<CenterArticle
-							key={index}
-							article={article_iterator}
-							display_image
-							display_department={props.display_department}
-						/>
-					))}
+					{articlesProcessed.sortedArticles
+						.slice(0)
+						.map((article_iterator, index) => (
+							<CenterArticle
+								key={index}
+								article={article_iterator}
+								display_image
+								display_department={props.display_department}
+							/>
+						))}
 				</section>
 			</div>
 			<button onClick={handle_load_more} id={styles.load_more_button}>
