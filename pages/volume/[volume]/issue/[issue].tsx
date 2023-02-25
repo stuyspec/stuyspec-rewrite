@@ -1,6 +1,6 @@
 import { NextPageContext } from "next";
 import Head from "next/head";
-import GridArticleDisplay from "../../../../components/GridArticleDisplay";
+import MixedArticleDisplay from "../../../../components/MixedArticleDisplay";
 import { get_articles_by_query } from "../../../../db";
 import styles from "../../../../styles/Issue.module.css";
 import { ReceivedArticle } from "../../../../ts_types/db_types";
@@ -26,7 +26,10 @@ const Issue_Component = (props: Props) => {
 				<h1>
 					Volume {props.volume} Issue {props.issue}
 				</h1>
-				<GridArticleDisplay articles={props.articles} />
+				<MixedArticleDisplay
+					articles={props.articles}
+					display_department
+				/>
 			</main>
 		</>
 	);
@@ -35,7 +38,7 @@ const Issue_Component = (props: Props) => {
 export async function getServerSideProps(context: NextPageContext) {
 	const volume = Number(context.query.volume);
 	const issue = Number(context.query.issue);
-	let articles = await get_articles_by_query({ volume, issue }, 50);
+	let articles = await get_articles_by_query({ volume, issue }, 75);
 	articles = JSON.parse(JSON.stringify(articles));
 	if (articles.length > 0) {
 		return {
