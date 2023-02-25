@@ -14,6 +14,7 @@ interface Props {
 	articles: ReceivedArticle[];
 	sub_section: string;
 	department: string;
+	department_id: number;
 }
 
 const SubSection = (props: Props) => {
@@ -31,19 +32,22 @@ const SubSection = (props: Props) => {
 		return articles;
 	};
 
+	const sub_section_display =
+		props.sub_section.charAt(0).toUpperCase() + props.sub_section.slice(1);
+
 	return (
 		<div>
 			<Head>
-				<title>{props.sub_section}</title>
+				<title>{sub_section_display}</title>
 			</Head>
 
 			<main id={styles.main}>
 				<h1 id={styles.departmentTitle}>
-					{props.sub_section} by {props.department}
+					<span id={styles.sub_section}>{sub_section_display}</span>
 				</h1>
 				<MixedArticleDisplay
 					articles={props.articles}
-					display_department={false}
+					display_department={true}
 					additional_article_function={fetch_addtional_articles}
 				/>
 			</main>
@@ -81,6 +85,7 @@ export async function getServerSideProps(context: NextPageContext) {
 				articles: JSON.parse(JSON.stringify(articles)),
 				sub_section: sub_section_param,
 				department: DepartmentsArrayDisplay[department_id],
+				department_id: department_id,
 			},
 		};
 	} else {
