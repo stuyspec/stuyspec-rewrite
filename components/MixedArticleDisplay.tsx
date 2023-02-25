@@ -126,10 +126,11 @@ export default function MixedArticleDisplay(props: {
 				sorted_articles.length
 			)) as ReceivedArticle[];
 			setSorted_articles(
-				sorted_articles
-					.concat(articles)
-					.sort((a, b) => b.volume - a.volume)
-					.sort((a, b) => b.issue - a.issue)
+				sorted_articles.concat(
+					articles
+						.sort((a, b) => b.volume - a.volume)
+						.sort((a, b) => b.issue - a.issue)
+				)
 			);
 			const grouping = groupByImageExists(
 				sorted_articles.concat(articles)
