@@ -62,12 +62,14 @@ async function get_articles(
 
 async function get_articles_by_department(
 	department: string,
-	num?: number
+	num?: number,
+	fetch_text?: boolean
 ): Promise<[ReceivedArticle]> {
 	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
+	const projection = fetch_text ? {} : { text: 0 };
 	const department_id = DepartmentsArray.findIndex((a) => a == department);
 
 	let articles = (
@@ -97,6 +99,7 @@ async function get_articles_by_department(
 					$project: {
 						contributors: { password: 0 },
 						cover_image_contributor: { password: 0 },
+						...projection,
 					},
 				},
 			])
@@ -203,13 +206,15 @@ async function get_articles_by_author(
 async function get_articles_by_query(
 	query: any,
 	num?: number,
-	skip_num?: number
+	skip_num?: number,
+	fetch_text?: boolean
 ): Promise<[ReceivedArticle]> {
 	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
 	const skip = skip_num || 0;
+	const projection = fetch_text ? {} : { text: 0 };
 
 	let articles = (
 		await articles_collection
@@ -236,6 +241,7 @@ async function get_articles_by_query(
 					$project: {
 						contributors: { password: 0 },
 						cover_image_contributor: { password: 0 },
+						...projection,
 					},
 				},
 			])
