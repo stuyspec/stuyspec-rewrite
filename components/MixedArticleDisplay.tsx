@@ -89,7 +89,6 @@ export default function MixedArticleDisplay(props: {
 }) {
 	const returnProcessedArticles = useCallback(
 		(articles_input: ReceivedArticle[]) => {
-			// articles_input.push(advertisements[0])
 			let image_articles = Math.floor(articles_input.length / 4);
 			const grouping = groupByImageExists(articles_input);
 			const articlesWithPhotos = grouping["withPhotos"]
@@ -192,7 +191,9 @@ export default function MixedArticleDisplay(props: {
 									}
 								/>
 								{index % ad_spacing == 0 && index != 0 ? (
-									<Advertisment />
+									<div className={styles.ad_parent}>
+										<Advertisment />
+									</div>
 								) : (
 									<></>
 								)}
@@ -245,7 +246,9 @@ export default function MixedArticleDisplay(props: {
 									}
 								/>
 								{index % ad_spacing == 0 && index != 0 ? (
-									<Advertisment />
+									<div className={styles.ad_parent}>
+										<Advertisment />
+									</div>
 								) : (
 									<></>
 								)}
@@ -266,7 +269,9 @@ export default function MixedArticleDisplay(props: {
 									}
 								/>
 								{index % ad_spacing == 0 && index != 0 ? (
-									<Advertisment />
+									<div className={styles.ad_parent}>
+										<Advertisment />
+									</div>
 								) : (
 									<></>
 								)}

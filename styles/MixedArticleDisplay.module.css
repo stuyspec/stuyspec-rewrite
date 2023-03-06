@@ -30,9 +30,9 @@
 }
 
 #left .article,
-#right .article {
+#right .article,
+.ad_parent {
 	padding-bottom: 10px;
-	margin-bottom: 10px;
 	margin-top: 10px;
 	border-bottom: 1px solid var(--medium-grey);
 }
@@ -83,11 +83,13 @@
 		display: none;
 	}
 
-	#mixed_article_view * {
+	#center_desktop .top,
+	#center_desktop {
 		border: none;
 	}
 
-	#top_mobile .article {
+	#top_mobile .article,
+	.ad_parent {
 		padding-bottom: 10px;
 		margin-top: 10px;
 		border-bottom: 1px solid var(--medium-grey);
