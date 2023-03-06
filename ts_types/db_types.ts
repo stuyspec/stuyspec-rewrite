@@ -34,9 +34,6 @@ export interface ReceivedStaff {
 	slug: string;
 	first_time_login: boolean | undefined;
 }
-export interface UnsafeReceivedStaff extends ReceivedStaff {
-	password: string;
-}
 
 export type Department =
 	| "news"

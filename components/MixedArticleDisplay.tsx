@@ -9,6 +9,7 @@ import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
 import { useCallback, useEffect, useState } from "react";
+import Advertisment from "./Advertisement";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;
@@ -88,6 +89,7 @@ export default function MixedArticleDisplay(props: {
 }) {
 	const returnProcessedArticles = useCallback(
 		(articles_input: ReceivedArticle[]) => {
+			// articles_input.push(advertisements[0])
 			let image_articles = Math.floor(articles_input.length / 4);
 			const grouping = groupByImageExists(articles_input);
 			const articlesWithPhotos = grouping["withPhotos"]
@@ -171,6 +173,8 @@ export default function MixedArticleDisplay(props: {
 		}
 	};
 
+	const ad_spacing = 12;
+
 	return (
 		<div id={styles.mixed_article_view_container}>
 			<div id={styles.mixed_article_view}>
@@ -179,11 +183,20 @@ export default function MixedArticleDisplay(props: {
 						.slice(0)
 						.slice(0, num_articles_each_side)
 						.map((article, index) => (
-							<CenterArticle
-								key={index}
-								article={article}
-								display_department={props.display_department}
-							/>
+							<>
+								<CenterArticle
+									key={index}
+									article={article}
+									display_department={
+										props.display_department
+									}
+								/>
+								{index % ad_spacing == 0 && index != 0 ? (
+									<Advertisment />
+								) : (
+									<></>
+								)}
+							</>
 						))}
 				</section>
 				<section id={styles.center_desktop}>
@@ -223,30 +236,53 @@ export default function MixedArticleDisplay(props: {
 						.slice(0)
 						.slice(num_articles_each_side)
 						.map((article, index) => (
-							<CenterArticle
-								key={index}
-								article={article}
-								display_department={props.display_department}
-							/>
+							<>
+								<CenterArticle
+									key={index}
+									article={article}
+									display_department={
+										props.display_department
+									}
+								/>
+								{index % ad_spacing == 0 && index != 0 ? (
+									<Advertisment />
+								) : (
+									<></>
+								)}
+							</>
 						))}
 				</section>
 				<section id={styles.top_mobile}>
 					{articlesProcessed.sortedArticles
 						.slice(0)
 						.map((article_iterator, index) => (
-							<CenterArticle
-								key={index}
-								article={article_iterator}
-								display_image
-								display_department={props.display_department}
-							/>
+							<>
+								<CenterArticle
+									key={index}
+									article={article_iterator}
+									display_image
+									display_department={
+										props.display_department
+									}
+								/>
+								{index % ad_spacing == 0 && index != 0 ? (
+									<Advertisment />
+								) : (
+									<></>
+								)}
+							</>
 						))}
 				</section>
 			</div>
 			{props.additional_article_function ? (
-				<button onClick={handle_load_more} id={styles.load_more_button}>
-					Load more
-				</button>
+				<>
+					<button
+						onClick={handle_load_more}
+						id={styles.load_more_button}
+					>
+						Load more
+					</button>
+				</>
 			) : (
 				<></>
 			)}
