@@ -10,6 +10,7 @@ import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
 import { useCallback, useEffect, useState, Fragment } from "react";
 import Advertisment from "./Advertisement";
+import advertisements from "../advertisements";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;
@@ -248,7 +249,13 @@ export default function MixedArticleDisplay(props: {
 								{index % ad_spacing == 0 && index != 0 ? (
 									<div className={styles.ad_parent}>
 										<Advertisment
-											index={index / ad_spacing}
+											index={
+												index / ad_spacing +
+												+(
+													num_articles_each_side %
+													advertisements.length
+												)
+											}
 										/>
 									</div>
 								) : (
@@ -260,10 +267,10 @@ export default function MixedArticleDisplay(props: {
 				<section id={styles.top_mobile}>
 					{articlesProcessed.sortedArticles
 						.slice(0)
-						.map((article_iterator, index) => (
+						.map((article, index) => (
 							<Fragment key={index}>
 								<CenterArticle
-									article={article_iterator}
+									article={article}
 									display_image
 									display_department={
 										props.display_department
