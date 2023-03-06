@@ -2,6 +2,7 @@ const advertisements = [
 	{
 		name: "Kweller Prep",
 		image_src: "/images/ads/kweller_prep.png",
+		url: "https://www.kwellerprep.com/",
 	},
 	{
 		name: "Don't Sweat the Essay!",

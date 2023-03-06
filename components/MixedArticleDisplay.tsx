@@ -8,7 +8,7 @@ import Image from "next/image";
 import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, Fragment } from "react";
 import Advertisment from "./Advertisement";
 
 function CenterArticle(props: {
@@ -182,9 +182,8 @@ export default function MixedArticleDisplay(props: {
 						.slice(0)
 						.slice(0, num_articles_each_side)
 						.map((article, index) => (
-							<>
+							<Fragment key={index}>
 								<CenterArticle
-									key={index}
 									article={article}
 									display_department={
 										props.display_department
@@ -192,12 +191,14 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 0 && index != 0 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment />
+										<Advertisment
+											index={index / ad_spacing}
+										/>
 									</div>
 								) : (
 									<></>
 								)}
-							</>
+							</Fragment>
 						))}
 				</section>
 				<section id={styles.center_desktop}>
@@ -237,9 +238,8 @@ export default function MixedArticleDisplay(props: {
 						.slice(0)
 						.slice(num_articles_each_side)
 						.map((article, index) => (
-							<>
+							<Fragment key={index}>
 								<CenterArticle
-									key={index}
 									article={article}
 									display_department={
 										props.display_department
@@ -247,21 +247,22 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 0 && index != 0 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment />
+										<Advertisment
+											index={index / ad_spacing}
+										/>
 									</div>
 								) : (
 									<></>
 								)}
-							</>
+							</Fragment>
 						))}
 				</section>
 				<section id={styles.top_mobile}>
 					{articlesProcessed.sortedArticles
 						.slice(0)
 						.map((article_iterator, index) => (
-							<>
+							<Fragment key={index}>
 								<CenterArticle
-									key={index}
 									article={article_iterator}
 									display_image
 									display_department={
@@ -270,12 +271,14 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 0 && index != 0 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment />
+										<Advertisment
+											index={index / ad_spacing}
+										/>
 									</div>
 								) : (
 									<></>
 								)}
-							</>
+							</Fragment>
 						))}
 				</section>
 			</div>
