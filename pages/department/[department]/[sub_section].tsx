@@ -80,7 +80,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
 	let articles = await get_articles_by_query(
 		{ sub_section: sub_section_param },
-		19
+		42
 	);
 	if (articles.length > 0) {
 		return {

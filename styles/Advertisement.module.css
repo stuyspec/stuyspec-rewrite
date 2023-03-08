@@ -1,0 +1,14 @@
+#parent_div {
+	text-align: center;
+	width: 100%;
+	object-fit: contain;
+	position: relative;
+	overflow: "hidden";
+}
+
+#image {
+	object-fit: contain;
+	width: 100% !important;
+	position: relative !important;
+	height: unset !important;
+}
