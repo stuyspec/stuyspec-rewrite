@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "../styles/Navbar.module.css";
 
+const defaultTheme = "light";
 const ThemeToggle = () => {
 	const [theme, setTheme] = useState(getTheme());
 
 	function getTheme() {
 		if (typeof window !== "undefined") {
-			return localStorage.getItem("theme") || "dark";
+			return localStorage.getItem("theme") || defaultTheme;
 		} else {
-			return "dark";
+			return defaultTheme;
 		}
 	}
 
