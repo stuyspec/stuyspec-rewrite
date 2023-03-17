@@ -95,17 +95,22 @@ a {
 	margin: 0;
 	border: 0;
 	font-display: optional;
-	overflow-x: hidden;
 
 	transition: background-color 250ms ease-in-out;
 }
 
 #main {
-	min-height: calc(100vh - 65px);
+	min-height: calc(100vh - 95px);
 }
 
 #navbar {
-	height: 65px;
+	height: 95px;
+}
+
+@media screen and (max-width: 940px) {
+	#navbar {
+		height: 65px;
+	}
 }
 
 .link {
