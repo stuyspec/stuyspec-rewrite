@@ -1,0 +1,15 @@
+#main {
+	width: 95vw;
+	max-width: 1000px;
+	padding-top: 1rem;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#main h3 {
+	margin-top: 10px;
+}
+
+.special_def {
+	text-align: right;
+}
