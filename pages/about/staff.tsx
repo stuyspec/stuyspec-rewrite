@@ -29,9 +29,8 @@ const StaffPage = () => {
 					</div>
 					<div>
 						<h3>Opinions Editors</h3>
-						<p>Dalia Levanon</p>
-						<p>Suyeon Ryu</p>
-						<p>Olivia Woo</p>
+						<p>Ivy Huang*</p>
+						<p>Gulam Monawarah</p>
 					</div>
 					<div>
 						<h3>Science Editors</h3>
