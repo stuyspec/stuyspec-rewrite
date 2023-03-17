@@ -18,7 +18,7 @@
 	/* align-self: flex-start; */
 }
 
-#sub_section_bar {
+#department_bar {
 	max-width: 800px;
 	height: fit-content;
 	display: flex;
@@ -119,11 +119,11 @@
 		display: none !important;
 	}
 
-	#sub_section_bar {
+	#department_bar {
 		flex-direction: column;
 	}
 
-	#sub_section_bar span {
+	#department_bar span {
 		margin-top: 5px;
 		margin-bottom: 5px;
 		font-size: 1.2rem;

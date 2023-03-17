@@ -57,7 +57,7 @@ const Navbar = () => {
 				</div>
 			</nav>
 			<div
-				id={styles.sub_section_bar}
+				id={styles.department_bar}
 				className={viewSubSection ? "" : styles.hide}
 			>
 				<span>
