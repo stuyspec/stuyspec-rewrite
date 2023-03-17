@@ -4,39 +4,29 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import CollapsibleSearch from "./CollapsibleSearch";
 import Image from "next/image";
+import { useState } from "react";
 
 const Navbar = () => {
-	function toggleMenu() {}
-
-	function enableSearch() {
-		var buttons = Array.from(
-			document.getElementsByClassName(
-				"button"
-			) as HTMLCollectionOf<HTMLElement>
-		);
-		for (let ele of buttons) {
-			ele.style.display = "none";
-		}
-
-		Array.from(
-			document.getElementsByClassName(
-				"search"
-			) as HTMLCollectionOf<HTMLElement>
-		)[0].style.display = "inherit";
+	const [viewSubSection, setViewSubSection] = useState(false);
+	function toggleMenu() {
+		setViewSubSection(!viewSubSection);
 	}
 
 	return (
 		<div id={styles.nav_parent}>
 			<nav id={styles.nav}>
-				<div id={styles.hamburgerMenu} className="button">
+				<div
+					id={styles.hamburgerMenu}
+					className="button"
+					onClick={toggleMenu}
+				>
 					<Image
 						src="/images/hamburger-menu.svg"
-						width={24}
-						height={24}
-						onClick={toggleMenu}
+						width={30}
+						height={30}
 						id={styles.hamburgerMenu}
 						className="button"
-						alt="More options menu button"
+						alt="Button to view the departments"
 					/>
 				</div>
 
@@ -66,7 +56,10 @@ const Navbar = () => {
 					<CollapsibleSearch />
 				</div>
 			</nav>
-			<div id={styles.sub_section_bar}>
+			<div
+				id={styles.sub_section_bar}
+				className={viewSubSection ? "" : styles.hide}
+			>
 				<span>
 					<Link href="/department/news">News</Link>
 				</span>

@@ -28,6 +28,7 @@
 	font-family: var(--secondary-font);
 	align-items: center;
 	padding-bottom: 10px;
+	color: var(--primary-immutable);
 }
 
 #subscribe_parent {
@@ -60,6 +61,8 @@
 }
 #hamburgerMenu {
 	display: none;
+	background: none;
+	cursor: pointer;
 }
 
 #hamburgerMenu:hover,
@@ -78,9 +81,6 @@
 }
 
 @media screen and (max-width: 940px) {
-	#nav_parent {
-		height: 65px;
-	}
 	#nav {
 		grid-template-columns: 48px calc(100% - 188px) 56px 56px;
 		column-gap: 1.5rem;
@@ -115,8 +115,18 @@
 		display: block;
 	}
 
+	.hide {
+		display: none !important;
+	}
+
 	#sub_section_bar {
-		display: none;
+		flex-direction: column;
+	}
+
+	#sub_section_bar span {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		font-size: 1.2rem;
 	}
 }
 
