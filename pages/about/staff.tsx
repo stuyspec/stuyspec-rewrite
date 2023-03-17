@@ -18,7 +18,7 @@ const StaffPage = () => {
 					<div>
 						<h3>News Editors</h3>
 						<p>Talia Arcasoy**</p>
-						<p>Sarah Diaz</p>
+						<p>Sarah Diaz*</p>
 						<p>Seth Fenton**</p>
 					</div>
 					<div>
