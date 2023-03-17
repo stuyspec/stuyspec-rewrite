@@ -1,21 +1,15 @@
-#profileImage img {
-  border-radius: 50%;
+#main {
+	width: 95vw;
+	max-width: 1000px;
+	padding-top: 1rem;
+	margin: 0 auto;
+	text-align: center;
 }
 
-#pageBody {
-  display: grid;
-  grid-template-columns: calc(25% + 32px) calc(75% - 32px);
-  margin: 2rem;
-
-  text-align: center;
+.developer h2 {
+	text-decoration: underline;
 }
 
-@media screen and (max-width: 960px) {
-  #pageBody {
-    grid-template-columns: 1fr;
-  }
-
-  #sidebar {
-    display: none;
-  }
+.developer {
+	margin-bottom: 20px;
 }
