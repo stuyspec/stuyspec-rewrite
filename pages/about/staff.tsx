@@ -74,7 +74,7 @@ const StaffPage = () => {
 					</div>
 					<div>
 						<h3>Copy Editors</h3>
-						<p>Kevin Chang*</p>
+						<p>Kevin Chan*</p>
 						<p>Duncan Park**</p>
 						<p>Ryan Park**</p>
 						<p>Eman Sadiq</p>
