@@ -11,7 +11,7 @@ const StaffPage = () => {
 				<h1>Members of the 2022-2023 Spectator Editorial Board</h1>
 				<section id={styles.departments}>
 					<div>
-						<h3>Editors In Cheif</h3>
+						<h3>Editors In Chief</h3>
 						<p>Rebecca Bao*</p>
 						<p>Phoebe Buckwalter*</p>
 					</div>
