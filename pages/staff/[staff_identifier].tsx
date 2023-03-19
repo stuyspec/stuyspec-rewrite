@@ -100,7 +100,7 @@ export async function getServerSideProps(context: NextPageContext) {
 		staff = await get_staff_by_slug(staff_identifier); // Getting staff by slug is default, for legacy support
 	}
 
-	let staff_articles = await get_articles_by_author(staff._id);
+	let staff_articles = await get_articles_by_author(staff._id, 200);
 	staff_articles = JSON.parse(JSON.stringify(staff_articles));
 
 	let staff_media = await get_media_by_author(staff._id);
