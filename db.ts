@@ -33,7 +33,7 @@ async function get_articles_by_department(
 				{
 					$match: { section_id: department_id },
 				},
-
+				{ $sort: { volume: -1, issue: -1 } },
 				{
 					$lookup: {
 						from: "staffs",
@@ -175,7 +175,7 @@ async function get_articles_by_query(
 		await articles_collection
 			.aggregate([
 				{ $match: query },
-
+				{ $sort: { volume: -1, issue: -1 } },
 				{
 					$lookup: {
 						from: "staffs",
@@ -229,6 +229,7 @@ async function get_articles_by_string_query(
 						},
 					},
 				},
+				{ $sort: { volume: -1, issue: -1 } },
 				{
 					$lookup: {
 						from: "staffs",
