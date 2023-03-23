@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../../styles/Developers.module.css";
-import Sidebar from "../../components/Sidebar";
+import styles from "../../styles/Recruitments.module.css";
 
 const RecruitmentPage = () => {
 	const departments: Array<{
@@ -62,7 +60,7 @@ const RecruitmentPage = () => {
 		{
 			department: "Web",
 			description:
-				"The Web department is responsible for designing and updating The Spectator's website, www.stuyspec.com. It also attempts to facilitate the learning of developing and maintaining a web application based on Ruby on Rails and React. These real-world skills are a great resume builder and provide invaluable experience in working together as a team. This is the perfect department for both computer programming enthusiasts and novices who want to help The Spectator continue to storm the frontier of online journalism.",
+				"The Web department is responsible for designing and updating The Spectator's website (aka this website), www.stuyspec.com. It also attempts to facilitate the learning of developing and maintaining a web applications. These real-world skills are a great resume builders and provide invaluable experience in working together as a team. This is the perfect department for both computer programming enthusiasts and novices who want to help The Spectator continue to storm the frontier of online journalism.",
 			applicationForm: "",
 			applicationDueDate: "",
 		},
@@ -106,41 +104,19 @@ const RecruitmentPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Developers | The Spectator</title>
+				<title>Recruitments | The Spectator</title>
 			</Head>
-			<div id={styles.pageBody}>
-				<div id={styles.sidebar}>
-					<Sidebar />
-				</div>
-				<div id={styles.body}>
-					<h1>Recruitment</h1>
-					<div
-						style={{
-							display: "flex",
-							flexWrap: "wrap",
-							justifyContent: "center",
-						}}
-					>
-						{departments.map((department, key) => (
-							<div
-								style={{
-									width: "25%",
-									display: "flex",
-									flexDirection: "column",
-									alignItems: "center",
-									margin: "1rem",
-								}}
-								key={key}
-							>
-								<h2>{department.department}</h2>
-								<p style={{ textAlign: "justify" }}>
-									{department.description}
-								</p>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
+			<main id={styles.main}>
+				<h1>Recruitments</h1>
+				<section id={styles.departments}>
+					{departments.map((department, key) => (
+						<div className={styles.department} style={{}} key={key}>
+							<h2>{department.department}</h2>
+							<p>{department.description}</p>
+						</div>
+					))}
+				</section>
+			</main>
 		</>
 	);
 };
