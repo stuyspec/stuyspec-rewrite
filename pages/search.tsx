@@ -73,7 +73,7 @@ export async function getServerSideProps(context: NextPageContext) {
 	let query = String(context.query.query);
 
 	const articles = JSON.parse(
-		JSON.stringify(await get_articles_by_string_query(query))
+		JSON.stringify(await get_articles_by_string_query(query, 20))
 	) as ReceivedArticle[];
 
 	const staff = JSON.parse(

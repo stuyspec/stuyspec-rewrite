@@ -214,7 +214,6 @@ async function get_articles_by_string_query(
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
-
 	let articles = (
 		await articles_collection
 			.aggregate([
@@ -229,7 +228,6 @@ async function get_articles_by_string_query(
 						},
 					},
 				},
-				{ $sort: { volume: -1, issue: -1 } },
 				{
 					$lookup: {
 						from: "staffs",
