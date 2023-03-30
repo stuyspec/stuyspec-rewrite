@@ -108,6 +108,15 @@ const RecruitmentPage = () => {
 			</Head>
 			<main id={styles.main}>
 				<h1>Recruitments</h1>
+
+				<iframe
+					id={styles.video}
+					src="https://www.youtube-nocookie.com/embed/8Ws1zj1PDbE"
+					title="YouTube video player"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowFullScreen
+				></iframe>
+
 				<section id={styles.departments}>
 					{departments.map((department, key) => (
 						<div className={styles.department} style={{}} key={key}>
