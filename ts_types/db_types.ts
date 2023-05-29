@@ -16,6 +16,7 @@ export interface ReceivedArticle {
 	cover_image_contributor: ReceivedStaff;
 	cover_image_source: string;
 	sub_section: string | undefined;
+	rank: number | undefined;
 }
 
 export interface IssuuResponse {
