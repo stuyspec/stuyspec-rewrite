@@ -58,6 +58,30 @@
 	grid-column-start: 5;
 	grid-column-end: 5;
 	place-self: center;
+	font-family: verdana;
+	font-weight: bold;
+	margin: auto;
+	borderRadius: 50%;
+	width: 50px;
+	length: 50px;
+	outline: none;
+	border: none;
+	transition: all 0.8s ease-in-out;
+	padding: 0 80px 0 20px;
+	opacity: 0;
+	z-index: 5;
+	&:hover {
+		cursor: pointer;
+	}
+	&: focus {
+		width: 200px;
+		opacity: 1;
+		cursor: text;
+	}
+	&:focus ~ #searchButton {
+		right: -250px;
+		z-index: 0;
+	}
 }
 #hamburgerMenu {
 	display: none;
