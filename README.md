@@ -1,4 +1,4 @@
-# stuyspec.com
+# cool.stuyspec.com
 
 [![.github/workflows/vercel.yml](https://github.com/stuyspec/stuyspecrewrite/actions/workflows/vercel.yml/badge.svg)](https://github.com/stuyspec/stuyspecrewrite/actions/workflows/vercel.yml)
 ![license](https://img.shields.io/github/license/stuyspec/stuyspecrewrite)
