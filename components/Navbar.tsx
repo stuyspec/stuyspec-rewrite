@@ -45,7 +45,9 @@ const Navbar = () => {
 					className={styles.clickable_nav_element}
 				>
 					<Link href="/subscribe">
-						<p id={subscribe_button_styles.subscribe2}>Subscribe</p>
+						<p id={subscribe_button_styles.subscribe_button_navbar}>
+							Subscribe
+						</p>
 					</Link>
 				</div>
 

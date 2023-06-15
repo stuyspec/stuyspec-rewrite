@@ -9,24 +9,19 @@
 	cursor: pointer;
 	margin: 0 auto;
 	display: block;
-    -webkit-animation:spin 2s linear;
-    -moz-animation:spin 2s linear;
-    animation:spin 2s linear;
-	}
-	@-moz-keyframes spin { 
-		100% { -moz-transform: rotate(360deg); } 
-	}
-	@-webkit-keyframes spin { 
-		100% { -webkit-transform: rotate(360deg); } 
-	}
-	@keyframes spin { 
-		100% { 
-			-webkit-transform: rotate(360deg); 
-			transform:rotate(360deg); 
-		} 
+	-webkit-animation: spin 0.4s linear;
+	-moz-animation: spin 0.4s linear;
+	animation: spin 0.4s linear;
 }
 
-#subscribe2 {
+@keyframes spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+#subscribe_button_navbar {
 	color: var(--primary-immutable);
 	font-family: var(--secondary-font);
 	font-weight: bold;
