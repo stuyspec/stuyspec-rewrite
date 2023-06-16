@@ -2,8 +2,7 @@
 
 import Head from "next/head";
 import {useState, useEffect } from 'react';
-import styles from "../../styles/crossword.module.css";
-
+import styles from  "../../styles/Crossword.module.css";
 const GamesPage = () => {
 
     useEffect(() => {    
@@ -284,7 +283,7 @@ function AddWordToBoard(){
 
 
 function BoardToHtml(blank){
-  for(var i=Bounds.top-1, str=""; i<Bounds.bottom+2; i++){
+  for(var i=Bounds.top-1, str="<br/><br/>"; i<Bounds.bottom+2; i++){
     str+="<div class='row'>";
     for(var j=Bounds.left-1; j<Bounds.right+2; j++){
       str += BoardCharToElement(board[j][i]);
@@ -311,8 +310,6 @@ function WordObj(stringValue){
 function RegisterEvents(){
   document.getElementById("crossword").onfocus = function (){ 
     return false; }
-  document.getElementById("btnCreate").addEventListener('click',Create,false);
-  document.getElementById("btnPlay").addEventListener('click',Play,false);
 }
 RegisterEvents();
 
@@ -358,18 +355,15 @@ Play();
 		<>
     
 			<Head>
-      <link rel="stylesheet" href="/_next/static/chunks/crossword.module.css"/>
+     
 				<title>Games | The Spectator</title>
 			</Head>
-			<main id={styles.main}>
-				<h1>Crossword</h1>
+      
     <div className="container">
-  <button className="btn" id="btnCreate">Create</button>
-  <button className="btn" id="btnPlay">Play</button>
   <br/><br/>  
 
   <div className="center crossword" id="crossword"></div><br/>
-
+  <section id={styles.table}>
   <div className="center">
 
     <div className="line">
@@ -410,11 +404,49 @@ Play();
       <input className="word" type="text" value="sharpener"/>
       <input className="clue" value="For shaving away the surface of pencils" />
     </div>
-
   </div>
+  </section>
 </div>
-            
-			</main>
+<main id={styles.main}>
+           <h1>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            - A writing utensil for written portions in the regents
+            <br/>
+            <br/>
+            - A writing utensil for filling out Scantrons
+            <br/>
+            <br/>
+            - For connecting late worksheets together
+            <br/>
+            <br/>
+            - Where all students put their belongings
+            <br/>
+            <br/>
+            - A rectangular white slip for writing
+            <br/>
+            <br/>
+            - For measuring the length of things
+            <br/>
+            <br/>
+            - A utensil used to remove mistakes
+            <br/>
+            <br/> 
+            - For shaving away the surface of pencils
+           </h1> 
+    </main>
 		</>
 	);
    
