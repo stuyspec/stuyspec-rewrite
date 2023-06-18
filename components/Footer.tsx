@@ -264,6 +264,26 @@ const Footer = () => {
 							</p>
 						</div>
 						<div id={styles.cell}>
+							<h3 id={styles.department}>
+								Want to see past articles?
+							</h3>
+							<div className={`${styles.dropdown}`}>
+								<button className={styles.dropbtn}>
+								Issues
+								</button>
+								<div id={styles.dropDownContent}>
+									{[...Array(13)].map((_, index) => {
+										const i = 13 - index;
+										return (
+										<div key={i}>
+											<Link href={`/volume/113/issue/${i}`}>Issue {i}</Link>
+										</div>
+										);
+									})}
+								</div>
+							</div>
+						</div>
+						<div id={styles.cell}>
 							<h3
 								id={styles.department}
 								className={styles.virtualArchives}

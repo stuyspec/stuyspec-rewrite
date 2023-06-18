@@ -154,3 +154,16 @@
 		justify-self: start;
 	}
 }
+.dropbtn {
+	background-color: #3c3c3c;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+  }
+
+  .dropDownContent a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropDownContent {display:block;}
+  
+  .dropdown:hover .dropbtn {background-color: #8c8c8c;}
