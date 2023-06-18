@@ -4,17 +4,37 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import CollapsibleSearch from "./CollapsibleSearch";
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Navbar = () => {
 	const [viewSubSection, setViewSubSection] = useState(false);
+	const [isNavbarShrunk, setIsNavbarShrunk] = useState(false);
+	var mouseY = 0
 	function toggleMenu() {
 		setViewSubSection(!viewSubSection);
+	}
+	React.useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
+		window.addEventListener('mousemove', (event) => {
+			mouseY = event.clientY;
+			handleScroll();
+		});
+	},[]);
+
+	const handleScroll = () => {
+		const threshold = 600.0; // Adjust this value to determine when the navbar should shrink
+
+		if (mouseY < 50.0) {
+			setIsNavbarShrunk(false);}
+		else if (window.scrollY > threshold) {
+			setIsNavbarShrunk(true);} 
+		else {
+			setIsNavbarShrunk(false);}
 	}
 
 	return (
 		<div id={styles.nav_parent}>
-			<nav id={styles.nav}>
+			<nav id={styles.nav} style={isNavbarShrunk ? {display: 'none'} : {}}>
 				<div
 					id={styles.hamburgerMenu}
 					className="button"
@@ -61,6 +81,7 @@ const Navbar = () => {
 			<div
 				id={styles.department_bar}
 				className={viewSubSection ? "" : styles.hide}
+				style={isNavbarShrunk ? {paddingTop: '10px'} : {}}
 			>
 				<span>
 					<Link href="/department/news">News</Link>
