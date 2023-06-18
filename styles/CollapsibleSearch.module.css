@@ -14,7 +14,6 @@
 	transition: all 0.2s linear;
 	padding: 0.5rem;
 	font-size: 1rem;
-	z-index: 5;
 }
 
 /* This is so that the icon and textbox stack on top of each other */

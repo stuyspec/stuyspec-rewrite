@@ -49,6 +49,7 @@ const CollapsibleSearch = () => {
 						marginRight: searchBar ? "0" : "-250px", // To animate coming from the right side
 						opacity: searchBar ? "1" : "0",
 						cursor: searchBar ? "auto" : "pointer",
+						zIndex: searchBar ? 3 : -1,
 					}}
 					placeholder="Search"
 					onFocus={onSearchFocus}
