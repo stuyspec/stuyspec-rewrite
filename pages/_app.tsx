@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Script from "next/script";
 import Head from "next/head";
+import Sidenav from "../components/Sidenav";
 
 function MyApp(props: AppProps) {
 	let { Component, pageProps } = props;
@@ -15,6 +16,9 @@ function MyApp(props: AppProps) {
 			<div>
 				<div id="navbar">
 					<Navbar />
+				</div>
+				<div id="sidenav">
+					<Sidenav />
 				</div>
 				<div id="main">
 					<Component {...pageProps} />
