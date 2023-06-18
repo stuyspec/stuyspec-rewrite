@@ -34,14 +34,13 @@ const CollapsibleSearch = () => {
 						transition: "visibility 0s, opacity 0.2s linear",
 					}}
 					id={styles.search_button}
+					onClick={onSearchFocus}
 				>
 					<Image
 						alt="Search"
 						src="/images/search-button.svg"
 						width={32}
 						height={32}
-						onClick={onSearchFocus}
-						className="button"
 					/>
 				</div>
 				<input
@@ -49,6 +48,7 @@ const CollapsibleSearch = () => {
 					style={{
 						marginRight: searchBar ? "0" : "-250px", // To animate coming from the right side
 						opacity: searchBar ? "1" : "0",
+						cursor: searchBar ? "auto" : "pointer",
 					}}
 					placeholder="Search"
 					onFocus={onSearchFocus}
