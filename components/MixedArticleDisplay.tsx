@@ -152,7 +152,7 @@ export default function MixedArticleDisplay(props: {
 					.sort((a, b) => b.volume - a.volume)
 					.sort((a, b) => b.issue - a.issue)
 			);
-			const image_articles = Math.floor(articles.length / 3);
+			const image_articles = Math.floor(articles.length / 3.5);
 			const grouping = groupByImageExists(articles);
 			const articles_with_photos =
 				articlesProcessed.articlesWithPhotos.concat(
@@ -182,7 +182,7 @@ export default function MixedArticleDisplay(props: {
 				<section id={styles.left}>
 					{articlesProcessed.articlesWithoutPhotos
 						.slice(0)
-						.slice(0, num_articles_each_side + 1)
+						.slice(0, articlesProcessed.articlesWithPhotos.length + 1)
 						.map((article, index) => (
 							<Fragment key={index}>
 								<CenterArticle
@@ -194,7 +194,7 @@ export default function MixedArticleDisplay(props: {
 								{index % ad_spacing == 0 && index != 0 ? (
 									<div className={styles.ad_parent}>
 										<Advertisment
-											index={index / ad_spacing}
+											index={index / ad_spacing + 2}
 										/>
 									</div>
 								) : (
@@ -238,7 +238,7 @@ export default function MixedArticleDisplay(props: {
 				<section id={styles.right}>
 					{articlesProcessed.articlesWithoutPhotos
 						.slice(0)
-						.slice(num_articles_each_side + 1)
+						.slice(0, articlesProcessed.articlesWithPhotos.length)
 						.map((article, index) => (
 							<Fragment key={index}>
 								<CenterArticle
@@ -247,10 +247,10 @@ export default function MixedArticleDisplay(props: {
 										props.display_department
 									}
 								/>
-								{index % ad_spacing == 0 ? (
+								{index % ad_spacing == 0 ?(
 									<div className={styles.ad_parent}>
 										<Advertisment
-											index={index / ad_spacing + 2}
+											index={index / ad_spacing}
 										/>
 									</div>
 								) : (
