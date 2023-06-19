@@ -132,3 +132,21 @@ a {
 .discrete-link:focus {
 	text-decoration-color: var(--accent);
 }
+
+.btt {
+    position: -webkit-sticky; 
+    position: fixed;
+    top: 0;
+    padding: 10px;
+    font-size: 25px;
+	margin-left: 92%;
+	margin-top: 40%;
+	border-radius: 30px;
+	background-color: var(--primary);
+}
+
+.btt a {
+	font-family: var(--secondary-font);
+	font-size: 20px;
+	color: var(--secondary);
+}

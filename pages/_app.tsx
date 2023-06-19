@@ -16,6 +16,7 @@ function MyApp(props: AppProps) {
 				<div id="navbar">
 					<Navbar />
 				</div>
+				<button className="btt"><a href="#">UP</a></button>
 				<div id="main">
 					<Component {...pageProps} />
 				</div>
