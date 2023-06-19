@@ -4,6 +4,7 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import CollapsibleSearch from "./CollapsibleSearch";
 import Image from "next/image";
+import Sidebar from "./Sidebar";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -87,6 +88,10 @@ const Navbar = () => {
 				<span>
 					<Link href="/about/recruitments">Recruitments</Link>
 				</span>
+			</div>
+			<div>
+				<Sidebar
+				showSidebar={viewSubSection} />
 			</div>
 		</div>
 	);

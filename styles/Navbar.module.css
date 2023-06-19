@@ -60,7 +60,7 @@
 	place-self: center;
 }
 #hamburgerMenu {
-	display: none;
+	/* display: none; */
 	background: none;
 	cursor: pointer;
 }
