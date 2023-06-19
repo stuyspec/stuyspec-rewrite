@@ -34,7 +34,7 @@ const Article = (props: Props) => {
 		let count = text.split(" ");
 		let readTime = Math.round(count.length / 250); // average reading time in min
 
-		return <span id={styles.time}>{readTime} MINUTE READ</span>;
+		return <span>Reading Time: {readTime} minutes</span>;
 	};
 
 	const providers = ["facebook", "twitter", "linkedin", "email"];
@@ -61,6 +61,9 @@ const Article = (props: Props) => {
 						</Link>
 					</p>
 					<h1 id={styles.title}>{title}</h1>
+					<h3 id={styles.reading_time}>
+						{generateApproxReadingTime()}
+					</h3>
 					<h3 id={styles.issue_volume_text}>
 						<Link href={`/volume/${volume}/issue/${issue}`}>
 							Issue {issue}, Volume {volume}
@@ -80,7 +83,6 @@ const Article = (props: Props) => {
 									url={`https://stuyspec.com/article/${props.article.slug}`}
 								/>
 							))}
-							{generateApproxReadingTime()}
 						</div>
 					</div>
 
