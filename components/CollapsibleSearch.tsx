@@ -55,7 +55,6 @@ const CollapsibleSearch = () => {
 					onFocus={onSearchFocus}
 					onChange={(e) => setSearchValue(e.target.value)}
 					onBlur={onSearchBlur}
-					autoFocus
 					ref={textInput}
 				/>
 			</form>
