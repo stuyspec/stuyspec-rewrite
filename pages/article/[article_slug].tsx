@@ -30,14 +30,11 @@ const Article = (props: Props) => {
 		cover_image_source,
 	} = props.article;
 
-	const wordCount = () => {
-		var count = text.split(" ");
-		// average reading time
-		return (
-			<span id={styles.time}>
-				{Math.round(count.length / 200)} MINUTE READ
-			</span>
-		);
+	const generateApproxReadingTime = () => {
+		let count = text.split(" ");
+		let readTime = Math.round(count.length / 250); // average reading time in min
+
+		return <span id={styles.time}>{readTime} MINUTE READ</span>;
 	};
 
 	const providers = ["facebook", "twitter", "linkedin", "email"];
@@ -83,7 +80,7 @@ const Article = (props: Props) => {
 									url={`https://stuyspec.com/article/${props.article.slug}`}
 								/>
 							))}
-							{wordCount()}
+							{generateApproxReadingTime()}
 						</div>
 					</div>
 
