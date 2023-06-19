@@ -5,15 +5,12 @@ import {
 	DepartmentsArrayDisplay,
 	DepartmentsArray,
 } from "../../ts_types/db_types";
-import { get_article_by_slug, get_articles_by_department } from "../../db";
+import { get_article_by_slug } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[article_slug].module.css";
 import ShareButton from "../../components/ShareButton";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
-
-
 
 interface Props {
 	article: ReceivedArticle;
@@ -32,18 +29,17 @@ const Article = (props: Props) => {
 		cover_image_contributor,
 		cover_image_source,
 	} = props.article;
-	
+
 	const wordCount = () => {
-		var count =  text.split(" ");
+		var count = text.split(" ");
 		// average reading time
-		return ( 
-			<div>
-				<span id={styles.time}>{Math.round(count.length/200)} MINUTE READ</span>
-			</div>
-		)
-		
-	}
-	const time = 0;
+		return (
+			<span id={styles.time}>
+				{Math.round(count.length / 200)} MINUTE READ
+			</span>
+		);
+	};
+
 	const providers = ["facebook", "twitter", "linkedin", "email"];
 
 	return (
@@ -73,7 +69,7 @@ const Article = (props: Props) => {
 							Issue {issue}, Volume {volume}
 						</Link>
 					</h3>
-					
+
 					<div id={styles.infoBar}>
 						<h3 id={styles.authors}>
 							By&nbsp;{generate_contributors_jsx(contributors)}
