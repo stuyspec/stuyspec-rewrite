@@ -95,8 +95,9 @@ export default function MixedArticleDisplay(props: {
 			const articlesWithPhotos = grouping["withPhotos"]
 				.slice(0)
 				.slice(0, image_articles)
-				.sort((a, b) => b.volume - a.volume)
-				.sort((a, b) => b.issue - a.issue);
+				.sort((a, b) => (b.rank || 0) - (a.rank || 0))
+				.sort((a, b) => b.issue - a.issue)
+				.sort((a, b) => b.volume - a.volume);
 
 			const articlesWithoutPhotos = grouping.withoutPhotos.concat(
 				grouping.withPhotos.slice(0).slice(image_articles)

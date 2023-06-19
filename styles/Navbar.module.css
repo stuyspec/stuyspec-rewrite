@@ -54,11 +54,7 @@
 	grid-column-end: 4;
 	place-self: center;
 }
-#searchButton {
-	grid-column-start: 5;
-	grid-column-end: 5;
-	place-self: center;
-}
+
 #hamburgerMenu {
 	display: none;
 	background: none;

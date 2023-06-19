@@ -53,7 +53,9 @@ const SubscribeForm = () => {
 				Subscribe
 			</button>
 			{subscribeState === "Error" && (
-				<p id={styles.text}>Error: An Error Occured</p>
+				<p id={styles.error}>
+					You did not submit a valid email address
+				</p>
 			)}
 			{subscribeState === "Success" && (
 				<p id={styles.text}>
