@@ -100,3 +100,9 @@
 	font-size: var(--small-text);
 	font-family: var(--secondary-font);
 }
+#time {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: var(--small-text);
+	font-family: var(--primary-font);
+}
