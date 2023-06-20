@@ -61,6 +61,9 @@ const Navbar = () => {
 				className={viewSubSection ? "" : styles.hide}
 			>
 				<span>
+					<Link href ="/pages/trending">Trending</Link>
+				</span>
+				<span>
 					<Link href="/department/news">News</Link>
 				</span>
 				<span>
