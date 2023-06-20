@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import {
 	ReceivedArticle,
 	DepartmentsArray,
@@ -61,14 +60,16 @@ export default function ListArticleDisplay(props: {
 								</Link>
 							</p>
 						</div>
+
 						{article.cover_image ? (
-							<img
-								width={"100%"}
-								id={styles.cover_image}
-								src={article.cover_image}
-								alt="Cover Image"
-								className={styles.image}
-							/>
+							<div className={styles.image_div}>
+								<Image
+									fill
+									src={article.cover_image}
+									alt="Cover Image"
+									className={styles.image}
+								/>
+							</div>
 						) : (
 							<></>
 						)}

@@ -9,12 +9,7 @@
 	display: flex;
 	width: 100%;
 	min-height: 135px;
-}
-
-#list_view .image {
-	margin-left: 20px;
-	height: 135px;
-	width: auto;
+	justify-content: space-between;
 }
 
 .item_left {
@@ -32,4 +27,22 @@
 	#list_view .image {
 		display: none;
 	}
+}
+
+/* Image stuffs */
+#list_view .image_div {
+	text-align: center;
+	height: 135px;
+	object-fit: contain;
+	position: relative;
+	overflow: "hidden";
+}
+
+#list_view .image {
+	margin-left: 20px;
+	height: 135px;
+	width: auto;
+	object-fit: contain;
+	position: relative !important;
+	height: 135px !important;
 }
