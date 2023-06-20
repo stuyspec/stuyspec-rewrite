@@ -8,7 +8,6 @@
 #list_view .inner_item {
 	display: flex;
 	width: 100%;
-	justify-content: space-between;
 	min-height: 135px;
 }
 
@@ -18,9 +17,17 @@
 	width: auto;
 }
 
-#list_view h2 {
-	margin-top: 1rem;
+.item_left {
+	height: fit-content;
+
+	margin-top: auto;
+	margin-bottom: auto;
 }
+
+#list_view .department {
+	font-family: var(--secondary-font);
+}
+
 @media screen and (max-width: 940px) {
 	#list_view .image {
 		display: none;
