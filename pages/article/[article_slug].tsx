@@ -34,6 +34,9 @@ const Article = (props: Props) => {
 		let count = text.split(" ");
 		let readTime = Math.round(count.length / 250); // average reading time in min
 
+		if (readTime === 1) {
+			return <span>Reading Time: {readTime} minute</span>;
+		}
 		return <span>Reading Time: {readTime} minutes</span>;
 	};
 
