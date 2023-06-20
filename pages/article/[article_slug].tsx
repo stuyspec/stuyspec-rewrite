@@ -34,7 +34,11 @@ const Article = (props: Props) => {
 		let count = text.split(" ");
 		let readTime = Math.round(count.length / 250); // average reading time in min
 
-		return <span>Reading Time: {readTime} minutes</span>;
+		return (
+			<span>
+				Reading Time: {readTime} minute{readTime === 1 ? "" : "s"}
+			</span>
+		);
 	};
 
 	const providers = ["facebook", "twitter", "linkedin", "email"];
