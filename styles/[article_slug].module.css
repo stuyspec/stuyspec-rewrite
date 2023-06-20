@@ -31,6 +31,13 @@
 	margin-top: 1rem;
 	font-size: var(--small-text);
 }
+
+#rTime {
+	margin-bottom: 1rem;
+	font-size: var(--small-text);
+	font-family: var(--secondary-font);
+}
+
 #shareButtons {
 	display: flex;
 	justify-content: flex-end;

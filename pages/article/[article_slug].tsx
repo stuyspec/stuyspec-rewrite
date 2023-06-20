@@ -11,9 +11,11 @@ import styles from "../../styles/[article_slug].module.css";
 import ShareButton from "../../components/ShareButton";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
+import { text } from "node:stream/consumers";
 
 interface Props {
 	article: ReceivedArticle;
+	rTime: number;
 }
 
 const Article = (props: Props) => {
@@ -54,6 +56,9 @@ const Article = (props: Props) => {
 						</Link>
 					</p>
 					<h1 id={styles.title}>{title}</h1>
+					<h3 id={styles.rTime}> 
+						{props.rTime} Minute Read
+					</h3>
 					<h3 id={styles.issue_volume_text}>
 						<Link href={`/volume/${volume}/issue/${issue}`}>
 							Issue {issue}, Volume {volume}
@@ -122,18 +127,25 @@ const Article = (props: Props) => {
 
 export default Article;
 
+
+
 export async function getServerSideProps(context: NextPageContext) {
 	const article_slug: string = String(context.query.article_slug);
 
 	let article = await get_article_by_slug(article_slug);
+	console.log(article);
+	let numWords = article.text.split(" ").length;
+	let hsAvgRT = 230;
+    let rTime = Math.round(numWords/hsAvgRT);
+    
 	if (article) {
 		return {
-			props: { article: JSON.parse(JSON.stringify(article)) },
+			props: { article: JSON.parse(JSON.stringify(article)), rTime: rTime},
 		};
 	} else {
 		return {
 			notFound: true,
-			props: { attempted_identifier: article_slug },
+			props: { attempted_identifier: article_slug},
 		};
 	}
 }
