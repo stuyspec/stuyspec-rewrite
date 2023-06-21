@@ -109,6 +109,14 @@ a {
 	z-index: 3;
 }
 
+@media screen and (max-width: 940px) {
+	#navbar {
+		position: static;
+		top: 0;
+		z-index: 3;
+	}
+}
+
 .link {
 	background: linear-gradient(to right, var(--primary), var(--primary)),
 		linear-gradient(to right, var(--accent), var(--accent));
