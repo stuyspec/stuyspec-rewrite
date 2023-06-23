@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import styles from "../styles/Footer.module.css";
 import Link from "next/link";
-import Image from "next/image";
-import Head from "next/head";
-import { useEffect, useState } from "react";
+import LatestPreviewImage from "./LatestPreviewImage";
+
 import {
 	BsSpotify,
 	BsFacebook,
@@ -13,17 +12,7 @@ import {
 } from "react-icons/bs";
 
 const Footer = () => {
-	const [images, setImages] = useState([]);
 	const year = new Date().getFullYear();
-	const getImages = async () => {
-		const res = await fetch("/api/issuu");
-		const data = await res.json();
-		setImages(data.images);
-	};
-
-	useEffect(() => {
-		getImages();
-	}, []);
 
 	return (
 		<>
@@ -278,22 +267,16 @@ const Footer = () => {
 						</div>
 					</div>
 					<div id={styles.column}>
-						<Link passHref href="https://issuu.com/stuyspectator">
-							<img
-								alt="image 0"
-								className={styles.archiveImage1}
-								src={images[0]}
-							/>
-						</Link>
+						<LatestPreviewImage
+							imageClass={styles.archiveImage1}
+							imageIndex={0}
+						/>
 					</div>
 					<div id={styles.column}>
-						<Link passHref href="https://issuu.com/stuyspectator">
-							<img
-								alt="image 1"
-								className={styles.archiveImage2}
-								src={images[1]}
-							/>
-						</Link>
+						<LatestPreviewImage
+							imageClass={styles.archiveImage2}
+							imageIndex={1}
+						/>
 					</div>
 				</div>
 				<div id={styles.declarations}>

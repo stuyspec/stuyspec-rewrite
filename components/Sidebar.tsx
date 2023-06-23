@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router";
 import styles from "../styles/Sidebar.module.css";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import LatestPreviewImage from "./LatestPreviewImage";
 
 import {
 	BsSpotify,
@@ -13,17 +11,6 @@ import {
 } from "react-icons/bs";
 
 const Sidebar = (props: { showSidebar: boolean }) => {
-	const [images, setImages] = useState([]);
-	const getImages = async () => {
-		const res = await fetch("/api/issuu");
-		const data = await res.json();
-		setImages(data.images);
-	};
-
-	useEffect(() => {
-		getImages();
-	}, []);
-
 	return (
 		<div id={styles.sidebar_parent}>
 			<div
@@ -176,13 +163,7 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 
 				<div id={styles.socialsBar}>
 					<div id={styles.column}>
-						<Link passHref href="https://issuu.com/stuyspectator">
-							<img
-								alt="image 0"
-								className={styles.archiveImage1}
-								src={images[0]}
-							/>
-						</Link>
+						<LatestPreviewImage imageIndex={0} imageClass={styles.archiveImage1} />
 					</div>
 
 					<div id={styles.mediaButtons}>
