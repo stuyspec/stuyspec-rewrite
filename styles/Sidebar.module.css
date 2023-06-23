@@ -95,11 +95,8 @@
 }
 
 #mediaButtons {
-	display: grid;
-	grid-template-columns: repeat(5, 48px);
-	justify-self: end;
-	align-self: end;
-	overflow-y: hidden;
+	display: flex;
+	justify-content: space-between;
 }
 
 #mediaButton {
