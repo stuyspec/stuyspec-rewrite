@@ -2,8 +2,8 @@
 	width: 250px;
 	background-color: var(--secondary-nav);
 	position: fixed !important;
-	height: calc(100vh - 95px);
-	top: 95px;
+	height: calc(100vh - 94px);
+	top: 94px;
 }
 
 #sidebar {
