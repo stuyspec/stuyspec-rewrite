@@ -12,11 +12,11 @@ import {
 
 const Sidebar = (props: { showSidebar: boolean }) => {
 	return (
-		<div id={styles.sidebar_parent}>
-			<div
-				id={styles.department_bar}
-				className={props.showSidebar ? "" : styles.hide}
-			>
+		<div
+			id={styles.sidebar_parent}
+			className={props.showSidebar ? "" : styles.hide}
+		>
+			<div id={styles.sidebar}>
 				<span className={styles.maindepartment}>
 					<Link passHref href="/">
 						Home
@@ -163,7 +163,10 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 
 				<div id={styles.socialsBar}>
 					<div id={styles.column}>
-						<LatestPreviewImage imageIndex={0} imageClass={styles.archiveImage1} />
+						<LatestPreviewImage
+							imageIndex={0}
+							imageClass={styles.archiveImage1}
+						/>
 					</div>
 
 					<div id={styles.mediaButtons}>

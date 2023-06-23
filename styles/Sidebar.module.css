@@ -1,27 +1,21 @@
 #sidebar_parent {
 	width: 250px;
 	background-color: var(--secondary-nav);
-	position: absolute;
+	position: fixed !important;
+	height: calc(100vh - 95px);
+	top: 95px;
 }
 
-#department_bar {
-	max-width: 800px;
-	/* height: fit-content; */
-	height: 100vh;
-
+#sidebar {
 	display: flex;
-	/* justify-content: space-around; */
 	flex-direction: column;
-
-	margin-right: auto;
-	margin-left: auto;
-	font-family: var(--secondary-font);
 	align-items: center;
+	font-family: var(--secondary-font);
 	padding-bottom: 10px;
 	color: var(--primary-immutable);
 }
 
-#department_bar span {
+#sidebar span {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	font-size: 1.2rem;
@@ -50,21 +44,11 @@
 	justify-content: center;
 }
 
-#hamburgerMenu {
-	display: block;
-	background: none;
-	cursor: pointer;
-}
-
-#hamburgerMenu:hover,
-.clickable_nav_element:hover,
 .maindepartment:hover,
 .subdepartment span:hover {
 	opacity: 0.75;
 }
 
-#hamburgerMenu:active,
-.clickable_nav_element:active,
 .maindepartment:active,
 .subdepartment span:active {
 	opacity: 0.5;
