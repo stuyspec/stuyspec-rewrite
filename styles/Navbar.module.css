@@ -120,13 +120,8 @@
 	}
 
 	#department_bar {
+		display: none;
 		flex-direction: column;
-	}
-
-	#department_bar span {
-		margin-top: 5px;
-		margin-bottom: 5px;
-		font-size: 1.2rem;
 	}
 }
 

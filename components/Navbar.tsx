@@ -57,10 +57,7 @@ const Navbar = () => {
 					<CollapsibleSearch />
 				</div>
 			</nav>
-			<div
-				id={styles.department_bar}
-				className={viewSubSection ? "" : styles.hide}
-			>
+			<div id={styles.department_bar}>
 				<span>
 					<Link href="/department/news">News</Link>
 				</span>
