@@ -90,8 +90,7 @@ const Navbar = () => {
 				</span>
 			</div>
 			<div>
-				<Sidebar
-				showSidebar={viewSubSection} />
+				<Sidebar showSidebar={viewSubSection} />
 			</div>
 		</div>
 	);

@@ -1,7 +1,7 @@
 #sidebar_parent {
 	width: 250px;
 	background-color: var(--secondary-nav);
-  position: fixed;
+	position: fixed;
 }
 
 #sidebar {
@@ -10,8 +10,8 @@
 	padding: 1px 14px;
 
 	grid-template-rows: 100%;
-  grid-template-columns: 48px calc(100% - 188px) 56px 56px;
-  column-gap: 1.5rem;
+	grid-template-columns: 48px calc(100% - 188px) 56px 56px;
+	column-gap: 1.5rem;
 
 	display: none;
 	align-items: center;
@@ -22,11 +22,11 @@
 #department_bar {
 	max-width: 800px;
 	/* height: fit-content; */
-  height: 100vh;
-  
+	height: 100vh;
+
 	display: flex;
 	/* justify-content: space-around; */
-  flex-direction: column;
+	flex-direction: column;
 
 	margin-right: auto;
 	margin-left: auto;
@@ -37,37 +37,36 @@
 }
 
 #department_bar span {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-size: 1.2rem;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 1.2rem;
 }
 
 .department {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 .subdepartment {
-  position: absolute;
-  left: 100%;
-  display: none;
+	position: absolute;
+	left: 100%;
+	display: none;
 }
 
 .department:hover .subdepartment {
-  background-color: var(--secondary-nav);
-  padding: 5px 12px;
-  width: fit-content;
-  white-space: nowrap;
-  transform:translateY(-4px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	background-color: var(--secondary-nav);
+	padding: 5px 12px;
+	width: fit-content;
+	white-space: nowrap;
+	transform: translateY(-4px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
-
 #hamburgerMenu {
-  display: block;
+	display: block;
 	background: none;
 	cursor: pointer;
 }
@@ -87,20 +86,19 @@
 }
 
 .hide {
-  display: none !important;
+	display: none !important;
 }
 
 #socialsBar {
-  position:fixed;
-  bottom: 10px;
+	position: fixed;
+	bottom: 10px;
 }
-
 
 #mediaButtons {
 	display: grid;
 	grid-template-columns: repeat(5, 48px);
 	justify-self: end;
-  align-self: end;
+	align-self: end;
 	overflow-y: hidden;
 }
 
@@ -116,21 +114,20 @@
 	height: auto;
 	max-width: 100%;
 	max-height: 100%;
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 	object-fit: contain;
 	cursor: pointer;
 }
 
 #column {
 	display: flex;
-  justify-content: center;
+	justify-content: center;
 }
 
-@media screen and (max-width: 940px){
-
-#sidebar_parent{
-  display: none;
-}
+@media screen and (max-width: 940px) {
+	#sidebar_parent {
+		display: none;
+	}
 }
 
 .user_icon {
