@@ -13,10 +13,6 @@ import {
 } from "react-icons/bs";
 
 const Sidebar = (props: { showSidebar: boolean }) => {
-	let pageName = useRouter().pathname.split("/").pop();
-	if (pageName != undefined) {
-		pageName = pageName.charAt(0).toUpperCase() + pageName.slice(1);
-	}
 	const [images, setImages] = useState([]);
 	const getImages = async () => {
 		const res = await fetch("/api/issuu");
