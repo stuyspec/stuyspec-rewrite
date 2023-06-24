@@ -1,5 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { IssuuResponse } from "../../../ts_types/db_types";
+export interface IssuuResponse {
+	images: string[];
+	volume: number;
+	issue: number;
+	title: string;
+	link: string;
+}
 
 export default async function handler(
 	req: NextApiRequest,
@@ -8,60 +14,40 @@ export default async function handler(
 	const { method, body } = req;
 
 	if (method == "GET") {
-		// removeed for now
-		// const images = await getImages();
-		res.json({
-			images: [
-				"https://image.isu.pub/211222040543-c98b7067d4de1b4e47945be020169e9b/jpg/page_1.jpg",
-				"https://image.isu.pub/211222040543-c98b7067d4de1b4e47945be020169e9b/jpg/page_32.jpg",
-			],
-		});
+		const response: IssuuResponse = await getLatestImages();
+
+		return res.json(response);
 	}
 }
 
-async function getImages() {
+async function getLatestImages() {
 	const response = await fetch(
-		"https://issuu.com/call/profile/v1/documents/stuyspectator?offset=0&limit=25",
-		{
-			headers: {
-				accept: "*/*",
-				"accept-language": "en-US,en;q=0.9",
-				"content-type": "application/json",
-				"sec-fetch-dest": "empty",
-				"sec-fetch-mode": "cors",
-				"sec-fetch-site": "same-origin",
-				"sec-gpc": "1",
-			},
-			referrer: "https://issuu.com/stuyspectator",
-			referrerPolicy: "strict-origin-when-cross-origin",
-			body: null,
-			method: "GET",
-			mode: "cors",
-			credentials: "include",
-		}
-	);
+		"https://issuu.com/call/profile/v1/documents/stuyspectator?offset=0&limit=25"
+	); // returns latest pdfs (issues) of The Spectator
+
 	const json = await response.json();
-	const uri = json.items[0].uri;
+	const uriFileName = String(json.items[0].uri).split("/").at(-1); // Get filename of latest issue
+
 	const getImages = await fetch(
-		`https://reader3.isu.pub/stuyspectator/${uri}/reader3_4.json`,
-		{
-			referrer: "https://e.issuu.com/",
-			referrerPolicy: "strict-origin-when-cross-origin",
-			body: null,
-			method: "GET",
-			mode: "cors",
-			credentials: "omit",
-		}
-	);
+		`https://reader3.isu.pub/stuyspectator/${uriFileName}/reader3_4.json`
+	); // get the JPG image of every page in the PDF
 	const json2 = await getImages.json();
-	const pagesLength: number = json2.document.pages.length - 1;
-	const images: String[] = [
-		json2.document.pages[0].imageUri,
-		json2.document.pages[pagesLength].imageUri,
+
+	const numPages: number = json2.document.pages.length;
+
+	let images: string[] = [
+		json2.document.pages[0].imageUri, // first page
+		json2.document.pages[numPages - 1].imageUri, // last page
 	];
-	// add https:// to each image
-	for (let i = 0; i < images.length; i++) {
-		images[i] = `https://${images[i]}`;
-	}
-	return images;
+	images = images.map((v) => `https://${v}`);
+
+	const postTitle = String(json.items[0].title); // Get issue post's title of latest issue
+
+	let splitTitle = postTitle.split(" "); // Parse the volume and issue from "Volume XX Issue ZZ"
+	const volume = Number(splitTitle[1]);
+	const issue = Number(splitTitle[3]);
+
+	const link = `https://issuu.com/stuyspectator/docs/${uriFileName}`;
+
+	return { images, volume, issue, title: postTitle, link };
 }

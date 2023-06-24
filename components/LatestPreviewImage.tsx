@@ -1,13 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { IssuuResponse } from "../pages/api/issuu";
 
 const LatestPreviewImage = (props: { imageClass: any; imageIndex: number }) => {
-	const [images, setImages] = useState([]);
+	const [data, setData] = useState<IssuuResponse | undefined>(undefined);
 	const getImages = async () => {
 		const res = await fetch("/api/issuu");
-		const data = await res.json();
-		setImages(data.images);
+		const json = await res.json();
+
+		setData(json);
 	};
 
 	useEffect(() => {
@@ -15,15 +17,16 @@ const LatestPreviewImage = (props: { imageClass: any; imageIndex: number }) => {
 	}, []);
 
 	return (
-		<Link passHref href="https://issuu.com/stuyspectator">
+		<Link
+			passHref
+			href={(data && data.link) || "https://issuu.com/stuyspectator"}
+		>
 			<img
-				alt={
-					"The " +
-					["first", "second"][props.imageIndex] +
-					" page of the latest Spectator Issue"
-				}
+				alt={`The ${
+					["first", "last"][props.imageIndex]
+				} page of the latest Spectator Issue`}
 				className={props.imageClass}
-				src={images[props.imageIndex]}
+				src={(data && data.images[props.imageIndex]) || ""}
 			/>
 		</Link>
 	);
