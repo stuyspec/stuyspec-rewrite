@@ -1,6 +1,7 @@
 import styles from "../styles/Sidebar.module.css";
 import Link from "next/link";
 import LatestPreviewImage from "./LatestPreviewImage";
+import Image from "next/image";
 
 import {
 	BsSpotify,
@@ -8,6 +9,7 @@ import {
 	BsInstagram,
 	BsLinkedin,
 	BsGithub,
+	BsBack,
 } from "react-icons/bs";
 
 const Sidebar = (props: { showSidebar: boolean }) => {
@@ -33,6 +35,13 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 							</Link>
 						</span>
 					</div>
+					<Image
+						src="/images/right-arrow.svg"
+						width={10}
+						alt="right-arrow"
+						height={10}
+						id={styles.right_arrow}
+					/>
 				</div>
 
 				<div className={styles.department}>
@@ -49,6 +58,13 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 							<Link href="/department/opinions/9-11">9/11</Link>
 						</span>
 					</div>
+					<Image
+						src="/images/right-arrow.svg"
+						width={10}
+						alt="right-arrow"
+						height={10}
+						id={styles.right_arrow}
+					/>
 				</div>
 
 				<div className={styles.department}>
@@ -62,6 +78,13 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 							</Link>
 						</span>
 					</div>
+					<Image
+						src="/images/right-arrow.svg"
+						width={10}
+						alt="right-arrow"
+						height={10}
+						id={styles.right_arrow}
+					/>
 				</div>
 
 				<span className={styles.maindepartment}>
@@ -116,6 +139,13 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 							<Link href="/department/ae/stc">STC!</Link>
 						</span>
 					</div>
+					<Image
+						src="/images/right-arrow.svg"
+						width={10}
+						alt="right-arrow"
+						height={10}
+						id={styles.right_arrow}
+					/>
 				</div>
 
 				<div className={styles.department}>
@@ -134,6 +164,13 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 							</Link>
 						</span>
 					</div>
+					<Image
+						src="/images/right-arrow.svg"
+						width={10}
+						alt="right-arrow"
+						height={10}
+						id={styles.right_arrow}
+					/>
 				</div>
 
 				<div className={styles.department}>
@@ -152,6 +189,13 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 							</Link>
 						</span>
 					</div>
+					<Image
+						src="/images/right-arrow.svg"
+						width={10}
+						alt="right-arrow"
+						height={10}
+						id={styles.right_arrow}
+					/>
 				</div>
 
 				<span className={styles.maindepartment}>

@@ -90,6 +90,16 @@
 	justify-content: center;
 }
 
+#right_arrow {
+	position: absolute;
+	margin-top: 0.8rem;
+	margin-left: 220px;
+}
+
+.department:hover #right_arrow {
+	opacity: 0.8;
+}
+
 @media screen and (max-width: 940px) {
 	#sidebar_parent {
 		height: fit-content;
@@ -98,6 +108,9 @@
 	}
 
 	#socialsBar {
+		display: none;
+	}
+	#right_arrow {
 		display: none;
 	}
 }
