@@ -9,16 +9,6 @@
 	cursor: pointer;
 	margin: 0 auto;
 	display: block;
-	-webkit-animation: spin 0.4s linear;
-	-moz-animation: spin 0.4s linear;
-	animation: spin 0.4s linear;
-}
-
-@keyframes spin {
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
 }
 
 #subscribe_button_navbar {
