@@ -1,15 +1,15 @@
 import styles from "../styles/Sidebar.module.css";
+import subscribe_button_styles from "../styles/SubscribeButton.module.css";
 import Link from "next/link";
-import LatestPreviewImage from "./LatestPreviewImage";
 import Image from "next/image";
-
+import LatestPreviewImage from "./LatestPreviewImage";
+import ThemeToggle from "./ThemeToggle";
 import {
 	BsSpotify,
 	BsFacebook,
 	BsInstagram,
 	BsLinkedin,
 	BsGithub,
-	BsBack,
 } from "react-icons/bs";
 
 const Sidebar = (props: { showSidebar: boolean }) => {
@@ -204,7 +204,18 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 				<span className={styles.maindepartment}>
 					<Link href="/about/recruitments">Recruitments</Link>
 				</span>
-
+				<div id={styles.additional_features}>
+					<div className={styles.clickable_nav_element}>
+						<Link href="/subscribe">
+							<p id={subscribe_button_styles.subscribe}>
+								Subscribe
+							</p>
+						</Link>
+					</div>
+					<div className={styles.clickable_nav_element}>
+						<ThemeToggle />
+					</div>
+				</div>
 				<div id={styles.socialsBar}>
 					<div id={styles.column}>
 						<LatestPreviewImage

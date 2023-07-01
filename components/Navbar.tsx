@@ -1,7 +1,6 @@
 import styles from "../styles/Navbar.module.css";
 import subscribe_button_styles from "../styles/SubscribeButton.module.css";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
 import CollapsibleSearch from "./CollapsibleSearch";
 import Image from "next/image";
 import Sidebar from "./Sidebar";
@@ -50,9 +49,6 @@ const Navbar = () => {
 					</Link>
 				</div>
 
-				<div className={styles.clickable_nav_element}>
-					<ThemeToggle />
-				</div>
 				<div className={styles.clickable_nav_element}>
 					<CollapsibleSearch />
 				</div>
