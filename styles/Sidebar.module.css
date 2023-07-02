@@ -1,7 +1,7 @@
 #sidebar_parent {
 	width: 250px;
 	background-color: var(--secondary-nav);
-	position: fixed !important;
+	position: absolute !important;
 	height: calc(100vh - 94px);
 	top: 94px;
 }
@@ -102,7 +102,7 @@
 
 @media screen and (max-width: 940px) {
 	#sidebar_parent {
-		height: fit-content;
+		height: 420px;
 		top: 64px;
 		width: 100%;
 	}
@@ -112,6 +112,14 @@
 	}
 	#right_arrow {
 		display: none;
+	}
+
+	.subdepartment {
+		display: none;
+	}
+
+	.department:hover .subdepartment {
+		display: none; /* Explicitly specify for safari... */
 	}
 }
 
