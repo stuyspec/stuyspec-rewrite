@@ -206,6 +206,37 @@ async function get_articles_by_query(
 	).map(fixArticleCoverImage) as [ReceivedArticle];
 	return articles;
 }
+
+async function get_articles_by_recommended(
+	title: string,
+	text: string,
+	num_of_articles?: number,
+	department?: string,
+): Promise<ReceivedArticle[]> {
+	const db = (await clientPromise).db();
+	let articles_collection = await db.collection("articles");
+	const limit = num_of_articles || 10;
+	let articles = (
+		await articles_collection
+		.aggregate([
+			{ $match: department },
+			{
+				$search:  {
+					index: "default",
+					text: {
+						query: text,
+						path: "text",
+					}
+				},
+			}
+			])
+			.limit(limit)
+			.toArray()
+	).map(fixArticleCoverImage) as ReceivedArticle[];
+	return articles;
+}
+
+
 async function get_articles_by_string_query(
 	query: string,
 	num?: number
@@ -365,4 +396,5 @@ export {
 	get_staffs_by_query,
 	get_media_by_author,
 	get_articles_by_string_query,
+	get_articles_by_recommended,
 };

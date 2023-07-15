@@ -11,6 +11,7 @@ import styles from "../../styles/[article_slug].module.css";
 import ShareButton from "../../components/ShareButton";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
+import { get_articles_by_recommended } from "../../db";
 
 interface Props {
 	article: ReceivedArticle;
@@ -29,7 +30,12 @@ const Article = (props: Props) => {
 		cover_image_contributor,
 		cover_image_source,
 	} = props.article;
-
+	
+	function RecommendedArticle(props: ReceivedArticle) {
+		return (
+			<div> Article </div>
+		);
+	}
 	const generateApproxReadingTime = () => {
 		let count = text.split(" ");
 		let readTime = Math.round(count.length / 250); // average reading time in min
