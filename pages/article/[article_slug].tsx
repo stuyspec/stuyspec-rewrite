@@ -4,6 +4,7 @@ import {
 	ReceivedArticle,
 	DepartmentsArrayDisplay,
 	DepartmentsArray,
+	ReceivedStaff,
 } from "../../ts_types/db_types";
 import { get_article_by_slug } from "../../db";
 import { NextPageContext } from "next";
@@ -28,6 +29,7 @@ const Article = (props: Props) => {
 		cover_image_summary,
 		cover_image_contributor,
 		cover_image_source,
+		summary
 	} = props.article;
 
 	const generateApproxReadingTime = () => {
@@ -47,6 +49,8 @@ const Article = (props: Props) => {
 		<div>
 			<Head>
 				<title>{title}</title>
+				<meta name="description" content={summary} />		
+				<meta name="author" content={contributors.map((v : ReceivedStaff) => v.name).join(", ")} />
 			</Head>
 
 			<main id={styles.main}>
