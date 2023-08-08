@@ -29,7 +29,8 @@ const Article = (props: Props) => {
 		cover_image_summary,
 		cover_image_contributor,
 		cover_image_source,
-		summary
+		summary,
+		slug,
 	} = props.article;
 
 	const generateApproxReadingTime = () => {
@@ -49,8 +50,38 @@ const Article = (props: Props) => {
 		<div>
 			<Head>
 				<title>{title}</title>
-				<meta name="description" content={summary} />		
-				<meta name="author" content={contributors.map((v : ReceivedStaff) => v.name).join(", ")} />
+				<meta name="title" content={title} />
+				<meta name="description" content={summary} />
+				<meta
+					name="author"
+					content={contributors
+						.map((v: ReceivedStaff) => v.name)
+						.join(", ")}
+				/>
+
+				{/* Open Graph / Facebook  */}
+				<meta property="og:type" content="website" />
+				<meta
+					property="og:url"
+					content={"https://stuyspec.com/article/" + slug}
+				/>
+				<meta property="og:title" content={title} />
+				<meta property="og:description" content={summary} />
+				{cover_image && (
+					<meta property="og:image" content={cover_image} />
+				)}
+
+				{/* Twitter */}
+				<meta property="twitter:card" content="summary_large_image" />
+				<meta
+					property="twitter:url"
+					content={"https://stuyspec.com/article/" + slug}
+				/>
+				<meta property="twitter:title" content={title} />
+				<meta property="twitter:description" content={summary} />
+				{cover_image && (
+					<meta property="twitter:image" content={cover_image} />
+				)}
 			</Head>
 
 			<main id={styles.main}>
