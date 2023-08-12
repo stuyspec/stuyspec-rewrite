@@ -50,23 +50,29 @@ const Article = (props: Props) => {
 		<div>
 			<Head>
 				<title>{title}</title>
-				<meta name="title" content={title} />
-				<meta name="description" content={summary} />
+				<meta name="title" content={title} key="title" />
+				<meta name="description" content={summary} key="description" />
 				<meta
 					name="author"
 					content={contributors
 						.map((v: ReceivedStaff) => v.name)
 						.join(", ")}
+					key="author"
 				/>
 
 				{/* Open Graph / Facebook  */}
-				<meta property="og:type" content="website" />
+				<meta property="og:type" content="website" key="og_website" />
 				<meta
 					property="og:url"
 					content={"https://stuyspec.com/article/" + slug}
+					key="og_url"
 				/>
-				<meta property="og:title" content={title} />
-				<meta property="og:description" content={summary} />
+				<meta property="og:title" content={title} key="og_title" />
+				<meta
+					property="og:description"
+					content={summary}
+					key="og_description"
+				/>
 				{cover_image && (
 					<meta property="og:image" content={cover_image} />
 				)}
@@ -76,11 +82,24 @@ const Article = (props: Props) => {
 				<meta
 					property="twitter:url"
 					content={"https://stuyspec.com/article/" + slug}
+					key="twitter_url"
 				/>
-				<meta property="twitter:title" content={title} />
-				<meta property="twitter:description" content={summary} />
+				<meta
+					property="twitter:title"
+					content={title}
+					key="twitter_title"
+				/>
+				<meta
+					property="twitter:description"
+					content={summary}
+					key="twitter_description"
+				/>
 				{cover_image && (
-					<meta property="twitter:image" content={cover_image} />
+					<meta
+						property="twitter:image"
+						content={cover_image}
+						key="twitter_image"
+					/>
 				)}
 			</Head>
 

@@ -11,7 +11,6 @@ const Fourzerofour = (props: any) => {
 		<div>
 			<Head>
 				<title>Error!</title>
-				<meta name="description" content="The Stuyvesant Spectator" />
 			</Head>
 
 			<main id={styles.main}>

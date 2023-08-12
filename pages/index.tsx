@@ -24,11 +24,6 @@ async function fetch_addtional_articles(skip?: number, max?: number) {
 const Home = (props: Props) => {
 	return (
 		<div>
-			<Head>
-				<title>The Stuyvesant Spectator</title>
-				<meta name="description" content="The Stuyvesant Spectator" />
-			</Head>
-
 			<main id={styles.main}>
 				<MixedArticleDisplay
 					articles={props.articles}
