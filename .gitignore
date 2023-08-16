@@ -36,3 +36,4 @@ yarn.lock
 
 # typescript
 *.tsbuildinfo
+.vscode/settings.json
