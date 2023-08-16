@@ -1,13 +1,17 @@
 import Head from "next/head";
 import styles from "../styles/Subscribe.module.css";
 import SubscribeForm from "../components/SubscribeForm";
+import { generateMetaTags } from "../utils/generateMetaTags";
 
 const Subscribe = () => {
+	const page_title = "Subscribe - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/subscribe`;
+	const meta_description = `Subscribe to The Stuyvesant Spectator's biweekly newsletter.`;
+
 	return (
 		<>
 			<Head>
-				<title>Subscribe | The Spectator</title>
-				<meta name="description" content="The Stuyvesant Spectator" />
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 
 			<main id={styles.container}>
