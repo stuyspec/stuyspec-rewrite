@@ -4,6 +4,7 @@ import MixedArticleDisplay from "../../../../components/MixedArticleDisplay";
 import { get_articles_by_query } from "../../../../db";
 import styles from "../../../../styles/Issue.module.css";
 import { ReceivedArticle } from "../../../../ts_types/db_types";
+import { generateMetaTags } from "../../../../utils/generateMetaTags";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -18,39 +19,7 @@ const Issue_Component = (props: Props) => {
 	return (
 		<>
 			<Head>
-				<title>{page_title}</title>
-				{/* Meta tags must have keys so that NextJS can override/remove duplicate meta tags */}
-				<meta name="title" content={page_title} key="title" />
-				<meta
-					name="description"
-					content={meta_description}
-					key="description"
-				/>
-				{/* Open Graph / Facebook  */}
-				<meta property="og:type" content="website" key="og_website" />
-				<meta property="og:url" content={meta_url} key="og_url" />
-				<meta property="og:title" content={page_title} key="og_title" />
-				<meta
-					property="og:description"
-					content={meta_description}
-					key="og_description"
-				/>
-				{/* Twitter */}
-				<meta
-					property="twitter:url"
-					content={meta_url}
-					key="twitter_url"
-				/>
-				<meta
-					property="twitter:title"
-					content={page_title}
-					key="twitter_title"
-				/>
-				<meta
-					property="twitter:description"
-					content={meta_description}
-					key="twitter_description"
-				/>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 
 			<main id={styles.main}>
