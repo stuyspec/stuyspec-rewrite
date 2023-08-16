@@ -20,7 +20,7 @@ const Article = (props: Props) => {
 	const page_title = props.department_display + " - The Stuyvesant Spectator";
 	const meta_url =
 		`https://stuyspec.com/department/` + DepartmentsArray[props.section_id];
-	const meta_description = `${props.department_display} at The Stuyvesant Spectator`;
+	const meta_description = `The ${props.department_display} department at The Stuyvesant Spectator.`;
 
 	const fetch_addtional_articles = async (skip?: number, max?: number) => {
 		const request = await fetch("/api/articles", {
