@@ -18,6 +18,15 @@ interface Props {
 }
 
 const SubSection = (props: Props) => {
+	const sub_section_display =
+		props.sub_section.charAt(0).toUpperCase() + props.sub_section.slice(1);
+
+	const page_title = sub_section_display + " - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/department/${
+		DepartmentsArray[props.department_id]
+	}/${props.sub_section}`;
+	const meta_description = `${sub_section_display} at The Stuyvesant Spectator.`;
+
 	const fetch_addtional_articles = async (skip?: number, max?: number) => {
 		const request = await fetch("/api/articles", {
 			method: "POST",
@@ -35,13 +44,42 @@ const SubSection = (props: Props) => {
 		return articles;
 	};
 
-	const sub_section_display =
-		props.sub_section.charAt(0).toUpperCase() + props.sub_section.slice(1);
-
 	return (
 		<div>
 			<Head>
-				<title>{sub_section_display}</title>
+				<title>{page_title}</title>
+				{/* Meta tags must have keys so that NextJS can override/remove duplicate meta tags */}
+				<meta name="title" content={page_title} key="title" />
+				<meta
+					name="description"
+					content={meta_description}
+					key="description"
+				/>
+				{/* Open Graph / Facebook  */}
+				<meta property="og:type" content="website" key="og_website" />
+				<meta property="og:url" content={meta_url} key="og_url" />
+				<meta property="og:title" content={page_title} key="og_title" />
+				<meta
+					property="og:description"
+					content={meta_description}
+					key="og_description"
+				/>
+				{/* Twitter */}
+				<meta
+					property="twitter:url"
+					content={meta_url}
+					key="twitter_url"
+				/>
+				<meta
+					property="twitter:title"
+					content={page_title}
+					key="twitter_title"
+				/>
+				<meta
+					property="twitter:description"
+					content={meta_description}
+					key="twitter_description"
+				/>
 			</Head>
 
 			<main id={styles.main}>

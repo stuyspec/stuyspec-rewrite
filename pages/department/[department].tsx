@@ -73,7 +73,7 @@ const Article = (props: Props) => {
 					property="twitter:description"
 					content={meta_description}
 					key="twitter_description"
-				/>{" "}
+				/>
 			</Head>
 
 			<main id={styles.main}>
