@@ -4,6 +4,7 @@ import MixedArticleDisplay from "../../../../components/MixedArticleDisplay";
 import { get_articles_by_query } from "../../../../db";
 import styles from "../../../../styles/Issue.module.css";
 import { ReceivedArticle } from "../../../../ts_types/db_types";
+import { generateMetaTags } from "../../../../utils/generateMetaTags";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -12,14 +13,13 @@ interface Props {
 }
 
 const Issue_Component = (props: Props) => {
+	const page_title = `Volume ${props.volume} Issue ${props.issue} - The Stuyvesant Spectator`;
+	const meta_url = `https://stuyspec.com/volume/${props.volume}/issue/${props.issue}`;
+	const meta_description = `Volume ${props.volume} Issue ${props.issue} at The Stuyvesant Spectator.`;
 	return (
 		<>
 			<Head>
-				<title>{`Volume ${props.volume} Issue ${props.issue}`}</title>
-				<meta
-					name="description"
-					content={`Volume ${props.volume} Issue ${props.issue} by The Stuyvesant Spectator`}
-				/>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 
 			<main id={styles.main}>

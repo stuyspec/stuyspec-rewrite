@@ -16,6 +16,7 @@ import {
 import ListArticleDisplay from "../../components/ListArticleDisplay";
 import Link from "next/link";
 import Image from "next/image";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 interface Props {
 	staff_identifier: mongoObjectId;
@@ -31,10 +32,16 @@ interface Props {
 
 const StaffMember = (props: Props) => {
 	const staff_member = props.staff;
+	const page_title = staff_member.name + " - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/staff/` + staff_member.slug;
+	const meta_description =
+		staff_member.description ||
+		`${staff_member.name} at The Stuyvesant Spectator`;
+
 	return (
 		<div>
 			<Head>
-				<title>{staff_member.name}</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 
 			<main id={styles.main}>

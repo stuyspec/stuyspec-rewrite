@@ -12,6 +12,7 @@ import styles from "../../styles/[article_slug].module.css";
 import ShareButton from "../../components/ShareButton";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 interface Props {
 	article: ReceivedArticle;
@@ -49,9 +50,6 @@ const Article = (props: Props) => {
 	return (
 		<div>
 			<Head>
-				<title>{title}</title>
-				<meta name="title" content={title} key="title" />
-				<meta name="description" content={summary} key="description" />
 				<meta
 					name="author"
 					content={contributors
@@ -59,47 +57,11 @@ const Article = (props: Props) => {
 						.join(", ")}
 					key="author"
 				/>
-
-				{/* Open Graph / Facebook  */}
-				<meta property="og:type" content="website" key="og_website" />
-				<meta
-					property="og:url"
-					content={"https://stuyspec.com/article/" + slug}
-					key="og_url"
-				/>
-				<meta property="og:title" content={title} key="og_title" />
-				<meta
-					property="og:description"
-					content={summary}
-					key="og_description"
-				/>
-				{cover_image && (
-					<meta property="og:image" content={cover_image} />
-				)}
-
-				{/* Twitter */}
-				<meta property="twitter:card" content="summary_large_image" />
-				<meta
-					property="twitter:url"
-					content={"https://stuyspec.com/article/" + slug}
-					key="twitter_url"
-				/>
-				<meta
-					property="twitter:title"
-					content={title}
-					key="twitter_title"
-				/>
-				<meta
-					property="twitter:description"
-					content={summary}
-					key="twitter_description"
-				/>
-				{cover_image && (
-					<meta
-						property="twitter:image"
-						content={cover_image}
-						key="twitter_image"
-					/>
+				{generateMetaTags(
+					title,
+					summary,
+					"https://stuyspec.com/article/" + slug,
+					props.article.cover_image
 				)}
 			</Head>
 

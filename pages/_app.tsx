@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Script from "next/script";
 import Head from "next/head";
+import { generateMetaTags } from "../utils/generateMetaTags";
 
 function MyApp(props: AppProps) {
 	let { Component, pageProps } = props;
@@ -45,42 +46,7 @@ function MyApp(props: AppProps) {
 				<meta name="msapplication-TileColor" content="#da532c" />
 				<meta name="theme-color" content="#ffffff" />
 
-				<title>{title}</title>
-
-				{/* Meta tags must have keys so that NextJS can override/remove duplicate meta tags */}
-				<meta name="title" content={title} key="title" />
-				<meta
-					name="description"
-					content={description}
-					key="description"
-				/>
-
-				{/* Open Graph / Facebook  */}
-				<meta property="og:type" content="website" key="og_website" />
-				<meta property="og:url" content={meta_url} key="og_url" />
-				<meta property="og:title" content={title} key="og_title" />
-				<meta
-					property="og:description"
-					content={description}
-					key="og_description"
-				/>
-
-				{/* Twitter */}
-				<meta
-					property="twitter:url"
-					content={meta_url}
-					key="twitter_url"
-				/>
-				<meta
-					property="twitter:title"
-					content={title}
-					key="twitter_title"
-				/>
-				<meta
-					property="twitter:description"
-					content={description}
-					key="twitter_description"
-				/>
+				{generateMetaTags(title, description, meta_url)}
 			</Head>
 			<div>
 				<div id="navbar">

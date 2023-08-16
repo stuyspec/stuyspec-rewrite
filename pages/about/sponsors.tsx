@@ -1,11 +1,16 @@
 import Head from "next/head";
 import styles from "../../styles/About.module.css";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 const Sponsors = () => {
+	const page_title = "Sponsors - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/about/sponsors`;
+	const meta_description = `The sponsors for The Stuyvesant Spectator, and how to become a sponsor for The Stuyvesant Spectator.`;
+
 	return (
 		<>
 			<Head>
-				<title>Sponsors | The Spectator</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<div id={styles.container}>
 				<div style={{ margin: "auto" }}>

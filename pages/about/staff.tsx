@@ -1,11 +1,16 @@
 import Head from "next/head";
 import styles from "../../styles/Staff.module.css";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 const StaffPage = () => {
+	const page_title = "Staff - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/about/staff`;
+	const meta_description = `The members of The Stuyvesant Spectator's 2022-2023 Editorial Board.`;
+
 	return (
 		<>
 			<Head>
-				<title>Staff | The Spectator</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<main id={styles.main}>
 				<h1>Members of the 2022-2023 Spectator Editorial Board</h1>

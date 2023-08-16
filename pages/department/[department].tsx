@@ -9,6 +9,7 @@ import { get_articles_by_department } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
 import MixedArticleDisplay from "../../components/MixedArticleDisplay";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -17,6 +18,11 @@ interface Props {
 }
 
 const Article = (props: Props) => {
+	const page_title = props.department_display + " - The Stuyvesant Spectator";
+	const meta_url =
+		`https://stuyspec.com/department/` + DepartmentsArray[props.section_id];
+	const meta_description = `The ${props.department_display} department at The Stuyvesant Spectator.`;
+
 	const fetch_addtional_articles = async (skip?: number, max?: number) => {
 		const request = await fetch("/api/articles", {
 			method: "POST",
@@ -36,7 +42,7 @@ const Article = (props: Props) => {
 	return (
 		<div>
 			<Head>
-				<title>{props.department_display}</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 
 			<main id={styles.main}>
