@@ -12,13 +12,44 @@ interface Props {
 }
 
 const Issue_Component = (props: Props) => {
+	const page_title = `Volume ${props.volume} Issue ${props.issue} - The Stuyvesant Spectator`;
+	const meta_url = `https://stuyspec.com/volume/${props.volume}/issue/${props.issue}`;
+	const meta_description = `Volume ${props.volume} Issue ${props.issue} at The Stuyvesant Spectator.`;
 	return (
 		<>
 			<Head>
-				<title>{`Volume ${props.volume} Issue ${props.issue}`}</title>
+				<title>{page_title}</title>
+				{/* Meta tags must have keys so that NextJS can override/remove duplicate meta tags */}
+				<meta name="title" content={page_title} key="title" />
 				<meta
 					name="description"
-					content={`Volume ${props.volume} Issue ${props.issue} by The Stuyvesant Spectator`}
+					content={meta_description}
+					key="description"
+				/>
+				{/* Open Graph / Facebook  */}
+				<meta property="og:type" content="website" key="og_website" />
+				<meta property="og:url" content={meta_url} key="og_url" />
+				<meta property="og:title" content={page_title} key="og_title" />
+				<meta
+					property="og:description"
+					content={meta_description}
+					key="og_description"
+				/>
+				{/* Twitter */}
+				<meta
+					property="twitter:url"
+					content={meta_url}
+					key="twitter_url"
+				/>
+				<meta
+					property="twitter:title"
+					content={page_title}
+					key="twitter_title"
+				/>
+				<meta
+					property="twitter:description"
+					content={meta_description}
+					key="twitter_description"
 				/>
 			</Head>
 
