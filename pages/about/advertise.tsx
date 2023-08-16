@@ -14,7 +14,7 @@ const Advertise = (props: Props) => {
 
 	const page_title = "Advertise - The Stuyvesant Spectator";
 	const meta_url = `https://stuyspec.com/about/advertise`;
-	const meta_description = `Advertise for The Stuyvesant Spectator.`;
+	const meta_description = `How to advertise in The Stuyvesant Spectator.`;
 
 	return (
 		<>
