@@ -1,10 +1,15 @@
 import Head from "next/head";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 const ContactPage = () => {
+	const page_title = "Contact - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/about/contact`;
+	const meta_description = `Contact The Stuyvesant Spectator.`;
+
 	return (
 		<>
 			<Head>
-				<title>Contact | The Spectator</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<div
 				style={{

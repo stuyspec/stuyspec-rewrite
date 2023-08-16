@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "../../styles/Recruitments.module.css";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 const RecruitmentPage = () => {
 	const departments: Array<{
@@ -101,10 +102,14 @@ const RecruitmentPage = () => {
 		},
 	];
 
+	const page_title = "Recruitments - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/about/recruitments`;
+	const meta_description = `Recruitments for The Stuyvesant Spectator.`;
+
 	return (
 		<>
 			<Head>
-				<title>Recruitments | The Spectator</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<main id={styles.main}>
 				<h1>Recruitments</h1>

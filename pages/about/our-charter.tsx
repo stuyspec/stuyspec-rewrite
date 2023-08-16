@@ -1,11 +1,16 @@
 import Head from "next/head";
 import styles from "../../styles/About.module.css";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 const OurCharter = () => {
+	const page_title = "Our Charter - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/about/our-charter`;
+	const meta_description = `The Stuyvesant Spectator's charter.`;
+
 	return (
 		<>
 			<Head>
-				<title>Our Charter | The Spectator</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<main id={styles.container}>
 				<h1>The Charter of The Spectator</h1>

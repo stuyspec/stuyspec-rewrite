@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../../styles/Developers.module.css";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 const DevelopersPage = () => {
 	const developers: Array<{
@@ -33,10 +33,14 @@ const DevelopersPage = () => {
 		},
 	];
 
+	const page_title = "Developers - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/about/developers`;
+	const meta_description = `Developers for The Stuyvesant Spectator.`;
+
 	return (
 		<>
 			<Head>
-				<title>Developers | The Spectator</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<div id={styles.main}>
 				<div id={styles.body}>
