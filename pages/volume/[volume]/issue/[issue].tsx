@@ -5,6 +5,7 @@ import { get_articles_by_query } from "../../../../db";
 import styles from "../../../../styles/Issue.module.css";
 import { ReceivedArticle } from "../../../../ts_types/db_types";
 import { generateMetaTags } from "../../../../utils/generateMetaTags";
+import { FaRegFilePdf } from "react-icons/fa"
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -23,9 +24,15 @@ const Issue_Component = (props: Props) => {
 			</Head>
 
 			<main id={styles.main}>
-				<h1>
-					Volume {props.volume} Issue {props.issue}
-				</h1>
+				<div id={styles.title_bar}>
+					<h1>
+						Volume {props.volume} Issue {props.issue}
+					</h1>
+					<a id={styles.pdf_icon_parent} href={`https://pdf.stuyspec.com/${props.volume}/${props.issue}.pdf`}>
+						<FaRegFilePdf id={styles.pdf_icon} />
+					</a>
+				</div>
+				{/* <p id={styles.view_in_print}>View this issue in print</a></p> */}
 				<MixedArticleDisplay
 					articles={props.articles}
 					display_department
