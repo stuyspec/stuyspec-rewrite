@@ -22,6 +22,7 @@
 	#main {
 		padding-top: 1rem;
 	}
+
 	#infoBar {
 		display: block;
 	}
@@ -31,6 +32,7 @@
 	margin-top: 1rem;
 	font-size: var(--small-text);
 }
+
 #shareButtons {
 	display: flex;
 	justify-content: flex-end;
@@ -47,6 +49,10 @@
 	margin: 1rem 0;
 	font-size: 1.2rem;
 	color: var(--primary) !important;
+}
+
+#content a {
+	text-decoration: underline;
 }
 
 #cover_image_div {
@@ -80,6 +86,7 @@
 		font-size: var(--medium-text);
 	}
 }
+
 #subsribe_insert {
 	/* width: 400px; */
 	margin: auto;
@@ -100,6 +107,7 @@
 	font-size: var(--small-text);
 	font-family: var(--secondary-font);
 }
+
 #reading_time {
 	margin-bottom: 1rem;
 	font-size: var(--small-text);
