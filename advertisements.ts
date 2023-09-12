@@ -10,6 +10,11 @@ const advertisements = [
 		url: "https://www.dontsweattheessay.com/?utm_source=Stuyvesant&utm_medium=SpectatorWeb&utm_campaign=Spring2022",
 	},
 	{
+		name: "Now Test Prep",
+		image_src: "/images/ads/ntp_test_prep.jpg",
+		url: "https://NowTestPrep.com/",
+	},
+	{
 		name: "Contest Math Tutoring",
 		image_src: "/images/ads/contest_math_tutoring.jpg",
 		url: "https://contestmathtutoring.com/",
