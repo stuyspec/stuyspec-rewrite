@@ -13,8 +13,14 @@ interface Props {
   staff: ReceivedStaff[];
 }
 
+enum sortingOptions {
+  Newest = "newest",
+  Relevance = "relevance",
+  Oldest = "oldest",
+}
+
 const SearchRoute = (props: Props) => {
-  const [sortingOption, setSortingOption] = useState("relevance");
+  const [sortingOption, setSortingOption] = useState<sortingOptions>(sortingOptions.Relevance);
   const [sortedArticles, setSortedArticles] = useState<ReceivedArticle[]>(props.articles);
 
   useEffect(() => {
@@ -22,20 +28,20 @@ const SearchRoute = (props: Props) => {
   }, [sortingOption]);
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortingOption(event.target.value);
+    setSortingOption(event.target.value as sortingOptions);
   };
 
   const sortArticles = () => {
     const articlesCopy = [...props.articles];
 
-    if (sortingOption === "newest") {
+    if (sortingOption === sortingOptions.Newest) {
       articlesCopy.sort((a, b) => {
         if (a.volume === b.volume) {
           return b.issue - a.issue;
         }
         return b.volume - a.volume;
       });
-    } else if (sortingOption === "oldest") {
+    } else if (sortingOption === sortingOptions.Oldest) {
       articlesCopy.sort((a, b) => {
         if (a.volume === b.volume) {
           return a.issue - b.issue;
@@ -59,9 +65,9 @@ const SearchRoute = (props: Props) => {
         <div>
           <label htmlFor="sort-select">Sort by:</label>
           <select id="sort-select" value={sortingOption} onChange={handleSortChange}>
-            <option value="relevance">Relevance</option>
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
+            <option value={sortingOptions.Relevance}>Relevance</option>
+            <option value={sortingOptions.Newest}>Newest</option>
+            <option value={sortingOptions.Oldest}>Oldest</option>
           </select>
         </div>
         {props.staff.length > 0 && (
