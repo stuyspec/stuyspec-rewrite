@@ -1,9 +1,9 @@
 import styles from "../styles/Navbar.module.css";
 import subscribe_button_styles from "../styles/SubscribeButton.module.css";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
 import CollapsibleSearch from "./CollapsibleSearch";
 import Image from "next/image";
+import Sidebar from "./Sidebar";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -45,21 +45,17 @@ const Navbar = () => {
 					className={styles.clickable_nav_element}
 				>
 					<Link href="/subscribe">
-						<p id={subscribe_button_styles.subscribe}>Subscribe</p>
+						<p id={subscribe_button_styles.subscribe_button_navbar}>
+							Subscribe
+						</p>
 					</Link>
 				</div>
 
 				<div className={styles.clickable_nav_element}>
-					<ThemeToggle />
-				</div>
-				<div className={styles.clickable_nav_element}>
 					<CollapsibleSearch />
 				</div>
 			</nav>
-			<div
-				id={styles.department_bar}
-				className={viewSubSection ? "" : styles.hide}
-			>
+			<div id={styles.department_bar}>
 				<span>
 					<Link href="/department/news">News</Link>
 				</span>
@@ -87,6 +83,9 @@ const Navbar = () => {
 				<span>
 					<Link href="/about/recruitments">Recruitments</Link>
 				</span>
+			</div>
+			<div>
+				<Sidebar showSidebar={viewSubSection} />
 			</div>
 		</div>
 	);

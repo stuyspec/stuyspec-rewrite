@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../../styles/About.module.css";
 import { ReceivedStaff } from "../../ts_types/db_types";
 import { get_staff_by_position } from "../../db";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 interface Props {
 	manager: ReceivedStaff;
@@ -11,10 +12,14 @@ const Advertise = (props: Props) => {
 	const { name, email } = props.manager;
 	const mailto = "mailto:" + email;
 
+	const page_title = "Advertise - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/about/advertise`;
+	const meta_description = `How to advertise in The Stuyvesant Spectator.`;
+
 	return (
 		<>
 			<Head>
-				<title>Advertise | The Spectator</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<div id={styles.container}>
 				<div style={{ margin: "auto" }}>

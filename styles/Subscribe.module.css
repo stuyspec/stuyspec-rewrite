@@ -18,6 +18,10 @@
 	font-size: var(--medium-text);
 }
 
+#error {
+	font-size: var(--small-text);
+}
+
 #input {
 	margin: 4px;
 	font-family:'Times New Roman', Times, serif;

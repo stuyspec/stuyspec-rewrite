@@ -1,6 +1,7 @@
 import { FormEvent, useRef, useState } from "react";
 import Image from "next/image";
 import Router from "next/router";
+import styles from "../styles/CollapsibleSearch.module.css";
 
 const CollapsibleSearch = () => {
 	const [searchValue, setSearchValue] = useState("");
@@ -13,6 +14,7 @@ const CollapsibleSearch = () => {
 
 	const onSearchFocus = () => {
 		setSearchBar(true);
+
 		// Set timeout for 1ms to focus text input AFTER it renders
 		setTimeout(() => {
 			textInput.current?.focus();
@@ -24,45 +26,39 @@ const CollapsibleSearch = () => {
 	}
 
 	return (
-		<>
-			<div className="field">
-				<form className="control" onSubmit={submitSearchRequest}>
-					<div
-						style={{
-							display: searchBar ? "none" : "block",
-							transition: "visibility 0s, opacity 0.5s linear",
-						}}
-						className="search"
-					>
-						<Image
-							alt="Search"
-							src="/images/search-button.svg"
-							width={32}
-							height={32}
-							onClick={onSearchFocus}
-							className="button"
-						/>
-					</div>
-					<input
-						className="search"
-						style={{
-							borderRadius: "4px",
-							width: searchBar ? "100%" : "0",
-							display: searchBar ? "inherit" : "none",
-							transition: "all 0.5s ease-in-out",
-							padding: "0.5rem",
-							fontSize: "1rem",
-						}}
-						placeholder="Search"
-						onFocus={onSearchFocus}
-						onChange={(e) => setSearchValue(e.target.value)}
-						onBlur={onSearchBlur}
-						autoFocus
-						ref={textInput}
+		<div id={styles.collapsible_search_parent}>
+			<form onSubmit={submitSearchRequest}>
+				<div
+					style={{
+						display: !searchBar ? "block" : "none", // Icon is always the opposite visibility of the textbox
+						transition: "visibility 0s, opacity 0.2s linear",
+					}}
+					id={styles.search_button}
+					onClick={onSearchFocus}
+				>
+					<Image
+						alt="Search"
+						src="/images/search-button.svg"
+						width={32}
+						height={32}
 					/>
-				</form>
-			</div>
-		</>
+				</div>
+				<input
+					id={styles.search_textbox}
+					style={{
+						marginRight: searchBar ? "0" : "-250px", // To animate coming from the right side
+						opacity: searchBar ? "1" : "0",
+						cursor: searchBar ? "auto" : "pointer",
+						zIndex: searchBar ? 3 : -1,
+					}}
+					placeholder="Search"
+					onFocus={onSearchFocus}
+					onChange={(e) => setSearchValue(e.target.value)}
+					onBlur={onSearchBlur}
+					ref={textInput}
+				/>
+			</form>
+		</div>
 	);
 };
 

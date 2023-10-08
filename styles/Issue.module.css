@@ -7,6 +7,29 @@
 }
 
 #main h1 {
-	margin-top: 0.75rem;
 	text-align: center;
+}
+
+#title_bar {
+	display: flex;
+	margin-top: 0.75rem;
+	display: flex;
+	align-items: center;
+	height: 38px;
+}
+
+#title_bar h1 {
+	margin-left: auto;
+}
+
+#pdf_icon_parent {
+	margin-left: 20px;
+	margin-right: auto;
+	margin-top: -5px;
+	height: 25px;
+}
+
+#pdf_icon {
+	width: 25px;
+	height: 25px;
 }

@@ -54,13 +54,9 @@
 	grid-column-end: 4;
 	place-self: center;
 }
-#searchButton {
-	grid-column-start: 5;
-	grid-column-end: 5;
-	place-self: center;
-}
+
 #hamburgerMenu {
-	display: none;
+	/* display: none; */
 	background: none;
 	cursor: pointer;
 }
@@ -120,13 +116,8 @@
 	}
 
 	#department_bar {
+		display: none;
 		flex-direction: column;
-	}
-
-	#department_bar span {
-		margin-top: 5px;
-		margin-bottom: 5px;
-		font-size: 1.2rem;
 	}
 }
 

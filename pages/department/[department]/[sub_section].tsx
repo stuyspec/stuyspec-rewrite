@@ -9,6 +9,7 @@ import { get_articles_by_query } from "../../../db";
 import { NextPageContext } from "next";
 import styles from "../../../styles/[department].module.css";
 import MixedArticleDisplay from "../../../components/MixedArticleDisplay";
+import { generateMetaTags } from "../../../utils/generateMetaTags";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -18,6 +19,15 @@ interface Props {
 }
 
 const SubSection = (props: Props) => {
+	const sub_section_display =
+		props.sub_section.charAt(0).toUpperCase() + props.sub_section.slice(1);
+
+	const page_title = sub_section_display + " - The Stuyvesant Spectator";
+	const meta_url = `https://stuyspec.com/department/${
+		DepartmentsArray[props.department_id]
+	}/${props.sub_section}`;
+	const meta_description = `${sub_section_display} at The Stuyvesant Spectator.`;
+
 	const fetch_addtional_articles = async (skip?: number, max?: number) => {
 		const request = await fetch("/api/articles", {
 			method: "POST",
@@ -35,13 +45,10 @@ const SubSection = (props: Props) => {
 		return articles;
 	};
 
-	const sub_section_display =
-		props.sub_section.charAt(0).toUpperCase() + props.sub_section.slice(1);
-
 	return (
 		<div>
 			<Head>
-				<title>{sub_section_display}</title>
+				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 
 			<main id={styles.main}>

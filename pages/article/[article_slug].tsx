@@ -4,6 +4,7 @@ import {
 	ReceivedArticle,
 	DepartmentsArrayDisplay,
 	DepartmentsArray,
+	ReceivedStaff,
 } from "../../ts_types/db_types";
 import { get_article_by_slug } from "../../db";
 import { NextPageContext } from "next";
@@ -11,6 +12,7 @@ import styles from "../../styles/[article_slug].module.css";
 import ShareButton from "../../components/ShareButton";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
+import { generateMetaTags } from "../../utils/generateMetaTags";
 
 interface Props {
 	article: ReceivedArticle;
@@ -28,14 +30,39 @@ const Article = (props: Props) => {
 		cover_image_summary,
 		cover_image_contributor,
 		cover_image_source,
+		summary,
+		slug,
 	} = props.article;
+
+	const generateApproxReadingTime = () => {
+		let count = text.split(" ");
+		let readTime = Math.round(count.length / 250); // average reading time in min
+
+		return (
+			<span>
+				Reading Time: {readTime} minute{readTime === 1 ? "" : "s"}
+			</span>
+		);
+	};
 
 	const providers = ["facebook", "twitter", "linkedin", "email"];
 
 	return (
 		<div>
 			<Head>
-				<title>{title}</title>
+				<meta
+					name="author"
+					content={contributors
+						.map((v: ReceivedStaff) => v.name)
+						.join(", ")}
+					key="author"
+				/>
+				{generateMetaTags(
+					title,
+					summary,
+					"https://stuyspec.com/article/" + slug,
+					props.article.cover_image
+				)}
 			</Head>
 
 			<main id={styles.main}>
@@ -54,11 +81,15 @@ const Article = (props: Props) => {
 						</Link>
 					</p>
 					<h1 id={styles.title}>{title}</h1>
+					<h3 id={styles.reading_time}>
+						{generateApproxReadingTime()}
+					</h3>
 					<h3 id={styles.issue_volume_text}>
 						<Link href={`/volume/${volume}/issue/${issue}`}>
 							Issue {issue}, Volume {volume}
 						</Link>
 					</h3>
+
 					<div id={styles.infoBar}>
 						<h3 id={styles.authors}>
 							By&nbsp;{generate_contributors_jsx(contributors)}

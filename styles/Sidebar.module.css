@@ -1,15 +1,141 @@
-#container {
-  display: flex;
+#sidebar_parent {
+	width: 250px;
+	background-color: var(--secondary-nav);
+	position: absolute !important;
+	height: calc(100vh - 94px);
+	top: 94px;
 }
 
-#title {
-  text-align: left;
-  font-size: calc(var(--large-text) + 4px);
+#sidebar {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: var(--secondary-font);
+	padding-bottom: 10px;
+	color: var(--primary-immutable);
 }
 
-#scrollbar {
-  margin: auto;
-  width: 4px;
-  height: calc(100vh - (63px + 64px));
-  background-color: var(--accent);
+#sidebar span {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 1.2rem;
+}
+
+.department {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.subdepartment {
+	position: absolute;
+	left: 100%;
+	display: none;
+}
+
+.department:hover .subdepartment {
+	background-color: var(--secondary-nav);
+	padding: 5px 12px;
+	width: fit-content;
+	white-space: nowrap;
+	transform: translateY(-4px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.maindepartment:hover,
+.subdepartment span:hover {
+	opacity: 0.75;
+}
+
+.maindepartment:active,
+.subdepartment span:active {
+	opacity: 0.5;
+}
+
+.hide {
+	display: none !important;
+}
+
+#socialsBar {
+	margin-top: auto;
+}
+
+#mediaButtons {
+	display: flex;
+	justify-content: space-between;
+}
+
+#mediaButton {
+	color: var(--medium-grey);
+	font-size: 32px;
+
+	transition: all 150ms ease;
+}
+
+.archiveImage1 {
+	width: 200px;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	margin-bottom: 30px;
+	object-fit: contain;
+	cursor: pointer;
+}
+
+#column {
+	display: flex;
+	justify-content: center;
+}
+
+#right_arrow {
+	position: absolute;
+	margin-top: 0.8rem;
+	margin-left: 220px;
+}
+
+.department:hover #right_arrow {
+	opacity: 0.8;
+}
+
+@media screen and (max-width: 940px) {
+	#sidebar_parent {
+		height: 420px;
+		top: 64px;
+		width: 100%;
+	}
+
+	#socialsBar {
+		display: none;
+	}
+	#right_arrow {
+		display: none;
+	}
+
+	.subdepartment {
+		display: none;
+	}
+
+	.department:hover .subdepartment {
+		display: none; /* Explicitly specify for safari... */
+	}
+}
+
+.user_icon {
+	height: 36px;
+	width: 36px;
+}
+
+.clickable_nav_element {
+	cursor: pointer;
+}
+
+#additional_features {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: flex;
+	width: 200px;
+	justify-content: space-around;
 }

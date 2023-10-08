@@ -19,10 +19,6 @@ export interface ReceivedArticle {
 	rank: number | undefined;
 }
 
-export interface IssuuResponse {
-	images: String[];
-}
-
 export interface ReceivedStaff {
 	_id: ObjectId | string;
 	name: string;

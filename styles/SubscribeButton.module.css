@@ -11,6 +11,19 @@
 	display: block;
 }
 
+#subscribe_button_navbar {
+	color: var(--primary-immutable);
+	font-family: var(--secondary-font);
+	font-weight: bold;
+	background-color: #db2b39;
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: var(--small-text);
+	cursor: pointer;
+	margin: 0 auto;
+	display: block;
+}
+
 #subscribe:hover {
 	background-color: #a5222d;
 }
