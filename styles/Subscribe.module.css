@@ -20,7 +20,7 @@
 
 #input {
 	margin: 4px;
-
+	font-family:'Times New Roman', Times, serif;
 	color: var(--primary);
 	background-color: transparent;
 	border-bottom: 2px solid var(--primary);
@@ -28,7 +28,7 @@
 	text-align: center;
 	width: 50vw;
 	max-width: 360px;
-	font-size: var(--small-text);
+	font-size: var(--medium-text);
 }
 
 .subscribe_form {
