@@ -51,16 +51,6 @@ const Footer = () => {
 									Campaign Coverage
 								</Link>
 							</p>
-							<p id={styles.subdepartment}>
-								<Link href="/department/news/1031-terror-attack">
-									10/31 Terror Attack
-								</Link>
-							</p>
-							<p id={styles.subdepartment}>
-								<Link href="/department/news/black-lives-matter">
-									Black Lives Matter
-								</Link>
-							</p>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
@@ -86,18 +76,8 @@ const Footer = () => {
 								</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/department/opinions/blacklivesmatter">
-									#BlackLivesMatter
-								</Link>
-							</p>
-							<p id={styles.subdepartment}>
 								<Link href="/department/opinions/staff-editorials">
 									Staff Editorials
-								</Link>
-							</p>
-							<p id={styles.subdepartment}>
-								<Link href="/department/opinions/writing-competition">
-									Writing Competition
 								</Link>
 							</p>
 						</div>
@@ -107,16 +87,6 @@ const Footer = () => {
 							<h3 id={styles.department}>
 								<Link href="/department/science">Science</Link>
 							</h3>
-							<p id={styles.subdepartment}>
-								<Link href="/department/science/at-stuy">
-									Science at Stuy
-								</Link>
-							</p>
-							<p id={styles.subdepartment}>
-								<Link href="/department/science/coronavirus-pandemic">
-									Coronavirus Pandemic
-								</Link>
-							</p>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
@@ -209,32 +179,15 @@ const Footer = () => {
 					<div id={styles.column}>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
-								<Link href="/department/media">Media</Link>
-							</h3>
-						</div>
-						<div id={styles.cell}>
-							<h3 id={styles.department}>
 								<Link href="/department/spec-plus">Spec+</Link>
 							</h3>
-							<p id={styles.subdepartment}>
-								<Link href="/department/spec-plus/quaranzine">
-									Quaranzine
-								</Link>
-							</p>
-							<p id={styles.subdepartment}>
-								<Link href="/department/spec-plus/undercurrents">
-									Undercurrents
-								</Link>
-							</p>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
 								<Link href="/about">About Us</Link>
 							</h3>
 							<p id={styles.subdepartment}>
-								<Link href="/about/our-charter">
-									Our Charter
-								</Link>
+								<Link href="/about/our-charter">Our Charter</Link>
 							</p>
 							<p id={styles.subdepartment}>
 								<Link href="/about/advertise">Advertise</Link>
@@ -247,6 +200,9 @@ const Footer = () => {
 							</p>
 							<p id={styles.subdepartment}>
 								<Link href="/about/developers">Developers</Link>
+							</p>
+							<p id={styles.subdepartment}>
+								<Link href="/about/recruitments">Recruitments</Link>
 							</p>
 							<p id={styles.subdepartment}>
 								<Link href="/about/contact">Contact</Link>
