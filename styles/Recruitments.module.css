@@ -4,6 +4,7 @@
 	width: 95vw;
 	max-width: 1300px;
 	margin: auto;
+	/*font-size: 20px;*/
 }
 
 #video {
@@ -20,8 +21,12 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: justify;
-	border-style: solid;
-	border-width: 3px;
+	line-height: 23px;
+	border-style: groove;
+	border-width: 4px;
+	/*border-color: #b52a24;*/
+	border-color: #77469e;
+	border-radius: 15px;
 	padding: 15px;
 }
 
