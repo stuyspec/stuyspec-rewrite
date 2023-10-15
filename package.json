@@ -8,6 +8,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.7.5",
 		"mongodb": "^6.1.0",
 		"next": "^13.5.4",
 		"node-fetch": "^3.3.2",
