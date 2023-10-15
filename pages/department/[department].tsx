@@ -17,7 +17,7 @@ interface Props {
 	section_id: number;
 }
 
-const Article = (props: Props) => {
+function Article(props: Props) {
 	const page_title = props.department_display + " - The Stuyvesant Spectator";
 	const meta_url =
 		`https://stuyspec.com/department/` + DepartmentsArray[props.section_id];

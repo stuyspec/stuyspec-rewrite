@@ -3,7 +3,7 @@ import styles from "../styles/Subscribe.module.css";
 import SubscribeForm from "../components/SubscribeForm";
 import { generateMetaTags } from "../utils/generateMetaTags";
 
-const Subscribe = () => {
+function Subscribe() {
 	const page_title = "Subscribe - The Stuyvesant Spectator";
 	const meta_url = `https://stuyspec.com/subscribe`;
 	const meta_description = `Subscribe to The Stuyvesant Spectator's biweekly newsletter.`;

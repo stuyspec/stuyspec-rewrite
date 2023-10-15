@@ -21,7 +21,7 @@ async function fetch_addtional_articles(skip?: number, max?: number) {
 	return articles;
 }
 
-const Home = (props: Props) => {
+function Home(props: Props) {
 	return (
 		<div>
 			<main id={styles.main}>

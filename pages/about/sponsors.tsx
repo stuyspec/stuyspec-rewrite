@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../../styles/About.module.css";
 import { generateMetaTags } from "../../utils/generateMetaTags";
 
-const Sponsors = () => {
+function Sponsors() {
 	const page_title = "Sponsors - The Stuyvesant Spectator";
 	const meta_url = `https://stuyspec.com/about/sponsors`;
 	const meta_description = `The sponsors for The Stuyvesant Spectator, and how to become a sponsor for The Stuyvesant Spectator.`;

@@ -4,54 +4,54 @@ import Image from "next/image";
 import one_hundred_years_logo from "../public/images/100years_logo.png";
 import Link from "next/link";
 
-const AboutUs = (props: any) => {
+function AboutUs(props: any) {
 	const pages: Array<{
 		name: string;
 		link: string;
 		summary: string;
 		image: string;
 	}> = [
-		{
-			name: "Our Charter",
-			link: "/our-charter",
-			summary:
-				"Curious about our policies? Learn more by reading the charter of the Stuyvesant Spectator.",
-			image: "string",
-		},
-		{
-			name: "Advertise",
-			link: "/advertise",
-			summary:
-				"Considering posting an advertisement? Learn more about how you can advertise on The Stuyvesant Spectator's website.",
-			image: "string",
-		},
-		{
-			name: "Sponsors",
-			link: "/sponsors",
-			summary:
-				"Considering sponsoring us? Learn more about how you can sponsor us here.",
-			image: "string",
-		},
-		{
-			name: "Staff",
-			link: "/staff",
-			summary: "Learn more about our current or past staff members.",
-			image: "string",
-		},
-		{
-			name: "Developers",
-			link: "/developers",
-			summary:
-				"Learn more about the developers behind The Stuyvesant Spectator's website.",
-			image: "string",
-		},
-		{
-			name: "Contact",
-			link: "/contact",
-			summary: "Want to contact us? Get in touch.",
-			image: "string",
-		},
-	];
+			{
+				name: "Our Charter",
+				link: "/our-charter",
+				summary:
+					"Curious about our policies? Learn more by reading the charter of the Stuyvesant Spectator.",
+				image: "string",
+			},
+			{
+				name: "Advertise",
+				link: "/advertise",
+				summary:
+					"Considering posting an advertisement? Learn more about how you can advertise on The Stuyvesant Spectator's website.",
+				image: "string",
+			},
+			{
+				name: "Sponsors",
+				link: "/sponsors",
+				summary:
+					"Considering sponsoring us? Learn more about how you can sponsor us here.",
+				image: "string",
+			},
+			{
+				name: "Staff",
+				link: "/staff",
+				summary: "Learn more about our current or past staff members.",
+				image: "string",
+			},
+			{
+				name: "Developers",
+				link: "/developers",
+				summary:
+					"Learn more about the developers behind The Stuyvesant Spectator's website.",
+				image: "string",
+			},
+			{
+				name: "Contact",
+				link: "/contact",
+				summary: "Want to contact us? Get in touch.",
+				image: "string",
+			},
+		];
 
 	return (
 		<div>

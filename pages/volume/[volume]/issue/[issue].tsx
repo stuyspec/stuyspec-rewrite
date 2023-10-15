@@ -13,7 +13,7 @@ interface Props {
 	issue: number;
 }
 
-const Issue_Component = (props: Props) => {
+function Issue_Component(props: Props) {
 	const page_title = `Volume ${props.volume} Issue ${props.issue} - The Stuyvesant Spectator`;
 	const meta_url = `https://stuyspec.com/volume/${props.volume}/issue/${props.issue}`;
 	const meta_description = `Volume ${props.volume} Issue ${props.issue} at The Stuyvesant Spectator.`;

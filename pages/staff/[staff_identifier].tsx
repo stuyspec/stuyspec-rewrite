@@ -30,7 +30,7 @@ interface Props {
 	}[];
 }
 
-const StaffMember = (props: Props) => {
+function StaffMember(props: Props) {
 	const staff_member = props.staff;
 	const page_title = staff_member.name + " - The Stuyvesant Spectator";
 	const meta_url = `https://stuyspec.com/staff/` + staff_member.slug;

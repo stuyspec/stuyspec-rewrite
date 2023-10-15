@@ -18,14 +18,13 @@ interface Props {
 	department_id: number;
 }
 
-const SubSection = (props: Props) => {
+function SubSection(props: Props) {
 	const sub_section_display =
 		props.sub_section.charAt(0).toUpperCase() + props.sub_section.slice(1);
 
 	const page_title = sub_section_display + " - The Stuyvesant Spectator";
-	const meta_url = `https://stuyspec.com/department/${
-		DepartmentsArray[props.department_id]
-	}/${props.sub_section}`;
+	const meta_url = `https://stuyspec.com/department/${DepartmentsArray[props.department_id]
+		}/${props.sub_section}`;
 	const meta_description = `${sub_section_display} at The Stuyvesant Spectator.`;
 
 	const fetch_addtional_articles = async (skip?: number, max?: number) => {

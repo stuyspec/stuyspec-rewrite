@@ -18,7 +18,8 @@ interface Props {
 	article: ReceivedArticle;
 }
 
-const Article = (props: Props) => {
+function Article(props: Props) {
+
 	const {
 		text,
 		title,

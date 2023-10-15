@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../../styles/Staff.module.css";
 import { generateMetaTags } from "../../utils/generateMetaTags";
 
-const StaffPage = () => {
+function StaffPage() {
 	const page_title = "Staff - The Stuyvesant Spectator";
 	const meta_url = `https://stuyspec.com/about/staff`;
 	const meta_description = `The members of The Stuyvesant Spectator's 2022-2023 Editorial Board.`;
