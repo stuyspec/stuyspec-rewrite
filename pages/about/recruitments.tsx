@@ -34,7 +34,7 @@ const RecruitmentPage = () => {
 				department: "Arts & Ent.",
 				description:
 					"As the only department with more than three article categories, Arts and Entertainment is notable for its versatility and creative freedom. We review recent cultural topics such as art, fashion, film, food, literature, music, and more! A&E writers are also free to experiment with the thinkpiece category, where one can explore cultural phenomena or trends, gender standards, or race from a cultural standpoint. Whether you are an aspiring music enthusiast or cultural connoisseur, everyone can find (or create!) their own niche in A&E.",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/document/d/1bwVseD11wUqawunBk5Dos3n8lUOUWFgxJkwe84Ysxc4/edit?usp=sharing",
 				applicationDueDate: "",
 			},
 			{
@@ -48,21 +48,21 @@ const RecruitmentPage = () => {
 				department: "Sports",
 				description:
 					"The Sports department covers all things sports, whether it be PSAL sports at Stuyvesant or professional sports. Articles pertaining to Stuyvesant sports range from championship articles and season updates to athlete and coach interviews and opinions. Writers also cover virtually any topic in the larger sports world, from debates on LeBron vs. MJ and college basketball to YouTube boxing and the Champions League. If that’s not enough to convince you to apply, we have an exclusive fantasy football league (with rewards).",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/document/d/18L-IbAeWqfDYfiIppkQO_P98xxm_4TfmNRAwSgLZgMQ/edit",
 				applicationDueDate: "",
 			},
 			{
 				department: "Science",
 				description:
 					"The Science Department covers everything science-related, from pandemics and groundbreaking discoveries to Stuyvesant’s very own fascinating science clubs and events. Our department captures the complexity of science through analytical and often opinion-based writing, and we aim to convey the intricacies of the world around us and beyond to the student body.",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/document/d/1JSPsPMzTkvJ9sRQnBw7FKI2nqtXn1sK5zcLhHRqchyQ/edit",
 				applicationDueDate: "",
 			},
 			{
 				department: "Web",
 				description:
 					"The Web department is responsible for designing and updating The Spectator's website (aka this website), www.stuyspec.com. It also attempts to facilitate the learning of developing and maintaining a web applications. These real-world skills are a great resume builders and provide invaluable experience in working together as a team. This is the perfect department for both computer programming enthusiasts and novices who want to help The Spectator continue to storm the frontier of online journalism.",
-				applicationForm: "",
+				applicationForm: "https://forms.gle/oiQTKk374tzZ3iPZA",
 				applicationDueDate: "",
 			},
 			{
@@ -76,7 +76,7 @@ const RecruitmentPage = () => {
 				department: "Layout",
 				description:
 					"A good publication should interest readers before they even pick it up and read it; the Layout department does just that! We are responsible for formatting all of the articles, photos, art, and other media and make sure that the paper is aesthetically appealing and easy to read. After all, no one wants to read ugly and confusing blocks of text. With creativity and a certain magic called InDesign, we present to you what you know as The Spectator. As a staff member, you will be taught how to use InDesign and asked to critique the formatting of each issue as it is released.",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSeMsxgGy_WuvDJn5RBfsZOdofBLFgz4312obC5ivm_K86ZmNg/viewform",
 				applicationDueDate: "",
 			},
 			{
@@ -90,7 +90,7 @@ const RecruitmentPage = () => {
 				department: "Art",
 				description:
 					"It is often difficult to read through dense blocks of text without something to rest your eyes on. In the Art Department, we strive to embellish the newspaper with our unique illustrations, each perfectly suited for its article. In a school where artistic abilities are not seen as a priority, you can easily find your niche as an artist for The Spectator, where your art will be displayed for all of its readers to admire. The limits of your creativity have no bounds; you can explore and develop your art skills by taking on cool and unique requests, from a portrait of Taylor Swift (A&E) to an oily stork (Humor), as well as the occasional thematic spread; the range is infinite. We encourage the use of all media!",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/forms/d/1Yd7xtniMlqRYtWKfUSEZh8TMj_sZYqcQMag7tmbKrrA/edit?usp=drive_web",
 				applicationDueDate: "",
 			},
 			{
@@ -127,6 +127,9 @@ const RecruitmentPage = () => {
 						<div className={styles.department} style={{}} key={key}>
 							<h2>{department.department}</h2>
 							<p>{department.description}</p>
+							{department.applicationForm && <>
+								<a className="link" href={department.applicationForm} target="_blank" rel="norefferer">Apply for {department.department}.</a>
+							</>}
 						</div>
 					))}
 				</section>
