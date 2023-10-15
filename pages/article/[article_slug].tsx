@@ -57,6 +57,12 @@ const Article = (props: Props) => {
 						.join(", ")}
 					key="author"
 				/>
+				<meta data-rh="true" name="byl"
+					content={"By " + contributors
+						.map((v: ReceivedStaff) => v.name)
+						.join(", ")}
+					key="byl"
+				/>
 				{generateMetaTags(
 					title,
 					summary,
