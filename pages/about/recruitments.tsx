@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../../styles/Recruitments.module.css";
 import { generateMetaTags } from "../../utils/generateMetaTags";
 
-const RecruitmentPage = () => {
+function RecruitmentPage() {
 	const departments: Array<{
 		department: string;
 		description: string;
@@ -13,7 +13,7 @@ const RecruitmentPage = () => {
 				department: "News",
 				description:
 					"The News Department covers school events, administrative changes, student organizations, school and student government policies, and out-of-school news. Besides traditional News articles, we also write mini-articles, graphs & surveys, and spreads. If you are interested in knowing Stuyvesant news before it is released, informing the student body, meeting students, teachers, and administrators, or seeing your work on the front page, apply to our department!",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLScLSwCatr_Ejsu5amtdIaOlejuBRtWusZULgyP2ihuD92qqkg/viewform",
 				applicationDueDate: "",
 			},
 			{
