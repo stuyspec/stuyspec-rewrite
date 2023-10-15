@@ -4,10 +4,26 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Script from "next/script";
 import Head from "next/head";
+import LoadingBar from "react-top-loading-bar";
 import { generateMetaTags } from "../utils/generateMetaTags";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 function MyApp(props: AppProps) {
 	let { Component, pageProps } = props;
+	const [progress, setProgress] = useState(0);
+	const router = useRouter();
+
+	useEffect(() => {
+		// Client side loading bar
+		router.events.on("routeChangeStart", () => {
+			setProgress(40); // just changed route
+		});
+
+		router.events.on("routeChangeComplete", () => {
+			setProgress(100); // route loaded
+		});
+	}, []);
 
 	// Variables for the (base) meta tags
 	const title = "The Stuyvesant Spectator";
@@ -48,6 +64,12 @@ function MyApp(props: AppProps) {
 
 				{generateMetaTags(title, description, meta_url)}
 			</Head>
+			<LoadingBar
+				color='#4283e4'
+				progress={progress}
+				onLoaderFinished={() => setProgress(0)}
+				waitingTime={500}
+			/>
 			<div>
 				<div id="navbar">
 					<Navbar />
