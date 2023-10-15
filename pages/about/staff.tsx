@@ -22,9 +22,10 @@ const StaffPage = () => {
 					</div>
 					<div>
 						<h3>News Editors</h3>
-						<p>Talia Arcasoy**</p>
+						<p>Talia Arcasoy</p>
 						<p>Sarah Diaz*</p>
-						<p>Seth Fenton**</p>
+						<p>Seth Fenton</p>
+						<p>Zoey Marcus**</p>
 					</div>
 					<div>
 						<h3>Features Editors</h3>
@@ -35,28 +36,34 @@ const StaffPage = () => {
 					<div>
 						<h3>Opinions Editors</h3>
 						<p>Ivy Huang*</p>
+						<p>Helen Mancini**</p>
 						<p>Gulam Monawarah</p>
+						<p>Amaryllis Sun**</p>
 					</div>
 					<div>
 						<h3>Science Editors</h3>
+						<p>Ryan Lin**</p>
 						<p>Hellen Luo</p>
+						<p>Michelle Ng**</p>
 						<p>Jovanna Wu</p>
 					</div>
 					<div>
 						<h3>Arts & Entertainment Editors</h3>
 						<p>Lucien Clough</p>
-						<p>Simone Raleigh**</p>
+						<p>Simone Raleigh</p>
 						<p>Santino Suarez</p>
 					</div>
 					<div>
 						<h3>Humor Editors</h3>
 						<p>Erica Chen</p>
-						<p>Finn Charest**</p>
+						<p>Finn Charest</p>
 					</div>
 					<div>
 						<h3>Sports Editors</h3>
+						<p>Duncan Park**</p>
 						<p>Ava Quarles</p>
 						<p>Kaeden Ruparel</p>
+						<p>Kaileen So**</p>
 						<p>Khush Wadhwa*</p>
 					</div>
 					<div>
@@ -74,26 +81,27 @@ const StaffPage = () => {
 						<h3>Layout Editors</h3>
 						<p>Ankki Dong</p>
 						<p>Fiona Huang</p>
-						<p>Elaine Liu**</p>
+						<p>Elaine Liu</p>
+						<p>Andre Wang**</p>
 						<p>Jasper Yu-Dawidowicz</p>
 					</div>
 					<div>
 						<h3>Copy Editors</h3>
 						<p>Kevin Chan*</p>
-						<p>Duncan Park**</p>
-						<p>Ryan Park**</p>
+						<p>Duncan Park</p>
+						<p>Ryan Park</p>
 						<p>Eman Sadiq</p>
 						<p>Allison Zhao</p>
 					</div>
 					<div>
 						<h3>Businesss Managers</h3>
 						<p>Amber Shen</p>
-						<p>Christopher Louie**</p>
+						<p>Christopher Louie</p>
 					</div>
 					<div>
 						<h3>Web Editors</h3>
-						<p>Lenny Metlitsky**</p>
-						<p>Ankita Saha**</p>
+						<p>Lenny Metlitsky</p>
+						<p>Ankita Saha</p>
 					</div>
 					<div>
 						<h3>Faculty Advisor</h3>
