@@ -20,14 +20,14 @@ function RecruitmentPage() {
 				department: "Features",
 				description:
 					"Features capture the spirit and mood of the school. At times, Features covers Stuyvesant’s evergreen topics, e.g. what is it about PE uniforms that gets everybody so hot and bothered? Other times, writers might profile a teacher. Other times, writers share creative narratives about experiences they have had in the “Voices” section. There is much to be found in Features, so come hither!",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/document/d/1qKqHW64EmhDfTMBw9cvYQicPm9zjllicArH7pX2bwMU/edit?usp=sharing",
 				applicationDueDate: "",
 			},
 			{
 				department: "Humor",
 				description:
 					"Do you want to lowkey rant about your life and roast everything? Would you like to have a personality glow up? Do you want to join a low commitment and fun Spec department? Join Spec Humor! We write funny and satirical pieces for The Spec and unlike other departments, everything we publish is libel and slander which means that you'll be in control of what everyone says!",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSfR7V1h76tdkPAcCiXQ915knCYuHTPWnLMvalEEBjKRpaA5yw/viewform?usp=sf_link",
 				applicationDueDate: "",
 			},
 			{
@@ -41,7 +41,7 @@ function RecruitmentPage() {
 				department: "Opinions",
 				description:
 					"The Opinions section lets writers share their views on issues relevant within the country, Stuyvesant, and their personal lives. Writers across all grades give their opinions on subjects ranging from politics and economics to technology and culture and share their personal stories. We try to consistently create engaging, substantive, and relevant content to provide students with a closer look at the world and the Stuyvesant community.",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/document/d/1v3kGzIEaIKux38ZdPHglWZPPwaFHMsTsjmCxpEDP268/edit?usp=sharing",
 				applicationDueDate: "",
 			},
 			{
@@ -69,7 +69,7 @@ function RecruitmentPage() {
 				department: "Copy",
 				description:
 					"Members of the Copy Department ensures that The Spectator produces clear, grammatically correct, and accurate articles. Did you notice both mistakes in the last sentence? If you did, you should join the Copy Department! Members gain early access to articles and sharpen their grammar skills while editing and fact-checking departments of their choice. We are committed to catching grammatical and factual mistakes in articles with attention to detail, and we look for members who want to contribute to maintaining The Spectator’s high-quality content.",
-				applicationForm: "",
+				applicationForm: "https://forms.gle/2vUHsg2QW5jWEusV8",
 				applicationDueDate: "",
 			},
 			{
@@ -97,7 +97,7 @@ function RecruitmentPage() {
 				department: "Business",
 				description:
 					"The Business department is the backbone of The Spectator. Due to the efforts of this department, The Spectator is able to print all of its issues while still remaining independent. We negotiate and secure deals with businesses all over New York as well as handle the advertisements on the website and in the paper. Members learn skills that can be applied to real life, including talking in formal settings, learning how to negotiate and compromise, and understanding how to manage money.",
-				applicationForm: "",
+				applicationForm: "https://docs.google.com/forms/d/1lBUK4zz5SixXxtOIfkhXhA9RqBG43moJEUMlfopO5rA/edit",
 				applicationDueDate: "",
 			},
 		];
