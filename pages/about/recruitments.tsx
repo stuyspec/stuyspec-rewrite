@@ -83,7 +83,7 @@ function RecruitmentPage() {
 				department: "Photo",
 				description:
 					"Photo is dedicated to providing interesting and dynamic photographs to support the articles in The Spectator and spearhead photo essay projects. Typical assignments include portraits of students and teachers, photos at school events, and shots of fun things around the city. This department is a good fit for anyone interested in photography, whether you’re just starting out, or you’re an expert looking for a place to practice and refine your skills.",
-				applicationForm: "",
+				applicationForm: "https://forms.gle/hUnWfuFMoJBZwfgd6",
 				applicationDueDate: "",
 			},
 			{
