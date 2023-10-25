@@ -36,4 +36,13 @@ module.exports = {
 			},
 		];
 	},
+	async redirects() {
+		return [
+			{
+				source: '/apply/web',
+				destination: 'https://forms.gle/oiQTKk374tzZ3iPZA',
+				permanent: true,
+			},
+		]
+	},
 };
