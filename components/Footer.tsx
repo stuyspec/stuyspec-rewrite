@@ -61,6 +61,11 @@ const Footer = () => {
 									Black Lives Matter
 								</Link>
 							</p>
+							<p id={styles.subdepartment}>
+								<Link href="/department/news/israel-hamas-war">
+									Israel-Hamas War
+								</Link>
+							</p>
 						</div>
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
@@ -281,8 +286,8 @@ const Footer = () => {
 				</div>
 				<div id={styles.declarations}>
 					<p id={styles.left}>
-						© {year} Stuyvesant Spectator Web Department. All rights
-						reserved.
+						© {year} Stuyvesant Spectator Web Department. All
+						rights reserved.
 					</p>
 					<p id={styles.right} className="link">
 						<Link

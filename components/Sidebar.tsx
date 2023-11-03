@@ -34,6 +34,11 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 								Campaign Coverage
 							</Link>
 						</span>
+						<span>
+							<Link href="/department/news/israel-hamas-war">
+								Israel-Hamas War
+							</Link>
+						</span>
 					</div>
 					<Image
 						src="/images/right-arrow.svg"
