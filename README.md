@@ -31,6 +31,8 @@ yarn
 MONGODB_URI=mongodb+srv://...
 ```
 
+Optionally, add a api token for MailerLite in `MAILERLITE_API_TOKEN`
+
 4. Run the development server:
 
 ```bash
