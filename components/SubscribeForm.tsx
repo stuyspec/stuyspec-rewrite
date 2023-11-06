@@ -44,7 +44,6 @@ const SubscribeForm = () => {
 				onChange={(e) => setEmail(e.target.value)}
 			/>
 			<br />
-			<br />
 			<button
 				disabled={subscribeState === "Loading"}
 				type="submit"
