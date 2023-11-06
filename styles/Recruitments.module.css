@@ -13,10 +13,6 @@
 	width: 100%;
 	max-width: 700px;
 	aspect-ratio: 16 / 9;
-	border-style: solid;
-	border-width: 4px;
-	border-radius: 15px;
-	padding: 12px;
 }
 
 #departments .department {
