@@ -18,7 +18,6 @@ function CenterArticle(props: {
 	display_department?: boolean;
 }) {
 	const article = props.article;
-	console.log("Center article:", article)
 	return (
 		<div className={styles.article} key={String(article._id)}>
 			{props.display_image && article.cover_image ? (
