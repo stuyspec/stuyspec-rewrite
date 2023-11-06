@@ -19,7 +19,9 @@ const LatestPreviewImage = (props: { imageClass: any; imageIndex: number }) => {
 	return (
 		<Link
 			passHref
-			href={(data && data.link) || "https://issuu.com/stuyspectator"} target="_blank"
+			href={(data && data.link) || "https://issuu.com/stuyspectator"}
+			target="_blank"
+			rel="noopener"
 		>
 			<img
 				alt={`The ${
