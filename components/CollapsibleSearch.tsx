@@ -85,7 +85,7 @@ const CollapsibleSearch = () => {
       return [];
     }
 
-    const request = await fetch(`http://localhost:3000/api/articles/search?q=${input}&max=5`);
+    const request = await fetch(`/api/articles/search?q=${input}&max=5`);
     const rjson = await request.json()
     if (!rjson.articles){
       throw new Error("Articles were not returned from search");
