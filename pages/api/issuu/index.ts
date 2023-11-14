@@ -1,53 +1,61 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-export interface IssuuResponse {
-	images: string[];
-	volume: number;
-	issue: number;
-	title: string;
-	link: string;
+import type { NextApiRequest, NextApiResponse, NextPageContext } from "next";
+const pdf2img = require("pdf-img-convert");
+const pdfjsLib = require("pdfjs-dist");
+
+export interface PDFResponse {
+  images: string[];
+  link: string;
 }
 
 export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse<IssuuResponse>
+  req: NextApiRequest,
+  res: NextApiResponse<PDFResponse>
 ) {
-	const { method, body } = req;
+  const { method, body } = req;
 
-	if (method == "GET") {
-		const response: IssuuResponse = await getLatestImages();
+  if (method == "GET") {
+    const response: PDFResponse = await getLatestImages();
 
-		return res.json(response);
-	}
+    return res.json(response);
+  }
 }
 
 async function getLatestImages() {
-	const response = await fetch(
-		"https://issuu.com/call/profile/v1/documents/stuyspectator?offset=0&limit=25"
-	); // returns latest pdfs (issues) of The Spectator
+  const response1 = await fetch("https://pdf.stuyspec.com/"); 
+  const text = await response1.text();
+  const volume = (text.split("href=\"").at(-5)!).split("/").at(1);
+  // get volume
 
-	const json = await response.json();
-	const uriFileName = String(json.items[0].uri).split("/").at(-1); // Get filename of latest issue
+  const response2 = await fetch( `https://pdf.stuyspec.com/${volume}`);
+  const text2 = await response2.text();
+  const issue = (text2.split("</a>").at(-4)!).split(">").at(-1);
+  // get issue
 
-	const getImages = await fetch(
-		`https://reader3.isu.pub/stuyspectator/${uriFileName}/reader3_4.json`
-	); // get the JPG image of every page in the PDF
-	const json2 = await getImages.json();
+  const loadingTask = pdfjsLib.getDocument(
+    `https://pdf.stuyspec.com/${volume}/${issue}`
+  );
+  const numPages = await loadingTask.promise.then(
+    (pdfDocument: { numPages: any }) => {
+      return pdfDocument.numPages;
+    }
+  ); //find the number of pages in the current issue
 
-	const numPages: number = json2.document.pages.length;
+  const convertImages = await pdf2img.convert(
+    `https://pdf.stuyspec.com/${volume}/${issue}`,
+    { page_numbers: [1, numPages] }
+  );
+  // convert the pdfs to Uint8 arrays using the pdf2img library
 
-	let images: string[] = [
-		json2.document.pages[0].imageUri, // first page
-		json2.document.pages[numPages - 1].imageUri, // last page
-	];
-	images = images.map((v) => `https://${v}`);
+  const firstPage = Buffer.from(convertImages[0]).toString("base64");
+  const lastPage = Buffer.from(convertImages[1]).toString("base64");
+  // convert the Uint8 arrays into base64
 
-	const postTitle = String(json.items[0].title); // Get issue post's title of latest issue
+  let images: string[] = [
+    "data:image/jpeg;base64," + firstPage,
+    "data:image/jpeg;base64," + lastPage,
+  ];
+  // create temporary image links using data URLs
 
-	let splitTitle = postTitle.split(" "); // Parse the volume and issue from "Volume XX Issue ZZ"
-	const volume = Number(splitTitle[1]);
-	const issue = Number(splitTitle[3]);
-
-	const link = `https://issuu.com/stuyspectator/docs/${uriFileName}`;
-
-	return { images, volume, issue, title: postTitle, link };
+  const link = `https://pdf.stuyspec.com/${volume}/${issue}`;
+  return { images, link };
 }

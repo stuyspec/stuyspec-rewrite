@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IssuuResponse } from "../pages/api/issuu";
+import { PDFResponse } from "../pages/api/issuu";
 
 const LatestPreviewImage = (props: { imageClass: any; imageIndex: number }) => {
-	const [data, setData] = useState<IssuuResponse | undefined>(undefined);
+	const [data, setData] = useState<PDFResponse | undefined>(undefined);
 	const getImages = async () => {
 		const res = await fetch("/api/issuu");
 		const json = await res.json();
@@ -15,7 +15,7 @@ const LatestPreviewImage = (props: { imageClass: any; imageIndex: number }) => {
 	useEffect(() => {
 		getImages();
 	}, []);
-
+	
 	return (
 		<Link
 			passHref
