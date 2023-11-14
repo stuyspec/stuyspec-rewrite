@@ -3,6 +3,7 @@ import Image from "next/image";
 import Router from "next/router";
 import styles from "../styles/CollapsibleSearch.module.css";
 import { get_articles_by_string_query } from "../db";
+import { ReceivedArticle } from "../ts_types/db_types";
 
 const CollapsibleSearch = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -25,7 +26,11 @@ const CollapsibleSearch = () => {
 
     
     const newSuggestions = await getSuggestions(value);
-    setSuggestions(newSuggestions);
+    // TODO: FOR ABIDUR, MAKE SUGGESTIONS A LIST OF RECIEVEDARTICLE
+    // setSuggestions(newSuggestions);
+
+    // but for demo purposes
+    setSuggestions(newSuggestions.map(v => v.title));
   };
 
   const onSuggestionClick = (suggestion: string) => {
@@ -75,6 +80,22 @@ const CollapsibleSearch = () => {
     };
   }, []);
 
+  const getSuggestions = async (input: string) => {
+    if (!input){
+      return [];
+    }
+
+    const request = await fetch(`http://localhost:3000/api/articles/search?q=${input}&max=5`);
+    const rjson = await request.json()
+    if (!rjson.articles){
+      throw new Error("Articles were not returned from search");
+    }
+    const articles = rjson.articles as ReceivedArticle[];
+
+    return articles;
+  };
+  
+
   return (
     <div id={styles.collapsible_search_parent}>
       <form onSubmit={submitSearchRequest}>
@@ -111,27 +132,5 @@ const CollapsibleSearch = () => {
   );
 };
 
-
-const getSuggestions = async (input: string) => {
-
-  const articles = await get_articles_by_string_query(input, 5);
-  // .then((articles) => {
-
-  //   console.log(articles);
-
- 
-  // })
-  // .catch((error) => {
-
-  //   console.error(error);
-  // });
-  // ;
-  
-  const suggestions = ["apple", "banana", "orange", "pineapple", "pear"];
-  console.log()
-  return suggestions.filter((suggestion) =>
-    suggestion.toLowerCase().includes(input.toLowerCase())
-  );
-};
 
 export default CollapsibleSearch;
