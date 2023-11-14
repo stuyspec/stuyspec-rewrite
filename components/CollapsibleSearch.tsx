@@ -19,12 +19,12 @@ const CollapsibleSearch = () => {
     setSearchBar(true);
   };
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchValue(value);
 
     
-    const newSuggestions = getSuggestions(value);
+    const newSuggestions = await getSuggestions(value);
     setSuggestions(newSuggestions);
   };
 
@@ -112,9 +112,9 @@ const CollapsibleSearch = () => {
 };
 
 
-const getSuggestions = (input: string) => {
+const getSuggestions = async (input: string) => {
 
-  // const articles = get_articles_by_string_query(input, 5)
+  const articles = await get_articles_by_string_query(input, 5);
   // .then((articles) => {
 
   //   console.log(articles);
