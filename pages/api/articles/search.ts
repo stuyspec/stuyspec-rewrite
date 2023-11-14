@@ -20,11 +20,10 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<ResponseStructure>
 ) {
-	let { method, body, query } = req;
+	let { method, query } = req;
 
 	try {
 		const parsed_query = query_schema.parse(query);
-        console.log(parsed_query)
 
 		if (method == "GET" || method == "POST") {
 			let articles = await get_articles_by_string_query(

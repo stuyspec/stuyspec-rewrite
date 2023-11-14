@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Router from "next/router";
 import styles from "../styles/CollapsibleSearch.module.css";
-import { get_articles_by_string_query } from "../db";
 import { ReceivedArticle } from "../ts_types/db_types";
 
 const CollapsibleSearch = () => {
