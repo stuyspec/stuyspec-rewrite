@@ -12,9 +12,6 @@ export default function generate_contributors_jsx(
 				return (
 					<span key={index}>
 						<Link
-							style={{
-								fontFamily: "var(--secondary-font)",
-							}}
 							key={String(contributor._id)}
 							href={"/staff/" + contributor.slug}
 							passHref
