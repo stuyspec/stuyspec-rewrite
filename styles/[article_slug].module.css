@@ -5,6 +5,14 @@
 	margin: 0 auto;
 }
 
+#section {
+	text-transform: uppercase;
+	font-family: sans-serif !important;
+	font-weight: 600;
+	font-size: 1.2rem;
+	margin-top: 15px;
+}
+
 #title {
 	font-size: var(--large-text);
 }
@@ -94,6 +102,8 @@
 	margin-top: -5px;
 	text-align: right;
 	color: var(--medium-grey);
+	font-style: italic;
+	font-size: calc(var(--large-text) / 2.4);
 }
 
 @media screen and (max-width: 840px) {
@@ -105,20 +115,4 @@
 		/* margin: 1rem 0; */
 		font-size: var(--medium-text);
 	}
-}
-
-#subsribe_insert {
-	/* width: 400px; */
-	margin: auto;
-	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
-
-#section {
-	text-transform: uppercase;
-	font-family: sans-serif !important;
-	font-weight: 600;
-	font-size: 1.2rem;
-	margin-top: 15px;
 }
