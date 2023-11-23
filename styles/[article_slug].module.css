@@ -34,7 +34,6 @@
 
 #infoBar {
 	margin-top: 1rem;
-	margin-bottom: 0.5rem;
 	font-family: var(--secondary-font);
 	display: flex;
 	justify-content: space-between;
@@ -66,27 +65,9 @@
 	font-family: var(--primary-font);
 }
 
-#content p {
-	margin: 1rem 0;
-	font-size: 1.2rem;
-	color: var(--primary) !important;
-}
-
-#content p:first-of-type {
-	text-indent: 36px !important;
-}
-
-#content p br {
-	display: none;
-}
-
-#content a {
-	text-decoration: underline;
-}
-
 #cover_image_div {
+	margin-top: 0.5rem;
 	text-align: center;
-	margin: auto;
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
@@ -123,4 +104,26 @@
 		/* margin: 1rem 0; */
 		font-size: var(--medium-text);
 	}
+}
+
+#content {
+	margin-top: 2rem;
+}
+
+#content p {
+	margin: 1rem 0;
+	font-size: 1.2rem;
+	color: var(--primary) !important;
+}
+
+#content p:first-of-type {
+	text-indent: 36px !important;
+}
+
+#content p br {
+	display: none;
+}
+
+#content a {
+	text-decoration: underline;
 }
