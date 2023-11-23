@@ -209,6 +209,13 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 				<span className={styles.maindepartment}>
 					<Link href="/about/recruitments">Recruitments</Link>
 				</span>
+
+				<span className={styles.maindepartment}>
+					<Link href="https://pdf.stuyspec.com">
+						Virtual Archives
+					</Link>
+				</span>
+
 				<div id={styles.additional_features}>
 					<div className={styles.clickable_nav_element}>
 						<Link href="/subscribe">

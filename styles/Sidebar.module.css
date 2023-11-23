@@ -102,7 +102,7 @@
 
 @media screen and (max-width: 940px) {
 	#sidebar_parent {
-		height: 420px;
+		height: fit-content;
 		top: 64px;
 		width: 100%;
 	}

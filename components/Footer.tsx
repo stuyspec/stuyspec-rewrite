@@ -262,10 +262,7 @@ const Footer = () => {
 								id={styles.department}
 								className={styles.virtualArchives}
 							>
-								<Link
-									passHref
-									href="https://issuu.com/stuyspectator"
-								>
+								<Link passHref href="https://pdf.stuyspec.com">
 									Virtual Archives
 								</Link>
 							</h3>
