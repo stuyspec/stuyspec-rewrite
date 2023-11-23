@@ -20,27 +20,37 @@
 	margin-bottom: 1rem;
 	font-size: var(--small-text);
 	font-family: var(--secondary-font) !important;
-	font-weight: normal;
+	font-weight: 600;
 }
 
 #infoBar {
+	margin-top: 1rem;
 	margin-bottom: 0.5rem;
 	font-family: var(--secondary-font);
-}
-
-#shareButtons {
 	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	margin-top: 10px;
-	padding-top: 3px;
-	gap: 1rem;
+	justify-content: space-between;
+	flex-wrap: wrap; /* Wrap shareButtons down if collide with authors' names */
 }
 
 #authors {
-	margin-top: 1rem;
-	font-family: var(--secondary-font);
 	font-size: var(--small-text);
+	font-size: calc(var(--large-text) / 2.2) !important;
+	font-family: var(--secondary-font);
+}
+
+#issue_volume_text {
+	font-size: var(--small-text);
+	font-family: var(--secondary-font);
+	font-weight: normal;
+}
+
+#shareButtons {
+	margin-left: auto; /* If wraps, push to right side */
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-top: 3px;
+	column-gap: 1rem;
 }
 
 #main p {
@@ -110,9 +120,4 @@
 	font-weight: 600;
 	font-size: 1.2rem;
 	margin-top: 15px;
-}
-
-#issue_volume_text {
-	font-size: var(--small-text);
-	font-family: var(--secondary-font);
 }

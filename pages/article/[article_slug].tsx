@@ -78,7 +78,7 @@ function Article(props: Props) {
 
 			<main id={styles.main}>
 				<article id={styles.article}>
-					<p id={styles.section}>
+					<p id={styles.section} className="discrete-link">
 						<Link
 							href={
 								"/department/" +
@@ -97,15 +97,21 @@ function Article(props: Props) {
 						{generateApproxReadingTime()}
 					</h3>
 
-					<h3 id={styles.authors}>
-						By&nbsp;{generate_contributors_jsx(contributors)}
-					</h3>
-					<h3 id={styles.issue_volume_text}>
-						<Link href={`/volume/${volume}/issue/${issue}`}>
-							Issue {issue}, Volume {volume}
-						</Link>
-					</h3>
 					<div id={styles.infoBar}>
+						<div>
+							<h3 id={styles.authors}>
+								By&nbsp;
+								{generate_contributors_jsx(contributors)}
+							</h3>
+							<h3
+								id={styles.issue_volume_text}
+								className="discrete-link"
+							>
+								<Link href={`/volume/${volume}/issue/${issue}`}>
+									Issue {issue}, Volume {volume}
+								</Link>
+							</h3>
+						</div>
 						<div id={styles.shareButtons}>
 							{providers.map((provider) => (
 								<ShareButton
