@@ -10,6 +10,7 @@
 }
 
 #summary {
+	color: var(--medium-grey);
 	font-family: var(--secondary-font);
 	font-weight: normal;
 	font-size: calc(var(--large-text) / 2);
