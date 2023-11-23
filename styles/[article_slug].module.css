@@ -1,44 +1,65 @@
 #main {
 	width: 95vw;
-	max-width: 1000px;
+	max-width: 900px;
 	padding-top: 1rem;
 	margin: 0 auto;
+}
+
+#section {
+	text-transform: uppercase;
+	font-family: sans-serif !important;
+	font-weight: 600;
+	font-size: 1.2rem;
+	margin-top: 15px;
 }
 
 #title {
 	font-size: var(--large-text);
 }
 
-#infoBar {
-	display: flex;
-	justify-content: space-between;
-	align-self: center;
-
-	margin-bottom: 0.5rem;
+#summary {
+	color: var(--medium-grey);
 	font-family: var(--secondary-font);
+	font-weight: normal;
+	font-size: calc(var(--large-text) / 2);
+	margin-bottom: 0.1rem;
 }
 
-@media screen and (max-width: 1220px) {
-	#main {
-		padding-top: 1rem;
-	}
+#reading_time {
+	margin-bottom: 1rem;
+	font-size: var(--small-text);
+	font-family: var(--secondary-font) !important;
+	font-weight: 600;
+}
 
-	#infoBar {
-		display: block;
-	}
+#infoBar {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+	font-family: var(--secondary-font);
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap; /* Wrap shareButtons down if collide with authors' names */
 }
 
 #authors {
-	margin-top: 1rem;
 	font-size: var(--small-text);
+	font-size: calc(var(--large-text) / 2.2) !important;
+	font-family: var(--secondary-font);
+}
+
+#issue_volume_text {
+	font-size: var(--small-text);
+	font-family: var(--secondary-font);
+	font-weight: normal;
 }
 
 #shareButtons {
+	margin-left: auto; /* If wraps, push to right side */
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	margin-top: 10px;
 	padding-top: 3px;
+	column-gap: 1rem;
 }
 
 #main p {
@@ -70,10 +91,19 @@
 	width: 100% !important;
 	position: relative !important;
 	height: unset !important;
+	margin: 0;
 }
 
 #coverImageInfo {
 	font-family: var(--secondary-font);
+}
+
+#coverImageContributor {
+	margin-top: -5px;
+	text-align: right;
+	color: var(--medium-grey);
+	font-style: italic;
+	font-size: calc(var(--large-text) / 2.4);
 }
 
 @media screen and (max-width: 840px) {
@@ -85,31 +115,4 @@
 		/* margin: 1rem 0; */
 		font-size: var(--medium-text);
 	}
-}
-
-#subsribe_insert {
-	/* width: 400px; */
-	margin: auto;
-	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
-
-#section {
-	text-transform: uppercase;
-	font-family: sans-serif !important;
-	font-weight: 600;
-	font-size: 1.2rem;
-	margin-top: 15px;
-}
-
-#issue_volume_text {
-	font-size: var(--small-text);
-	font-family: var(--secondary-font);
-}
-
-#reading_time {
-	margin-bottom: 1rem;
-	font-size: var(--small-text);
-	font-family: var(--secondary-font);
 }

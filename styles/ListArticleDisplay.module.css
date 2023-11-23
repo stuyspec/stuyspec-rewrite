@@ -46,3 +46,7 @@
 	position: relative !important;
 	height: 135px !important;
 }
+
+.authors {
+	font-family: var(--secondary-font);
+}

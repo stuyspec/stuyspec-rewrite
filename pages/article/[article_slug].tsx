@@ -19,7 +19,6 @@ interface Props {
 }
 
 function Article(props: Props) {
-
 	const {
 		text,
 		title,
@@ -58,10 +57,15 @@ function Article(props: Props) {
 						.join(", ")}
 					key="author"
 				/>
-				<meta data-rh="true" name="byl"
-					content={"By " + contributors
-						.map((v: ReceivedStaff) => v.name)
-						.join(", ")}
+				<meta
+					data-rh="true"
+					name="byl"
+					content={
+						"By " +
+						contributors
+							.map((v: ReceivedStaff) => v.name)
+							.join(", ")
+					}
 					key="byl"
 				/>
 				{generateMetaTags(
@@ -73,8 +77,8 @@ function Article(props: Props) {
 			</Head>
 
 			<main id={styles.main}>
-				<div id={styles.article}>
-					<p id={styles.section}>
+				<article id={styles.article}>
+					<p id={styles.section} className="discrete-link">
 						<Link
 							href={
 								"/department/" +
@@ -88,20 +92,26 @@ function Article(props: Props) {
 						</Link>
 					</p>
 					<h1 id={styles.title}>{title}</h1>
+					<h2 id={styles.summary}>{summary}</h2>
 					<h3 id={styles.reading_time}>
 						{generateApproxReadingTime()}
 					</h3>
-					<h3 id={styles.issue_volume_text}>
-						<Link href={`/volume/${volume}/issue/${issue}`}>
-							Issue {issue}, Volume {volume}
-						</Link>
-					</h3>
 
 					<div id={styles.infoBar}>
-						<h3 id={styles.authors}>
-							By&nbsp;{generate_contributors_jsx(contributors)}
-						</h3>
-
+						<div>
+							<h3 id={styles.authors}>
+								By&nbsp;
+								{generate_contributors_jsx(contributors)}
+							</h3>
+							<h3
+								id={styles.issue_volume_text}
+								className="discrete-link"
+							>
+								<Link href={`/volume/${volume}/issue/${issue}`}>
+									Issue {issue}, Volume {volume}
+								</Link>
+							</h3>
+						</div>
 						<div id={styles.shareButtons}>
 							{providers.map((provider) => (
 								<ShareButton
@@ -113,7 +123,7 @@ function Article(props: Props) {
 						</div>
 					</div>
 
-					{cover_image /* Only check for cover image to decide visibility as some articles do not have image info */ ? (
+					{cover_image /* Only check for cover image to decide visibility as some articles do not have image info */ && (
 						<>
 							<div id={styles.cover_image_div}>
 								<Image
@@ -127,7 +137,7 @@ function Article(props: Props) {
 							</div>
 							<div id={styles.coverImageInfo}>
 								<div>{cover_image_summary}</div>
-								<div>
+								<div id={styles.coverImageContributor}>
 									By&nbsp;
 									{generate_contributors_jsx([
 										cover_image_contributor,
@@ -141,8 +151,6 @@ function Article(props: Props) {
 								</div>
 							</div>
 						</>
-					) : (
-						<></>
 					)}
 
 					<div
@@ -151,12 +159,12 @@ function Article(props: Props) {
 					></div>
 
 					{/* <RecommendedArticles /> */}
-				</div>
+				</article>
 				<div id={styles.advertisements}></div>
 			</main>
 		</div>
 	);
-};
+}
 
 export default Article;
 

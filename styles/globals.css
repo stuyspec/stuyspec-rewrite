@@ -56,7 +56,7 @@
 	--primary: #ffffff;
 	--secondary: #2c2c2c;
 	--light-grey: #272525;
-	--medium-grey: #f4f4f4;
+	--medium-grey: #e9e8e8;
 }
 
 .light-mode {
@@ -64,7 +64,7 @@
 	--primary: #353637;
 	--secondary: #ffffff;
 	--light-grey: #f1f1f1;
-	--medium-grey: #7e7e7e;
+	--medium-grey: #555555;
 }
 
 ::selection {
@@ -112,14 +112,20 @@ a {
 .link {
 	background: linear-gradient(to right, var(--primary), var(--primary)),
 		linear-gradient(to right, var(--accent), var(--accent));
-	background-size: 100% 0.1em, 0 0.1em;
-	background-position: 100% 100%, 0 100%;
+	background-size:
+		100% 0.1em,
+		0 0.1em;
+	background-position:
+		100% 100%,
+		0 100%;
 	background-repeat: no-repeat;
 	transition: background-size 250ms;
 }
 .link:hover,
 .link:focus {
-	background-size: 0 0.1em, 100% 0.1em;
+	background-size:
+		0 0.1em,
+		100% 0.1em;
 }
 
 .discrete-link {
