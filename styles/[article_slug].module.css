@@ -72,6 +72,14 @@
 	color: var(--primary) !important;
 }
 
+#content p:first-of-type {
+	text-indent: 36px !important;
+}
+
+#content p br {
+	display: none;
+}
+
 #content a {
 	text-decoration: underline;
 }
