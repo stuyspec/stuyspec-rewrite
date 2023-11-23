@@ -7,7 +7,7 @@ export default function generate_contributors_jsx(
 	return (
 		<span>
 			{contributors.map((contributor: ReceivedStaff, index: number) => {
-				let separator = index === contributors.length - 1 ? "" : ",";
+				let separator = index === contributors.length - 1 ? "" : ", ";
 
 				return (
 					<span key={index}>
@@ -19,7 +19,6 @@ export default function generate_contributors_jsx(
 							<span className="discrete-link">
 								{contributor.name}
 								{separator}
-								&nbsp;
 							</span>
 						</Link>
 					</span>
