@@ -39,10 +39,26 @@ module.exports = {
 	async redirects() {
 		return [
 			{
-				source: '/apply/web',
-				destination: 'https://forms.gle/oiQTKk374tzZ3iPZA',
+				source: "/apply/web",
+				destination: "mailto:web@stuyspec.com",
 				permanent: true,
 			},
-		]
+		];
+	},
+	async rewrites() {
+		return {
+			fallback: [
+				{
+					// Redirect old site links with one subdeps to article link
+					source: "/:department/:slug",
+					destination: `/article/:slug`,
+				},
+				{
+					// Redirect old site links with two subdeps to article link
+					source: "/:department/:sub_section/:slug",
+					destination: `/article/:slug`,
+				},
+			],
+		};
 	},
 };
