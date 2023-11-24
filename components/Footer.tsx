@@ -212,15 +212,21 @@ const Footer = () => {
 						</div>
 					</div>
 					<div id={styles.column}>
+						{/* Will be used when photo essays added
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
 								<Link href="/department/media">Media</Link>
 							</h3>
-						</div>
+						</div> */}
 						<div id={styles.cell}>
 							<h3 id={styles.department}>
 								<Link href="/department/spec-plus">Spec+</Link>
 							</h3>
+							<p id={styles.subdepartment}>
+								<Link href="/department/spec-plus/college-issue">
+									College Issue
+								</Link>
+							</p>
 							<p id={styles.subdepartment}>
 								<Link href="/department/spec-plus/quaranzine">
 									Quaranzine
