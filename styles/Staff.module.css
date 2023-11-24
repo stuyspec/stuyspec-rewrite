@@ -6,10 +6,71 @@
 	text-align: center;
 }
 
+.EIC {
+	color: rgb(215, 82, 82);
+}
+
+.news {
+	color: rgb(94, 138, 153);
+}
+
+.features {
+	color: rgb(175, 156, 86);
+}
+
+.ops {
+	color: rgb(83, 94, 180);
+}
+
+.science {
+	color: rgb(69, 147, 40);
+}
+
+.ae {
+	color: rgb(219, 101, 120);
+}
+
+.humor {
+	color: rgb(187, 187, 10);
+}
+
+.sports {
+	color: rgb(34, 181, 181);
+}
+
+.photos {
+	color: rgb(223, 150, 14);
+}
+
+.art {
+	color: rgb(145, 64, 179);
+}
+
+.layout {
+	color: rgb(134, 134, 134);
+}
+
+.copy {
+	color: rgb(176, 134, 103);
+}
+
+.biz {
+	color: rgb(82, 147, 93);
+}
+
+.web {
+	color: rgb(0, 128, 122);
+}
+
+.faculty {
+	color: rgb(154, 68, 68);
+}
+
 #main h3 {
-	margin-top: 10px;
+	margin-top: 30px;
 }
 
 .special_def {
 	text-align: right;
+	font-style: italic;
 }
