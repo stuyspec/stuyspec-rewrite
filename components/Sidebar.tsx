@@ -100,57 +100,59 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 					<span className={styles.maindepartment}>
 						<Link href="/department/ae">Arts & Entertainment</Link>
 					</span>
-					<div className={styles.subdepartment}>
-						<span>
-							<Link href="/department/ae/fashion">Fashion</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/art">Art</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/culture">Culture</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/film">Film</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/food">Food</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/literature">
-								Literature
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/music">Music</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/television">
-								Television
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/theater">Theater</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/thinkpiece">
-								Thinkpiece
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/sing!">Sing!</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/stc">STC!</Link>
-						</span>
+					<div className={styles.subdepartment_wrapper}>
+						<div className={styles.subdepartment}>
+							<span>
+								<Link href="/department/ae/fashion">Fashion</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/art">Art</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/culture">Culture</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/film">Film</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/food">Food</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/literature">
+									Literature
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/music">Music</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/television">
+									Television
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/theater">Theater</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/thinkpiece">
+									Thinkpiece
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/sing!">Sing!</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/stc">STC!</Link>
+							</span>
+						</div>
+						<Image
+							src="/images/right-arrow.svg"
+							width={10}
+							alt="right-arrow"
+							height={10}
+							id={styles.right_arrow}
+						/>
 					</div>
-					<Image
-						src="/images/right-arrow.svg"
-						width={10}
-						alt="right-arrow"
-						height={10}
-						id={styles.right_arrow}
-					/>
 				</div>
 
 				<div className={styles.department}>
