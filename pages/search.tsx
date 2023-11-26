@@ -20,19 +20,69 @@ enum sortingOptions {
 }
 
 function SearchRoute(props: Props) {
-  const [sortingOption, setSortingOption] = useState<sortingOptions>(sortingOptions.Relevance);
-  const [sortedArticles, setSortedArticles] = useState<ReceivedArticle[]>(props.articles);
+  const [sortingOption, setSortingOption] = useState<sortingOptions>(
+    sortingOptions.Relevance
+  );
+  const [sortedArticles, setSortedArticles] = useState<ReceivedArticle[]>(
+    props.articles
+  );
+  const [filterIssue, setFilterIssue] = useState<number | null>(null);
+
+  const [filterVolume, setFilterVolume] = useState<number | null>(null);
 
   useEffect(() => {
     sortArticles();
   }, [sortingOption]);
 
+  useEffect(() => {
+    sortArticles();
+  }, [filterIssue]);
+
+  useEffect(() => {
+    sortArticles();
+  }, [filterVolume]);
+
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortingOption(event.target.value as sortingOptions);
   };
 
+  const handleIssueChange = (event: { target: { value: string } }) => {
+    let selectedIssue = parseInt(event.target.value, 10);
+    setFilterIssue(selectedIssue !== -1 ? selectedIssue : null);
+  };
+
+  const handleVolumeChange = (event: { target: { value: string } }) => {
+    let selectedVolume = parseInt(event.target.value, 10);
+    setFilterVolume(selectedVolume !== -1 ? selectedVolume : null);
+  };
+
   const sortArticles = () => {
     const articlesCopy = [...props.articles];
+    if (Number.isNaN(filterIssue) || filterIssue == null) {
+      if (Number.isNaN(filterVolume) || filterVolume == null) {
+        setSortedArticles(articlesCopy);
+      } else {
+        const filteredArticles = articlesCopy.filter(
+          (article) => article.volume === filterVolume
+        );
+        setSortedArticles(filteredArticles);
+      }
+    } else if (!(Number.isNaN(filterIssue) || filterIssue == null)) {
+      if (!(Number.isNaN(filterVolume) || filterVolume == null)) {
+        const filteredArticles = articlesCopy.filter(
+          (article) => article.volume === filterVolume
+        );
+        const filteredArticles2 = filteredArticles.filter(
+          (article) => article.issue === filterIssue
+        );
+        setSortedArticles(filteredArticles2);
+      } else {
+        const filteredArticles = articlesCopy.filter(
+          (article) => article.issue === filterIssue
+        );
+        setSortedArticles(filteredArticles);
+      }
+    }
 
     if (sortingOption === sortingOptions.Newest) {
       articlesCopy.sort((a, b) => {
@@ -49,8 +99,6 @@ function SearchRoute(props: Props) {
         return a.volume - b.volume;
       });
     }
-
-    setSortedArticles(articlesCopy);
   };
 
   return (
@@ -64,12 +112,33 @@ function SearchRoute(props: Props) {
         </h1>
         <div>
           <label htmlFor="sort-select">Sort by:</label>
-          <select id="sort-select" value={sortingOption} onChange={handleSortChange}>
+          <select
+            id="sort-select"
+            value={sortingOption}
+            onChange={handleSortChange}
+          >
             <option value={sortingOptions.Relevance}>Relevance</option>
             <option value={sortingOptions.Newest}>Newest</option>
             <option value={sortingOptions.Oldest}>Oldest</option>
           </select>
         </div>
+        <div>
+          <label htmlFor="filter-issue-select">Filter by Issue: </label>
+          <input
+            id="filter-issue-select"
+            placeholder="Issue number"
+            onChange={handleIssueChange}
+          ></input>
+        </div>
+        <div>
+          <label htmlFor="filter-issue-select">Filter by Volume: </label>
+          <input
+            id="filter-issue-select"
+            placeholder="Volume number"
+            onChange={handleVolumeChange}
+          ></input>
+        </div>
+
         {props.staff.length > 0 && (
           <>
             <h2>{props.staff.length} staff members found:</h2>
@@ -77,7 +146,9 @@ function SearchRoute(props: Props) {
               {props.staff.map((staff_member, index) => (
                 <div key={index}>
                   <h1 id={styles.name}>
-                    <Link href={"/staff/" + encodeURIComponent(staff_member.slug)}>
+                    <Link
+                      href={"/staff/" + encodeURIComponent(staff_member.slug)}
+                    >
                       {staff_member.name}{" "}
                       <span id={styles.slug}>({staff_member.slug})</span>
                     </Link>
@@ -97,7 +168,7 @@ function SearchRoute(props: Props) {
       </main>
     </div>
   );
-};
+}
 
 export default SearchRoute;
 
