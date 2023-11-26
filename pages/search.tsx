@@ -20,12 +20,8 @@ enum sortingOptions {
 }
 
 function SearchRoute(props: Props) {
-  const [sortingOption, setSortingOption] = useState<sortingOptions>(
-    sortingOptions.Relevance
-  );
-  const [sortedArticles, setSortedArticles] = useState<ReceivedArticle[]>(
-    props.articles
-  );
+  const [sortingOption, setSortingOption] = useState<sortingOptions>(sortingOptions.Relevance);
+  const [sortedArticles, setSortedArticles] = useState<ReceivedArticle[]>(props.articles);
   const [filterIssue, setFilterIssue] = useState<number | null>(null);
 
   const [filterVolume, setFilterVolume] = useState<number | null>(null);
@@ -112,11 +108,7 @@ function SearchRoute(props: Props) {
         </h1>
         <div>
           <label htmlFor="sort-select">Sort by:</label>
-          <select
-            id="sort-select"
-            value={sortingOption}
-            onChange={handleSortChange}
-          >
+          <select id="sort-select" value={sortingOption} onChange={handleSortChange}>
             <option value={sortingOptions.Relevance}>Relevance</option>
             <option value={sortingOptions.Newest}>Newest</option>
             <option value={sortingOptions.Oldest}>Oldest</option>
@@ -124,19 +116,13 @@ function SearchRoute(props: Props) {
         </div>
         <div>
           <label htmlFor="filter-issue-select">Filter by Issue: </label>
-          <input
-            id="filter-issue-select"
-            placeholder="Issue number"
-            onChange={handleIssueChange}
-          ></input>
+          <input id="filter-issue-select" placeholder="Issue number" onChange={handleIssueChange}>
+          </input>
         </div>
         <div>
           <label htmlFor="filter-issue-select">Filter by Volume: </label>
-          <input
-            id="filter-issue-select"
-            placeholder="Volume number"
-            onChange={handleVolumeChange}
-          ></input>
+          <input id="filter-volume-select" placeholder="Volume number" onChange={handleVolumeChange}>
+          </input>
         </div>
 
         {props.staff.length > 0 && (
@@ -146,9 +132,7 @@ function SearchRoute(props: Props) {
               {props.staff.map((staff_member, index) => (
                 <div key={index}>
                   <h1 id={styles.name}>
-                    <Link
-                      href={"/staff/" + encodeURIComponent(staff_member.slug)}
-                    >
+                    <Link href={"/staff/" + encodeURIComponent(staff_member.slug)}>
                       {staff_member.name}{" "}
                       <span id={styles.slug}>({staff_member.slug})</span>
                     </Link>
