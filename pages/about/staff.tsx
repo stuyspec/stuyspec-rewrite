@@ -13,7 +13,7 @@ function StaffPage() {
 				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<main id={styles.main}>
-				<h1>Members of the 2022-2023 Spectator Editorial Board</h1>
+				<h1>Members of the 2023-2024 Spectator Editorial Board</h1>
 				<section id={styles.departments}>
 				<p className={styles.special_def}>* Managing Board</p>
 				<p className={styles.special_def}>** Editors-in-Training</p>
