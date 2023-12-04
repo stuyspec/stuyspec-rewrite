@@ -1,6 +1,7 @@
 #collapsible_search_parent {
 	overflow: hidden;
-	min-width: 32px; /* Never shrink to be less than the width of the icon */
+	min-width: 32px;
+	/* Never shrink to be less than the width of the icon */
 }
 
 #search_button {
@@ -39,18 +40,16 @@
 	border-radius: 4px;
 	margin-top: 8px;
 	overflow: hidden;
-  }
-  
-  .suggestionItem {
+}
+
+.suggestionItem {
 	padding: 8px;
 	cursor: pointer;
 	border-bottom: 1px solid #ddd;
-	color: #000000; 
+	color: #000000;
 	transition: background-color 0.3s, color 0.3s;
-  }
+}
 
-  .suggestionItem:hover {
-	font-weight: bold; 
-  }
-  
-  
+.suggestionItem:hover {
+	/* font-weight: bold; */
+}

@@ -42,22 +42,6 @@ const CollapsibleSearch = () => {
     Router.push(`/search?query=${searchValue}`);
   };
 
-  const getSuggestionList = () => {
-    return (
-      <div className={styles.suggestionContainer}>
-        {suggestions.map((suggestion, index) => (
-          <div
-            key={index}
-            className={styles.suggestionItem}
-            onClick={() => onSuggestionClick(suggestion)}
-          >
-            {suggestion.title}
-          </div>
-        ))}
-      </div>
-    );
-  };
-
   useEffect(() => {
     const handleRouteChange = () => {
       setSearchBar(false);
@@ -99,24 +83,32 @@ const CollapsibleSearch = () => {
         >
           <Image alt="Search" src="/images/search-button.svg" width={32} height={32} />
         </div>
-        <div className={styles.searchContainer}>
-          <input
-            id={styles.search_textbox}
-            style={{
-              marginRight: searchBar ? "0" : "-250px",
-              opacity: searchBar ? "1" : "0",
-              cursor: searchBar ? "auto" : "pointer",
-              zIndex: searchBar ? 3 : -1,
-            }}
-            placeholder="Search"
-            onFocus={onSearchFocus}
-            onChange={onInputChange}
-            onBlur={onSearchBlur}
-            value={searchValue}
-            ref={textInput}
-          />
-          {suggestions.length > 0 && getSuggestionList()}
-        </div>
+        <input
+          id={styles.search_textbox}
+          style={{
+            marginRight: searchBar ? "0" : "-250px", // To animate coming from the right side
+            opacity: searchBar ? "1" : "0",
+            cursor: searchBar ? "auto" : "pointer",
+            zIndex: searchBar ? 3 : -1,
+          }}
+          placeholder="Search"
+          onFocus={onSearchFocus}
+          onChange={onInputChange}
+          onBlur={onSearchBlur}
+          ref={textInput}
+        />
+        {suggestions.length > 0 && <div className={styles.suggestionContainer}>
+          {suggestions.map((suggestion, index) => (
+            <div
+              key={index}
+              className={styles.suggestionItem}
+              onClick={() => onSuggestionClick(suggestion)}
+            >
+              {suggestion.title}
+            </div>
+          ))}
+        </div>}
+
       </form>
     </div>
   );
