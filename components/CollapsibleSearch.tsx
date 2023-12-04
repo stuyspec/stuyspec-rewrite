@@ -7,7 +7,7 @@ import { ReceivedArticle } from "../ts_types/db_types";
 const CollapsibleSearch = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchBar, setSearchBar] = useState(false);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<ReceivedArticle[]>([]);
   const textInput = useRef<HTMLInputElement>(null);
 
   const onSearchBlur = () => {
@@ -23,27 +23,19 @@ const CollapsibleSearch = () => {
     const value = e.target.value;
     setSearchValue(value);
 
-    
     const newSuggestions = await getSuggestions(value);
-    // TODO: FOR ABIDUR, MAKE SUGGESTIONS A LIST OF RECIEVEDARTICLE
-    // setSuggestions(newSuggestions);
-
-    // but for demo purposes
-    setSuggestions(newSuggestions.map(v => v.title));
+    setSuggestions(newSuggestions);
   };
 
-  const onSuggestionClick = (suggestion: string) => {
-    setSearchValue(suggestion);
+  const onSuggestionClick = (suggestion: ReceivedArticle) => {
+    setSearchValue(suggestion.title);
     setSuggestions([]);
-    setSearchBar(true); 
+    setSearchBar(true);
     textInput.current?.focus();
 
-
-    Router.push({
-      pathname: '/search',
-      query: { query: encodeURIComponent(suggestion) },
-    });
+    Router.push(`/article/<slug>`);
   };
+
 
   const submitSearchRequest = (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,7 +51,7 @@ const CollapsibleSearch = () => {
             className={styles.suggestionItem}
             onClick={() => onSuggestionClick(suggestion)}
           >
-            {suggestion}
+            {suggestion.title}
           </div>
         ))}
       </div>
@@ -80,20 +72,19 @@ const CollapsibleSearch = () => {
   }, []);
 
   const getSuggestions = async (input: string) => {
-    if (!input){
+    if (!input) {
       return [];
     }
 
     const request = await fetch(`/api/articles/search?q=${input}&max=5`);
     const rjson = await request.json()
-    if (!rjson.articles){
+    if (!rjson.articles) {
       throw new Error("Articles were not returned from search");
     }
     const articles = rjson.articles as ReceivedArticle[];
 
     return articles;
   };
-  
 
   return (
     <div id={styles.collapsible_search_parent}>
@@ -130,6 +121,5 @@ const CollapsibleSearch = () => {
     </div>
   );
 };
-
 
 export default CollapsibleSearch;
