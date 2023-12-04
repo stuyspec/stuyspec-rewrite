@@ -13,53 +13,58 @@ function StaffPage() {
 				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<main id={styles.main}>
-				<h1>Members of the 2022-2023 Spectator Editorial Board</h1>
+				<h1>Members of the 2023-2024 Spectator Editorial Board</h1>
 				<section id={styles.departments}>
+					<p className={styles.special_def}>* Managing Board</p>
+					<p className={styles.special_def}>** Editors-in-Training</p>
+
 					<div>
-						<h3>Editors In Chief</h3>
+						<h3 className={styles.EIC}>Editors In Chief</h3>
 						<p>Rebecca Bao*</p>
 						<p>Phoebe Buckwalter*</p>
 					</div>
 					<div>
-						<h3>News Editors</h3>
+						<h3 className={styles.news}>News Editors</h3>
 						<p>Talia Arcasoy</p>
 						<p>Sarah Diaz*</p>
 						<p>Seth Fenton</p>
 						<p>Zoey Marcus**</p>
 					</div>
 					<div>
-						<h3>Features Editors</h3>
+						<h3 className={styles.features}>Features Editors</h3>
+						<p>Hifza Kaleem**</p>
 						<p>Dalia Levanon</p>
 						<p>Suyeon Ryu</p>
 						<p>Olivia Woo</p>
+						<p>Cathleen Xi**</p>
 					</div>
 					<div>
-						<h3>Opinions Editors</h3>
+						<h3 className={styles.ops}>Opinions Editors</h3>
 						<p>Ivy Huang*</p>
-						<p>Helen Mancini**</p>
+						<p>Helen Mancini</p>
 						<p>Gulam Monawarah</p>
-						<p>Amaryllis Sun**</p>
+						<p>Amaryllis Sun</p>
 					</div>
 					<div>
-						<h3>Science Editors</h3>
+						<h3 className={styles.science}>Science Editors</h3>
 						<p>Ryan Lin**</p>
 						<p>Hellen Luo</p>
 						<p>Michelle Ng**</p>
 						<p>Jovanna Wu</p>
 					</div>
 					<div>
-						<h3>Arts & Entertainment Editors</h3>
+						<h3 className={styles.ae}>Arts & Entertainment Editors</h3>
 						<p>Lucien Clough</p>
 						<p>Simone Raleigh</p>
 						<p>Santino Suarez</p>
 					</div>
 					<div>
-						<h3>Humor Editors</h3>
+						<h3 className={styles.humor}>Humor Editors</h3>
 						<p>Erica Chen</p>
 						<p>Finn Charest</p>
 					</div>
 					<div>
-						<h3>Sports Editors</h3>
+						<h3 className={styles.sports}>Sports Editors</h3>
 						<p>Duncan Park**</p>
 						<p>Ava Quarles</p>
 						<p>Kaeden Ruparel</p>
@@ -67,18 +72,22 @@ function StaffPage() {
 						<p>Khush Wadhwa*</p>
 					</div>
 					<div>
-						<h3>Photography Editors</h3>
+						<h3 className={styles.photos}>Photography Editors</h3>
+						<p>Geoffrey Huang**</p>
 						<p>Lily Serry</p>
+						<p>Ryan Radwan**</p>
 						<p>Sophia Mueller</p>
+
 					</div>
 					<div>
-						<h3>Art Directors</h3>
-						<p>Jaden Bae**</p>
+						<h3 className={styles.art}>Art Directors</h3>
+						<p>Jaden Bae</p>
+						<p>Chuer Zhong**</p>
 						<p>Fareha Islam</p>
 						<p>Nelli Rojas-Cessa</p>
 					</div>
 					<div>
-						<h3>Layout Editors</h3>
+						<h3 className={styles.layout}>Layout Editors</h3>
 						<p>Ankki Dong</p>
 						<p>Fiona Huang</p>
 						<p>Elaine Liu</p>
@@ -86,7 +95,7 @@ function StaffPage() {
 						<p>Jasper Yu-Dawidowicz</p>
 					</div>
 					<div>
-						<h3>Copy Editors</h3>
+						<h3 className={styles.copy}>Copy Editors</h3>
 						<p>Kevin Chan*</p>
 						<p>Duncan Park</p>
 						<p>Ryan Park</p>
@@ -94,23 +103,20 @@ function StaffPage() {
 						<p>Allison Zhao</p>
 					</div>
 					<div>
-						<h3>Businesss Managers</h3>
+						<h3 className={styles.biz}>Business Managers</h3>
 						<p>Amber Shen</p>
 						<p>Christopher Louie</p>
 					</div>
 					<div>
-						<h3>Web Editors</h3>
+						<h3 className={styles.web}>Web Editors</h3>
 						<p>Lenny Metlitsky</p>
 						<p>Ankita Saha</p>
 					</div>
 					<div>
-						<h3>Faculty Advisor</h3>
+						<h3 className={styles.faculty}>Faculty Advisor</h3>
 						<p>Kerry Garfinkel</p>
 					</div>
 				</section>
-
-				<p className={styles.special_def}>* Managing Board</p>
-				<p className={styles.special_def}>* Editors-in-Training</p>
 			</main>
 		</>
 	);
