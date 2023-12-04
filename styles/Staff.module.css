@@ -1,9 +1,17 @@
 #main {
 	width: 95vw;
 	max-width: 1000px;
-	padding-top: 1rem;
+	padding-block: 1rem;
 	margin: 0 auto;
 	text-align: center;
+}
+
+#departments h3 {
+	font-size: 1.6rem;
+}
+
+#departments p {
+	font-size: 1.25rem;
 }
 
 .EIC {
@@ -19,7 +27,7 @@
 }
 
 .ops {
-	color: rgb(83, 94, 180);
+	color: rgb(99, 112, 207);
 }
 
 .science {

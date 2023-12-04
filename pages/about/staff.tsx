@@ -15,9 +15,9 @@ function StaffPage() {
 			<main id={styles.main}>
 				<h1>Members of the 2023-2024 Spectator Editorial Board</h1>
 				<section id={styles.departments}>
-				<p className={styles.special_def}>* Managing Board</p>
-				<p className={styles.special_def}>** Editors-in-Training</p>
-				
+					<p className={styles.special_def}>* Managing Board</p>
+					<p className={styles.special_def}>** Editors-in-Training</p>
+
 					<div>
 						<h3 className={styles.EIC}>Editors In Chief</h3>
 						<p>Rebecca Bao*</p>
@@ -53,7 +53,7 @@ function StaffPage() {
 						<p>Jovanna Wu</p>
 					</div>
 					<div>
-						<h3 className ={styles.ae}>Arts & Entertainment Editors</h3>
+						<h3 className={styles.ae}>Arts & Entertainment Editors</h3>
 						<p>Lucien Clough</p>
 						<p>Simone Raleigh</p>
 						<p>Santino Suarez</p>
