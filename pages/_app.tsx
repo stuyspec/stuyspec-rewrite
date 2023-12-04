@@ -62,6 +62,8 @@ function MyApp(props: AppProps) {
 				<meta name="msapplication-TileColor" content="#da532c" />
 				<meta name="theme-color" content="#ffffff" />
 
+				<link rel="preload" href="/fonts/MinionPro/MinionPro_Regular.ttf" as="font" type="font/ttf" />
+
 				{generateMetaTags(title, description, meta_url)}
 			</Head>
 			<LoadingBar
