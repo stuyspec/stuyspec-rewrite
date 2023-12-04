@@ -27,3 +27,30 @@
 	grid-column: 1;
 	grid-row: 1;
 }
+
+
+.suggestionContainer {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+	border-radius: 4px;
+	margin-top: 8px;
+	overflow: hidden;
+  }
+  
+  .suggestionItem {
+	padding: 8px;
+	cursor: pointer;
+	border-bottom: 1px solid #ddd;
+	color: #000000; 
+	transition: background-color 0.3s, color 0.3s;
+  }
+
+  .suggestionItem:hover {
+	font-weight: bold; 
+  }
+  
+  
