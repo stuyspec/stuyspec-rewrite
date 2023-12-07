@@ -12,14 +12,11 @@ export default async function handler(
 		});
 	}
 
-	const API_KEY = process.env.MAILCHIMP_API_KEY;
-	const API_SERVER = process.env.MAILCHIMP_API_SERVER;
-	const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
+	const API_KEY = process.env.MAILERLITE_API_TOKEN;
 
-	const url = `https://${API_SERVER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`;
+	const url = `https://connect.mailerlite.com/api/subscribers`;
 	const body = {
-		email_address: email,
-		status: "subscribed",
+		email,
 	};
 
 	try {
@@ -27,18 +24,18 @@ export default async function handler(
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: `api_key ${API_KEY}`,
+				Authorization: `Bearer ${API_KEY}`,
 			},
 			body: JSON.stringify(body),
 		});
 
 		const data: any = await r.json();
-		if (data.status == "subscribed") {
-			return res.status(201).json({ message: "success", response: data });
+		if (data?.data?.status == "active") {
+			return res.status(201).json({ message: "success" });
 		} else {
 			return res.status(500).json({
 				message: "failure",
-				error: { title: data.title },
+				error: { title: data.message },
 			});
 		}
 	} catch (error: any) {

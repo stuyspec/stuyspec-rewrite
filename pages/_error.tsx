@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Error.module.css";
 
-const Error = () => {
+function Error() {
 	return (
 		<div>
 			<Head>

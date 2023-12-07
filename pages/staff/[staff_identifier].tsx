@@ -30,7 +30,7 @@ interface Props {
 	}[];
 }
 
-const StaffMember = (props: Props) => {
+function StaffMember(props: Props) {
 	const staff_member = props.staff;
 	const page_title = staff_member.name + " - The Stuyvesant Spectator";
 	const meta_url = `https://stuyspec.com/staff/` + staff_member.slug;
@@ -93,7 +93,7 @@ const StaffMember = (props: Props) => {
 			</main>
 		</div>
 	);
-};
+}
 
 export default StaffMember;
 
@@ -110,7 +110,7 @@ export async function getServerSideProps(context: NextPageContext) {
 	let staff_articles = await get_articles_by_author(staff._id, 200);
 	staff_articles = JSON.parse(JSON.stringify(staff_articles));
 
-	let staff_media = await get_media_by_author(staff._id);
+	let staff_media = await get_media_by_author(staff._id, 100);
 	staff_media = JSON.parse(JSON.stringify(staff_media));
 
 	if (staff) {

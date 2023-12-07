@@ -10,6 +10,7 @@ import { NextPageContext } from "next";
 import styles from "../../../styles/[department].module.css";
 import MixedArticleDisplay from "../../../components/MixedArticleDisplay";
 import { generateMetaTags } from "../../../utils/generateMetaTags";
+import ListArticleDisplay from "../../../components/ListArticleDisplay";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -18,9 +19,10 @@ interface Props {
 	department_id: number;
 }
 
-const SubSection = (props: Props) => {
-	const sub_section_display =
+function SubSection(props: Props) {
+	let sub_section_display =
 		props.sub_section.charAt(0).toUpperCase() + props.sub_section.slice(1);
+	sub_section_display = sub_section_display.split("-").join(" ");
 
 	const page_title = sub_section_display + " - The Stuyvesant Spectator";
 	const meta_url = `https://stuyspec.com/department/${
@@ -45,6 +47,9 @@ const SubSection = (props: Props) => {
 		return articles;
 	};
 
+	// Temporary workaround for when no images and mixedArticleDisplay craashes
+	const useList = props.articles.every((v) => !v.cover_image);
+
 	return (
 		<div>
 			<Head>
@@ -55,15 +60,19 @@ const SubSection = (props: Props) => {
 				<h1 id={styles.departmentTitle}>
 					<span id={styles.sub_section}>{sub_section_display}</span>
 				</h1>
-				<MixedArticleDisplay
-					articles={props.articles}
-					display_department={true}
-					additional_article_function={fetch_addtional_articles}
-				/>
+				{useList ? (
+					<ListArticleDisplay articles={props.articles} />
+				) : (
+					<MixedArticleDisplay
+						articles={props.articles}
+						display_department={true}
+						additional_article_function={fetch_addtional_articles}
+					/>
+				)}
 			</main>
 		</div>
 	);
-};
+}
 
 export default SubSection;
 

@@ -19,7 +19,7 @@ enum sortingOptions {
   Oldest = "oldest",
 }
 
-const SearchRoute = (props: Props) => {
+function SearchRoute(props: Props) {
   const [sortingOption, setSortingOption] = useState<sortingOptions>(sortingOptions.Relevance);
   const [sortedArticles, setSortedArticles] = useState<ReceivedArticle[]>(props.articles);
 

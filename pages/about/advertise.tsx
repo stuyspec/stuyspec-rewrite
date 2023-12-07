@@ -8,7 +8,7 @@ interface Props {
 	manager: ReceivedStaff;
 }
 
-const Advertise = (props: Props) => {
+function Advertise(props: Props) {
 	const { name, email } = props.manager;
 	const mailto = "mailto:" + email;
 

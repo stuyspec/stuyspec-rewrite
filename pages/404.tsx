@@ -3,7 +3,7 @@ import styles from "../styles/404.module.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const Fourzerofour = (props: any) => {
+function Fourzerofour(props: any) {
 	const [location, setLocation] = useState("");
 
 	useEffect(() => setLocation(window.location.pathname), []); // window object is available in useEffect

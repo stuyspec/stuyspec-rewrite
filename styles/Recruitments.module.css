@@ -20,6 +20,12 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: justify;
+	line-height: 1.4rem;
+	border-style: groove;
+	border-width: 2px;
+	border-color: var(--accent);
+	border-radius: 15px;
+	padding: 15px;
 }
 
 #departments {

@@ -15,6 +15,7 @@ export function generateMetaTags(
 				key="description"
 			/>
 			{/* Open Graph / Facebook  */}
+			{/* Docs of the standard: https://ogp.me/ */}
 			<meta property="og:type" content="website" key="og_website" />
 			<meta property="og:url" content={meta_url} key="og_url" />
 			<meta property="og:title" content={page_title} key="og_title" />

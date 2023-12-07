@@ -35,7 +35,8 @@
 }
 
 .department:hover .subdepartment {
-	background-color: var(--secondary-nav);
+	background-color: #3d3d3d;
+	box-shadow: 3px 3px 5px var(--secondary-nav);
 	padding: 5px 12px;
 	width: fit-content;
 	white-space: nowrap;
@@ -69,7 +70,7 @@
 }
 
 #mediaButton {
-	color: var(--medium-grey);
+	color: #e9e8e8;
 	font-size: 32px;
 
 	transition: all 150ms ease;
@@ -102,7 +103,7 @@
 
 @media screen and (max-width: 940px) {
 	#sidebar_parent {
-		height: 420px;
+		height: 450px !important;
 		top: 64px;
 		width: 100%;
 	}

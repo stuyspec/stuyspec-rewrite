@@ -191,7 +191,7 @@ export default function MixedArticleDisplay(props: {
 										props.display_department
 									}
 								/>
-								{index % ad_spacing == 0 && index != 0 ? (
+								{index % ad_spacing == 0 ? (
 									<div className={styles.ad_parent}>
 										<Advertisment
 											index={index / ad_spacing}
@@ -247,10 +247,10 @@ export default function MixedArticleDisplay(props: {
 										props.display_department
 									}
 								/>
-								{index % ad_spacing == 0 ? (
+								{index % ad_spacing == 1 ? (
 									<div className={styles.ad_parent}>
 										<Advertisment
-											index={index / ad_spacing + 2}
+											index={Math.floor(index / ad_spacing) + 2}
 										/>
 									</div>
 								) : (
@@ -271,10 +271,10 @@ export default function MixedArticleDisplay(props: {
 										props.display_department
 									}
 								/>
-								{index % ad_spacing == 0 && index != 0 ? (
+								{index % ad_spacing == 1 && index != 0 ? (
 									<div className={styles.ad_parent}>
 										<Advertisment
-											index={index / ad_spacing}
+											index={Math.floor(index / ad_spacing)}
 										/>
 									</div>
 								) : (
