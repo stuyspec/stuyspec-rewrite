@@ -18,8 +18,8 @@ export default function generate_contributors_jsx(
 						>
 							<span className="discrete-link">
 								{contributor.name}
-								{separator}
-							</span>
+                            </span>
+                            {separator}
 						</Link>
 					</span>
 				);
