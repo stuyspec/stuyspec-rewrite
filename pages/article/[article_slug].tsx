@@ -13,6 +13,7 @@ import ShareButton from "../../components/ShareButton";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
 import { generateMetaTags } from "../../utils/generateMetaTags";
+import HorizontalAdvertisement from "../../components/HorizontalAdvertisement";
 
 interface Props {
 	article: ReceivedArticle;
@@ -160,7 +161,12 @@ function Article(props: Props) {
 
 					{/* <RecommendedArticles /> */}
 				</article>
-				<div id={styles.advertisements}></div>
+				<div id={styles.advertisements}>
+				<HorizontalAdvertisement
+					index={0}
+					section_id={section_id}
+				/>
+				</div>
 			</main>
 		</div>
 	);
