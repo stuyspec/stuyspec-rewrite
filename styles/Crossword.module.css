@@ -1,0 +1,14 @@
+#main {
+    margin: 0;
+    border: 15px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#table {
+    margin: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
