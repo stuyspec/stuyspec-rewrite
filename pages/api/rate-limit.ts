@@ -6,7 +6,7 @@ const applyMiddleware = (middleware:any) => (request:any, response:any) =>
       result instanceof Error ? reject(result) : resolve(result)
     )
   })
-
+//IP is hidden
 const getIP = (request:any) =>
   request.ip ||
   request.headers['x-forwarded-for'] ||
@@ -15,12 +15,14 @@ const getIP = (request:any) =>
   request.clientIp
 
 export const getRateLimitMiddlewares = ({
+  //limit = 1000,
   limit = 11,
   windowMs = 60 * 1000,
-  delayAfter = Math.round(11 / 2),
-  delayMs = (hits:any) => hits * 1000,
+  delayAfter = 400,
+  delayMs = (hits:any) => hits * 100,//change delay increments
   //delayMs = 500,
-  maxDelayMs = 4000,
+  //maxDelayMs = 4000,
+  maxDelayMs = 1000,//change max delay ms
   handler = function (request:any, response:any) {
     const dummyData = { limit: 5, used: 5, remaining: -1, reset: '' }
     return response.status(429).json(dummyData);
@@ -40,7 +42,7 @@ async function applyRateLimit( request:any , response:any) {
 
 //export default applyRateLimit
 
-const middlewares = getRateLimitMiddlewares({ limit: 11 }).map(applyMiddleware)
+const middlewares = getRateLimitMiddlewares({ limit: 11 }).map(applyMiddleware) // change max amount of limits for all
 
 export default async function handler(req:any, res:any) {
 
