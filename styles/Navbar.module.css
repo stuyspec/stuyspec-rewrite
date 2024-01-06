@@ -47,6 +47,7 @@
 	transform: translate(-50%, -50%);
 	cursor: pointer;
 	font-family: "Old English Text MT";
+	font-display: optional;
 }
 
 #colorModeToggle {

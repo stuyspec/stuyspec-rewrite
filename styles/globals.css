@@ -42,8 +42,7 @@
 	--large-text: 2.25rem;
 	--medium-text: 1.75rem;
 	--small-text: 1rem;
-	/* --primary-font: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif; */
-	/* The prefferred system fonts:  */
+	/* The prefferred system fonts: Old Style from https://modernfontstacks.com/  */
 	/* --primary-font: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;  */
 	--primary-font: "Minion Pro", 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
 	--secondary-font: "Lato";
@@ -78,7 +77,6 @@ body {
 	color: var(--primary);
 	line-height: 1.2;
 	font-family: var(--primary-font);
-	font-display: swap;
 	font-weight: normal;
 }
 
