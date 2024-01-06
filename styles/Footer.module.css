@@ -27,6 +27,11 @@
 	color: var(--primary);
 	font-family: "Old English Text MT";
 }
+#logo a:hover{
+	color: var(--medium-grey);
+	text-decoration: underline;
+}
+
 #mediaButtons {
 	display: grid;
 	grid-template-columns: repeat(5, 48px);
@@ -38,6 +43,10 @@
 	font-size: 32px;
 
 	transition: all 150ms ease;
+}
+#mediaButton:hover {
+	opacity: 80%;
+
 }
 
 #separator {
@@ -71,6 +80,12 @@
 }
 #subdepartment {
 	margin-bottom: 2px;
+}
+
+#department:hover,
+#subdepartment:hover{
+	color: var(--medium-grey);
+	text-decoration: underline;
 }
 
 #department.virtualArchives {
