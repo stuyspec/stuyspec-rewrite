@@ -38,10 +38,12 @@
 	--large-text: 2.25rem;
 	--medium-text: 1.75rem;
 	--small-text: 1rem;
-	/* The prefferred system fonts: Old Style from https://modernfontstacks.com/  */
+	/* The prefferred system fonts: Transitional from https://modernfontstacks.com/  */
+	--primary-font: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
 	/* --primary-font: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;  */
-	--primary-font: "Minion Pro", 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
-	--secondary-font: "Lato";
+
+	/* --primary-font: "Minion Pro", 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif; */
+	--secondary-font: system-ui, sans-serif;
 	/* Light Theme, default */
 	--secondary-nav: #2e2e2e;
 	--primary: #353637;
@@ -75,7 +77,7 @@ body {
 	margin: 0;
 	background-color: var(--secondary);
 	color: var(--primary);
-	line-height: 1.2;
+	line-height: 1.25;
 	font-family: var(--primary-font);
 	font-weight: normal;
 }
@@ -89,7 +91,6 @@ a {
 	box-sizing: border-box;
 	margin: 0;
 	border: 0;
-	font-display: optional;
 }
 
 #main {
