@@ -51,20 +51,21 @@
 	--secondary-font: "Lato";
 }
 
-.dark-mode {
-	--secondary-nav: #272525;
-	--primary: #ffffff;
-	--secondary: #2c2c2c;
-	--light-grey: #272525;
-	--medium-grey: #e9e8e8;
-}
-
-.light-mode {
+[data-theme='light'] {
+	/* Light Theme, default */
 	--secondary-nav: #2e2e2e;
 	--primary: #353637;
 	--secondary: #ffffff;
 	--light-grey: #f1f1f1;
 	--medium-grey: #555555;
+}
+[data-theme='dark'] {
+	/* Dark Theme */
+	--secondary-nav: #272525;
+	--primary: #ffffff;
+	--secondary: #2c2c2c;
+	--light-grey: #272525;
+	--medium-grey: #e9e8e8;
 }
 
 ::selection {
