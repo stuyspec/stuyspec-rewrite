@@ -49,9 +49,7 @@
 	--small-text: 1rem;
 	--primary-font: "Minion Pro", Georgia;
 	--secondary-font: "Lato";
-}
 
-[data-theme='light'] {
 	/* Light Theme, default */
 	--secondary-nav: #2e2e2e;
 	--primary: #353637;
@@ -59,6 +57,7 @@
 	--light-grey: #f1f1f1;
 	--medium-grey: #555555;
 }
+
 [data-theme='dark'] {
 	/* Dark Theme */
 	--secondary-nav: #272525;
