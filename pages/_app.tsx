@@ -1,4 +1,3 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,6 +8,7 @@ import { generateMetaTags } from "../utils/generateMetaTags";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { ThemeProvider } from 'next-themes'
+import "../styles/globals.css";
 
 function MyApp(props: AppProps) {
 	let { Component, pageProps } = props;
@@ -24,7 +24,7 @@ function MyApp(props: AppProps) {
 		router.events.on("routeChangeComplete", () => {
 			setProgress(100); // route loaded
 		});
-	}, []);
+	}, [router.events]);
 
 	// Variables for the (base) meta tags
 	const title = "The Stuyvesant Spectator";
@@ -33,7 +33,7 @@ function MyApp(props: AppProps) {
 	const meta_url = "https://stuyspec.com";
 
 	return (
-		<ThemeProvider defaultTheme="light" enableSystem>
+		<ThemeProvider defaultTheme="light" disableTransitionOnChange>
 			<div>
 				<Head>
 					<link rel="icon" href="/favicon.ico" />

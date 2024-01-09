@@ -49,11 +49,6 @@
 	font-family: "Old English Text MT";
 }
 
-#colorModeToggle {
-	grid-column-start: 4;
-	grid-column-end: 4;
-	place-self: center;
-}
 
 #hamburgerMenu {
 	/* display: none; */
@@ -63,14 +58,12 @@
 
 #hamburgerMenu:hover,
 #subscribe:hover,
-#colorModeToggle:hover,
 #searchButton:hover,
 .clickable_nav_element:hover {
 	opacity: 0.75;
 }
 #hamburgerMenu:active,
 #subscribe:active,
-#colorModeToggle:active,
 #searchButton:active,
 .clickable_nav_element:active {
 	opacity: 0.5;
@@ -95,11 +88,6 @@
 	}
 	#subscribe_parent {
 		display: none;
-	}
-	#colorModeToggle {
-		grid-column-start: 3;
-		grid-column-end: 3;
-		place-self: center;
 	}
 	#searchButton {
 		grid-column-start: 4;
