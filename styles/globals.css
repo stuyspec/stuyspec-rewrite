@@ -1,7 +1,3 @@
-@font-face {
-	font-family: "Lato";
-	src: url("/fonts/Lato/Lato-Regular.ttf") format("truetype");
-}
 
 @font-face {
 	font-family: "Old English Text MT";
@@ -46,9 +42,16 @@
 	/* --primary-font: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;  */
 	--primary-font: "Minion Pro", 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
 	--secondary-font: "Lato";
+	/* Light Theme, default */
+	--secondary-nav: #2e2e2e;
+	--primary: #353637;
+	--secondary: #ffffff;
+	--light-grey: #f1f1f1;
+	--medium-grey: #555555;
 }
 
-.dark-mode {
+[data-theme='dark'] {
+	/* Dark Theme */
 	--secondary-nav: #272525;
 	--primary: #ffffff;
 	--secondary: #2c2c2c;
@@ -56,12 +59,9 @@
 	--medium-grey: #e9e8e8;
 }
 
-.light-mode {
-	--secondary-nav: #2e2e2e;
-	--primary: #353637;
-	--secondary: #ffffff;
-	--light-grey: #f1f1f1;
-	--medium-grey: #555555;
+[data-theme='dark'] [data-hide-on-theme='dark'],
+[data-theme='light'] [data-hide-on-theme='light'] {
+	display: none;
 }
 
 ::selection {
@@ -90,8 +90,6 @@ a {
 	margin: 0;
 	border: 0;
 	font-display: optional;
-
-	transition: background-color 250ms ease-in-out;
 }
 
 #main {
@@ -116,6 +114,7 @@ a {
 	background-repeat: no-repeat;
 	/* transition: background-size 250ms; */
 }
+
 .link:hover,
 .link:focus {
 	background-size:
@@ -129,6 +128,7 @@ a {
 	transition: text-decoration-color 250ms;
 	cursor: pointer;
 }
+
 .discrete-link:hover,
 .discrete-link:focus {
 	text-decoration-color: var(--accent);
