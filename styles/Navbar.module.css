@@ -34,6 +34,12 @@
 #subscribe_parent {
 	margin-left: auto;
 }
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
 #logo_container {
 	font-size: var(--large-text);
 	color: var(--primary-immutable);
@@ -43,17 +49,32 @@
 	position: absolute;
 	top: 32px; /* position the top  edge of the element at the middle of the parent */
 	left: 50%; /* position the left edge of the element at the middle of the parent */
-
+	animation: fade-in 2s ease;
 	transform: translate(-50%, -50%);
 	cursor: pointer;
 	font-family: "Old English Text MT";
 }
 
 
+@keyframes rotate {
+	0% {
+	  transform: rotate(0);
+	}
+	100% {
+	  transform: rotate(360deg);
+	}
+  }
+
 #hamburgerMenu {
 	/* display: none; */
 	background: none;
 	cursor: pointer;
+	animation: rotate 2s linear 1s infinite;
+	animation-play-state: paused;
+}
+
+#hamburgerMenu:hover {
+	animation-play-state: running;
 }
 
 #hamburgerMenu:hover,
