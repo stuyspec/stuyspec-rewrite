@@ -45,8 +45,7 @@
 	transition: all 150ms ease;
 }
 #mediaButton:hover {
-	opacity: 80%;
-
+	opacity: 0.8;
 }
 
 #separator {
