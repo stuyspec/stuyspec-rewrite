@@ -28,70 +28,75 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 					<span className={styles.maindepartment}>
 						<Link href="/department/news">News</Link>
 					</span>
-					<div className={styles.subdepartment}>
-						<span>
-							<Link href="/department/news/campaign-coverage">
-								Campaign Coverage
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/news/israel-hamas-war">
-								Israel-Hamas War
-							</Link>
-						</span>
+					<div className={styles.subdepartment_wrapper}>
+						<div className={styles.subdepartment}>
+							<span>
+								<Link href="/department/news/campaign-coverage">
+									Campaign Coverage
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/news/israel-hamas-war">
+									Israel-Hamas War
+								</Link>
+							</span>
+						</div>
+						<Image
+							src="/images/right-arrow.svg"
+							width={10}
+							alt="right-arrow"
+							height={10}
+							id={styles.right_arrow}
+						/>
 					</div>
-					<Image
-						src="/images/right-arrow.svg"
-						width={10}
-						alt="right-arrow"
-						height={10}
-						id={styles.right_arrow}
-					/>
 				</div>
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
 						<Link href="/department/features">Features</Link>
 					</span>
-					<div className={styles.subdepartment}>
-						<span>
-							<Link href="/department/opinions/voices">
-								VOICES
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/opinions/9-11">9/11</Link>
-						</span>
+					<div className={styles.subdepartment_wrapper}>
+						<div className={styles.subdepartment}>
+							<span>
+								<Link href="/department/opinions/voices">
+									VOICES
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/opinions/9-11">9/11</Link>
+							</span>
+						</div>
+						<Image
+							src="/images/right-arrow.svg"
+							width={10}
+							alt="right-arrow"
+							height={10}
+							id={styles.right_arrow}
+						/>
 					</div>
-					<Image
-						src="/images/right-arrow.svg"
-						width={10}
-						alt="right-arrow"
-						height={10}
-						id={styles.right_arrow}
-					/>
 				</div>
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
 						<Link href="/department/opinions">Opinions</Link>
 					</span>
-					<div className={styles.subdepartment}>
-						<span>
-							<Link href="/department/opinions/staff-editorials">
-								Staff Editorials
-							</Link>
-						</span>
+					<div className={styles.subdepartment_wrapper}>
+						<div className={styles.subdepartment}>
+							<span>
+								<Link href="/department/opinions/staff-editorials">
+									Staff Editorials
+								</Link>
+							</span>
+						</div>
+						<Image
+							src="/images/right-arrow.svg"
+							width={10}
+							alt="right-arrow"
+							height={10}
+							id={styles.right_arrow}
+						/>
 					</div>
-					<Image
-						src="/images/right-arrow.svg"
-						width={10}
-						alt="right-arrow"
-						height={10}
-						id={styles.right_arrow}
-					/>
 				</div>
-
 				<span className={styles.maindepartment}>
 					<Link href="/department/science">Science</Link>
 				</span>
@@ -100,107 +105,113 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 					<span className={styles.maindepartment}>
 						<Link href="/department/ae">Arts & Entertainment</Link>
 					</span>
-					<div className={styles.subdepartment}>
-						<span>
-							<Link href="/department/ae/fashion">Fashion</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/art">Art</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/culture">Culture</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/film">Film</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/food">Food</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/literature">
-								Literature
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/music">Music</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/television">
-								Television
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/theater">Theater</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/thinkpiece">
-								Thinkpiece
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/sing!">Sing!</Link>
-						</span>
-						<span>
-							<Link href="/department/ae/stc">STC!</Link>
-						</span>
+					<div className={styles.subdepartment_wrapper}>
+						<div className={styles.subdepartment}>
+							<span>
+								<Link href="/department/ae/fashion">Fashion</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/art">Art</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/culture">Culture</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/film">Film</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/food">Food</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/literature">
+									Literature
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/music">Music</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/television">
+									Television
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/theater">Theater</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/thinkpiece">
+									Thinkpiece
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/sing!">Sing!</Link>
+							</span>
+							<span>
+								<Link href="/department/ae/stc">STC!</Link>
+							</span>
+						</div>
+						<Image
+							src="/images/right-arrow.svg"
+							width={10}
+							alt="right-arrow"
+							height={10}
+							id={styles.right_arrow}
+						/>
 					</div>
-					<Image
-						src="/images/right-arrow.svg"
-						width={10}
-						alt="right-arrow"
-						height={10}
-						id={styles.right_arrow}
-					/>
 				</div>
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
 						<Link href="/department/humor">Humor</Link>
 					</span>
-					<div className={styles.subdepartment}>
-						<span>
-							<Link href="/department/humor/disrespectator">
-								Disrespectator
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/humor/spooktator">
-								Spooktator
-							</Link>
-						</span>
+					<div className={styles.subdepartment_wrapper}>
+						<div className={styles.subdepartment}>
+							<span>
+								<Link href="/department/humor/disrespectator">
+									Disrespectator
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/humor/spooktator">
+									Spooktator
+								</Link>
+							</span>
+						</div>
+						<Image
+							src="/images/right-arrow.svg"
+							width={10}
+							alt="right-arrow"
+							height={10}
+							id={styles.right_arrow}
+						/>
 					</div>
-					<Image
-						src="/images/right-arrow.svg"
-						width={10}
-						alt="right-arrow"
-						height={10}
-						id={styles.right_arrow}
-					/>
 				</div>
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
 						<Link href="/department/sports">Sports</Link>
 					</span>
-					<div className={styles.subdepartment}>
-						<span>
-							<Link href="/department/sports/professional-sports">
-								Professional Sports
-							</Link>
-						</span>
-						<span>
-							<Link href="/department/sports/sports-at-stuyvesant">
-								Sports At Stuy
-							</Link>
-						</span>
+					<div className={styles.subdepartment_wrapper}>
+						<div className={styles.subdepartment}>
+							<span>
+								<Link href="/department/sports/professional-sports">
+									Professional Sports
+								</Link>
+							</span>
+							<span>
+								<Link href="/department/sports/sports-at-stuyvesant">
+									Sports At Stuy
+								</Link>
+							</span>
+						</div>
+						<Image
+							src="/images/right-arrow.svg"
+							width={10}
+							alt="right-arrow"
+							height={10}
+							id={styles.right_arrow}
+						/>
 					</div>
-					<Image
-						src="/images/right-arrow.svg"
-						width={10}
-						alt="right-arrow"
-						height={10}
-						id={styles.right_arrow}
-					/>
 				</div>
 
 				<span className={styles.maindepartment}>
