@@ -93,16 +93,16 @@ function Article(props: Props) {
 					</p>
 					<h1 id={styles.title}>{title}</h1>
 					<h2 id={styles.summary}>{summary}</h2>
-					<h3 id={styles.reading_time}>
-						{generateApproxReadingTime()}
-					</h3>
 
 					<div id={styles.infoBar}>
 						<div>
 							<h3 id={styles.authors}>
 								By&nbsp;
 								{generate_contributors_jsx(contributors)}
-							</h3>
+                            </h3>
+                            <h3 id={styles.reading_time}>
+                                {generateApproxReadingTime()}
+                            </h3>
 							<h3
 								id={styles.issue_volume_text}
 								className="discrete-link"

@@ -1,6 +1,6 @@
 #main {
 	width: 95vw;
-	max-width: 900px;
+	max-width: 720px;
 	padding-top: 1rem;
 	margin: 0 auto;
 }
@@ -10,7 +10,9 @@
 	font-family: sans-serif !important;
 	font-weight: 600;
 	font-size: 1.2rem;
-	margin-top: 15px;
+	margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--medium-grey);
 }
 
 #title {
@@ -18,46 +20,49 @@
 }
 
 #summary {
+    margin-top: 0.5rem;
 	color: var(--medium-grey);
 	font-family: var(--secondary-font);
 	font-weight: normal;
 	font-size: calc(var(--large-text) / 2);
-	margin-bottom: 0.1rem;
 }
 
 #reading_time {
-	margin-bottom: 1rem;
-	font-size: var(--small-text);
-	font-family: var(--secondary-font) !important;
-	font-weight: 600;
+    color: var(--medium-grey);
+    font-family: var(--secondary-font) !important;
+	font-size: calc(var(--small-text) / 1.1);
+    margin-top: 0.3rem;
+	margin-bottom: 0.2rem;
 }
 
 #infoBar {
 	margin-top: 1rem;
+    padding-bottom: 1rem;
 	font-family: var(--secondary-font);
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap; /* Wrap shareButtons down if collide with authors' names */
+    border-bottom: 1px solid var(--medium-grey);
 }
 
 #authors {
 	font-size: var(--small-text);
-	font-size: calc(var(--large-text) / 2.2) !important;
 	font-family: var(--secondary-font);
 }
 
 #issue_volume_text {
-	font-size: var(--small-text);
+	font-size: calc(var(--small-text) / 1.1);
 	font-family: var(--secondary-font);
 	font-weight: normal;
+    color: var(--medium-grey);
 }
 
 #shareButtons {
 	margin-left: auto; /* If wraps, push to right side */
 	display: flex;
 	justify-content: flex-end;
-	align-items: center;
-	padding-top: 3px;
+	align-items: flex-end;
+	padding-bottom: 0.1rem;
 	column-gap: 1rem;
 }
 
@@ -66,7 +71,7 @@
 }
 
 #cover_image_div {
-	margin-top: 0.5rem;
+	margin-top: 1.5rem;
 	text-align: center;
 	width: 100%;
 	height: 100%;
@@ -88,11 +93,11 @@
 }
 
 #coverImageContributor {
-	margin-top: -5px;
-	text-align: right;
+    margin-top: 0.2rem;
+    margin-left: 0.5rem;
+	text-align: left;
 	color: var(--medium-grey);
-	font-style: italic;
-	font-size: calc(var(--large-text) / 2.4);
+	font-size: calc(var(--small-text) / 1.1);
 }
 
 @media screen and (max-width: 840px) {
@@ -106,13 +111,23 @@
 	}
 }
 
+@media screen and (max-width: 480px) {
+    #shareButtons {
+        margin-top: 1rem;
+        margin-left: 0;
+        justify-content: flex-start;
+    }
+}
+
 #content {
 	margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 #content p {
 	margin: 1rem 0;
 	font-size: 1.2rem;
+    line-height: 1.5;
 	color: var(--primary) !important;
 }
 
