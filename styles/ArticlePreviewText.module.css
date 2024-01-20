@@ -5,3 +5,12 @@
 .authors {
 	font-family: var(--secondary-font);
 }
+
+.summary {
+	overflow: hidden;
+	display: -webkit-box;
+	--num-lines-to-show: 4;
+	-webkit-line-clamp: var(--num-lines-to-show); /* number of lines to show */
+	line-clamp: var(--num-lines-to-show);
+	-webkit-box-orient: vertical;
+}

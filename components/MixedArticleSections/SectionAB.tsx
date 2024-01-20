@@ -16,6 +16,9 @@ import ArticlePreviewText from "../ArticlePreviewText";
 export default function SectionAB(props: { articles: ReceivedArticle[] }) {
 	let grouped = groupByImageExists(props.articles);
 
+	//  TODO: Responsiveness under 1070px
+	// Use Flex for section A, so 3 smaller on left, 2 in the middle
+
 	let min_section_b = 6; // minimum articles on the right side
 	if (grouped.withoutPhotos.length < min_section_b) {
 		const diff = min_section_b - grouped.withoutPhotos.length;
