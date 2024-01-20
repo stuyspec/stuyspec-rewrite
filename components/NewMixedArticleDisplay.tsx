@@ -10,13 +10,14 @@ import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
 import Advertisment from "./Advertisement";
 import advertisements from "../advertisements";
+import SectionAB from "@/components/MixedArticleSections/SectionAB";
 
 export default function NewMixedArticleDisplay(props: {
 	articles: ReceivedArticle[];
 }) {
 	return (
 		<div id={styles.new_mixed_article_view_container}>
-			<h1>New Mixed Article View</h1>
+			<SectionAB articles={props.articles.slice(0, 10)} />
 		</div>
 	);
 }

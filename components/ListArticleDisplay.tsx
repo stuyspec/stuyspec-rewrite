@@ -6,10 +6,11 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/ListArticleDisplay.module.css";
-import generate_contributors_jsx from "./GenerateContributorsJSX";
+import ArticlePreviewText from "./ArticlePreviewText";
 
 export default function ListArticleDisplay(props: {
 	articles: ReceivedArticle[];
+	hideImg?: boolean;
 }) {
 	return (
 		<section id={styles.list_view}>
@@ -17,59 +18,21 @@ export default function ListArticleDisplay(props: {
 				<div className={styles.item} key={article._id as any}>
 					<div className={styles.inner_item}>
 						<div className={styles.item_left}>
-							<p className={styles.department + " discrete-link"}>
-								<Link
-									href={`/department/${
-										DepartmentsArray[article.section_id]
-									}`}
-								>
-									{
-										DepartmentsArrayDisplay[
-											article.section_id
-										]
-									}
-								</Link>
-							</p>
-							<h2>
-								<Link
-									href={"/article/" + article.slug}
-									className="discrete-link"
-								>
-									{article.title}
-								</Link>
-							</h2>
-							<div className={styles.authors}>
-								{generate_contributors_jsx(
-									article.contributors
-								)}
-							</div>
-							<p className={styles.summary}>
-								<Link
-									href={"/article/" + article.slug}
-									className="discrete-link"
-								>
-									{article.summary}
-								</Link>
-							</p>
-							<p className={styles.article_volume_issue}>
-								<Link
-									href={`/volume/${article.volume}/issue/${article.issue}`}
-								>
-									Issue {article.issue}, Volume{" "}
-									{article.volume}
-								</Link>
-							</p>
+							<ArticlePreviewText article={article} />
 						</div>
 
-						{article.cover_image ? (
-							<div className={styles.image_div}>
+						{article.cover_image && !props.hideImg ? (
+							<Link
+								href={"/article/" + article.slug}
+								className={styles.image_div}
+							>
 								<Image
 									fill
 									src={article.cover_image}
 									alt="Cover Image"
 									className={styles.image}
 								/>
-							</div>
+							</Link>
 						) : (
 							<></>
 						)}
