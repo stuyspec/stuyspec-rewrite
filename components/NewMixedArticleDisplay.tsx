@@ -17,7 +17,7 @@ export default function NewMixedArticleDisplay(props: {
 }) {
 	return (
 		<div id={styles.new_mixed_article_view_container}>
-			<SectionAB articles={props.articles.slice(0, 10)} />
+			<SectionAB articles={props.articles.slice(0, 11)} />
 		</div>
 	);
 }

@@ -1,14 +1,25 @@
 .section_ab_container {
 	display: grid;
-	grid-template-columns: 7fr 3fr;
+	grid-template-columns: 7.5fr 2.5fr;
 	gap: 1rem;
 	border-bottom: 1px solid var(--medium-grey);
+	padding-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 .section_a {
 	display: grid;
-	grid-template-columns: 35fr 65fr;
+	grid-template-columns: 3fr 7fr;
 	gap: 1rem;
-	/* font-size: 0.916rem; */
+}
+
+.section_a_left,
+.section_a_right {
+	display: grid;
+	gap: 1rem;
+}
+
+.section_a_left {
+	font-size: 0.916rem;
 }
 
 .section_a .item {
@@ -18,7 +29,7 @@
 
 .image {
 	object-fit: cover;
-	aspect-ratio: 16/9;
+	aspect-ratio: 16/10;
 	width: 100% !important;
 	position: relative !important;
 	height: unset !important;
@@ -27,15 +38,23 @@
 
 .section_b {
 	font-size: 0.916rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .section_b .item {
-	margin-top: 15px;
-	margin-bottom: 15px;
 	border-top: 1px solid var(--medium-grey);
-	padding-top: 15px;
+	height: 100%;
+	display: flex;
+	align-items: center;
 }
+
 .section_b .item:first-child {
 	margin-top: 0;
 	border-top: transparent;
+}
+.section_b .item_inner {
+	padding-block: 10px;
+	margin-block: auto;
 }

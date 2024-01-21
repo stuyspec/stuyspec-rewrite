@@ -17,7 +17,6 @@ export default function SectionAB(props: { articles: ReceivedArticle[] }) {
 	let grouped = groupByImageExists(props.articles);
 
 	//  TODO: Responsiveness under 1070px
-	// Use Flex for section A, so 3 smaller on left, 2 in the middle
 
 	let min_section_b = 6; // minimum articles on the right side
 	if (grouped.withoutPhotos.length < min_section_b) {
@@ -29,33 +28,50 @@ export default function SectionAB(props: { articles: ReceivedArticle[] }) {
 		grouped.withoutPhotos = [...spliced, ...grouped.withoutPhotos];
 	}
 
+	const generateArticlePreviewWithImg = (article: ReceivedArticle) => {
+		return (
+			<div className={styles.item} key={article._id as any}>
+				<Link href={"/article/" + article.slug}>
+					<Image
+						fill
+						src={article.cover_image}
+						alt="Cover Image"
+						className={styles.image}
+					/>
+				</Link>
+				<ArticlePreviewText
+					article={article}
+					hideIssue={true}
+					hideDepartment={true}
+				/>
+			</div>
+		);
+	};
+
 	return (
 		<div className={styles.section_ab_container}>
 			<div className={styles.section_a}>
-				{grouped.withPhotos.map((article) => (
-					<div className={styles.item} key={article._id as any}>
-						<Link href={"/article/" + article.slug}>
-							<Image
-								fill
-								src={article.cover_image}
-								alt="Cover Image"
-								className={styles.image}
-							/>
-						</Link>
-						<ArticlePreviewText
-							article={article}
-							hideIssue={true}
-						/>
-					</div>
-				))}
+				<div className={styles.section_a_left} key="left">
+					{grouped.withPhotos
+						.slice(0, 3)
+						.map(generateArticlePreviewWithImg)}
+				</div>
+				<div className={styles.section_a_right} key="right">
+					{grouped.withPhotos
+						.slice(3)
+						.map(generateArticlePreviewWithImg)}
+				</div>
 			</div>
 			<div className={styles.section_b}>
 				{grouped.withoutPhotos.map((article) => (
 					<div className={styles.item} key={article._id as any}>
-						<ArticlePreviewText
-							article={article}
-							hideIssue={true}
-						/>
+						<div className={styles.item_inner}>
+							<ArticlePreviewText
+								article={article}
+								hideIssue={true}
+								hideDepartment={true}
+							/>
+						</div>
 					</div>
 				))}
 			</div>
