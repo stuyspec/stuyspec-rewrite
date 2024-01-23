@@ -13,7 +13,8 @@ export interface ReceivedArticle {
 	summary: string;
 	cover_image: string;
 	cover_image_summary: string;
-	cover_image_contributor: ReceivedStaff;
+	cover_image_contributor: mongoObjectId[];
+	cover_image_contributors_info: ReceivedStaff[];
 	cover_image_source: string;
 	sub_section: string | undefined;
 	rank: number | undefined;

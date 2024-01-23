@@ -8,9 +8,36 @@ import {
 } from "./ts_types/db_types";
 import { ObjectId } from "mongodb";
 
-function fixArticleCoverImage(v: any) {
-	// $lookup ALWAYS creates an array into the specified "as" field, even if the "localField" is a singular element
-	v.cover_image_contributor = v.cover_image_contributor[0];
+function applyTextImageCredit(v: ReceivedArticle): ReceivedArticle {
+	let text = v.text;
+
+	const regex = /<img.*class=.content_img.+.*?\/>/g;
+	let array1: RegExpExecArray | null;
+
+	let img_contributor_index = 1;
+	while ((array1 = regex.exec(text)) !== null) {
+		const current_contributor_id =
+			v.cover_image_contributor[img_contributor_index].toString();
+
+		const current_contributor = v.cover_image_contributors_info.find(
+			(v) => v._id.toString() == current_contributor_id
+		);
+
+		if (!current_contributor) {
+			throw new Error("No contributor from the lookup found!");
+		}
+
+		const generated_text = `<a class="img_credit" href="/staff/${current_contributor.slug}"/>By <span class="discrete-link">${current_contributor.name}</span></a>`;
+
+		text =
+			text.slice(0, regex.lastIndex) +
+			generated_text +
+			text.slice(regex.lastIndex);
+
+		img_contributor_index++;
+		v.text = text;
+	}
+
 	return v;
 }
 // articles
@@ -29,7 +56,7 @@ async function get_articles_by_department(
 
 	let articles = (
 		await articles_collection
-			.aggregate([
+			.aggregate<ReceivedArticle>([
 				{
 					$match: { section_id: department_id },
 				},
@@ -60,7 +87,7 @@ async function get_articles_by_department(
 			])
 			.limit(limit)
 			.toArray()
-	).map(fixArticleCoverImage) as [ReceivedArticle];
+	).map(applyTextImageCredit) as [ReceivedArticle];
 	return articles;
 }
 
@@ -70,7 +97,7 @@ async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 
 	const article = (
 		await articles_collection
-			.aggregate([
+			.aggregate<ReceivedArticle>([
 				{
 					$match: { _id: new ObjectId(article_id) },
 				},
@@ -99,7 +126,7 @@ async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 				},
 			])
 			.toArray()
-	).map(fixArticleCoverImage)[0] as ReceivedArticle;
+	).map(applyTextImageCredit)[0] as ReceivedArticle;
 
 	return article;
 }
@@ -111,7 +138,7 @@ async function get_article_by_slug(
 	let articles_collection = await db.collection("articles");
 	let article = (
 		await articles_collection
-			.aggregate([
+			.aggregate<ReceivedArticle>([
 				{
 					$match: { slug: article_slug },
 				},
@@ -129,25 +156,19 @@ async function get_article_by_slug(
 						from: "staffs",
 						localField: "cover_image_contributor",
 						foreignField: "_id",
-						as: "cover_image_contributor",
-					},
-				},
-				{
-					$project: {
-						contributors: { password: 0 },
-						cover_image_contributor: { password: 0 },
+						as: "cover_image_contributors_info", // keep cover_image_contributor ids intact to keep some order for later processing
 					},
 				},
 			])
 			.toArray()
-	).map(fixArticleCoverImage)[0] as ReceivedArticle;
+	).map(applyTextImageCredit)[0];
 	return article;
 }
 
 async function get_articles_by_author(
 	author_id: mongoObjectId,
 	num?: number
-): Promise<[ReceivedArticle]> {
+): Promise<ReceivedArticle[]> {
 	let articles = await get_articles_by_query(
 		{
 			contributors: new ObjectId(String(author_id)),
@@ -163,7 +184,7 @@ async function get_articles_by_query(
 	num?: number,
 	skip_num?: number,
 	fetch_text?: boolean
-): Promise<[ReceivedArticle]> {
+): Promise<ReceivedArticle[]> {
 	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
@@ -173,7 +194,7 @@ async function get_articles_by_query(
 
 	let articles = (
 		await articles_collection
-			.aggregate([
+			.aggregate<ReceivedArticle>([
 				{ $match: query },
 				{ $sort: { volume: -1, issue: -1, rank: -1 } },
 				{
@@ -203,20 +224,20 @@ async function get_articles_by_query(
 			.skip(skip)
 			.limit(limit)
 			.toArray()
-	).map(fixArticleCoverImage) as [ReceivedArticle];
+	).map(applyTextImageCredit);
 	return articles;
 }
 async function get_articles_by_string_query(
 	query: string,
 	num?: number
-): Promise<[ReceivedArticle]> {
+): Promise<ReceivedArticle[]> {
 	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
 	let articles = (
 		await articles_collection
-			.aggregate([
+			.aggregate<ReceivedArticle>([
 				{
 					$search: {
 						index: "articles_search_index",
@@ -253,7 +274,7 @@ async function get_articles_by_string_query(
 			])
 			.limit(limit)
 			.toArray()
-	).map(fixArticleCoverImage) as [ReceivedArticle];
+	).map(applyTextImageCredit);
 	return articles;
 }
 

@@ -29,6 +29,7 @@ function Article(props: Props) {
 		contributors,
 		cover_image_summary,
 		cover_image_contributor,
+		cover_image_contributors_info,
 		cover_image_source,
 		summary,
 		slug,
@@ -140,7 +141,7 @@ function Article(props: Props) {
 								<div id={styles.coverImageContributor}>
 									By&nbsp;
 									{generate_contributors_jsx([
-										cover_image_contributor,
+										cover_image_contributors_info[0],
 									])}
 								</div>
 								<div>
