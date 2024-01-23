@@ -140,7 +140,7 @@ function Article(props: Props) {
 								<div id={styles.coverImageContributor}>
 									By&nbsp;
 									{generate_contributors_jsx([
-										cover_image_contributor,
+										cover_image_contributor[0],
 									])}
 								</div>
 								<div>

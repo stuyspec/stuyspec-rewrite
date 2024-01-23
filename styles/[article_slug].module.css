@@ -87,12 +87,19 @@
 	font-family: var(--secondary-font);
 }
 
-#coverImageContributor {
-	margin-top: -5px;
+#coverImageContributor,
+#content :global(.img_credit) {
+	text-decoration: none;
+	font-family: var(--secondary-font);
+	display: block;
 	text-align: right;
 	color: var(--medium-grey);
 	font-style: italic;
 	font-size: calc(var(--large-text) / 2.4);
+}
+
+#coverImageContributor {
+	margin-top: -5px;
 }
 
 @media screen and (max-width: 840px) {
@@ -126,4 +133,10 @@
 
 #content a {
 	text-decoration: underline;
+}
+
+#content img {
+	display: block;
+	width: 100%;
+	font-style: italic;
 }

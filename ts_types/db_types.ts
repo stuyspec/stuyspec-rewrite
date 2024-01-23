@@ -13,14 +13,14 @@ export interface ReceivedArticle {
 	summary: string;
 	cover_image: string;
 	cover_image_summary: string;
-	cover_image_contributor: ReceivedStaff;
+	cover_image_contributor: ReceivedStaff[];
 	cover_image_source: string;
 	sub_section: string | undefined;
 	rank: number | undefined;
 }
 
 export interface ReceivedStaff {
-	_id: ObjectId | string;
+	_id: mongoObjectId;
 	name: string;
 	email: string;
 	position: string;
@@ -30,6 +30,15 @@ export interface ReceivedStaff {
 	years: number[];
 	slug: string;
 	first_time_login: boolean | undefined;
+}
+
+export interface ReceivedArticleExtra {
+	_id: mongoObjectId;
+	article_id: mongoObjectId;
+	contributors: ReceivedStaff[];
+	type: string;
+	index: number;
+	image_src: string;
 }
 
 export type Department =
