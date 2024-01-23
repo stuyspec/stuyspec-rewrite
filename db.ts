@@ -207,10 +207,11 @@ async function get_articles_by_author(
 async function get_articles_by_query(
 	query: any,
 	num?: number,
+	db_param?: Db,
 	skip_num?: number,
 	fetch_text?: boolean
 ): Promise<ReceivedArticle[]> {
-	const db = (await clientPromise).db();
+	const db = db_param ?? (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
@@ -300,21 +301,62 @@ async function get_articles_by_string_query(
 }
 
 async function get_media_by_author(author_id: mongoObjectId, num?: number) {
+	const db = (await clientPromise).db();
+
 	let articles = await get_articles_by_query(
 		{
 			cover_image_contributor: new ObjectId(String(author_id)),
 		},
-		num
+		num,
+		db
 	);
 
-	const media = articles.map((v) => {
+	let media = articles.map((v) => {
 		return {
 			cover_image: v.cover_image,
-			cover_image_summary: v.cover_image_summary,
-			cover_image_source: v.cover_image_source,
 			article_slug: v.slug,
 		};
 	});
+
+	let extras_collection = await db.collection("article_extras");
+
+	interface ExtraWithArticle extends ReceivedArticleExtra {
+		article: ReceivedArticle[];
+	}
+
+	const article_extras = (
+		await extras_collection
+			.aggregate<ExtraWithArticle>([
+				{
+					$match: {
+						contributors: new ObjectId(String(author_id)),
+					},
+				},
+				{
+					$lookup: {
+						from: "articles",
+						localField: "article_id",
+						foreignField: "_id",
+						as: "article",
+					},
+				},
+				{
+					$project: {
+						article: { text: 0 },
+					},
+				},
+			])
+			.toArray()
+	)
+		.filter((v) => v.type == "image")
+		.map((v) => {
+			return {
+				cover_image: v.image_src,
+				article_slug: v.article[0].slug,
+			};
+		});
+
+	media = media.concat(article_extras);
 
 	return media;
 }
