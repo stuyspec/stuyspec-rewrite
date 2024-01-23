@@ -5,36 +5,63 @@ import {
 	ReceivedStaff,
 	DepartmentsArray,
 	mongoObjectId,
+	ReceivedArticleExtra,
 } from "./ts_types/db_types";
-import { ObjectId } from "mongodb";
+import { Db, ObjectId } from "mongodb";
 
-function applyTextImageCredit(v: ReceivedArticle): ReceivedArticle {
+async function applyTextImageCredit(
+	v: ReceivedArticle,
+	db: Db
+): Promise<ReceivedArticle> {
+	// get extras
+	let extras_collection = db.collection("article_extras");
+	const article_extras = await extras_collection
+		.aggregate<ReceivedArticleExtra>([
+			{
+				$match: {
+					article_id: new ObjectId(String(v._id)),
+				},
+			},
+			{
+				$lookup: {
+					from: "staffs",
+					localField: "contributors",
+					foreignField: "_id",
+					as: "contributors",
+				},
+			},
+		])
+		.toArray();
+
+	console.log("Article extras: ", article_extras);
+
 	let text = v.text;
 
-	const regex = /<img.*class=.content_img.+.*?\/>/g;
+	const regex = /<div.*class=.content_img.*?>/g; // just match the opening tag of '<div class="content_img">'
 	let array1: RegExpExecArray | null;
 
-	let img_contributor_index = 1;
+	let img_index = 0;
 	while ((array1 = regex.exec(text)) !== null) {
-		const current_contributor_id =
-			v.cover_image_contributor[img_contributor_index].toString();
-
-		const current_contributor = v.cover_image_contributors_info.find(
-			(v) => v._id.toString() == current_contributor_id
+		const current_extra = article_extras.find(
+			(v) => v.index === img_index && v.type == "image"
 		);
 
-		if (!current_contributor) {
-			throw new Error("No contributor from the lookup found!");
+		if (!current_extra) {
+			throw new Error("No current extra found matchign that index!");
 		}
 
-		const generated_text = `<a class="img_credit" href="/staff/${current_contributor.slug}"/>By <span class="discrete-link">${current_contributor.name}</span></a>`;
+		const current_contributor = current_extra.contributors[0];
+
+		const generated_text =
+			`<img src="${current_extra.image_src}" alt="Body image for the article: ${v.title}" />` +
+			`<a class="img_credit" href="/staff/${current_contributor.slug}"/>By <span class="discrete-link">${current_contributor.name}</span></a>`;
 
 		text =
 			text.slice(0, regex.lastIndex) +
 			generated_text +
 			text.slice(regex.lastIndex);
 
-		img_contributor_index++;
+		img_index++;
 		v.text = text;
 	}
 
@@ -54,40 +81,38 @@ async function get_articles_by_department(
 	const projection = fetch_text ? {} : { text: 0 };
 	const department_id = DepartmentsArray.findIndex((a) => a == department);
 
-	let articles = (
-		await articles_collection
-			.aggregate<ReceivedArticle>([
-				{
-					$match: { section_id: department_id },
+	let articles = (await articles_collection
+		.aggregate<ReceivedArticle>([
+			{
+				$match: { section_id: department_id },
+			},
+			{ $sort: { volume: -1, issue: -1, rank: -1 } },
+			{
+				$lookup: {
+					from: "staffs",
+					localField: "contributors",
+					foreignField: "_id",
+					as: "contributors",
 				},
-				{ $sort: { volume: -1, issue: -1, rank: -1 } },
-				{
-					$lookup: {
-						from: "staffs",
-						localField: "contributors",
-						foreignField: "_id",
-						as: "contributors",
-					},
+			},
+			{
+				$lookup: {
+					from: "staffs",
+					localField: "cover_image_contributor",
+					foreignField: "_id",
+					as: "cover_image_contributor",
 				},
-				{
-					$lookup: {
-						from: "staffs",
-						localField: "cover_image_contributor",
-						foreignField: "_id",
-						as: "cover_image_contributor",
-					},
+			},
+			{
+				$project: {
+					contributors: { password: 0 },
+					cover_image_contributor: { password: 0 },
+					...projection,
 				},
-				{
-					$project: {
-						contributors: { password: 0 },
-						cover_image_contributor: { password: 0 },
-						...projection,
-					},
-				},
-			])
-			.limit(limit)
-			.toArray()
-	).map(applyTextImageCredit) as [ReceivedArticle];
+			},
+		])
+		.limit(limit)
+		.toArray()) as [ReceivedArticle];
 	return articles;
 }
 
@@ -126,7 +151,7 @@ async function get_article_by_id(article_id: string): Promise<ReceivedArticle> {
 				},
 			])
 			.toArray()
-	).map(applyTextImageCredit)[0] as ReceivedArticle;
+	)[0];
 
 	return article;
 }
@@ -136,7 +161,7 @@ async function get_article_by_slug(
 ): Promise<ReceivedArticle> {
 	const db = (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
-	let article = (
+	let article = await (
 		await articles_collection
 			.aggregate<ReceivedArticle>([
 				{
@@ -156,12 +181,12 @@ async function get_article_by_slug(
 						from: "staffs",
 						localField: "cover_image_contributor",
 						foreignField: "_id",
-						as: "cover_image_contributors_info", // keep cover_image_contributor ids intact to keep some order for later processing
+						as: "cover_image_contributor",
 					},
 				},
 			])
 			.toArray()
-	).map(applyTextImageCredit)[0];
+	).map((v) => applyTextImageCredit(v, db))[0];
 	return article;
 }
 
@@ -192,39 +217,37 @@ async function get_articles_by_query(
 	const skip = skip_num || 0;
 	const projection = fetch_text ? {} : { text: 0 };
 
-	let articles = (
-		await articles_collection
-			.aggregate<ReceivedArticle>([
-				{ $match: query },
-				{ $sort: { volume: -1, issue: -1, rank: -1 } },
-				{
-					$lookup: {
-						from: "staffs",
-						localField: "contributors",
-						foreignField: "_id",
-						as: "contributors",
-					},
+	let articles = await articles_collection
+		.aggregate<ReceivedArticle>([
+			{ $match: query },
+			{ $sort: { volume: -1, issue: -1, rank: -1 } },
+			{
+				$lookup: {
+					from: "staffs",
+					localField: "contributors",
+					foreignField: "_id",
+					as: "contributors",
 				},
-				{
-					$lookup: {
-						from: "staffs",
-						localField: "cover_image_contributor",
-						foreignField: "_id",
-						as: "cover_image_contributor",
-					},
+			},
+			{
+				$lookup: {
+					from: "staffs",
+					localField: "cover_image_contributor",
+					foreignField: "_id",
+					as: "cover_image_contributor",
 				},
-				{
-					$project: {
-						contributors: { password: 0 },
-						cover_image_contributor: { password: 0 },
-						...projection,
-					},
+			},
+			{
+				$project: {
+					contributors: { password: 0 },
+					cover_image_contributor: { password: 0 },
+					...projection,
 				},
-			])
-			.skip(skip)
-			.limit(limit)
-			.toArray()
-	).map(applyTextImageCredit);
+			},
+		])
+		.skip(skip)
+		.limit(limit)
+		.toArray();
 	return articles;
 }
 async function get_articles_by_string_query(
@@ -235,46 +258,44 @@ async function get_articles_by_string_query(
 	let articles_collection = await db.collection("articles");
 
 	const limit = num || 10;
-	let articles = (
-		await articles_collection
-			.aggregate<ReceivedArticle>([
-				{
-					$search: {
-						index: "articles_search_index",
-						text: {
-							query: query,
-							path: {
-								wildcard: "*",
-							},
+	let articles = await articles_collection
+		.aggregate<ReceivedArticle>([
+			{
+				$search: {
+					index: "articles_search_index",
+					text: {
+						query: query,
+						path: {
+							wildcard: "*",
 						},
 					},
 				},
-				{
-					$lookup: {
-						from: "staffs",
-						localField: "contributors",
-						foreignField: "_id",
-						as: "contributors",
-					},
+			},
+			{
+				$lookup: {
+					from: "staffs",
+					localField: "contributors",
+					foreignField: "_id",
+					as: "contributors",
 				},
-				{
-					$lookup: {
-						from: "staffs",
-						localField: "cover_image_contributor",
-						foreignField: "_id",
-						as: "cover_image_contributor",
-					},
+			},
+			{
+				$lookup: {
+					from: "staffs",
+					localField: "cover_image_contributor",
+					foreignField: "_id",
+					as: "cover_image_contributor",
 				},
-				{
-					$project: {
-						contributors: { password: 0 },
-						cover_image_contributor: { password: 0 },
-					},
+			},
+			{
+				$project: {
+					contributors: { password: 0 },
+					cover_image_contributor: { password: 0 },
 				},
-			])
-			.limit(limit)
-			.toArray()
-	).map(applyTextImageCredit);
+			},
+		])
+		.limit(limit)
+		.toArray();
 	return articles;
 }
 
