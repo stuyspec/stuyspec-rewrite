@@ -33,8 +33,6 @@ async function applyTextImageCredit(
 		])
 		.toArray();
 
-	console.log("Article extras: ", article_extras);
-
 	let text = v.text;
 
 	const regex = /<div.*class=.content_img.*?>/g; // just match the opening tag of '<div class="content_img">'
