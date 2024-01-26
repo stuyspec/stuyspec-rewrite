@@ -19,7 +19,7 @@ async function applyTextImageCredit(
 		.aggregate<ReceivedArticleExtra>([
 			{
 				$match: {
-					article_id: new ObjectId(String(v._id)),
+					article: new ObjectId(String(v._id)),
 				},
 			},
 			{
@@ -45,7 +45,7 @@ async function applyTextImageCredit(
 		);
 
 		if (!current_extra) {
-			throw new Error("No current extra found matchign that index!");
+			throw new Error("No current extra found matching index " + img_index + " !");
 		}
 
 		const current_contributor = current_extra.contributors[0];
@@ -318,7 +318,7 @@ async function get_media_by_author(author_id: mongoObjectId, num?: number) {
 
 	let extras_collection = await db.collection("article_extras");
 
-	interface ExtraWithArticle extends ReceivedArticleExtra {
+	type ExtraWithArticle = Omit<ReceivedArticleExtra, 'article'> & {
 		article: ReceivedArticle[];
 	}
 
@@ -333,7 +333,7 @@ async function get_media_by_author(author_id: mongoObjectId, num?: number) {
 				{
 					$lookup: {
 						from: "articles",
-						localField: "article_id",
+						localField: "article",
 						foreignField: "_id",
 						as: "article",
 					},

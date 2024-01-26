@@ -34,7 +34,7 @@ export interface ReceivedStaff {
 
 export interface ReceivedArticleExtra {
 	_id: mongoObjectId;
-	article_id: mongoObjectId;
+	article: mongoObjectId;
 	contributors: ReceivedStaff[];
 	type: string;
 	index: number;
