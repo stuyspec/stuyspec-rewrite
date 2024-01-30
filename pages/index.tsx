@@ -23,17 +23,15 @@ async function fetch_addtional_articles(skip?: number, max?: number) {
 
 function Home(props: Props) {
 	return (
-		<div>
-			<main id={styles.main}>
-				<MixedArticleDisplay
-					articles={props.articles}
-					display_department={true}
-					additional_article_function={fetch_addtional_articles}
-				/>
-			</main>
-		</div>
+		<main id={styles.main}>
+			<MixedArticleDisplay
+				articles={props.articles}
+				display_department={true}
+				additional_article_function={fetch_addtional_articles}
+			/>
+		</main>
 	);
-};
+}
 
 export default Home;
 
