@@ -44,6 +44,7 @@ const ShareButton = ({ url, provider }: ShareButtonProps) => {
 			href={shareUrls[provider] + url}
 			target="_blank"
 			rel="noopener noreferrer"
+			aria-label={provider.charAt(0).toUpperCase() + provider.slice(1)}
 		>
 			{returnIcon()}
 		</a>
