@@ -22,19 +22,34 @@ const Footer = () => {
 						<Link href="/">The Spectator</Link>
 					</p>
 					<div id={styles.mediaButtons}>
-						<Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
+						<Link
+							href="https://open.spotify.com/show/40JaCJA0FvtZToAv81qVjz"
+							aria-label="The Lens Podcast on Spotify"
+						>
 							<BsSpotify id={styles.mediaButton} />
 						</Link>
-						<Link href="https://www.facebook.com/stuyspectator">
+						<Link
+							href="https://www.facebook.com/stuyspectator"
+							aria-label="Facebook"
+						>
 							<BsFacebook id={styles.mediaButton} />
 						</Link>
-						<Link href="https://www.instagram.com/stuyspectator/">
+						<Link
+							href="https://www.instagram.com/stuyspectator/"
+							aria-label="Instagram"
+						>
 							<BsInstagram id={styles.mediaButton} />
 						</Link>
-						<Link href="https://www.linkedin.com/company/the-stuyvesant-spectator">
+						<Link
+							href="https://www.linkedin.com/company/the-stuyvesant-spectator"
+							aria-label="Linkedin"
+						>
 							<BsLinkedin id={styles.mediaButton} />
 						</Link>
-						<Link href="https://github.com/stuyspec">
+						<Link
+							href="https://github.com/stuyspec"
+							aria-label="GitHub"
+						>
 							<BsGithub id={styles.mediaButton} />
 						</Link>
 					</div>
