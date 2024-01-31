@@ -45,7 +45,9 @@ async function applyTextImageCredit(
 		);
 
 		if (!current_extra) {
-			throw new Error("No current extra found matching index " + img_index + " !");
+			throw new Error(
+				"No current extra found matching index " + img_index + " !"
+			);
 		}
 
 		const current_contributor = current_extra.contributors[0];
@@ -205,9 +207,9 @@ async function get_articles_by_author(
 async function get_articles_by_query(
 	query: any,
 	num?: number,
-	db_param?: Db,
 	skip_num?: number,
-	fetch_text?: boolean
+	fetch_text?: boolean,
+	db_param?: Db
 ): Promise<ReceivedArticle[]> {
 	const db = db_param ?? (await clientPromise).db();
 	let articles_collection = await db.collection("articles");
@@ -306,7 +308,9 @@ async function get_media_by_author(author_id: mongoObjectId, num?: number) {
 			cover_image_contributor: new ObjectId(String(author_id)),
 		},
 		num,
-		db
+		0,
+		false,
+		db // use cached DB
 	);
 
 	let media = articles.map((v) => {
@@ -318,9 +322,9 @@ async function get_media_by_author(author_id: mongoObjectId, num?: number) {
 
 	let extras_collection = await db.collection("article_extras");
 
-	type ExtraWithArticle = Omit<ReceivedArticleExtra, 'article'> & {
+	type ExtraWithArticle = Omit<ReceivedArticleExtra, "article"> & {
 		article: ReceivedArticle[];
-	}
+	};
 
 	const article_extras = (
 		await extras_collection
