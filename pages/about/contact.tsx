@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { generateMetaTags } from "../../utils/generateMetaTags";
+import styles from "../../styles/About.module.css";
 
 function ContactPage() {
 	const page_title = "Contact - The Stuyvesant Spectator";
@@ -12,29 +13,25 @@ function ContactPage() {
 				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<div
-				style={{
-					textAlign: "center",
-					display: "flex",
-					height: "calc(100vh - 172px)",
-				}}
-				className="contact-page"
+				className={styles.contactPage}
 			>
-				<div style={{ margin: "auto" }}>
+
+				<div className={styles.contactPageLinksContainer}>
 					<h1>Contact Us</h1>
-					<p style={{ marginTop: "32px", fontFamily: "Georgia" }}>
+					<p>
 						For website related questions: Contact{" "}
 						<a className="link" href="mailto:web@stuyspec.com">
 							web@stuyspec.com
 						</a>
 						.
 					</p>
-					<p style={{ marginTop: "8px", fontFamily: "Georgia" }}>
+					<p >
 						For all other questions: Contact{" "}
 						<a
 							className="link"
-							href="mailto:rebeccaphoebe23@gmail.com"
+							href="mailto:eics@stuyspec.com"
 						>
-							rebeccaphoebe23@gmail.com
+							eics@stuyspec.com
 						</a>
 						.
 					</p>
