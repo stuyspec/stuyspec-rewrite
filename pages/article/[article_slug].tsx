@@ -13,6 +13,7 @@ import ShareButton from "../../components/ShareButton";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
 import { generateMetaTags } from "../../utils/generateMetaTags";
+import Advertisement from "../../components/Advertisement";
 
 interface Props {
 	article: ReceivedArticle;
@@ -157,7 +158,8 @@ function Article(props: Props) {
 						id={styles.content}
 						dangerouslySetInnerHTML={{ __html: text }}
 					></div>
-
+					<Advertisement
+					index={0}/>
 					{/* <RecommendedArticles /> */}
 				</article>
 				<div id={styles.advertisements}></div>

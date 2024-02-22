@@ -20,29 +20,40 @@ enum sortingOptions {
 }
 
 function SearchRoute(props: Props) {
-  const [sortingOption, setSortingOption] = useState<sortingOptions>(sortingOptions.Relevance);
-  const [sortedArticles, setSortedArticles] = useState<ReceivedArticle[]>(props.articles);
+  const [sortingOption, setSortingOption] = useState<sortingOptions>(
+    sortingOptions.Relevance
+  );
+  const [sortedArticles, setSortedArticles] = useState<ReceivedArticle[]>(
+    props.articles
+  );
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const articlesPerPage = 10;
 
   useEffect(() => {
     sortArticles();
-  }, [sortingOption]);
+  }, [sortingOption, props.articles]);
+
+  useEffect(() => {
+    paginateArticles();
+  }, [currentPage, sortedArticles]);
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortingOption(event.target.value as sortingOptions);
+    setCurrentPage(1); // Reset to the first page when sorting changes
   };
 
   const sortArticles = () => {
-    const articlesCopy = [...props.articles];
+    let articlesCopy = [...props.articles];
 
     if (sortingOption === sortingOptions.Newest) {
-      articlesCopy.sort((a, b) => {
+      articlesCopy = articlesCopy.sort((a, b) => {
         if (a.volume === b.volume) {
           return b.issue - a.issue;
         }
         return b.volume - a.volume;
       });
     } else if (sortingOption === sortingOptions.Oldest) {
-      articlesCopy.sort((a, b) => {
+      articlesCopy = articlesCopy.sort((a, b) => {
         if (a.volume === b.volume) {
           return a.issue - b.issue;
         }
@@ -53,18 +64,28 @@ function SearchRoute(props: Props) {
     setSortedArticles(articlesCopy);
   };
 
+  const paginateArticles = () => {
+    const startIndex = (currentPage - 1) * articlesPerPage;
+    const endIndex = startIndex + articlesPerPage;
+    const currentArticles = props.articles.slice(startIndex, endIndex);
+    setSortedArticles(currentArticles);
+  };
+
   return (
     <div>
       <main id={styles.main}>
         <h1 id={styles.heading}>
-          Showing {props.articles.length + props.staff.length} results for:{" "}
-          {"'"}
+          Showing {props.articles.length + props.staff.length} results for:{"'"}
           {props.query}
           {"'"}
         </h1>
         <div>
           <label htmlFor="sort-select">Sort by:</label>
-          <select id="sort-select" value={sortingOption} onChange={handleSortChange}>
+          <select
+            id="sort-select"
+            value={sortingOption}
+            onChange={handleSortChange}
+          >
             <option value={sortingOptions.Relevance}>Relevance</option>
             <option value={sortingOptions.Newest}>Newest</option>
             <option value={sortingOptions.Oldest}>Oldest</option>
@@ -77,12 +98,17 @@ function SearchRoute(props: Props) {
               {props.staff.map((staff_member, index) => (
                 <div key={index}>
                   <h1 id={styles.name}>
-                    <Link href={"/staff/" + encodeURIComponent(staff_member.slug)}>
+                    <Link
+                      href={"/staff/" + encodeURIComponent(staff_member.slug)}
+                    >
                       {staff_member.name}{" "}
                       <span id={styles.slug}>({staff_member.slug})</span>
                     </Link>
                   </h1>
-                  <a href={"mailto:" + staff_member.email} id={styles.email}>
+                  <a
+                    href={"mailto:" + staff_member.email}
+                    id={styles.email}
+                  >
                     {staff_member.email}
                   </a>
                 </div>
@@ -91,13 +117,29 @@ function SearchRoute(props: Props) {
           </>
         )}
         <h2 id={styles.articles_found_label}>
-          {sortedArticles.length} articles found:
+          {props.articles.length} articles found:
         </h2>
         <ListArticleDisplay articles={sortedArticles} />
+        {/* Pagination */}
+        <div>
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span>{currentPage}</span>
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage * articlesPerPage >= props.articles.length}
+          >
+            Next
+          </button>
+        </div>
       </main>
     </div>
   );
-};
+}
 
 export default SearchRoute;
 
