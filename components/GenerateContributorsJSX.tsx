@@ -4,6 +4,7 @@ import Link from "next/link";
 export default function generate_contributors_jsx(
 	contributors: ReceivedStaff[]
 ) {
+	contributors.sort((a,b) => 0 - (a.name < b.name ? 1 : -1))
 	return (
 		<span>
 			{contributors.map((contributor: ReceivedStaff, index: number) => {
