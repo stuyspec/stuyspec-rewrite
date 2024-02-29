@@ -10,9 +10,9 @@ export default function NewMixedArticleDisplay(props: {
 }) {
 	return (
 		<div id={styles.new_mixed_article_view_container}>
-			<SectionAB articles={props.articles.slice(0, 11)} />
-			<SectionAB articles={props.articles.slice(11, 22)} />
-			<SectionAB articles={props.articles.slice(22, 33)} />
+			<SectionAB articles={props.articles.slice(0, 12)} />
+			<SectionAB articles={props.articles.slice(12, 24)} />
+			<SectionAB articles={props.articles.slice(24, 36)} />
 		</div>
 	);
 }
