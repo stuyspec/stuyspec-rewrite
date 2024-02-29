@@ -50,7 +50,7 @@ function Home(props: Props) {
 export default Home;
 
 export async function getServerSideProps(context: NextPageContext) {
-	const view_mode = context.query.view;
+	const view_mode = context.query.view || "new";
 	let articles = await get_articles_by_query({}, 42);
 	return {
 		props: {
