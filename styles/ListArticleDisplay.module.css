@@ -36,10 +36,10 @@
 	object-fit: contain;
 	position: relative;
 	overflow: "hidden";
+	margin-left: 20px;
 }
 
 #list_view .image {
-	margin-left: 20px;
 	height: 135px;
 	width: auto;
 	object-fit: contain;
