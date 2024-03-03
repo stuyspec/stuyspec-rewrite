@@ -38,6 +38,8 @@ function StaffMember(props: Props) {
 		staff_member.description ||
 		`${staff_member.name} at The Stuyvesant Spectator`;
 
+	const display_email = staff_member.email.replaceAll("@", " [ at ] ").replaceAll(".", " [ dot ] ");
+	
 	return (
 		<div>
 			<Head>
@@ -50,9 +52,9 @@ function StaffMember(props: Props) {
 					<span id={styles.slug}>({staff_member.slug})</span>
 				</h1>
 
-				<a href={"mailto:" + staff_member.email} id={styles.email}>
-					{staff_member.email}
-				</a>
+				<span id={styles.email}>
+					{display_email}
+				</span>
 				<p id={styles.description}>{staff_member.description}</p>
 
 				<ListArticleDisplay articles={props.staff_articles} />
