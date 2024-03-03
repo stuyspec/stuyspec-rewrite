@@ -14,6 +14,7 @@
 	width: 100%;
 	min-height: 135px;
 	justify-content: space-between;
+	gap: 20px;
 }
 
 .item_left {
@@ -40,12 +41,11 @@
 	object-fit: contain;
 	position: relative;
 	overflow: "hidden";
-	margin-left: 20px;
 }
 
 #list_view .image {
 	height: 135px;
-	width: auto;
+	width: auto !important; /* Override next-image's default */
 	object-fit: contain;
 	position: relative !important;
 	height: 135px !important;
