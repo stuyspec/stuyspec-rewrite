@@ -32,7 +32,7 @@ export default function Page(props: Props) {
 						Israeli-Palestinian conflict
 					</h1>
 					<p>
-						The Stuyvesant Spectator's coverage relating to the
+						The Stuyvesant Spectator&apos;s coverage relating to the
 						Israeli-Palestinian conflict following the start of the
 						Israel-Hamas war since October 7.
 					</p>
