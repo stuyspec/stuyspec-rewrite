@@ -7,6 +7,20 @@
 }
 
 #departmentTitle {
-	margin-top: 0.75rem;
+	margin-top: 1rem;
 	text-align: center;
+}
+
+@media screen and (max-width: 840px) {
+	#departmentTitle {
+		font-size: var(--medium-text);
+	}
+}
+
+.departmentDescriptionContainer {
+	text-align: center;
+}
+
+.departmentDescriptionContainer p {
+	font-size: 1.2rem;
 }
