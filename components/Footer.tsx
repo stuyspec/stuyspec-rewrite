@@ -77,7 +77,7 @@ const Footer = () => {
 								</Link>
 							</p>
 							<p id={styles.subdepartment}>
-								<Link href="/department/news/israel-hamas-war">
+								<Link href="/section/israel-palestine">
 									Israel-Hamas War
 								</Link>
 							</p>

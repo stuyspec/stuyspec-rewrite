@@ -35,7 +35,7 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 							</Link>
 						</span>
 						<span>
-							<Link href="/department/news/israel-hamas-war">
+							<Link href="/section/israel-palestine">
 								Israel-Hamas War
 							</Link>
 						</span>
