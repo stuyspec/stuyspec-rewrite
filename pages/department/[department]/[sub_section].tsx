@@ -57,9 +57,13 @@ function SubSection(props: Props) {
 			</Head>
 
 			<main id={styles.main}>
-				<h1 id={styles.departmentTitle}>
-					<span id={styles.sub_section}>{sub_section_display}</span>
-				</h1>
+				<hgroup className={styles.departmentHeadingContainer}>
+					<h1 id={styles.departmentTitle}>
+						<span id={styles.sub_section}>
+							{sub_section_display}
+						</span>
+					</h1>
+				</hgroup>
 				{useList ? (
 					<ListArticleDisplay articles={props.articles} />
 				) : (

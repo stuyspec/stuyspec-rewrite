@@ -19,7 +19,7 @@ interface Props {
 export default function Page(props: Props) {
 	const page_title =
 		"Israeli-Palestinian conflict - The Stuyvesant Spectator";
-	const meta_url = `https://stuyspec.com/section/israel-palestine`;
+	const meta_url = `https://stuyspec.com/topic/israel-palestine`;
 	const meta_description = `Israeli-Palestinian conflict coverage at The Stuyvesant Spectator.`;
 	return (
 		<>
@@ -27,7 +27,7 @@ export default function Page(props: Props) {
 				{generateMetaTags(page_title, meta_description, meta_url)}
 			</Head>
 			<main id={styles.main}>
-				<hgroup className={styles.departmentDescriptionContainer}>
+				<hgroup className={styles.departmentHeadingContainer}>
 					<h1 id={styles.departmentTitle}>
 						Israeli-Palestinian conflict
 					</h1>
