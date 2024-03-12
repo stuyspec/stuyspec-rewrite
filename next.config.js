@@ -47,6 +47,11 @@ module.exports = {
 				destination: "mailto:web@stuyspec.com",
 				permanent: true,
 			},
+			{
+				source: "/department/ae/sing",
+				destination: "/department/ae/sing!",
+				permanent: true
+			},
 		];
 	},
 	async rewrites() {
