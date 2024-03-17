@@ -18,7 +18,7 @@ export default function SectionAB(props: { articles: ReceivedArticle[] }) {
 
 	//  TODO: Responsiveness under 1070px
 
-	let min_section_b = 6; // minimum articles on the right side
+	let min_section_b = 7; // minimum articles on the right side
 	if (grouped.withoutPhotos.length < min_section_b) {
 		const diff = min_section_b - grouped.withoutPhotos.length;
 		const spliced = grouped.withPhotos.splice(
@@ -53,12 +53,12 @@ export default function SectionAB(props: { articles: ReceivedArticle[] }) {
 			<div className={styles.section_a}>
 				<div className={styles.section_a_left} key="left">
 					{grouped.withPhotos
-						.slice(0, 3)
+						.slice(2)
 						.map(generateArticlePreviewWithImg)}
 				</div>
 				<div className={styles.section_a_right} key="right">
 					{grouped.withPhotos
-						.slice(3)
+						.slice(0, 2)
 						.map(generateArticlePreviewWithImg)}
 				</div>
 			</div>
