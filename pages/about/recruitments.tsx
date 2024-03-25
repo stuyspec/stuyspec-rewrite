@@ -13,7 +13,7 @@ function RecruitmentPage() {
 				department: "News",
 				description:
 					"The News Department covers school events, administrative changes, student organizations, school and student government policies, and out-of-school news. Besides traditional News articles, we also write mini-articles, graphs & surveys, and spreads. If you are interested in knowing Stuyvesant news before it is released, informing the student body, meeting students, teachers, and administrators, or seeing your work on the front page, apply to our department!",
-				// applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLScLSwCatr_Ejsu5amtdIaOlejuBRtWusZULgyP2ihuD92qqkg/viewform",
+				applicationForm: "https://forms.gle/2iBhTF4LCKk83c6Z8",
 				applicationDueDate: "",
 			},
 			{
@@ -27,14 +27,14 @@ function RecruitmentPage() {
 				department: "Humor",
 				description:
 					"Do you want to lowkey rant about your life and roast everything? Would you like to have a personality glow up? Do you want to join a low commitment and fun Spec department? Join Spec Humor! We write funny and satirical pieces for The Spec and unlike other departments, everything we publish is libel and slander which means that you'll be in control of what everyone says!",
-				// applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSfR7V1h76tdkPAcCiXQ915knCYuHTPWnLMvalEEBjKRpaA5yw/viewform?usp=sf_link",
+				applicationForm: "https://forms.gle/Fp6L97uemKXg41vL7",
 				applicationDueDate: "",
 			},
 			{
 				department: "Arts & Ent.",
 				description:
 					"As the only department with more than three article categories, Arts and Entertainment is notable for its versatility and creative freedom. We review recent cultural topics such as art, fashion, film, food, literature, music, and more! A&E writers are also free to experiment with the thinkpiece category, where one can explore cultural phenomena or trends, gender standards, or race from a cultural standpoint. Whether you are an aspiring music enthusiast or cultural connoisseur, everyone can find (or create!) their own niche in A&E.",
-				// applicationForm: "https://docs.google.com/document/d/1bwVseD11wUqawunBk5Dos3n8lUOUWFgxJkwe84Ysxc4/edit?usp=sharing",
+				applicationForm: "https://docs.google.com/document/d/1sVjpoxImndUjJgz6iX5c_tC_eUSePerUWjzfYWY_duA/edit",
 				applicationDueDate: "",
 			},
 			{
