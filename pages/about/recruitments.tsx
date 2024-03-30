@@ -20,8 +20,8 @@ function RecruitmentPage() {
 				department: "Features",
 				description:
 					"Features capture the spirit and mood of the school. At times, Features covers Stuyvesant’s evergreen topics, e.g. what is it about PE uniforms that gets everybody so hot and bothered? Other times, writers might profile a teacher. Other times, writers share creative narratives about experiences they have had in the “Voices” section. There is much to be found in Features, so come hither!",
-				// applicationForm: "https://docs.google.com/document/d/1qKqHW64EmhDfTMBw9cvYQicPm9zjllicArH7pX2bwMU/edit?usp=sharing",
-				applicationDueDate: "",
+				applicationForm: "https://docs.google.com/document/d/1_Ofr7NwiRCHH2pOJUQKlbtuV1K9o0ffvo-0ID3ttJTY/",
+				applicationDueDate: "Friday, April 5th, 11:59 PM",
 			},
 			{
 				department: "Humor",
