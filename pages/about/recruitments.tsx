@@ -64,7 +64,7 @@ function RecruitmentPage() {
 			department: "Web",
 			description:
 				"The Web department is responsible for designing and updating The Spectator's website (aka this website), www.stuyspec.com. It also attempts to facilitate the learning of developing and maintaining a web applications. These real-world skills are a great resume builders and provide invaluable experience in working together as a team. This is the perfect department for both computer programming enthusiasts and novices who want to help The Spectator continue to storm the frontier of online journalism.",
-			// applicationForm: "https://forms.gle/oiQTKk374tzZ3iPZA",
+			applicationForm: "https://stuyspec.com/apply/web",
 			applicationDueDate: "",
 		},
 		{
