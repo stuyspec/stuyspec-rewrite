@@ -40,7 +40,7 @@ module.exports = {
 		return [
 			{
 				source: "/apply/web",
-				destination: "mailto:web@stuyspec.com",
+				destination: "https://docs.google.com/forms/d/e/1FAIpQLSdJw8R4-bw5xjWG9P3Ld1WY4ZEg_L3cyhFzYJgB_a7SJtJAsA/viewform?usp=sf_link",
 				permanent: true,
 			},
 		];
