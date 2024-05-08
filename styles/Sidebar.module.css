@@ -4,6 +4,7 @@
 	position: absolute !important;
 	height: calc(100vh - 94px);
 	top: 94px;
+	transition: all 0.2s linear;
 }
 
 #sidebar {
@@ -57,7 +58,8 @@
 }
 
 .hide {
-	display: none !important;
+	margin-left: -500px;
+	opacity: 0;
 }
 
 #socialsBar {
@@ -106,6 +108,7 @@
 		height: 450px !important;
 		top: 64px;
 		width: 100%;
+		z-index: -3;
 	}
 
 	#socialsBar {
@@ -121,6 +124,11 @@
 
 	.department:hover .subdepartment {
 		display: none; /* Explicitly specify for safari... */
+	}
+
+	.hide {
+		margin-top: -500px;
+		margin-left: 0;
 	}
 }
 
