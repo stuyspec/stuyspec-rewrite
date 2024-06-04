@@ -13,7 +13,7 @@ const LatestPreviewImage = (props: { imageClass: any; imageIndex: number }) => {
 	};
 
 	useEffect(() => {
-		getImages();
+		// getImages();
 	}, []);
 
 	return (
