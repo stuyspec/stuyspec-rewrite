@@ -193,7 +193,7 @@ export async function getServerSideProps(context: NextPageContext) {
 				banner_ad_index: Math.floor(
 					Math.random() * BannerAdvertisements.length
 				),
-				show_ad: Math.random() * 101 < 50, // 50% of showing the ad
+				show_ad: Math.random() * 100 < 30, // 30% chance of showing the ad
 			},
 		};
 	} else {
