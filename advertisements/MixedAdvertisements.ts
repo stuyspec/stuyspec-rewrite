@@ -1,4 +1,4 @@
-const advertisements = [
+const MixedAdvertisements = [
 	{
 		name: "Kweller Prep",
 		image_src: "/images/ads/kweller_prep.png",
@@ -15,4 +15,4 @@ const advertisements = [
 		url: "http://www.collegeessaytutors.com/",
 	},
 ];
-export default advertisements;
+export default MixedAdvertisements;
