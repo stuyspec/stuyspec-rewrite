@@ -9,8 +9,7 @@ import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
 import { useCallback, useEffect, useState, Fragment } from "react";
-import Advertisment from "./Advertisement";
-import advertisements from "../advertisements";
+import MixedAdvertisment from "./MixedAdvertisement";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;
@@ -193,7 +192,7 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 0 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment
+										<MixedAdvertisment
 											index={index / ad_spacing}
 										/>
 									</div>
@@ -249,8 +248,11 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 1 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment
-											index={Math.floor(index / ad_spacing) + 2}
+										<MixedAdvertisment
+											index={
+												Math.floor(index / ad_spacing) +
+												2
+											}
 										/>
 									</div>
 								) : (
@@ -273,8 +275,10 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 1 && index != 0 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment
-											index={Math.floor(index / ad_spacing)}
+										<MixedAdvertisment
+											index={Math.floor(
+												index / ad_spacing
+											)}
 										/>
 									</div>
 								) : (

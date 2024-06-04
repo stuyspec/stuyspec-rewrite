@@ -1,19 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import advertisements from "../advertisements";
+import mixed_advertisements from "../MixedAdvertisements";
 import styles from "../styles/Advertisement.module.css";
 
 const Advertisment = (props: { index: number }) => {
-	let index = props.index % advertisements.length;
+	let index = props.index % mixed_advertisements.length;
 
 	return (
-		<Link href={advertisements[index].url}>
+		<Link href={mixed_advertisements[index].url}>
 			<div id={styles.parent_div}>
 				<Image
 					id={styles.image}
-					src={advertisements[index].image_src}
+					src={mixed_advertisements[index].image_src}
 					fill
-					alt={advertisements[index].name + " ad"}
+					alt={mixed_advertisements[index].name + " ad"}
 				/>
 			</div>
 		</Link>
