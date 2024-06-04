@@ -51,6 +51,8 @@ function Article(props: Props) {
 
 	const providers = ["facebook", "twitter", "linkedin", "email"];
 
+	const isAdvertisingAllowed: boolean = section_id != 2 && section_id != 4; // forbid ads on Opinions and Humor as per charter
+
 	return (
 		<div>
 			<Head>
@@ -81,12 +83,15 @@ function Article(props: Props) {
 			</Head>
 
 			<main id={styles.main}>
-				<div className={styles.advertisements}>
-					<BannerAdvertisement
-						index={props.banner_ad_index}
-						show_ad={props.show_ad}
-					/>
-				</div>
+				{isAdvertisingAllowed && (
+					<div className={styles.advertisements}>
+						<BannerAdvertisement
+							index={props.banner_ad_index}
+							show_ad={props.show_ad}
+						/>
+					</div>
+				)}
+
 				<article id={styles.article}>
 					<p id={styles.section} className="discrete-link">
 						<Link
