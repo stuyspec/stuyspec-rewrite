@@ -5,14 +5,14 @@ const advertisements = [
 		url: "https://www.kwellerprep.com/",
 	},
 	{
-		name: "Now Test Prep",
-		image_src: "/images/ads/ntp_test_prep.jpg",
-		url: "https://NowTestPrep.com/",
+		name: "College Essay Advisors",
+		image_src: "/images/ads/college_essay_advisors.png",
+		url: "http://www.collegeessayadvisors.com/",
 	},
 	{
-		name: "Contest Math Tutoring",
-		image_src: "/images/ads/contest_math_tutoring.jpg",
-		url: "https://contestmathtutoring.com/",
+		name: "College Essay Tutors",
+		image_src: "/images/ads/college_essay_tutors.png",
+		url: "http://www.collegeessaytutors.com/",
 	},
 ];
 export default advertisements;
