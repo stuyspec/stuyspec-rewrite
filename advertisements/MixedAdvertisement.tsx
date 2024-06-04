@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import mixed_advertisements from "../MixedAdvertisements";
+import mixed_advertisements from "./MixedAdvertisements";
 import styles from "../styles/Advertisement.module.css";
 
-const Advertisment = (props: { index: number }) => {
+const MixedAdvertisement = (props: { index: number }) => {
 	let index = props.index % mixed_advertisements.length;
 
 	return (
@@ -20,4 +20,4 @@ const Advertisment = (props: { index: number }) => {
 	);
 };
 
-export default Advertisment;
+export default MixedAdvertisement;

@@ -9,7 +9,7 @@ import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
 import { useCallback, useEffect, useState, Fragment } from "react";
-import MixedAdvertisment from "./MixedAdvertisement";
+import MixedAdvertisment from "../advertisements/MixedAdvertisement";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;

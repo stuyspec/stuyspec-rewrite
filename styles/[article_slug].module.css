@@ -1,6 +1,6 @@
 #main {
 	width: 95vw;
-	max-width: 900px;
+	max-width: 800px;
 	padding-top: 1rem;
 	margin: 0 auto;
 }
@@ -135,4 +135,8 @@
 	display: block;
 	width: 100%;
 	font-style: italic;
+}
+
+.advertisements {
+	height: fit-content;
 }

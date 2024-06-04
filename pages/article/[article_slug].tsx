@@ -13,9 +13,13 @@ import ShareButton from "../../components/ShareButton";
 import Link from "next/link";
 import generate_contributors_jsx from "../../components/GenerateContributorsJSX";
 import { generateMetaTags } from "../../utils/generateMetaTags";
+import BannerAdvertisements from "../../advertisements/BannerAdvertisements";
+import BannerAdvertisement from "../../advertisements/BannerAdvertisement";
 
 interface Props {
 	article: ReceivedArticle;
+	banner_ad_index: number;
+	show_ad: boolean; // temporary to not have the same banner ad on every article
 }
 
 function Article(props: Props) {
@@ -77,6 +81,12 @@ function Article(props: Props) {
 			</Head>
 
 			<main id={styles.main}>
+				<div className={styles.advertisements}>
+					<BannerAdvertisement
+						index={props.banner_ad_index}
+						show_ad={props.show_ad}
+					/>
+				</div>
 				<article id={styles.article}>
 					<p id={styles.section} className="discrete-link">
 						<Link
@@ -160,7 +170,6 @@ function Article(props: Props) {
 
 					{/* <RecommendedArticles /> */}
 				</article>
-				<div id={styles.advertisements}></div>
 			</main>
 		</div>
 	);
@@ -174,7 +183,13 @@ export async function getServerSideProps(context: NextPageContext) {
 	let article = await get_article_by_slug(article_slug);
 	if (article) {
 		return {
-			props: { article: JSON.parse(JSON.stringify(article)) },
+			props: {
+				article: JSON.parse(JSON.stringify(article)),
+				banner_ad_index: Math.floor(
+					Math.random() * BannerAdvertisements.length
+				),
+				show_ad: Math.random() * 101 < 50, // 50% of showing the ad
+			},
 		};
 	} else {
 		return {
