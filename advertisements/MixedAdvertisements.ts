@@ -1,18 +1,12 @@
-const MixedAdvertisements = [
-	{
-		name: "Kweller Prep",
-		image_src: "/images/ads/kweller_prep.png",
-		url: "https://www.kwellerprep.com/",
-	},
-	{
-		name: "College Essay Advisors",
-		image_src: "/images/ads/college_essay_advisors.png",
-		url: "http://www.collegeessayadvisors.com/",
-	},
-	{
-		name: "College Essay Tutors",
-		image_src: "/images/ads/college_essay_tutors.png",
-		url: "http://www.collegeessaytutors.com/",
-	},
-];
+const MixedAdvertisements: {
+	name: string;
+	image_src: string;
+	url: string;
+}[] = [
+		{
+			name: "Prompt College Application and Essay Coaching",
+			image_src: "/images/ads/prompt_mixed.jpg",
+			url: "https://www.myprompt.com/",
+		},
+	];
 export default MixedAdvertisements;

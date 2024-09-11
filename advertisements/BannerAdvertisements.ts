@@ -1,8 +1,8 @@
-const BannerAdvertisements = [
-	{
-		name: "Prompt College Application and Essay Coaching",
-		image_src: "/images/ads/prompt_banner.png",
-		url: "https://www.myprompt.com/",
-	},
-];
+const BannerAdvertisements: {
+	name: string;
+	image_src: string;
+	url: string;
+}[] = [
+
+	];
 export default BannerAdvertisements;
