@@ -6,6 +6,8 @@ import styles from "../styles/Advertisement.module.css";
 const BannerAdvertisement = (props: { index: number; show_ad: boolean }) => {
 	let index = props.index % banner_advertisements.length;
 
+	if (!banner_advertisements[index]) return null;
+
 	return (
 		<Link
 			href={banner_advertisements[index].url}
