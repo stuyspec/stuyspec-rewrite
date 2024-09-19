@@ -106,7 +106,7 @@ function Article(props: Props) {
 							{DepartmentsArrayDisplay[section_id]}
 						</Link>
 					</p>
-					<h1 id={styles.title}>{title}</h1>
+					<h1 id={styles.title} dangerouslySetInnerHTML={{ __html: title }}></h1>
 					<h2 id={styles.summary}>{summary}</h2>
 					<h3 id={styles.reading_time}>
 						{generateApproxReadingTime()}

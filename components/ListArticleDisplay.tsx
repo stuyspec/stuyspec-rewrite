@@ -19,13 +19,12 @@ export default function ListArticleDisplay(props: {
 						<div className={styles.item_left}>
 							<p className={styles.department + " discrete-link"}>
 								<Link
-									href={`/department/${
-										DepartmentsArray[article.section_id]
-									}`}
+									href={`/department/${DepartmentsArray[article.section_id]
+										}`}
 								>
 									{
 										DepartmentsArrayDisplay[
-											article.section_id
+										article.section_id
 										]
 									}
 								</Link>
@@ -34,8 +33,8 @@ export default function ListArticleDisplay(props: {
 								<Link
 									href={"/article/" + article.slug}
 									className="discrete-link"
+									dangerouslySetInnerHTML={{ __html: article.title }}
 								>
-									{article.title}
 								</Link>
 							</h2>
 							<div className={styles.authors}>

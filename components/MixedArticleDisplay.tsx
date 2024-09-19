@@ -54,8 +54,7 @@ function CenterArticle(props: {
 				<></>
 			)}
 			<Link passHref href={"/article/" + article.slug}>
-				<h2 id={styles.title} className="discrete-link">
-					{article.title}
+				<h2 id={styles.title} className="discrete-link" dangerouslySetInnerHTML={{ __html: article.title }}>
 				</h2>
 			</Link>
 			<p
