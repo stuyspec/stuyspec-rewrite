@@ -310,7 +310,10 @@ export default function MixedArticleDisplay(props: {
       )}
       <div id={styles.pagination}>
         <button
-          onClick={() => setPage(page - 1)}
+          onClick={() => {
+            setPage(page - 1);
+            window.scrollTo(0, 0);
+          }}
           disabled={page - 1 < 1}
           style={page - 1 < 1 ? { cursor: "not-allowed" } : {}}
         >
@@ -318,7 +321,10 @@ export default function MixedArticleDisplay(props: {
         </button>
         <span>{page}</span>
         <button
-          onClick={() => setPage(page + 1)}
+          onClick={() => {
+            setPage(page + 1);
+            window.scrollTo(0, 0);
+          }}
           disabled={!props.additional_article_function}
           style={
             props.additional_article_function ? {} : { cursor: "not-allowed" }
