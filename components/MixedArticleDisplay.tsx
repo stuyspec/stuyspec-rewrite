@@ -179,7 +179,7 @@ export default function MixedArticleDisplay(props: {
     if (props.additional_article_function) {
       const articles = (await props.additional_article_function(
         articlesProcessed.sortedArticles.length * page,
-        Math.round(articlesProcessed.sortedArticles.length / 4),
+        10,
       )) as ReceivedArticle[];
 
       const sorted_articles = articles
