@@ -148,6 +148,7 @@ function RecruitmentPage() {
 									</a>
 								</>
 							)}
+							{department.applicationDueDate && <p className={styles.due_date}><b>Due {department.applicationDueDate}</b></p>}
 						</div>
 					))}
 				</section>
