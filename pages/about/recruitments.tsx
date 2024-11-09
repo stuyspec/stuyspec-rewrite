@@ -35,16 +35,15 @@ function RecruitmentPage() {
 				department: "Arts & Ent.",
 				description:
 					"As the only department with more than three article categories, Arts and Entertainment is notable for its versatility and creative freedom. We review recent cultural topics such as art, fashion, film, food, literature, music, and more! A&E writers are also free to experiment with the thinkpiece category, where one can explore cultural phenomena or trends, gender standards, or race from a cultural standpoint. Whether you are an aspiring music enthusiast or cultural connoisseur, everyone can find (or create!) their own niche in A&E.",
-				applicationForm:
-					"https://docs.google.com/document/d/1lIYPgWIpJFHYYsix2N_Z9nyfuIdTyz-4XNdP7-v03fY/edit?usp=sharing",
+				//applicationForm: "https://docs.google.com/document/d/1lIYPgWIpJFHYYsix2N_Z9nyfuIdTyz-4XNdP7-v03fY/edit?usp=sharing",
 				applicationDueDate: "",
 			},
 			{
 				department: "Opinions",
 				description:
 					"The Opinions section lets writers share their views on issues relevant within the country, Stuyvesant, and their personal lives. Writers across all grades give their opinions on subjects ranging from politics and economics to technology and culture and share their personal stories. We try to consistently create engaging, substantive, and relevant content to provide students with a closer look at the world and the Stuyvesant community.",
-				// applicationForm: "https://docs.google.com/document/d/1v3kGzIEaIKux38ZdPHglWZPPwaFHMsTsjmCxpEDP268/edit?usp=sharing",
-				applicationDueDate: "",
+				applicationForm: "https://docs.google.com/document/d/1di7Wot4QdZr6nJDQjnyMB6bIFATpfEi-_MT54iudzfA/edit?tab=t.0",
+				applicationDueDate: "December 1st",
 			},
 			{
 				department: "Sports",
@@ -57,8 +56,8 @@ function RecruitmentPage() {
 				department: "Science",
 				description:
 					"The Science Department covers everything science-related, from pandemics and groundbreaking discoveries to Stuyvesant’s very own fascinating science clubs and events. Our department captures the complexity of science through analytical and often opinion-based writing, and we aim to convey the intricacies of the world around us and beyond to the student body.",
-				applicationForm: "https://docs.google.com/document/d/1LkSAZMY2yzAOCi85B_KFc0oA7JtUab6ZXUu1w1fuuZo/edit",
-				applicationDueDate: "Saturday, November 30th",
+				applicationForm: "https://docs.google.com/document/d/1LkSAZMY2yzAOCi85B_KFc0oA7JtUab6ZXUu1w1fuuZo/edit?tab=t.0",
+				applicationDueDate: "November 30th",
 			},
 			{
 				department: "Web",
@@ -78,9 +77,9 @@ function RecruitmentPage() {
 				department: "Layout",
 				description:
 					"A good publication should interest readers before they even pick it up and read it; the Layout department does just that! We are responsible for formatting all of the articles, photos, art, and other media and make sure that the paper is aesthetically appealing and easy to read. After all, no one wants to read ugly and confusing blocks of text. With creativity and a certain magic called InDesign, we present to you what you know as The Spectator. As a staff member, you will be taught how to use InDesign and asked to critique the formatting of each issue as it is released.",
-				applicationForm: "https://docs.google.com/forms/d/18xaGQhhKhBhQwnLms797hncXY-F2QU9pNLj70c59roY/edit",
+				applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSe1BcGT7yusdtk2C1A2AzSv8SBvEnfbla63lKQoWbdTL7no5w/viewform",
 				applicationDueDate:
-					"Friday, November 15th																																										",
+					"November 15th",
 			},
 			{
 				department: "Photo",
@@ -93,8 +92,8 @@ function RecruitmentPage() {
 				department: "Art",
 				description:
 					"It is often difficult to read through dense blocks of text without something to rest your eyes on. In the Art Department, we strive to embellish the newspaper with our unique illustrations, each perfectly suited for its article. In a school where artistic abilities are not seen as a priority, you can easily find your niche as an artist for The Spectator, where your art will be displayed for all of its readers to admire. The limits of your creativity have no bounds; you can explore and develop your art skills by taking on cool and unique requests, from a portrait of Taylor Swift (A&E) to an oily stork (Humor), as well as the occasional thematic spread; the range is infinite. We encourage the use of all media!",
-				// applicationForm: "https://docs.google.com/forms/d/1Yd7xtniMlqRYtWKfUSEZh8TMj_sZYqcQMag7tmbKrrA/edit?usp=drive_web",
-				applicationDueDate: "",
+				applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSfd-DE_25-uMFItInXfIbirAl-2SVMbSJRWVrl0cZQ5XC7TBQ/viewform",
+				applicationDueDate: "November 22nd",
 			},
 			{
 				department: "Business",
@@ -117,10 +116,7 @@ function RecruitmentPage() {
 			<main id={styles.main}>
 				<h1>Recruitments</h1>
 				<p className={styles.note}>
-					Note: Spring 2024 recruitments will be held in the cafeteria
-					on Wednesday, March 27th and Thursday, March 28th. <br />
-					Application forms for Spring 2024 recruitments are coming
-					out soon!
+					Application forms for Fall 2024 recruitments can be found below!
 				</p>
 
 				<iframe
