@@ -47,47 +47,44 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className={styles.clickable_nav_element}>
-          <CollapsibleSearch />
-        </div>
-      </nav>
-      <div id={styles.department_bar}>
-        <span>
-          <Link href="/department/news">News</Link>
-        </span>
-        <span>
-          <Link href="/department/features">Features</Link>
-        </span>
-        <span>
-          <Link href="/department/opinions">Opinions</Link>
-        </span>
-        <span>
-          <Link href="/department/science">Science</Link>
-        </span>
-        <span>
-          <Link href="/department/ae">Arts & Entertainment</Link>
-        </span>
-        <span>
-          <Link href="/department/humor">Humor</Link>
-        </span>
-        <span>
-          <Link href="/department/sports">Sports</Link>
-        </span>
-        <span>
-          <Link href="/department/spec-plus">Spec+</Link>
-        </span>
-        <span>
-          <Link href="/about/recruitments">Recruitments</Link>
-        </span>
-      </div>
-      <div>
-        <Sidebar
-          showSidebar={viewSubSection}
-          setShowSidebar={setViewSubSection}
-        />
-      </div>
-    </div>
-  );
+				<div className={styles.clickable_nav_element}>
+					<CollapsibleSearch />
+				</div>
+			</nav>
+			<div id={styles.department_bar}>
+				<span>
+					<Link href="/department/news">News</Link>
+				</span>
+				<span>
+					<Link href="/department/features">Features</Link>
+				</span>
+				<span>
+					<Link href="/department/opinions">Opinions</Link>
+				</span>
+				<span>
+					<Link href="/department/science">Science</Link>
+				</span>
+				<span>
+					<Link href="/department/ae">Arts & Entertainment</Link>
+				</span>
+				<span>
+					<Link href="/department/humor">Humor</Link>
+				</span>
+				<span>
+					<Link href="/department/sports">Sports</Link>
+				</span>
+				<span>
+					<Link href="/department/spec-plus">Spec+</Link>
+				</span>
+				<span>
+					<Link href="/about/recruitments">Recruitments</Link>
+				</span>
+			</div>
+			<div>
+				<Sidebar showSidebar={viewSubSection} setShowSidebar={setViewSubSection} />
+			</div>
+		</div>
+	);
 };
 
 export default Navbar;
