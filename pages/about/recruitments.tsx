@@ -22,7 +22,7 @@ function RecruitmentPage() {
 					"Features capture the spirit and mood of the school. At times, Features covers Stuyvesant’s evergreen topics, e.g. what is it about PE uniforms that gets everybody so hot and bothered? Other times, writers might profile a teacher. Other times, writers share creative narratives about experiences they have had in the “Voices” section. There is much to be found in Features, so come hither!",
 				// applicationForm:
 				// 	"https://docs.google.com/document/d/1_Ofr7NwiRCHH2pOJUQKlbtuV1K9o0ffvo-0ID3ttJTY/",
-				applicationDueDate: "Friday, April 5th, 11:59 PM",
+				// applicationDueDate: "Friday, April 5th, 11:59 PM",
 			},
 			{
 				department: "Humor",
@@ -49,8 +49,8 @@ function RecruitmentPage() {
 				department: "Sports",
 				description:
 					"The Sports department covers all things sports, whether it be PSAL sports at Stuyvesant or professional sports. Articles pertaining to Stuyvesant sports range from championship articles and season updates to athlete and coach interviews and opinions. Writers also cover virtually any topic in the larger sports world, from debates on LeBron vs. MJ and college basketball to YouTube boxing and the Champions League. If that’s not enough to convince you to apply, we have an exclusive fantasy football league (with rewards).",
-				// applicationForm: "https://docs.google.com/document/d/18L-IbAeWqfDYfiIppkQO_P98xxm_4TfmNRAwSgLZgMQ/edit",
-				applicationDueDate: "",
+				applicationForm: "https://docs.google.com/document/d/1bIBsQHAcnt6jS_80s9f1wvZybTcJBW58zLHgXElFXPE/edit?usp=sharing",
+				applicationDueDate: "November 22nd",
 			},
 			{
 				department: "Science",
