@@ -70,8 +70,8 @@ function RecruitmentPage() {
 				department: "Copy",
 				description:
 					"Members of the Copy Department ensures that The Spectator produces clear, grammatically correct, and accurate articles. Did you notice both mistakes in the last sentence? If you did, you should join the Copy Department! Members gain early access to articles and sharpen their grammar skills while editing and fact-checking departments of their choice. We are committed to catching grammatical and factual mistakes in articles with attention to detail, and we look for members who want to contribute to maintaining The Spectator’s high-quality content.",
-				// applicationForm: "https://forms.gle/FF4512DNA7WSKHwm6",
-				applicationDueDate: "",
+				applicationForm: "https://forms.gle/ATYMCB4FHezC3KDx6",
+				applicationDueDate: "November 14th",
 			},
 			{
 				department: "Layout",
