@@ -5,7 +5,7 @@ const MixedAdvertisements: {
 }[] = [
 		{
 			name: "Ivy Prep",
-			image_src: "/images/ads/ivy_prep.jpg",
+			image_src: "/images/ads/ivy_prep.png",
 			url: "http://ivyprepschool.com/",
 		},
 	];
