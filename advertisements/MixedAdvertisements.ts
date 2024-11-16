@@ -4,9 +4,9 @@ const MixedAdvertisements: {
 	url: string;
 }[] = [
 		{
-			name: "Prompt College Application and Essay Coaching",
-			image_src: "/images/ads/prompt_mixed.jpg",
-			url: "https://www.myprompt.com/",
+			name: "Ivy Prep",
+			image_src: "/images/ads/ivy_prep.jpg",
+			url: "http://ivyprepschool.com/",
 		},
 	];
 export default MixedAdvertisements;
