@@ -14,7 +14,7 @@ function RecruitmentPage() {
 				description:
 					"The News Department covers school events, administrative changes, student organizations, school and student government policies, and out-of-school news. Besides traditional News articles, we also write mini-articles, graphs & surveys, and spreads. If you are interested in knowing Stuyvesant news before it is released, informing the student body, meeting students, teachers, and administrators, or seeing your work on the front page, apply to our department!",
 				applicationForm: "https://forms.gle/r4MP3nq82eR2mHJFA",
-				applicationDueDate: "Sunday, November 17th at 11:59PM",
+				applicationDueDate: "Sunday, November 24th at 11:59PM",
 			},
 			{
 				department: "Features",
@@ -29,7 +29,7 @@ function RecruitmentPage() {
 				description:
 					"Do you want to lowkey rant about your life and roast everything? Would you like to have a personality glow up? Do you want to join a low commitment and fun Spec department? Join Spec Humor! We write funny and satirical pieces for The Spec and unlike other departments, everything we publish is libel and slander which means that you'll be in control of what everyone says!",
 				applicationForm: "https://forms.gle/kTcaB5jknCkqzLdp6",
-				applicationDueDate: "Saturday, November 23rd at 11:59PM",
+				applicationDueDate: "Sunday, November 24rd at 11:59PM",
 			},
 			{
 				department: "Arts & Ent.",
