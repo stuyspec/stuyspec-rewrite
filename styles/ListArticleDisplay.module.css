@@ -4,12 +4,17 @@
 	border-top: 1px solid var(--primary);
 	padding-top: 15px;
 }
+#list_view .item:last-child {
+	padding-bottom: 15px;
+	border-bottom: 1px solid var(--primary);
+}
 
 #list_view .inner_item {
 	display: flex;
 	width: 100%;
 	min-height: 135px;
 	justify-content: space-between;
+	gap: 20px;
 }
 
 .item_left {
@@ -35,10 +40,13 @@
 }
 
 #list_view .image {
-	margin-left: 20px;
 	height: 135px;
-	width: auto;
+	width: auto !important; /* Override next-image's default */
 	object-fit: contain;
 	position: relative !important;
 	height: 135px !important;
+}
+
+.authors {
+	font-family: var(--secondary-font);
 }

@@ -47,7 +47,7 @@ async function getLatestImages() {
 	const volume = Number(splitTitle[1]);
 	const issue = Number(splitTitle[3]);
 
-	const link = `https://issuu.com/stuyspectator/docs/${uriFileName}`;
+	const link = `https://pdf.stuyspec.com/${volume}/${issue}.pdf`;
 
 	return { images, volume, issue, title: postTitle, link };
 }

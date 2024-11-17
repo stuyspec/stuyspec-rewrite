@@ -6,7 +6,21 @@
 	margin: auto;
 }
 
-#departmentTitle {
-	margin-top: 0.75rem;
+.departmentHeadingContainer {
 	text-align: center;
+	margin-block: 1rem;
+}
+
+.departmentHeadingContainer p {
+	font-size: 1.2rem;
+}
+
+@media screen and (max-width: 840px) {
+	#departmentTitle {
+		font-size: var(--medium-text);
+	}
+
+	.departmentHeadingContainer {
+		margin-block: 0.75rem;
+	}
 }

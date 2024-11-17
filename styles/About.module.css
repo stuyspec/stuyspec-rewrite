@@ -19,9 +19,27 @@
 	#container {
 		margin: 1.5rem 2rem 3rem 2rem;
 	}
+
 	#issuu {
 		width: 300px;
 		height: 450px;
 		margin: 1rem auto;
 	}
+}
+
+.contactPage {
+	text-align: center;
+	display: flex;
+	height: calc(100vh - 172px);
+	font-size: 1.3rem;
+	padding: 10px;
+}
+
+.contactPageLinksContainer {
+	margin: auto;
+}
+
+
+.contactPageLinksContainer>* {
+	margin-block: 0.5rem;
 }

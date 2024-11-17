@@ -22,8 +22,9 @@ const CollapsibleSearch = () => {
 	};
 	function submitSearchRequest(e: FormEvent) {
 		e.preventDefault();
-		Router.push(String("/search?query=" + searchValue));
-	}
+		if (searchValue.trim()) {
+			Router.push(String("/search?query=" + searchValue));
+	}}
 
 	return (
 		<div id={styles.collapsible_search_parent}>

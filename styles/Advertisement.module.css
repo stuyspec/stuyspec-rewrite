@@ -12,3 +12,26 @@
 	position: relative !important;
 	height: unset !important;
 }
+
+.banner_text_parent {
+	padding: 1rem;
+	margin-bottom: 1rem;
+	width: 100%;
+
+	background-color: var(--accent);
+	color: var(--primary-immutable);
+	border-radius: 5px;
+
+	text-align: center;
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 1000px) {
+	.banner_text_parent {
+		padding-inline: 0.5rem;
+	}
+
+	.banner_text_parent h1 {
+		font-size: 1.5rem;
+	}
+}

@@ -46,7 +46,11 @@ function Article(props: Props) {
 			</Head>
 
 			<main id={styles.main}>
-				<h1 id={styles.departmentTitle}>{props.department_display}</h1>
+				<hgroup className={styles.departmentHeadingContainer}>
+					<h1 id={styles.departmentTitle}>
+						{props.department_display}
+					</h1>
+				</hgroup>
 				<MixedArticleDisplay
 					articles={props.articles}
 					display_department={false}
@@ -55,7 +59,7 @@ function Article(props: Props) {
 			</main>
 		</div>
 	);
-};
+}
 
 export default Article;
 

@@ -6,6 +6,11 @@
 	margin: auto;
 }
 
+.note {
+	font-size: 1.2rem;
+	margin-bottom: 1rem;
+}
+
 #video {
 	margin-left: auto;
 	margin-right: auto;
@@ -48,4 +53,8 @@
 	#departments {
 		grid-template-columns: repeat(1, 1fr);
 	}
+}
+
+.due_date {
+	margin-top: 0.25rem;
 }

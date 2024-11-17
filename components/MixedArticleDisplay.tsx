@@ -9,8 +9,7 @@ import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
 import { useCallback, useEffect, useState, Fragment } from "react";
-import Advertisment from "./Advertisement";
-import advertisements from "../advertisements";
+import MixedAdvertisment from "../advertisements/MixedAdvertisement";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;
@@ -55,8 +54,7 @@ function CenterArticle(props: {
 				<></>
 			)}
 			<Link passHref href={"/article/" + article.slug}>
-				<h2 id={styles.title} className="discrete-link">
-					{article.title}
+				<h2 id={styles.title} className="discrete-link" dangerouslySetInnerHTML={{ __html: article.title }}>
 				</h2>
 			</Link>
 			<p
@@ -193,7 +191,7 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 0 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment
+										<MixedAdvertisment
 											index={index / ad_spacing}
 										/>
 									</div>
@@ -249,8 +247,11 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 1 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment
-											index={Math.floor(index / ad_spacing) + 2}
+										<MixedAdvertisment
+											index={
+												Math.floor(index / ad_spacing) +
+												2
+											}
 										/>
 									</div>
 								) : (
@@ -273,8 +274,10 @@ export default function MixedArticleDisplay(props: {
 								/>
 								{index % ad_spacing == 1 && index != 0 ? (
 									<div className={styles.ad_parent}>
-										<Advertisment
-											index={Math.floor(index / ad_spacing)}
+										<MixedAdvertisment
+											index={Math.floor(
+												index / ad_spacing
+											)}
 										/>
 									</div>
 								) : (

@@ -8,6 +8,10 @@ const securityHeaders = [
 ];
 
 module.exports = {
+	i18n: {
+		locales: ["en"],
+		defaultLocale: "en",
+	},
 	reactStrictMode: true,
 	images: {
 		domains: [
@@ -41,7 +45,13 @@ module.exports = {
 			{
 				source: "/apply/web",
 				destination: "https://docs.google.com/forms/d/e/1FAIpQLSdJw8R4-bw5xjWG9P3Ld1WY4ZEg_L3cyhFzYJgB_a7SJtJAsA/viewform?usp=sf_link",
+				destination: "https://forms.gle/APPgTmcS2Zom6z1y7",
 				permanent: true,
+			},
+			{
+				source: "/department/ae/sing",
+				destination: "/department/ae/sing!",
+				permanent: true
 			},
 		];
 	},
