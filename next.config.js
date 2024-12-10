@@ -52,6 +52,11 @@ module.exports = {
 				destination: "/department/ae/sing!",
 				permanent: true
 			},
+			{
+				source: "/advertise",
+				destination: "/about/advertise",
+				permanent: true
+			},
 		];
 	},
 	async rewrites() {
