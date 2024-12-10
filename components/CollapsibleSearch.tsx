@@ -24,7 +24,8 @@ const CollapsibleSearch = () => {
 		e.preventDefault();
 		if (searchValue.trim()) {
 			Router.push(String("/search?query=" + searchValue));
-	}}
+		}
+	}
 
 	return (
 		<div id={styles.collapsible_search_parent}>
@@ -32,7 +33,6 @@ const CollapsibleSearch = () => {
 				<div
 					style={{
 						display: !searchBar ? "block" : "none", // Icon is always the opposite visibility of the textbox
-						transition: "visibility 0s, opacity 0.2s linear",
 					}}
 					id={styles.search_button}
 					onClick={onSearchFocus}
@@ -47,10 +47,11 @@ const CollapsibleSearch = () => {
 				<input
 					id={styles.search_textbox}
 					style={{
-						marginRight: searchBar ? "0" : "-250px", // To animate coming from the right side
+						right: searchBar ? "0" : "-100px", // To animate coming from the right side
 						opacity: searchBar ? "1" : "0",
 						cursor: searchBar ? "auto" : "pointer",
 						zIndex: searchBar ? 3 : -1,
+						top: 0,
 					}}
 					placeholder="Search"
 					onFocus={onSearchFocus}

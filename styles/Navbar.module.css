@@ -34,6 +34,7 @@
 #subscribe_parent {
 	margin-left: auto;
 }
+
 #logo_container {
 	font-size: var(--large-text);
 	color: var(--primary-immutable);
@@ -41,8 +42,10 @@
 	width: 250px;
 	text-align: center;
 	position: absolute;
-	top: 32px; /* position the top  edge of the element at the middle of the parent */
-	left: 50%; /* position the left edge of the element at the middle of the parent */
+	top: 32px;
+	/* position the top  edge of the element at the middle of the parent */
+	left: 50%;
+	/* position the left edge of the element at the middle of the parent */
 
 	transform: translate(-50%, -50%);
 	cursor: pointer;
@@ -62,6 +65,7 @@
 .clickable_nav_element:hover {
 	opacity: 0.75;
 }
+
 #hamburgerMenu:active,
 #subscribe:active,
 #searchButton:active,
@@ -74,6 +78,7 @@
 		grid-template-columns: 48px calc(100% - 188px) 56px 56px;
 		column-gap: 1.5rem;
 	}
+
 	#logo_container {
 		font-size: 2rem;
 		position: static;
@@ -86,9 +91,11 @@
 		width: 220px;
 		text-align: center;
 	}
+
 	#subscribe_parent {
 		display: none;
 	}
+
 	#searchButton {
 		grid-column-start: 4;
 		grid-column-end: 4;
@@ -110,6 +117,12 @@
 }
 
 @media screen and (max-width: 480px) {
+	#logo_container {
+		width: 200px;
+	}
+}
+
+@media screen and (max-width: 350px) {
 	#logo_container {
 		width: 140px;
 	}
