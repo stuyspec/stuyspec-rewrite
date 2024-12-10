@@ -1,0 +1,42 @@
+.title {
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+
+.place_order {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.section {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.section p {
+    font-size: 1.3rem;
+}
+
+.pricing_table {
+    font-size: 1.3rem;
+    border-collapse: collapse;
+}
+
+
+.pricing_table,
+.pricing_table th,
+.pricing_table td {
+    border: 1px solid var(--primary);
+}
+
+.pricing_table td:first-child {
+    font-weight: bold;
+}
+
+
+
+@media screen and (max-width: 840px) {
+    .pricing_table {
+        font-size: 1.1rem;
+    }
+}
