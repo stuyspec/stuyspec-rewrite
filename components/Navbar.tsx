@@ -148,7 +148,7 @@ const Navbar = () => {
 				</span>
 				<span>
 				<div className = {styles.main}>
-					<Link href="/department/ae">AE</Link>
+					<Link href="/department/ae">A&E</Link>
 					</div>
 					<div className={styles.subdepartment}>
 						<span>
