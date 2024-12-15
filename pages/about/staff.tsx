@@ -5,7 +5,7 @@ import { generateMetaTags } from "../../utils/generateMetaTags";
 function StaffPage() {
 	const page_title = "Staff - The Stuyvesant Spectator";
 	const meta_url = `https://stuyspec.com/about/staff`;
-	const meta_description = `The members of The Stuyvesant Spectator's 2022-2023 Editorial Board.`;
+	const meta_description = `The members of The Stuyvesant Spectator's 2024-2025 Editorial Board.`;
 
 	return (
 		<>
@@ -70,6 +70,7 @@ function StaffPage() {
 						<p>Leonardo Guidi</p>
 						<p>Kaileen So</p>
 						<p>Evan Wong</p>
+						<p>Duncan Park</p>
 					</div>
 					<div>
 						<h3 className={styles.photos}>Photography Editors</h3>
