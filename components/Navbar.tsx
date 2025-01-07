@@ -6,6 +6,7 @@ import Image from "next/image";
 import Sidebar from "./Sidebar";
 import { useState } from "react";
 
+
 const Navbar = () => {
 	const [viewSubSection, setViewSubSection] = useState(false);
 	function toggleMenu() {
@@ -13,6 +14,7 @@ const Navbar = () => {
 	}
 
 	return (
+		
 		<div id={styles.nav_parent}>
 			<nav id={styles.nav}>
 				<div
