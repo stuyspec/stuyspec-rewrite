@@ -17,11 +17,7 @@ const Navbar = () => {
 		
 		<div id={styles.nav_parent}>
 			<nav id={styles.nav}>
-				<div
-					id={styles.hamburgerMenu}
-					className="button"
-					onClick={toggleMenu}
-				>
+				<div id={styles.hamburgerMenu} className="button" onClick={toggleMenu}>
 					<Image
 						src="/images/hamburger-menu.svg"
 						width={30}
@@ -53,7 +49,7 @@ const Navbar = () => {
 					</Link>
 				</div>
 
-				<div className={styles.clickable_nav_element}>
+				<div>
 					<CollapsibleSearch />
 				</div>
 			</nav>
@@ -340,7 +336,7 @@ const Navbar = () => {
 				</span>
 			</div>
 			<div>
-				<Sidebar showSidebar={viewSubSection} />
+				<Sidebar showSidebar={viewSubSection} setShowSidebar={setViewSubSection} />
 			</div>
 		</div>
 	);

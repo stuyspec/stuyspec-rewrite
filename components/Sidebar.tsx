@@ -5,14 +5,17 @@ import Image from "next/image";
 import LatestPreviewImage from "./LatestPreviewImage";
 import ThemeToggle from "./ThemeToggle";
 import {
-	BsSpotify,
-	BsFacebook,
-	BsInstagram,
-	BsLinkedin,
-	BsGithub,
+  BsSpotify,
+  BsFacebook,
+  BsInstagram,
+  BsLinkedin,
+  BsGithub,
 } from "react-icons/bs";
 
-const Sidebar = (props: { showSidebar: boolean }) => {
+const Sidebar = (props: { showSidebar: boolean; setShowSidebar: (v: boolean) => void }) => {
+	const { showSidebar, setShowSidebar } = props;
+	const autoClose = () => window.innerWidth <= 940 && setShowSidebar(false);
+
 	return (
 		<div
 			id={styles.sidebar_parent}
@@ -20,13 +23,13 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 		>
 			<div id={styles.sidebar}>
 				<span className={styles.maindepartment}>
-					<Link passHref href="/">
+					<Link passHref href="/" onClick={autoClose}>
 						Home
 					</Link>
 				</span>
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
-						<Link href="/department/news">News</Link>
+						<Link href="/department/news" onClick={autoClose}>News</Link>
 					</span>
 					<div className={styles.subdepartment}>
 						<span>
@@ -51,7 +54,7 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
-						<Link href="/department/features">Features</Link>
+						<Link href="/department/features" onClick={autoClose}>Features</Link>
 					</span>
 					<div className={styles.subdepartment}>
 						<span>
@@ -74,7 +77,7 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
-						<Link href="/department/opinions">Opinions</Link>
+						<Link href="/department/opinions" onClick={autoClose}>Opinions</Link>
 					</span>
 					<div className={styles.subdepartment}>
 						<span>
@@ -93,12 +96,12 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 				</div>
 
 				<span className={styles.maindepartment}>
-					<Link href="/department/science">Science</Link>
+					<Link href="/department/science" onClick={autoClose}>Science</Link>
 				</span>
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
-						<Link href="/department/ae">Arts & Entertainment</Link>
+						<Link href="/department/ae" onClick={autoClose}>Arts & Entertainment</Link>
 					</span>
 					<div className={styles.subdepartment}>
 						<span>
@@ -155,7 +158,7 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
-						<Link href="/department/humor">Humor</Link>
+						<Link href="/department/humor" onClick={autoClose}>Humor</Link>
 					</span>
 					<div className={styles.subdepartment}>
 						<span>
@@ -180,7 +183,7 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 
 				<div className={styles.department}>
 					<span className={styles.maindepartment}>
-						<Link href="/department/sports">Sports</Link>
+						<Link href="/department/sports" onClick={autoClose}>Sports</Link>
 					</span>
 					<div className={styles.subdepartment}>
 						<span>
@@ -204,59 +207,57 @@ const Sidebar = (props: { showSidebar: boolean }) => {
 				</div>
 
 				<span className={styles.maindepartment}>
-					<Link href="/department/spec-plus">Spec+</Link>
+					<Link href="/department/spec-plus" onClick={autoClose}>Spec+</Link>
 				</span>
 				<span className={styles.maindepartment}>
-					<Link href="/about/recruitments">Recruitments</Link>
+					<Link href="/about/recruitments" onClick={autoClose}>Recruitments</Link>
 				</span>
 
 				<span className={styles.maindepartment}>
-					<Link href="https://pdf.stuyspec.com">
+					<Link href="https://pdf.stuyspec.com" onClick={autoClose}>
 						Virtual Archives
 					</Link>
 				</span>
 
-				<div id={styles.additional_features}>
-					<div className={styles.clickable_nav_element}>
-						<Link href="/subscribe">
-							<p id={subscribe_button_styles.subscribe}>
-								Subscribe
-							</p>
-						</Link>
-					</div>
-					<div className={styles.clickable_nav_element}>
-						<ThemeToggle />
-					</div>
-				</div>
-				<div id={styles.socialsBar}>
-					<div id={styles.column}>
-						<LatestPreviewImage
-							imageIndex={0}
-							imageClass={styles.archiveImage1}
-						/>
-					</div>
+        <div id={styles.additional_features}>
+          <div className={styles.clickable_nav_element}>
+            <Link href="/subscribe">
+              <p id={subscribe_button_styles.subscribe}>Subscribe</p>
+            </Link>
+          </div>
+          <div className={styles.clickable_nav_element}>
+            <ThemeToggle />
+          </div>
+        </div>
+        <div id={styles.socialsBar}>
+          <div id={styles.column}>
+            <LatestPreviewImage
+              imageIndex={0}
+              imageClass={styles.archiveImage1}
+            />
+          </div>
 
-					<div id={styles.mediaButtons}>
-						<Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
-							<BsSpotify id={styles.mediaButton} />
-						</Link>
-						<Link href="https://www.facebook.com/stuyspectator">
-							<BsFacebook id={styles.mediaButton} />
-						</Link>
-						<Link href="https://www.instagram.com/stuyspectator/">
-							<BsInstagram id={styles.mediaButton} />
-						</Link>
-						<Link href="https://www.linkedin.com/company/the-stuyvesant-spectator">
-							<BsLinkedin id={styles.mediaButton} />
-						</Link>
-						<Link href="https://github.com/stuyspec">
-							<BsGithub id={styles.mediaButton} />
-						</Link>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+          <div id={styles.mediaButtons}>
+            <Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
+              <BsSpotify id={styles.mediaButton} />
+            </Link>
+            <Link href="https://www.facebook.com/stuyspectator">
+              <BsFacebook id={styles.mediaButton} />
+            </Link>
+            <Link href="https://www.instagram.com/stuyspectator/">
+              <BsInstagram id={styles.mediaButton} />
+            </Link>
+            <Link href="https://www.linkedin.com/company/the-stuyvesant-spectator">
+              <BsLinkedin id={styles.mediaButton} />
+            </Link>
+            <Link href="https://github.com/stuyspec">
+              <BsGithub id={styles.mediaButton} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Sidebar;
