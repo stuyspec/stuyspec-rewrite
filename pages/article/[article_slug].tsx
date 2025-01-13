@@ -16,6 +16,8 @@ import { generateMetaTags } from "../../utils/generateMetaTags";
 import BannerAdvertisements from "../../advertisements/BannerAdvertisements";
 import BannerAdvertisement from "../../advertisements/BannerAdvertisement";
 
+import { motion, useScroll, useSpring } from "framer-motion";
+
 interface Props {
 	article: ReceivedArticle;
 	banner_ad_index: number;
@@ -37,6 +39,13 @@ function Article(props: Props) {
 		summary,
 		slug,
 	} = props.article;
+
+	const { scrollYProgress } = useScroll();
+	const scaleX = useSpring(scrollYProgress, {
+		stiffness: 100,
+		damping: 30,
+		restDelta: 0.001
+	});
 
 	const generateApproxReadingTime = () => {
 		let count = text.split(" ");
@@ -81,6 +90,8 @@ function Article(props: Props) {
 					props.article.cover_image
 				)}
 			</Head>
+
+			<motion.div style={{ scaleX }} className={styles["progress-bar"]} />
 
 			<main id={styles.main}>
 				{isAdvertisingAllowed && (
