@@ -73,7 +73,7 @@ function CenterArticle(props: {
 			</Link>
 
 			<p className={styles.article_volume_issue}>
-				<Link href={`/volume/${article.volume}/issue/${article.issue}`}>
+				<Link href={`/volume/${article.volume}/issue/${article.issue}`} className="discrete-link">
 					Issue {article.issue}, Volume {article.volume}
 				</Link>
 			</p>
