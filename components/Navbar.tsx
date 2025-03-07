@@ -14,6 +14,7 @@ import {
   FaLinkedinIn,
   FaSpotify,
 } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 function currentDate() {
   const today = new Date();
@@ -53,6 +54,7 @@ function currentDate() {
 const Navbar = () => {
   const [viewSubSection, setViewSubSection] = useState(false);
   const [scroll, setScroll] = useState(0);
+  const department = usePathname().split("/")[2];
 
   function toggleMenu() {
     setViewSubSection(!viewSubSection);
@@ -175,31 +177,33 @@ const Navbar = () => {
           }
         >
           <div id={styles.department_bar}>
-            <span>
+            <span className={department === "news" ? styles.active : ""}>
               <Link href="/department/news">News</Link>
             </span>
-            <span>
+            <span className={department === "features" ? styles.active : ""}>
               <Link href="/department/features">Features</Link>
             </span>
-            <span>
+            <span className={department === "opinions" ? styles.active : ""}>
               <Link href="/department/opinions">Opinions</Link>
             </span>
-            <span>
+            <span className={department === "science" ? styles.active : ""}>
               <Link href="/department/science">Science</Link>
             </span>
-            <span>
+            <span className={department === "ae" ? styles.active : ""}>
               <Link href="/department/ae">Arts & Entertainment</Link>
             </span>
-            <span>
+            <span className={department === "humor" ? styles.active : ""}>
               <Link href="/department/humor">Humor</Link>
             </span>
-            <span>
+            <span className={department === "sports" ? styles.active : ""}>
               <Link href="/department/sports">Sports</Link>
             </span>
-            <span>
+            <span className={department === "spec-plus" ? styles.active : ""}>
               <Link href="/department/spec-plus">Spec+</Link>
             </span>
-            <span>
+            <span
+              className={department === "recruitments" ? styles.active : ""}
+            >
               <Link href="/about/recruitments">Recruitments</Link>
             </span>
           </div>
