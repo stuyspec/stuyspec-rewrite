@@ -160,3 +160,7 @@
 .clickable_nav_element {
   cursor: pointer;
 }
+
+.active {
+  opacity: 0.75;
+}

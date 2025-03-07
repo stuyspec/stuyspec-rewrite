@@ -7,8 +7,16 @@
 }
 
 .departmentHeadingContainer {
-  text-align: center;
-  margin-block: 1rem;
+  margin-block: 0.85rem;
+  font-size: 0px;
+}
+
+@media screen and (max-width: 1050px) {
+  .departmentHeadingContainer {
+    text-align: center;
+    margin-block: 1rem;
+    font-size: 1.2rem;
+  }
 }
 
 .departmentHeadingContainer p {
