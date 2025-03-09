@@ -201,9 +201,8 @@ const Navbar = () => {
             <span className={department === "spec-plus" ? styles.active : ""}>
               <Link href="/department/spec-plus">Spec+</Link>
             </span>
-            <span
-              className={department === "recruitments" ? styles.active : ""}
-            >
+            <span className={styles.separator}>|</span>
+            <span className={department === "recruitments" ? styles.active : ""}>
               <Link href="/about/recruitments">Recruitments</Link>
             </span>
           </div>

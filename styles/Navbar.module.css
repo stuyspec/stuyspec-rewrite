@@ -6,17 +6,18 @@
 }
 
 #department_bar {
-  max-width: 1000px;
-  font-weight: 800;
+  max-width: 1200px; 
+  font-weight: 200;
+  font-size: var(--extra-small-text);
   text-transform: uppercase;
   height: fit-content;
   display: flex;
-  justify-content: space-between;
-  margin-right: auto;
-  margin-left: auto;
+  justify-content: space-evenly; 
+  gap: 25px; 
+  margin: 0 auto; 
   font-family: var(--secondary-font);
   align-items: center;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
   padding-top: 10px;
 }
 
@@ -29,6 +30,7 @@
 #media_buttons {
   font-size: 1.5rem;
   padding-top: 1rem;
+  
 }
 
 #media_button {
@@ -163,4 +165,11 @@
 
 .active {
   opacity: 0.75;
+}
+
+.separator {
+  color: #ccc;
+  font-size: 0.9rem; 
+  font-weight: normal;
+  margin: 0 1px; 
 }
