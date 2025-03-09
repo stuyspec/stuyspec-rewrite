@@ -3,10 +3,6 @@ const MixedAdvertisements: {
 	image_src: string;
 	url: string;
 }[] = [
-		{
-			name: "Ivy Prep",
-			image_src: "/images/ads/ivy_prep.png",
-			url: "http://ivyprepschool.com/",
-		},
-	];
+	
+	]; // duplicate ads cuz just 2 causes repeats on home page
 export default MixedAdvertisements;
