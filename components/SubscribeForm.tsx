@@ -1,6 +1,8 @@
 import styles from "../styles/Subscribe.module.css";
 import { useState } from "react";
 import subscribe_button_styles from "../styles/SubscribeButton.module.css";
+
+
 const SubscribeForm = () => {
 	const [email, setEmail] = useState("");
 	const [subscribeState, setSubscribeState] = useState("idle");

@@ -4,12 +4,14 @@ import Link from "next/link";
 import CollapsibleSearch from "./CollapsibleSearch";
 import Image from "next/image";
 import Sidebar from "./Sidebar";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
 const Navbar = () => {
+	const currentDate: Date = new Date();
+	const formattedDate: string = currentDate.toLocaleDateString();
   const [viewSubSection, setViewSubSection] = useState(false);
   const [scroll, setScroll] = useState(0);
-  const department = usePathname().split("/")[2];
+  //const department = usePathname().split("/")[2];
 
   function toggleMenu() {
     setViewSubSection(!viewSubSection);
@@ -70,6 +72,7 @@ const Navbar = () => {
 				</div>
 			</nav>
 			<div id={styles.department_bar}>
+				Date: {formattedDate}
 				<span>
 					<Link href="/department/news">News</Link>
 				</span>

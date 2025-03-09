@@ -11,6 +11,7 @@ import styles from "../../../styles/[department].module.css";
 import MixedArticleDisplay from "../../../components/MixedArticleDisplay";
 import { generateMetaTags } from "../../../utils/generateMetaTags";
 import ListArticleDisplay from "../../../components/ListArticleDisplay";
+import { useState, useEffect} from "react";
 
 interface Props {
 	articles: ReceivedArticle[];
@@ -46,6 +47,7 @@ function SubSection(props: Props) {
 		const articles = json.articles as ReceivedArticle[];
 		return articles;
 	};
+	
 
 	// Temporary workaround for when no images and mixedArticleDisplay craashes
 	const useList = props.articles.every((v) => !v.cover_image);
