@@ -164,3 +164,26 @@
 .active {
   opacity: 0.75;
 }
+
+.weatherTempBar {
+  margin-left: auto;
+  font-family: var(--secondary-font);
+  background-color: var(--secondary-nav);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  font-size: var(--extra-small-text);
+  color: lightgray; 
+  letter-spacing: 1px;
+  
+}
+
+.weatherIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
