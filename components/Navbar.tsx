@@ -73,57 +73,47 @@ const Navbar = () => {
     }
   }
 
+  async function fetchWeather() {
+    const apiKey = "a1ed29a92d2a434190f45751250803";
+    const zipCode = 10282;
+
+    try {
+      const response = await fetch(
+        `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${zipCode}`,
+      );
+      const data = await response.json();
+
+      if (data.error) throw new Error(data.error.message);
+      else
+        setWeather({
+          city: "STUYVESANT, NY",
+          temp: data.current.temp_f,
+          icon:
+            data.current.is_day == 1
+              ? "//cdn.weatherapi.com/weather/64x64/day/116.png"
+              : "//cdn.weatherapi.com/weather/64x64/night/116.png",
+          isDay: data.current.is_day,
+        });
+    } catch (error) {
+      setWeather({
+        city: "Error loading weather",
+        temp: null,
+        icon: "",
+        isDay: true,
+      });
+    }
+  }
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
+
+    fetchWeather();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  useEffect(() => {
-    async function fetchWeather() {
-      const apiKey = "a1ed29a92d2a434190f45751250803";
-      const zipCode = 10282;
-      try {
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${zipCode}`
-        );
-        const data = await response.json();
-        if (data.error) {
-          setWeather({
-            city: "Weather data unavailable",
-            temp: null,
-            icon: "",
-            isDay: true,
-          });
-        } else {
-          const tempF = data.current.temp_f
-          const isDay = data.current.is_day;
-          const iconCode = data.current.condition.icon;
-          let iconUrl = "";
-          if (isDay == 1) {
-            iconUrl = "//cdn.weatherapi.com/weather/64x64/day/116.png";
-          }
-          else {
-            iconUrl = "//cdn.weatherapi.com/weather/64x64/night/116.png"
-          }
-          setWeather({
-            city: "STUYVESANT , NY",
-            temp: tempF,
-            icon: iconUrl,
-            isDay: isDay,
-          });
-        }
-      } catch (error) {
-        setWeather({
-          city: "Error loading weather",
-          temp: null,
-          icon: "",
-          isDay: true,
-        });
-      }
-    }
-    fetchWeather();
-  },[]);
+
   return (
     <>
       <div id={styles.ghost} style={scroll > 121.6 ? { height: "40px" } : {}} />
@@ -190,22 +180,37 @@ const Navbar = () => {
               </Link>
             </span>
 
-            <div id={styles.subscribe_search}>
-              <div
-                id={styles.subscribe}
-                className={styles.clickable_nav_element}
-              >
-                <Link href="/subscribe">
-                  <p id={subscribe_button_styles.subscribe_button_navbar}>
-                    Subscribe
-                  </p>
-                </Link>
+            <div className={styles.right}>
+              <div id={styles.subscribe_search}>
+                <div
+                  id={styles.subscribe}
+                  className={styles.clickable_nav_element}
+                >
+                  <Link href="/subscribe">
+                    <p id={subscribe_button_styles.subscribe_button_navbar}>
+                      Subscribe
+                    </p>
+                  </Link>
+                </div>
+                <div>
+                  <CollapsibleSearch />
+                </div>
               </div>
-              <div>
-                <CollapsibleSearch />
+              <div id={styles.weather_bar}>
+                {weather.temp !== null ? (
+                  <div className={styles.weatherTempBar}>
+                    <img
+                      src={weather.icon}
+                      alt="Day/Night Icon"
+                      className={styles.weatherIcon}
+                    />
+                    {`${weather.temp}°F ${weather.city}`}
+                  </div>
+                ) : (
+                  <div className={styles.weatherTempBar}>{weather.city}</div>
+                )}
               </div>
             </div>
-
           </div>
         </nav>
 
@@ -258,27 +263,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div id = {styles.weather_bar}>
-          {weather.temp !== null ? (
-            <div className={styles.weatherTempBar}>
-            <img
-              src={weather.icon}
-              alt="Day/Night Icon"
-              className={styles.weatherIcon}
-            />
-            {`${weather.temp}°F ${weather.city}`}
-          </div>
-          ) : (
-            <div className={styles.weatherTempBar}>
-              {weather.city}
-            </div>
-        )}
-        </div>
-          <Sidebar
-            showSidebar={viewSubSection}
-            setShowSidebar={setViewSubSection}
-          />
-        </div>
+        <Sidebar
+          showSidebar={viewSubSection}
+          setShowSidebar={setViewSubSection}
+        />
+      </div>
     </>
   );
 };
