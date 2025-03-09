@@ -54,6 +54,12 @@ function currentDate() {
 const Navbar = () => {
   const [viewSubSection, setViewSubSection] = useState(false);
   const [scroll, setScroll] = useState(0);
+  const [weather, setWeather] = useState({
+    temp: null,
+    city: "Loading...",
+    icon: "",
+    isDay: true,
+  });
   const department = usePathname().split("/")[2];
 
   function toggleMenu() {
@@ -74,7 +80,50 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  useEffect(() => {
+    async function fetchWeather() {
+      const apiKey = "a1ed29a92d2a434190f45751250803";
+      const zipCode = 10282;
+      try {
+        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${zipCode}`
+        );
+        const data = await response.json();
+        if (data.error) {
+          setWeather({
+            city: "Weather data unavailable",
+            temp: null,
+            icon: "",
+            isDay: true,
+          });
+        } else {
+          const tempF = data.current.temp_f
+          const isDay = data.current.is_day;
+          const iconCode = data.current.condition.icon;
+          let iconUrl = "";
+          if (isDay == 1) {
+            iconUrl = "//cdn.weatherapi.com/weather/64x64/day/116.png";
+          }
+          else {
+            iconUrl = "//cdn.weatherapi.com/weather/64x64/night/116.png"
+          }
+          setWeather({
+            city: "STUYVESANT , NY",
+            temp: tempF,
+            icon: iconUrl,
+            isDay: isDay,
+          });
+        }
+      } catch (error) {
+        setWeather({
+          city: "Error loading weather",
+          temp: null,
+          icon: "",
+          isDay: true,
+        });
+      }
+    }
+    fetchWeather();
+  },[]);
   return (
     <>
       <div id={styles.ghost} style={scroll > 121.6 ? { height: "40px" } : {}} />
@@ -152,11 +201,11 @@ const Navbar = () => {
                   </p>
                 </Link>
               </div>
-
               <div>
                 <CollapsibleSearch />
               </div>
             </div>
+
           </div>
         </nav>
 
@@ -209,13 +258,27 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div>
+        <div id = {styles.weather_bar}>
+          {weather.temp !== null ? (
+            <div className={styles.weatherTempBar}>
+            <img
+              src={weather.icon}
+              alt="Day/Night Icon"
+              className={styles.weatherIcon}
+            />
+            {`${weather.temp}°F ${weather.city}`}
+          </div>
+          ) : (
+            <div className={styles.weatherTempBar}>
+              {weather.city}
+            </div>
+        )}
+        </div>
           <Sidebar
             showSidebar={viewSubSection}
             setShowSidebar={setViewSubSection}
           />
         </div>
-      </div>
     </>
   );
 };
