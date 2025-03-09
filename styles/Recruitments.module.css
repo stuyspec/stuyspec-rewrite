@@ -26,6 +26,7 @@
   padding: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
+  height: 2rem;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -44,6 +45,7 @@
 }
 
 #departmentOptions {
+  height: 325px;
   grid-column: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -99,6 +101,7 @@
   }
 
   #departmentOptions {
+    height: auto;
     padding: 0 5rem;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     margin-bottom: 3rem;
