@@ -12,7 +12,6 @@
 }
 
 #subscribe_button_navbar {
-  padding-top: 1rem;
   color: var(--primary-immutable);
   font-family: var(--secondary-font);
   text-transform: uppercase;

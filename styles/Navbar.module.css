@@ -168,7 +168,7 @@
 .weatherTempBar {
   margin-left: auto;
   font-family: var(--secondary-font);
-  min-width: 167.3px;
+  min-width: 180px;
   min-height: 25px;
   background-color: var(--secondary-nav);
   transform: translateY(7px);

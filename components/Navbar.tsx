@@ -263,10 +263,12 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Sidebar
-          showSidebar={viewSubSection}
-          setShowSidebar={setViewSubSection}
-        />
+        <div>
+          <Sidebar
+            showSidebar={viewSubSection}
+            setShowSidebar={setViewSubSection}
+          />
+        </div>
       </div>
     </>
   );
