@@ -263,8 +263,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div>
+        <div  className={styles.navBarSideBar}>
           <Sidebar
+           
             showSidebar={viewSubSection}
             setShowSidebar={setViewSubSection}
           />

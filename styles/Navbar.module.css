@@ -118,6 +118,9 @@
   align-items: center;
   justify-content: center;
 }
+.navBarSideBar{
+  visibility: hidden;
+}
 
 @media screen and (max-width: 1050px) {
   .weatherTempBar {
@@ -132,6 +135,9 @@
   #hamburgerMenu {
     display: block;
     margin-left: 1rem;
+  }
+  .navBarSideBar{
+    visibility: visible;
   }
 
   #date,
