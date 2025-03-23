@@ -9,7 +9,7 @@ import styles from "../styles/MixedArticleDisplay.module.css";
 import groupByImageExists from "../utils/groupArticles";
 import generate_contributors_jsx from "./GenerateContributorsJSX";
 import { useCallback, useEffect, useState, Fragment } from "react";
-import MixedAdvertisment from "../advertisements/MixedAdvertisement";
+import MixedAdvertisement from "../advertisements/MixedAdvertisement";
 
 function CenterArticle(props: {
 	article: ReceivedArticle;
@@ -116,7 +116,7 @@ export default function MixedArticleDisplay(props: {
 				grouping["withPhotos"][0],
 				...process_sorted_articles,
 			];
-
+			
 			return {
 				articlesWithPhotos,
 				articlesWithoutPhotos,
@@ -133,7 +133,7 @@ export default function MixedArticleDisplay(props: {
 	useEffect(() => {
 		setArticlesProcessed(returnProcessedArticles(props.articles));
 	}, [props.articles, returnProcessedArticles]);
-
+	
 	const num_articles_each_side = Math.floor(
 		articlesProcessed.articlesWithoutPhotos.length / 2
 	);
@@ -173,10 +173,13 @@ export default function MixedArticleDisplay(props: {
 	};
 
 	const ad_spacing = 6;
+	let adsShown: boolean = true;
+	if(MixedAdvertisement({index: 0}) == -1) adsShown = false;
 
 	return (
 		<div id={styles.mixed_article_view_container}>
 			<div id={styles.mixed_article_view}>
+				
 				<section id={styles.left}>
 					{articlesProcessed.articlesWithoutPhotos
 						.slice(0)
@@ -189,9 +192,9 @@ export default function MixedArticleDisplay(props: {
 										props.display_department
 									}
 								/>
-								{index % ad_spacing == 0 ? (
-									<div className={styles.ad_parent}>
-										<MixedAdvertisment
+								{index % ad_spacing == 0 && adsShown? (
+									<div className={styles.ad_parent }>
+										<MixedAdvertisement
 											index={index / ad_spacing}
 										/>
 									</div>
@@ -245,9 +248,9 @@ export default function MixedArticleDisplay(props: {
 										props.display_department
 									}
 								/>
-								{index % ad_spacing == 1 ? (
+								{index % ad_spacing == 1 && adsShown ? (
 									<div className={styles.ad_parent}>
-										<MixedAdvertisment
+										<MixedAdvertisement
 											index={
 												Math.floor(index / ad_spacing) +
 												2
@@ -272,9 +275,9 @@ export default function MixedArticleDisplay(props: {
 										props.display_department
 									}
 								/>
-								{index % ad_spacing == 1 && index != 0 ? (
+								{index % ad_spacing == 1 && index != 0 && adsShown ? (
 									<div className={styles.ad_parent}>
-										<MixedAdvertisment
+										<MixedAdvertisement
 											index={Math.floor(
 												index / ad_spacing
 											)}

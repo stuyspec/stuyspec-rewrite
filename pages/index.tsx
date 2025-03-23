@@ -4,7 +4,7 @@ import { get_articles_by_query } from "../db";
 import { ReceivedArticle } from "../ts_types/db_types";
 
 import MixedArticleDisplay from "../components/MixedArticleDisplay";
-import BannerText from "../advertisements/BannerText";
+//import BannerText from "../advertisements/BannerText";
 interface Props {
 	articles: [ReceivedArticle];
 }
@@ -26,7 +26,7 @@ function Home(props: Props) {
 	return (
 		<main id={styles.main}>
 			{/* <BannerText text="Read The Spectator's special issue covering all levels of the 2024 election!" url="/volume/115/issue/0" /> */}
-			<MixedArticleDisplay
+		<MixedArticleDisplay
 				articles={props.articles}
 				display_department={true}
 				additional_article_function={fetch_addtional_articles}
