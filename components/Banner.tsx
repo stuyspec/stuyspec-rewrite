@@ -12,6 +12,7 @@ interface Banner {
 export default function Banner(props: Props) {
   const svgList = [
     <svg
+      key={0}
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       className="bi bi-check-circle"
@@ -21,6 +22,7 @@ export default function Banner(props: Props) {
       <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
     </svg>,
     <svg
+      key={1}
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       className="bi bi-exclamation-triangle"
@@ -30,6 +32,7 @@ export default function Banner(props: Props) {
       <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
     </svg>,
     <svg
+      key={2}
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       className="bi bi-exclamation-circle"
@@ -39,6 +42,7 @@ export default function Banner(props: Props) {
       <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
     </svg>,
     <svg
+      key={3}
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       className="bi bi-cake-fill"
@@ -47,6 +51,7 @@ export default function Banner(props: Props) {
       <path d="m7.399.804.595-.792.598.79A.747.747 0 0 1 8.5 1.806V4H11a2 2 0 0 1 2 2v3h1a2 2 0 0 1 2 2v4a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-4a2 2 0 0 1 2-2h1V6a2 2 0 0 1 2-2h2.5V1.813a.747.747 0 0 1-.101-1.01ZM12 6.414a.9.9 0 0 1-.646-.268 1.914 1.914 0 0 0-2.708 0 .914.914 0 0 1-1.292 0 1.914 1.914 0 0 0-2.708 0A.9.9 0 0 1 4 6.414v1c.49 0 .98-.187 1.354-.56a.914.914 0 0 1 1.292 0c.748.747 1.96.747 2.708 0a.914.914 0 0 1 1.292 0c.374.373.864.56 1.354.56zm2.646 5.732a.914.914 0 0 1-1.293 0 1.914 1.914 0 0 0-2.707 0 .914.914 0 0 1-1.292 0 1.914 1.914 0 0 0-2.708 0 .914.914 0 0 1-1.292 0 1.914 1.914 0 0 0-2.708 0 .914.914 0 0 1-1.292 0L1 11.793v1.34c.737.452 1.715.36 2.354-.28a.914.914 0 0 1 1.292 0c.748.748 1.96.748 2.708 0a.914.914 0 0 1 1.292 0c.748.748 1.96.748 2.707 0a.914.914 0 0 1 1.293 0 1.915 1.915 0 0 0 2.354.28v-1.34z" />
     </svg>,
     <svg
+      key={4}
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       className="bi bi-info-square"
@@ -56,6 +61,7 @@ export default function Banner(props: Props) {
       <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
     </svg>,
     <svg
+      key={5}
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       className="bi bi-chat-square-text"
@@ -65,6 +71,7 @@ export default function Banner(props: Props) {
       <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
     </svg>,
     <svg
+      key={6}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -74,47 +81,47 @@ export default function Banner(props: Props) {
       <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
     </svg>,
   ];
-  let stylish : {
-    color: string,
+  let stylish: {
+    color: string;
   };
   switch (props.type) {
     case "success":
-      stylish = {color: "var(--sports-color)"}
+      stylish = { color: "var(--sports-color)" };
       break;
     case "warning":
-      stylish = {color: "var(--features-color)"}
+      stylish = { color: "var(--features-color)" };
       break;
     case "error":
-      stylish = {color: "var(--ae-color)"}
+      stylish = { color: "var(--ae-color)" };
       break;
     case "welcome":
-      stylish = {color: "var(--photos-color)"}
+      stylish = { color: "var(--photos-color)" };
       break;
     case "info":
-      stylish = {color: "var(--web-color)"}
+      stylish = { color: "var(--web-color)" };
       break;
     default:
-      stylish = {color: "var(--opinions-color)"}
+      stylish = { color: "var(--opinions-color)" };
   }
   const typeOfSvg = () => {
     switch (props.type) {
       case "success":
-        stylish = {color: "var(--sports-color)"}
+        stylish = { color: "var(--sports-color)" };
         return svgList[0];
       case "warning":
-        stylish = {color: "var(--features-color)"}
+        stylish = { color: "var(--features-color)" };
         return svgList[1];
       case "error":
-        stylish = {color: "var(--ae-color)"}
+        stylish = { color: "var(--ae-color)" };
         return svgList[2];
       case "welcome":
-        stylish = {color: "var(--web-color)"}
+        stylish = { color: "var(--web-color)" };
         return svgList[3];
       case "info":
-        stylish = {color: "var(--web-color)"}
+        stylish = { color: "var(--web-color)" };
         return svgList[4];
       default:
-        stylish = {color: "var(--opinions-color)"}
+        stylish = { color: "var(--opinions-color)" };
         return svgList[5];
     }
   };
@@ -122,9 +129,12 @@ export default function Banner(props: Props) {
   if (!closed) {
     return (
       <div className={styles.bannerContainer}>
-        <div className={styles.banner} style={{borderColor: stylish.color}}>
-          <div id={styles.bannerIcon} aria-label={`${props.type} message`}
-          style={{color: stylish.color}}>
+        <div className={styles.banner} style={{ borderColor: stylish.color }}>
+          <div
+            id={styles.bannerIcon}
+            aria-label={`${props.type} message`}
+            style={{ color: stylish.color }}
+          >
             {typeOfSvg()}
           </div>
           <div id={styles.bannerText}>
