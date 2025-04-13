@@ -342,15 +342,17 @@
   display: flex;
   align-items: center;
 }
-#link button {
+#link p {
+  font-family: "Lato";
   background-color: transparent;
   font-size: 1rem;
   padding: 0.5rem;
   cursor: pointer;
   margin-right: 2ch;
   transition: ease-in-out 200ms;
+  color: var(--primary);
 }
-#link:hover button {
+#link:hover p {
   margin-left: 2ch;
   margin-right: 0;
 }
@@ -371,6 +373,38 @@
   }
   #rightArrow {
     transform: translateX(100px);
+  }
+}
+@media screen and (max-width: 1000px) {
+  #link{
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  #link p{
+    margin: 0;
+    text-align: center;
+  }
+  #link:hover p{
+    text-align: center;
+    margin: 0;
+  }
+  #leftArrow{
+    width: 0px;
+  }
+  #rightArrow{
+    width: 0px;
+  }
+  #application:has(#link:hover){
+    #leftArrow{
+      visibility: hidden;
+      width: 0;
+      transform: translateX(-100px);
+    }
+    #rightArrow{
+      transform: translateX(0);
+      visibility: hidden;
+      width: 0;
+    }
   }
 }
 :where(#rightArrow, #leftArrow) {

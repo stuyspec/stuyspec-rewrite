@@ -56,8 +56,8 @@ function RecruitmentPage() {
       department: "Opinions",
       description:
         "The Opinions section lets writers share their views on issues relevant within the country, Stuyvesant, and their personal lives. Writers across all grades give their opinions on subjects ranging from politics and economics to technology and culture and share their personal stories. We try to consistently create engaging, substantive, and relevant content to provide students with a closer look at the world and the Stuyvesant community.",
-      applicationForm: undefined,
-      applicationDueDate: undefined,
+      applicationForm: " https://docs.google.com/document/d/1BTA5nIJtIU8lbAAtUgl-Ne3OupfKISxfasKoGoQ4MOQ/edit?usp=drivesdk",
+      applicationDueDate: new Date("May 1, 2025 23:59:59"),
       stylesColor: styles.opinionsTheme,
     },
     {
@@ -125,8 +125,8 @@ function RecruitmentPage() {
       department: "Business",
       description:
         "The Business department is the backbone of The Spectator. Due to the efforts of this department, The Spectator is able to print all of its issues while still remaining independent. We negotiate and secure deals with businesses all over New York as well as handle the advertisements on the website and in the paper. Members learn skills that can be applied to real life, including talking in formal settings, learning how to negotiate and compromise, and understanding how to manage money.",
-      applicationForm: undefined,
-      applicationDueDate: undefined,
+      applicationForm: "https://forms.gle/jYo9gYRGwRFdKvNi7",
+      applicationDueDate: new Date("April 27, 2025 23:59:59"),
       stylesColor: styles.buisnessTheme,
     },
   ];
@@ -316,7 +316,7 @@ function RecruitmentPage() {
                               d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
                             />
                           </svg>
-                          <button>Apply Now!</button>
+                          <p>Apply Now!</p>
                           <svg
                             id={styles.rightArrow}
                             xmlns="http://www.w3.org/2000/svg"
