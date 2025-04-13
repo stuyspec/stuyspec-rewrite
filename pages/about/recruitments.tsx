@@ -48,8 +48,8 @@ function RecruitmentPage() {
       department: "Arts & Ent.",
       description:
         "As the only department with more than three article categories, Arts and Entertainment is notable for its versatility and creative freedom. We review recent cultural topics such as art, fashion, film, food, literature, music, and more! A&E writers are also free to experiment with the thinkpiece category, where one can explore cultural phenomena or trends, gender standards, or race from a cultural standpoint. Whether you are an aspiring music enthusiast or cultural connoisseur, everyone can find (or create!) their own niche in A&E.",
-      applicationForm: undefined,
-      applicationDueDate: undefined,
+      applicationForm: "https://docs.google.com/document/d/11Q6sZu3PeKYjx7xRbukrPs84z8PGPNZj6njUK-w9e1g/edit?usp=drivesdk",
+      applicationDueDate: new Date("April 30, 2025 23:59:59"),
       stylesColor: styles.aeTheme,
     },
     {
