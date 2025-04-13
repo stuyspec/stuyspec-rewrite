@@ -169,11 +169,11 @@ function RecruitmentPage() {
         <section className={styles.headingContainer}>
           <article className={styles.heading}>
             <section className={`${styles.headingText}`}>
-              {videoHovered && windowWidth >= 1000 ? (
+              {videoHovered && windowWidth >= 1400 ? (
                 <div id={styles.OVERLAY}></div>
               ) : null}
               <h1 id={styles.headingMainText}>
-                {!videoHovered || windowWidth < 1000 ? (
+                {!videoHovered || windowWidth < 1400 ? (
                   <span aria-hidden="true" id={styles.LIVE}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
