@@ -1,0 +1,77 @@
+.bannerContainer{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+.banner{
+    border-radius: 1rem;
+    position: relative;
+    border-width: 0.5ch;
+    border-style: solid;
+    background-color: var(--light-grey);
+    overflow: hidden;
+    height: 15vh;
+
+    display: flex;
+    transition: all ease-in-out 200ms;
+    gap: 1rem;
+}
+#bannerIcon{
+    padding: 0.25rem;
+    height: 75%;
+    align-self: center;
+    transform: translateX(-50%);
+    color: var(--ae-color);
+     transition: all ease-in-out 200ms;
+}
+.banner:hover #bannerIcon{
+    margin-left: 1rem;
+    transform: translateX(0%);
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+}
+@media screen and (max-width: 1000px) {
+    .banner{
+        display: grid;
+        grid-template-columns: 3fr 7fr 0;
+        height: 100%;
+        overflow: scroll;
+    }
+    #bannerIcon{
+        transform: translateX(0%);
+        height: 10ch;
+    }
+    .banner:hover #bannerIcon{
+        padding: 0.25rem;
+        margin: 0rem;
+    }
+}
+#bannerIcon svg{
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+#bannerText{
+    display: flex;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary);
+    font-size: clamp(1rem, 0.9451rem + 0.8791vw, 2rem);
+    overflow: hidden;
+    margin-right: 3.25ch;
+    overflow: scroll;
+    scrollbar-width: thin;
+}
+#bannerText p{
+    color: var(--primary);
+}
+#bannerClose{
+    position:absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 3ch;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}

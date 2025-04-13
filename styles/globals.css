@@ -57,6 +57,26 @@
   --secondary: #ffffff;
   --light-grey: #f1f1f1;
   --medium-grey: #555555;
+
+  --EIC-color: hsl(0, 62%, 42%);
+	--news-color: hsl(195, 24%, 52%);
+	--features-color: hsl(47, 36%, 49%);
+	--opinions-color: hsl(233, 53%, 75%);
+	--science-color: hsl(104, 57%, 63%);
+	--ae-color: hsl(350, 62%, 37%);
+	--humor-color: hsl(60, 42%, 55%);
+	--sports-color: hsl(180, 68%, 58%);
+	--photos-color: hsl(39, 88%, 54%);
+	--art-color: hsl(282, 47%, 52%);
+	--layout-color: hsl(0, 0%, 75%);
+	--copy-color: hsl(25, 32%, 45%);
+	--buisness-color: hsl(130, 28%, 55%);
+	--web-color: hsl(177, 100%, 75%);
+	--faculty-color: hsl(0, 39%, 44%);
+
+  --cardShadowColor: hsl(0, 0%, 90%);
+	--cardImageShadowColor: hsl(0, 0%, 76%);
+
 }
 
 [data-theme="dark"] {
@@ -66,6 +86,26 @@
   --secondary: #2c2c2c;
   --light-grey: #272525;
   --medium-grey: #e9e8e8;
+
+  --EIC-color: hsl(0, 62%, 58%);
+	--news-color: hsl(195, 24%, 48%);
+	--features-color: hsl(47, 36%, 51%);
+	--opinions-color: hsl(233, 53%, 60%);
+	--science-color: hsl(104, 57%, 37%);
+	--ae-color: hsl(350, 62%, 63%);
+	--humor-color: hsl(60, 40%, 45%);
+	--sports-color: hsl(180, 68%, 42%);
+	--photos-color: hsl(39, 88%, 46%);
+	--art-color: hsl(282, 47%, 48%);
+	--layout-color: hsl(0, 0%, 53%);
+	--copy-color: hsl(25, 32%, 55%);
+	--buisness-color: hsl(130, 28%, 45%);
+	--web-color: hsl(177, 100%, 25%);
+	--faculty-color: hsl(0, 39%, 44%);
+
+  --cardShadowColor: hsl(0, 0%, 10%);
+	--cardImageShadowColor: hsl(0, 0%, 24%);
+
 }
 
 [data-theme="dark"] [data-hide-on-theme="dark"],
