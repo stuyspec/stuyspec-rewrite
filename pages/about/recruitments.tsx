@@ -48,15 +48,17 @@ function RecruitmentPage() {
       department: "Arts & Ent.",
       description:
         "As the only department with more than three article categories, Arts and Entertainment is notable for its versatility and creative freedom. We review recent cultural topics such as art, fashion, film, food, literature, music, and more! A&E writers are also free to experiment with the thinkpiece category, where one can explore cultural phenomena or trends, gender standards, or race from a cultural standpoint. Whether you are an aspiring music enthusiast or cultural connoisseur, everyone can find (or create!) their own niche in A&E.",
-      applicationForm: "https://docs.google.com/document/d/11Q6sZu3PeKYjx7xRbukrPs84z8PGPNZj6njUK-w9e1g/edit?usp=drivesdk",
-      applicationDueDate: new Date("April 30, 2025 23:59:59"),
+      applicationForm:
+        "https://docs.google.com/document/d/11Q6sZu3PeKYjx7xRbukrPs84z8PGPNZj6njUK-w9e1g/edit?usp=drivesdk",
+      applicationDueDate: new Date("May 15, 2025 23:59:59"),
       stylesColor: styles.aeTheme,
     },
     {
       department: "Opinions",
       description:
         "The Opinions section lets writers share their views on issues relevant within the country, Stuyvesant, and their personal lives. Writers across all grades give their opinions on subjects ranging from politics and economics to technology and culture and share their personal stories. We try to consistently create engaging, substantive, and relevant content to provide students with a closer look at the world and the Stuyvesant community.",
-      applicationForm: " https://docs.google.com/document/d/1BTA5nIJtIU8lbAAtUgl-Ne3OupfKISxfasKoGoQ4MOQ/edit?usp=drivesdk",
+      applicationForm:
+        " https://docs.google.com/document/d/1BTA5nIJtIU8lbAAtUgl-Ne3OupfKISxfasKoGoQ4MOQ/edit?usp=drivesdk",
       applicationDueDate: new Date("May 1, 2025 23:59:59"),
       stylesColor: styles.opinionsTheme,
     },
@@ -254,7 +256,7 @@ function RecruitmentPage() {
                         {Math.ceil(
                           (department.applicationDueDate.getTime() -
                             new Date().getTime()) /
-                            (1000 * 60 * 60 * 24)
+                            (1000 * 60 * 60 * 24),
                         ) + " days left!"}
                       </p>
                     ) : null}
@@ -358,7 +360,7 @@ function RecruitmentPage() {
                         {Math.ceil(
                           (department.applicationDueDate.getTime() -
                             new Date().getTime()) /
-                            (1000 * 60 * 60 * 24)
+                            (1000 * 60 * 60 * 24),
                         ) + " days left!"}
                       </p>
                     ) : null}
