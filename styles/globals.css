@@ -185,3 +185,20 @@ a {
 .discrete-link:focus {
   text-decoration-color: var(--accent);
 }
+
+div#Footer_dropDownContent__500B8 {
+	display: block;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+div#Footer_dropDownContent__500B8 a {
+	text-decoration: none;
+	display:block;
+	padding: 5px;
+}
+
+div#Footer_dropDownContent__500B8 a:hover {background-color: #ddd;}
+
+.Footer_dropdown__d7nLj:hover .Footer_dropDownContent__500B8 {display:block;}
