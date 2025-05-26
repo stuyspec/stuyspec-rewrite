@@ -2,7 +2,6 @@ import Head from "next/head";
 import { generateMetaTags } from "../../utils/generateMetaTags";
 import styles from "./../../styles/Recruitments.module.css";
 import { Suspense, useEffect, useState } from "react";
-import Banner from "../../components/Banner";
 
 function RecruitmentPage() {
   const [videoHovered, setVideoHovered] = useState<boolean>(false);
@@ -164,10 +163,7 @@ function RecruitmentPage() {
     <div>
       <Head>{generateMetaTags(page_title, meta_description, meta_url)}</Head>
       <div className={styles.mainBody}>
-        <Banner
-          type="welcome"
-          message="Welcome to the new Recruitments Page!"
-        />
+
         <section className={styles.headingContainer}>
           <article className={styles.heading}>
             <section className={`${styles.headingText}`}>
