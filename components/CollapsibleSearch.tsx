@@ -2,11 +2,13 @@ import { FormEvent, useRef, useState } from "react";
 import Image from "next/image";
 import Router from "next/router";
 import styles from "../styles/CollapsibleSearch.module.css";
+import { useRouter } from "next/navigation";
 
 const CollapsibleSearch = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchBar, setSearchBar] = useState(false);
   const textInput = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const onSearchBlur = () => {
     setSearchBar(false);
@@ -25,6 +27,7 @@ const CollapsibleSearch = () => {
     if (searchValue.trim()) {
       Router.push(String("/search?query=" + searchValue));
     }
+    router.refresh();
   }
 
   return (
