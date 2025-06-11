@@ -15,6 +15,7 @@ import {
   FaSpotify,
 } from "react-icons/fa";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 function currentDate() {
   const today = new Date();
@@ -79,7 +80,7 @@ const Navbar = () => {
 
     try {
       const response = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${zipCode}`,
+        `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${zipCode}`
       );
       const data = await response.json();
 
@@ -263,9 +264,8 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div  className={styles.navBarSideBar}>
+        <div className={styles.navBarSideBar}>
           <Sidebar
-           
             showSidebar={viewSubSection}
             setShowSidebar={setViewSubSection}
           />

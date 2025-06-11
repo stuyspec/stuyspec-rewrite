@@ -3,7 +3,7 @@
   background-color: var(--secondary-nav);
   position: absolute !important;
   height: auto;
-  min-height: 90vh;
+  min-height: 100vh;
   z-index: 3;
 }
 
