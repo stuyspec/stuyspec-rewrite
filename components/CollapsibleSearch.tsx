@@ -27,7 +27,7 @@ const CollapsibleSearch = () => {
     if (searchValue.trim()) {
       Router.push(String("/search?query=" + searchValue));
     }
-    router.refresh();
+    //router.refresh();
   }
 
   return (
