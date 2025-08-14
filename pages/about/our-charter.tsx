@@ -749,6 +749,25 @@ function OurCharter() {
 						you believe would assist in resolving this.
 					</p>
 				</p>
+				<button 
+					onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
+					style={{
+						position: "fixed",
+						bottom: "20px", // Keeps the button at the bottom
+						left: "50%", // Centers horizontally
+						transform: "translateX(-50%)", // Adjusts position to truly center horizontally
+						padding: "10px 20px",
+						fontSize: "16px",
+						backgroundColor: "#007bff",
+						color: "white",
+						border: "none",
+						borderRadius: "5px",
+						cursor: "pointer"
+					}}
+					>
+					Back to Top
+				</button>
+
 			</main>
 		</>
 	);
