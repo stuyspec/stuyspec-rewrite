@@ -6,7 +6,7 @@ const BannerAdvertisements: {
 	{
 		name: "Kingfisher Prep",
 		image_src: "/images/ads/KingfisherPrep.png",
-		url: "https://www.kingfisherprep.com/post/five-tips-for-ivy-league-application-essays",
+		url: "https://www.kingfisherprep.com/sat-act-college-application-coaching-for-stuyvesant-students",
 	},
 	{
 		name: "Cooper Test Prep",

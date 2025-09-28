@@ -14,7 +14,7 @@ const MixedAdvertisements: {
   }, {
     name: "Kingfisher Prep",
     image_src: "/images/ads/KFPBox.jpg",
-    url: "https://www.kingfisherprep.com/post/five-tips-for-ivy-league-application-essays" 
+    url: "https://www.kingfisherprep.com/sat-act-college-application-coaching-for-stuyvesant-students" 
   }
 ]; // duplicate ads cuz just 2 causes repeats on home page
 export default MixedAdvertisements;
