@@ -1,0 +1,19 @@
+.mainContainer {
+  all: unset;
+
+  display: flex;
+  padding: 0.625rem 1.25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.625rem;
+  background: var(--primary);
+
+  color: var(--secondary);
+  text-align: center;
+  font-family: Georgia;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

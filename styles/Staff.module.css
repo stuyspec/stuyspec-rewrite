@@ -1,84 +1,131 @@
-#main {
-	width: 95vw;
-	max-width: 1000px;
-	padding-block: 1rem;
-	margin: 0 auto;
-	text-align: center;
+/* FOR CARD CONTAINERS ETC. */
+.cardContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 1rem;
+}
+#sectionTitle {
+  color: var(--primary);
+  font-family: Georgia;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.staffCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.89663rem;
+}
+.staffCard #image {
+  flex: 1 0 0;
+  align-self: stretch;
+  aspect-ratio: 242.45/323.26;
+  background-position: center;
+  background-size: cover;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.17931rem;
+  align-self: stretch;
+}
+.text h4 {
+  color: var(--primary);
+  font-family: Georgia;
+  font-size: 1.61394rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.text p {
+  color: var(--primary);
+  font-family: Georgia;
+  font-size: 1.07594rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.staffCard > p {
+  color: var(--primary);
+  font-family: Georgia;
+  font-size: 0.89663rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+/* MAIN CONTAINER */
+
+.main {
+  margin: 70px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
-#departments h3 {
-	font-size: 1.6rem;
+#titleText {
+  color: var(--primary);
+  text-align: center;
+  font-family: Georgia;
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+#italiziedSpectator {
+  font-style: italic;
+}
+.mainSections {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
-#departments p {
-	font-size: 1.25rem;
+/* BACKGROUND W TEXT BEHIND*/
+.backgroundText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  align-self: stretch;
 }
-
-.EIC {
-	color: rgb(215, 82, 82);
+#topText {
+  color: var(--primary);
+  text-align: center;
+  font-family: Georgia;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1.25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
 
-.news {
-	color: rgb(94, 138, 153);
+  border: 5px solid var(--primary);
+  background: var(--secondary);
+
+  margin: 5rem 2rem;
 }
-
-.features {
-	color: rgb(175, 156, 86);
+.backgroundTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  align-self: stretch;
 }
-
-.ops {
-	color: rgb(99, 112, 207);
-}
-
-.science {
-	color: rgb(69, 147, 40);
-}
-
-.ae {
-	color: rgb(219, 101, 120);
-}
-
-.humor {
-	color: rgb(187, 187, 10);
-}
-
-.sports {
-	color: rgb(34, 181, 181);
-}
-
-.photos {
-	color: rgb(223, 150, 14);
-}
-
-.art {
-	color: rgb(145, 64, 179);
-}
-
-.layout {
-	color: rgb(134, 134, 134);
-}
-
-.copy {
-	color: rgb(176, 134, 103);
-}
-
-.biz {
-	color: rgb(82, 147, 93);
-}
-
-.web {
-	color: rgb(0, 128, 122);
-}
-
-.faculty {
-	color: rgb(154, 68, 68);
-}
-
-#main h3 {
-	margin-top: 30px;
-}
-
-.special_def {
-	text-align: right;
-	font-style: italic;
+.overlayBackgroundText {
+  backdrop-filter: blur(4px);
+  width: 100%;
 }
