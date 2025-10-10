@@ -40,7 +40,7 @@
 #headingMainText {
   font-size: clamp(2rem, 1.3077rem + 3.6923vw, 5rem);
   display: flex;
-  text-decoration: #db2b39 dotted underline;
+  /* text-decoration: #db2b39 dotted underline; */
 }
 #headingParagraph {
   font-size: clamp(1rem, 0.7692rem + 1.2308vw, 2rem);
@@ -104,6 +104,9 @@
   animation: OVERLAYin cubic-bezier(0.075, 0.82, 0.165, 1) 2s;
   border-radius: 1rem;
 }
+.departmentCard #OVERLAY {
+  user-select: none;
+}
 @keyframes OVERLAYin {
   from {
     opacity: 0;
@@ -139,7 +142,7 @@
 .aboutText > h1 {
   font-size: clamp(1.75rem, 1.2308rem + 2.7692vw, 4rem);
   text-align: center;
-  text-decoration: #db2b39 dotted underline;
+  /* text-decoration: #db2b39 dotted underline; */
 }
 .aboutText > p {
   font-size: clamp(1rem, 0.8846rem + 0.6154vw, 1.5rem);
@@ -433,6 +436,7 @@
   }
   .heading {
     display: flex;
+    flex-direction: column-reverse;
     height: fit-content;
   }
   .aboutImage {
