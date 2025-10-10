@@ -4,9 +4,9 @@ const MixedAdvertisements: {
   url: string;
 }[] = [
   {
-    name: "Lucent Education",
-    image_src: "/images/ads/LucentEd.png",
-    url: "https://www.lucenteducation.com/",
+    name: "Write The World",
+    image_src: "/images/ads/write-the-world.png",
+    url: "https://writetheworld.org/",
   }, {
     name: "Prepory Elite Prep",
     image_src: "/images/ads/preporybox.png",
