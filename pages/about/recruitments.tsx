@@ -23,7 +23,7 @@ function RecruitmentPage() {
         "The News Department covers school events, administrative changes, student organizations, school and student government policies, and out-of-school news. Besides traditional News articles, we also write mini-articles, graphs & surveys, and spreads. If you are interested in knowing Stuyvesant news before it is released, informing the student body, meeting students, teachers, and administrators, or seeing your work on the front page, apply to our department!",
       applicationForm:
         "https://docs.google.com/forms/d/e/1FAIpQLSfHaQjH69UlpcX9LeuTfp-FMSlvUsUcoq90XF2DAdphjq6O8A/viewform",
-      applicationDueDate: new Date("October 19, 2025 23:59:59"),
+      applicationDueDate: new Date("October 26, 2025 23:59:59"),
       stylesColor: styles.newsTheme,
     },
     {
