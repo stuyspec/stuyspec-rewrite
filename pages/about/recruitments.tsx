@@ -39,7 +39,8 @@ function RecruitmentPage() {
       department: "Humor",
       description:
         "Do you want to lowkey rant about your life and roast everything? Would you like to have a personality glow up? Do you want to join a low commitment and fun Spec department? Join Spec Humor! We write funny and satirical pieces for The Spec and unlike other departments, everything we publish is libel and slander which means that you'll be in control of what everyone says!",
-      applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSfUHRxX0SKx_qM2vyojRW3mG5DGKmTaQ-lTx2yarCrfNtY4gQ/viewform?usp=sharing&ouid=103600907436398719345",
+      applicationForm:
+        "https://docs.google.com/forms/d/e/1FAIpQLSfUHRxX0SKx_qM2vyojRW3mG5DGKmTaQ-lTx2yarCrfNtY4gQ/viewform?usp=sharing&ouid=103600907436398719345",
       applicationDueDate: new Date("November 2, 2025 23:59:59"),
       stylesColor: styles.humorTheme,
     },
@@ -83,7 +84,8 @@ function RecruitmentPage() {
       department: "Web",
       description:
         "The Web department is responsible for designing and updating The Spectator's website (aka this website), www.stuyspec.com. It also attempts to facilitate the learning of developing and maintaining a web applications. These real-world skills are a great resume builders and provide invaluable experience in working together as a team. This is the perfect department for both computer programming enthusiasts and novices who want to help The Spectator continue to storm the frontier of online journalism.",
-      applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSdHq7LRGWgRwJrfGv3K-pBvtDgV6e4MoJBuxd1S4vcfgxIyVg/viewform?usp=dialog",
+      applicationForm:
+        "https://docs.google.com/forms/d/e/1FAIpQLSdHq7LRGWgRwJrfGv3K-pBvtDgV6e4MoJBuxd1S4vcfgxIyVg/viewform?usp=dialog",
       applicationDueDate: new Date("October 27, 2025 23:59:59"),
       stylesColor: styles.webTheme,
     },
@@ -99,9 +101,8 @@ function RecruitmentPage() {
       department: "Layout",
       description:
         "A good publication should interest readers before they even pick it up and read it; the Layout department does just that! We are responsible for formatting all of the articles, photos, art, and other media and make sure that the paper is aesthetically appealing and easy to read. After all, no one wants to read ugly and confusing blocks of text. With creativity and a certain magic called InDesign, we present to you what you know as The Spectator. As a staff member, you will be taught how to use InDesign and asked to critique the formatting of each issue as it is released.",
-      applicationForm:
-        "https://docs.google.com/forms/d/e/1FAIpQLSdYjnb52_T-cPP8PWvFVTHvM0HL2keoM0QZRBTURCK0rCTNmQ/viewform?usp=sharing",
-      applicationDueDate: new Date("April 25, 2025 23:59:59"),
+      applicationForm: "https://forms.gle/ip5P8ww6TroVyYcL7",
+      applicationDueDate: new Date("October 20, 2025 23:59:59"),
       stylesColor: styles.layoutTheme,
     },
     {
@@ -126,7 +127,8 @@ function RecruitmentPage() {
       department: "Business",
       description:
         "The Business department is the backbone of The Spectator. Due to the efforts of this department, The Spectator is able to print all of its issues while still remaining independent. We negotiate and secure deals with businesses all over New York as well as handle the advertisements on the website and in the paper. Members learn skills that can be applied to real life, including talking in formal settings, learning how to negotiate and compromise, and understanding how to manage money.",
-      applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSfaCeUBmarJo2iyhvKLlnU-hYezx8HCn6t_apoOWGIs05Y0EA/viewform?usp=header",
+      applicationForm:
+        "https://docs.google.com/forms/d/e/1FAIpQLSfaCeUBmarJo2iyhvKLlnU-hYezx8HCn6t_apoOWGIs05Y0EA/viewform?usp=header",
       applicationDueDate: new Date("November 2, 2025 23:59:59"),
       stylesColor: styles.buisnessTheme,
     },
@@ -163,7 +165,6 @@ function RecruitmentPage() {
     <div>
       <Head>{generateMetaTags(page_title, meta_description, meta_url)}</Head>
       <div className={styles.mainBody}>
-
         <section className={styles.headingContainer}>
           <div className={styles.heading}>
             <section className={`${styles.headingText}`}>
