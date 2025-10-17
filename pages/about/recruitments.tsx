@@ -22,8 +22,8 @@ function RecruitmentPage() {
       description:
         "The News Department covers school events, administrative changes, student organizations, school and student government policies, and out-of-school news. Besides traditional News articles, we also write mini-articles, graphs & surveys, and spreads. If you are interested in knowing Stuyvesant news before it is released, informing the student body, meeting students, teachers, and administrators, or seeing your work on the front page, apply to our department!",
       applicationForm:
-        "https://docs.google.com/forms/d/e/1FAIpQLSelxypaeJpoJrkfNYUNpzpPCV0Ps4gBM1-5DuFGLeE3oV2POA/viewform?usp=dialog",
-      applicationDueDate: new Date("April 27, 2025 23:59:59"),
+        "https://docs.google.com/forms/d/e/1FAIpQLSfHaQjH69UlpcX9LeuTfp-FMSlvUsUcoq90XF2DAdphjq6O8A/viewform",
+      applicationDueDate: new Date("October 26, 2025 23:59:59"),
       stylesColor: styles.newsTheme,
     },
     {
@@ -31,16 +31,16 @@ function RecruitmentPage() {
       description:
         "Features capture the spirit and mood of the school. At times, Features covers Stuyvesant’s evergreen topics, e.g. what is it about PE uniforms that gets everybody so hot and bothered? Other times, writers might profile a teacher. Other times, writers share creative narratives about experiences they have had in the “Voices” section. There is much to be found in Features, so come hither!",
       applicationForm:
-        "https://docs.google.com/document/d/1Q7gcGhttCJ_wfn5C9FtjsRQjtmCjZZ1eJHH4B54nH1E/edit?tab=t.0",
-      applicationDueDate: new Date("April 25, 2025 23:59:59"),
+        "https://docs.google.com/document/d/1x7T17jAS2pwxVKimNsKPulIPiQUlehgvB7qtADePI1Y/edit?usp=sharing",
+      applicationDueDate: new Date("November 2, 2025 23:59:59"),
       stylesColor: styles.featuresTheme,
     },
     {
       department: "Humor",
       description:
         "Do you want to lowkey rant about your life and roast everything? Would you like to have a personality glow up? Do you want to join a low commitment and fun Spec department? Join Spec Humor! We write funny and satirical pieces for The Spec and unlike other departments, everything we publish is libel and slander which means that you'll be in control of what everyone says!",
-      applicationForm: "https://forms.gle/tnaVju8WU7DFiryC6",
-      applicationDueDate: new Date("April 25, 2025 23:59:59"),
+      applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSfUHRxX0SKx_qM2vyojRW3mG5DGKmTaQ-lTx2yarCrfNtY4gQ/viewform?usp=sharing&ouid=103600907436398719345",
+      applicationDueDate: new Date("November 2, 2025 23:59:59"),
       stylesColor: styles.humorTheme,
     },
     {
@@ -48,8 +48,8 @@ function RecruitmentPage() {
       description:
         "As the only department with more than three article categories, Arts and Entertainment is notable for its versatility and creative freedom. We review recent cultural topics such as art, fashion, film, food, literature, music, and more! A&E writers are also free to experiment with the thinkpiece category, where one can explore cultural phenomena or trends, gender standards, or race from a cultural standpoint. Whether you are an aspiring music enthusiast or cultural connoisseur, everyone can find (or create!) their own niche in A&E.",
       applicationForm:
-        "https://docs.google.com/document/d/11Q6sZu3PeKYjx7xRbukrPs84z8PGPNZj6njUK-w9e1g/edit?usp=drivesdk",
-      applicationDueDate: new Date("May 15, 2025 23:59:59"),
+        "https://docs.google.com/document/d/1jUfDIl1vFYgjwr3NEl3ETjmyVsQz-6YghUaletX6zlw/edit?tab=t.0",
+      applicationDueDate: new Date("October 27, 2025 23:59:59"),
       stylesColor: styles.aeTheme,
     },
     {
@@ -58,7 +58,7 @@ function RecruitmentPage() {
         "The Opinions section lets writers share their views on issues relevant within the country, Stuyvesant, and their personal lives. Writers across all grades give their opinions on subjects ranging from politics and economics to technology and culture and share their personal stories. We try to consistently create engaging, substantive, and relevant content to provide students with a closer look at the world and the Stuyvesant community.",
       applicationForm:
         " https://docs.google.com/document/d/1BTA5nIJtIU8lbAAtUgl-Ne3OupfKISxfasKoGoQ4MOQ/edit?usp=drivesdk",
-      applicationDueDate: new Date("May 1, 2025 23:59:59"),
+      applicationDueDate: new Date("November 2, 2025 23:59:59"),
       stylesColor: styles.opinionsTheme,
     },
     {
@@ -66,8 +66,8 @@ function RecruitmentPage() {
       description:
         "The Sports department covers all things sports, whether it be PSAL sports at Stuyvesant or professional sports. Articles pertaining to Stuyvesant sports range from championship articles and season updates to athlete and coach interviews and opinions. Writers also cover virtually any topic in the larger sports world, from debates on LeBron vs. MJ and college basketball to YouTube boxing and the Champions League. If that’s not enough to convince you to apply, we have an exclusive fantasy football league (with rewards).",
       applicationForm:
-        "https://docs.google.com/document/d/1gW6x5hRCxo3l7-enLw5iaYW8VZ7RiUD7rq_J1PL9Qi0/edit?usp=sharing",
-      applicationDueDate: new Date("April 25, 2025 23:59:59"),
+        "https://docs.google.com/document/d/1OBXTgpl7YTQBHoycA8htjOEdtbUEDqVWGIDISg3E9Zw/edit?usp=sharing",
+      applicationDueDate: new Date("October 26, 2025 23:59:59"),
       stylesColor: styles.sportsTheme,
     },
     {
@@ -75,24 +75,24 @@ function RecruitmentPage() {
       description:
         "The Science Department covers everything science-related, from pandemics and groundbreaking discoveries to Stuyvesant’s very own fascinating science clubs and events. Our department captures the complexity of science through analytical and often opinion-based writing, and we aim to convey the intricacies of the world around us and beyond to the student body.",
       applicationForm:
-        "https://drive.google.com/file/d/1kXXTgsztcTnp1-XP7QGI6-RjkUiYyxz5/view?usp=drivesdk",
-      applicationDueDate: new Date("May 5, 2025 23:59:59"),
+        "https://docs.google.com/document/d/1LAx0odNiWQG4U6FUbXZNMD-gA0DV5T-V5IFpWZ8Ev7Y/edit?tab=t.0",
+      applicationDueDate: new Date("November 1, 2025 23:59:59"),
       stylesColor: styles.scienceTheme,
     },
     {
       department: "Web",
       description:
         "The Web department is responsible for designing and updating The Spectator's website (aka this website), www.stuyspec.com. It also attempts to facilitate the learning of developing and maintaining a web applications. These real-world skills are a great resume builders and provide invaluable experience in working together as a team. This is the perfect department for both computer programming enthusiasts and novices who want to help The Spectator continue to storm the frontier of online journalism.",
-      applicationForm: "https://forms.gle/ZwH67nqRGesLjd5g6",
-      applicationDueDate: new Date("May 1, 2025 23:59:59"),
+      applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSdHq7LRGWgRwJrfGv3K-pBvtDgV6e4MoJBuxd1S4vcfgxIyVg/viewform?usp=dialog",
+      applicationDueDate: new Date("October 27, 2025 23:59:59"),
       stylesColor: styles.webTheme,
     },
     {
       department: "Copy",
       description:
         "Members of the Copy Department ensures that The Spectator produces clear, grammatically correct, and accurate articles. Did you notice both mistakes in the last sentence? If you did, you should join the Copy Department! Members gain early access to articles and sharpen their grammar skills while editing and fact-checking departments of their choice. We are committed to catching grammatical and factual mistakes in articles with attention to detail, and we look for members who want to contribute to maintaining The Spectator’s high-quality content.",
-      applicationForm: "https://forms.gle/CBEJdJVFAKFmcUFPA",
-      applicationDueDate: new Date("April 18, 2025 23:59:59"),
+      applicationForm: "https://forms.gle/xjh71Vi1Wbhdquts5",
+      applicationDueDate: new Date("October 14, 2025 23:59:59"),
       stylesColor: styles.copyTheme,
     },
     {
@@ -126,8 +126,8 @@ function RecruitmentPage() {
       department: "Business",
       description:
         "The Business department is the backbone of The Spectator. Due to the efforts of this department, The Spectator is able to print all of its issues while still remaining independent. We negotiate and secure deals with businesses all over New York as well as handle the advertisements on the website and in the paper. Members learn skills that can be applied to real life, including talking in formal settings, learning how to negotiate and compromise, and understanding how to manage money.",
-      applicationForm: "https://forms.gle/jYo9gYRGwRFdKvNi7",
-      applicationDueDate: new Date("April 27, 2025 23:59:59"),
+      applicationForm: "https://docs.google.com/forms/d/e/1FAIpQLSfaCeUBmarJo2iyhvKLlnU-hYezx8HCn6t_apoOWGIs05Y0EA/viewform?usp=header",
+      applicationDueDate: new Date("November 2, 2025 23:59:59"),
       stylesColor: styles.buisnessTheme,
     },
   ];
@@ -165,7 +165,7 @@ function RecruitmentPage() {
       <div className={styles.mainBody}>
 
         <section className={styles.headingContainer}>
-          <article className={styles.heading}>
+          <div className={styles.heading}>
             <section className={`${styles.headingText}`}>
               {videoHovered && windowWidth >= 1400 ? (
                 <div id={styles.OVERLAY}></div>
@@ -186,7 +186,7 @@ function RecruitmentPage() {
                 Recruitments
               </h1>
               <p id={styles.headingParagraph}>
-                Spring Recruitments 2025 are now LIVE! Send in your applications
+                Fall Recruitments 2025 are now LIVE! Send in your applications
                 before it is too late.
               </p>
             </section>
@@ -210,7 +210,7 @@ function RecruitmentPage() {
                 allowFullScreen
               ></iframe>
             </section>
-          </article>
+          </div>
         </section>
         <section className={styles.aboutContainer}>
           <article className={styles.about}>
