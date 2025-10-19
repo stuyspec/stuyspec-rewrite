@@ -6,7 +6,7 @@ const MixedAdvertisements: {
   {
     name: "Write The World",
     image_src: "/images/ads/write-the-world.png",
-    url: "https://writetheworld.org/",
+    url: "https://workshops.writetheworld.org/college-essay/?utm_campaign=23841340-Stuyvesant%20Spectator&utm_source=ads",
   }, {
     name: "Prepory Elite Prep",
     image_src: "/images/ads/preporybox.png",
