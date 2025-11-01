@@ -269,7 +269,7 @@ function cardGen() {
       department: "art",
     },
     {
-      name: "Rhea Malhorta",
+      name: "Rhea Malhotra",
       position: "E",
       department: "art",
     },
@@ -329,7 +329,7 @@ function cardGen() {
       department: "business",
     },
     {
-      name: "Arnav Malhorta",
+      name: "Arnav Malhotra",
       position: "EIT",
       department: "web",
     },
