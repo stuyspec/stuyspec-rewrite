@@ -26,7 +26,7 @@ interface CardProps {
     | "art"
     | "faculty";
   //Department that the user is apart of.
-  position: "EIT" | "E";
+  position: "EIT" | "E" | "EIC";
   /* 
 	NOTES
 	MB: Managing Board (NOT INCLUDED)
@@ -88,11 +88,11 @@ function Card(cardProps: CardProps) {
             // FIRST UPPERCASES THEIR DEPARTMENT AND THEN APPENDS THEIR POSITION
             // web Department Editor -> Web Department Editor
           }
-          {cardProps.department !== "faculty"
+          {cardProps.department !== "faculty" && cardProps.position !== "EIC"
             ? cardProps.department.charAt(0).toUpperCase() +
-              cardProps.department.substring(1).concat(`          Department
-          ${cardProps.position === "E" ? "Editor" : "Editor-in-Training"}`)
-            : "Faculty Advisor"}{" "}
+              cardProps.department.substring(1).concat(` Department
+          ${cardProps.position === "E" ? " Editor" : " Editor-in-training"}`)
+            : cardProps.position === "EIC" ? "Editor-in-Chief" : "Faculty Advisor"}{" "}
         </p>
       </div>
     </article>
@@ -105,12 +105,12 @@ function cardGen() {
   const staff: CardProps[] = [
     {
       name: "Myles Vuong",
-      position: "E",
+      position: "EIC",
       department: "news",
     },
     {
       name: "Hifza Kaleem",
-      position: "E",
+      position: "EIC",
       department: "features",
     },
     {
@@ -289,7 +289,7 @@ function cardGen() {
       department: "layout",
     },
     {
-      name: "Isabel Noa",
+      name: "Isabel Noh",
       position: "E",
       department: "layout",
     },
