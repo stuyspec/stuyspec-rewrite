@@ -1,84 +1,44 @@
-#main {
-	width: 95vw;
-	max-width: 1000px;
-	padding-block: 1rem;
-	margin: 0 auto;
-	text-align: center;
-}
-
-#departments h3 {
-	font-size: 1.6rem;
-}
-
-#departments p {
+#headingText{
+	padding-bottom: 0.5rem;
 	font-size: 1.25rem;
 }
-
-.EIC {
-	color: rgb(215, 82, 82);
+#main {
+  /* width: 95vw;
+	max-width: 1000px; */
+  padding-block: 1rem;
+  margin: 0 auto;
+  padding: 3rem;
 }
 
-.news {
-	color: rgb(94, 138, 153);
+#memberGrid {
+  display: grid;
+  gap: 1rem;
 }
 
-.features {
-	color: rgb(175, 156, 86);
+/*
+FOR SIZING DIMENSIONS ONLY
+
+USE GLOBALS CSS VARIABLES --SMALL, --MEDIUM, --LARGE FOR
+REFERENCE
+*/
+@media only screen and (min-width: 576px) {
+  #memberGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.ops {
-	color: rgb(99, 112, 207);
+@media only screen and (min-width: 768px) {
+  #memberGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-
-.science {
-	color: rgb(69, 147, 40);
+@media only screen and (min-width: 992px) {
+  #memberGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
-
-.ae {
-	color: rgb(219, 101, 120);
-}
-
-.humor {
-	color: rgb(187, 187, 10);
-}
-
-.sports {
-	color: rgb(34, 181, 181);
-}
-
-.photos {
-	color: rgb(223, 150, 14);
-}
-
-.art {
-	color: rgb(145, 64, 179);
-}
-
-.layout {
-	color: rgb(134, 134, 134);
-}
-
-.copy {
-	color: rgb(176, 134, 103);
-}
-
-.biz {
-	color: rgb(82, 147, 93);
-}
-
-.web {
-	color: rgb(0, 128, 122);
-}
-
-.faculty {
-	color: rgb(154, 68, 68);
-}
-
-#main h3 {
-	margin-top: 30px;
-}
-
-.special_def {
-	text-align: right;
-	font-style: italic;
+@media only screen and (max-width: 576px) {
+  #memberGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

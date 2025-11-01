@@ -77,6 +77,11 @@
   --cardShadowColor: hsl(0, 0%, 90%);
 	--cardImageShadowColor: hsl(0, 0%, 76%);
 
+  /* SIZING @MEDIA VARIABLES */
+  --small-media: 576px;
+  --medium-media: 768px;
+  --large-media: 992px;
+
 }
 
 [data-theme="dark"] {
