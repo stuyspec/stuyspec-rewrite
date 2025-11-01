@@ -344,9 +344,9 @@ function cardGen() {
       department: "web",
     },
   ];
-  return staff.map((e, _) => {
+  return staff.map((e, key) => {
     return (
-      <Card name={e.name} department={e.department} position={e.position} photo={unknownPhoto}/>
+      <Card key={key} name={e.name} department={e.department} position={e.position} photo={unknownPhoto}/>
     );
   });
 }
