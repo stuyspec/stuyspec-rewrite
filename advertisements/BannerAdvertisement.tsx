@@ -4,7 +4,8 @@ import banner_advertisements from "./BannerAdvertisements";
 import styles from "../styles/Advertisement.module.css";
 
 const BannerAdvertisement = (props: { index: number; show_ad: boolean }) => {
-	let index = props.index % banner_advertisements.length;
+	// console.log(Math.round(Math.random() * banner_advertisements.length));
+	let index = props.index;
 
 	if (!banner_advertisements[index]) return null;
 

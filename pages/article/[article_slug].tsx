@@ -15,6 +15,7 @@ import generate_contributors_jsx from "../../components/GenerateContributorsJSX"
 import { generateMetaTags } from "../../utils/generateMetaTags";
 import BannerAdvertisements from "../../advertisements/BannerAdvertisements";
 import BannerAdvertisement from "../../advertisements/BannerAdvertisement";
+import { propagateServerField } from "next/dist/server/lib/render-server";
 
 interface Props {
 	article: ReceivedArticle;
@@ -52,7 +53,7 @@ function Article(props: Props) {
 	const providers = ["facebook", "twitter", "linkedin", "email"];
 
 	const isAdvertisingAllowed: boolean = section_id != 2 && section_id != 4; // forbid ads on Opinions and Humor as per charter
-
+	
 	return (
 		<div>
 			<Head>
@@ -81,13 +82,12 @@ function Article(props: Props) {
 					props.article.cover_image
 				)}
 			</Head>
-
 			<main id={styles.main}>
 				{isAdvertisingAllowed && (
 					<div className={styles.advertisements}>
 						<BannerAdvertisement
 							index={props.banner_ad_index}
-							show_ad={props.show_ad}
+							show_ad={true}
 						/>
 					</div>
 				)}

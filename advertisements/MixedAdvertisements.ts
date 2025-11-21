@@ -15,6 +15,11 @@ const MixedAdvertisements: {
     name: "Kingfisher Prep",
     image_src: "/images/ads/KFPBox.jpg",
     url: "https://www.kingfisherprep.com/sat-act-college-application-coaching-for-stuyvesant-students" 
+  },
+  {
+    name: "Revolution Writing",
+    image_src: "/images/ads/revolutiondriving.png",
+    url: "https://revolutiondrivingschools.com/"
   }
 ]; // duplicate ads cuz just 2 causes repeats on home page
 export default MixedAdvertisements;
