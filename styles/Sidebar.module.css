@@ -1,6 +1,6 @@
 #sidebar_parent {
   width: 250px;
-  background-color: var(--secondary-nav);
+  background-color: var(--secondary);
   position: absolute !important;
   height: auto;
   min-height: 100vh;
@@ -14,7 +14,7 @@
   align-items: left;
   font-family: var(--secondary-font);
   padding: 15px;
-  color: var(--primary-immutable);
+  color: var(--primary);
 }
 
 #sidebar span {

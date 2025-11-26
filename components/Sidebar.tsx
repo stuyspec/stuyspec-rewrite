@@ -220,14 +220,18 @@ const Sidebar = (props: { showSidebar: boolean; setShowSidebar: (v: boolean) => 
 				</span>
 
         <div id={styles.additional_features}>
-          <div className={styles.clickable_nav_element}>
+          {/* <div className={styles.clickable_nav_element}>
             <Link href="/subscribe">
               <p id={subscribe_button_styles.subscribe}>Subscribe</p>
             </Link>
-          </div>
-          <div className={styles.clickable_nav_element}>
+          </div> */}
+		  {
+			// TODO: MAKE THE THEME TOGGLE COLORS BETTER -- NOT DOING THIS TODAY
+			// TODO: WILL DO THIS LATER
+		  }
+          {/* <div className={styles.clickable_nav_element}>
             <ThemeToggle />
-          </div>
+          </div> */}
         </div>
         <div id={styles.socialsBar}>
           <div id={styles.column}>

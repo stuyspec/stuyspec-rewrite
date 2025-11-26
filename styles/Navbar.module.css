@@ -1,54 +1,123 @@
 #nav_parent {
-  width: 100%;
   overflow: hidden;
-  background-color: var(--secondary-nav);
-  color: var(--primary-immutable);
-}
+  background-color: var(--secondary);
+  color: var(--primary);
 
+  display: flex;
+  justify-content: center;
+}
+#nav_parent_content {
+  width: 95vw;
+  border-bottom: solid var(--primary) 2px;
+  padding-bottom: 0.25rem;
+}
+#nav_parent_content_border {
+  border-bottom: solid var(--primary) 2px;
+  margin-top: 0.25rem;
+}
+.department_bar_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 #department_bar {
-  max-width: 1000px;
-  font-weight: 800;
-  text-transform: uppercase;
-  height: fit-content;
-  display: flex;
-  justify-content: space-between;
-  margin-right: auto;
-  margin-left: auto;
+  font-weight: 550;
   font-family: var(--secondary-font);
-  align-items: center;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
+  font-size: 1.15rem;
 
-#subscribe_search {
-  padding-top: 1rem;
+  height: 100%;
+  width: fit-content;
+  padding: 0.5rem 0;
+
   display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 3rem;
+
+  transition: ease-in-out 200ms;
+
+  position: sticky;
 }
 
-#media_buttons {
-  font-size: 1.5rem;
-  padding-top: 1rem;
-}
-
-#media_button {
-  margin-right: 0.5rem;
-}
-
-#navbar_hero {
-  padding: 1.75rem 0 1.5rem 0;
+#department_bar span {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
+  align-items: first baseline;
+  gap: 0.25rem;
 
+  color: var(--primary);
+}
+#department_bar span::after {
+  content: "";
+  display: inline-block;
+  aspect-ratio: 0.75/1;
+  height: 1rem;
+  transition: transform ease-in-out 200ms;
+
+  background-color: var(--primary);
+  -webkit-mask: url("./../public/svg/chevron-down.svg") no-repeat center;
+  mask: url("./../public/svg/chevron-down.svg") no-repeat center;
+  mask-size: contain;
+}
+#department_bar span:hover::after {
+  transform: translateY(10%);
+}
 #department_bar span:hover {
   opacity: 0.75;
   transition-duration: 0.25s;
   transform: translateY(-2px);
+}
+
+#navbar_hero {
+  padding: 1.5rem 1rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  align-items: center;
+  justify-items: center;
+}
+/* 
+FORTHE GRID CONTIANER
+*/
+.social_media_and_date {
+  grid-column: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+#media_buttons {
+  width: 100%;
+
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+
+  font-size: 1rem;
+}
+#media_buttons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#media_buttons svg {
+  aspect-ratio: 1/1;
+  font-size: 1.5rem;
+}
+.date {
+  font-family: var(--secondary-font);
+  font-size: var(--extra-small-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#logo_container {
+  grid-column: 3 / span 6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #logo_container {
@@ -56,14 +125,11 @@
   cursor: pointer;
   font-family: "Old English Text MT";
   text-align: center;
+  font-weight: 500;
 }
-
-#date {
-  font-family: var(--secondary-font);
-  font-size: var(--extra-small-text);
-  text-transform: uppercase;
-  color: lightgray;
-  letter-spacing: 1px;
+.right {
+  grid-column: 9 / span 2;
+  justify-self: right;
 }
 
 #hamburgerMenu {
@@ -88,38 +154,69 @@
   opacity: 0.5;
 }
 
-.weatherTempBar {
-  margin-left: auto;
-  font-family: var(--secondary-font);
-  min-width: 180px;
-  min-height: 25px;
-  background-color: var(--secondary-nav);
-  transform: translateY(7px);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-  font-size: var(--extra-small-text);
-  color: lightgray;
-  letter-spacing: 1px;
-}
-
-.weatherIcon {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-}
-
-.right {
+/* .right {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.navBarSideBar{
+} */
+.navBarSideBar {
   visibility: hidden;
+}
+.expanded_section {
+  interpolate-size: allow-keywords;
+
+  align-self: flex-start;
+
+  border-top: solid 2px var(--light-grey);
+
+  width: 100%;
+  padding: 2rem 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: row;
+  column-gap: 5rem;
+  height: fit-content;
+
+  /* transition: 300ms ease-in-out; */
+}
+@keyframes hp {
+  to {
+    height: 0;
+    padding: 0;
+  }
+}
+#hiddenExpandedSection {
+  visibility: hidden;
+  animation: hp 2s cubic-bezier(0.165, 0.84, 0.44, 1) 100ms 1 forwards;
+
+  #subsectionList {
+    height: 0;
+  }
+}
+.expanded_section #sectionID {
+  font-family: "Old English Text MT";
+  font-size: 1.4rem;
+  font-weight: 300;
+
+  grid-column: 1 / span 2;
+}
+.expanded_section #subsections {
+  grid-column: 4 / span 4;
+}
+
+.expanded_section #subsectionList {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(min-contnet, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: row;
+  gap: 0.5rem;
+
+  padding-top: 0.5rem;
+  font-size: 1.15rem;
+
+  column-gap: 4rem;
 }
 
 @media screen and (max-width: 1050px) {
@@ -135,14 +232,18 @@
   #hamburgerMenu {
     display: block;
     margin-left: 1rem;
+
+    aspect-ratio: 1/1;
+    width: 24px;
   }
-  .navBarSideBar{
+  .navBarSideBar {
     visibility: visible;
   }
 
-  #date,
+  .date,
   #department_bar,
-  #media_buttons {
+  #media_buttons,
+  #nav_parent_content_border {
     display: none;
   }
 
@@ -153,7 +254,7 @@
   #nav_parent {
     height: 95px;
     position: fixed;
-    background-color: var(--secondary-nav);
+    /* background-color: var(--secondary-nav); */
     right: 0;
     left: 0;
     top: 0;
@@ -210,3 +311,43 @@
 .active {
   opacity: 0.75;
 }
+
+/* #subscribe_search {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+#media_buttons {
+  font-size: 1.5rem;
+  padding-top: 1rem;
+}
+
+#media_button {
+  margin-right: 0.5rem;
+} */
+
+/* 
+.weatherTempBar {
+  margin-left: auto;
+  font-family: var(--secondary-font);
+  min-width: 180px;
+  min-height: 25px;
+  background-color: var(--secondary-nav);
+  transform: translateY(7px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  font-size: var(--extra-small-text);
+  color: lightgray;
+  letter-spacing: 1px;
+}
+
+.weatherIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+} */

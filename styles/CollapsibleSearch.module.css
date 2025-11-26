@@ -11,6 +11,8 @@
   z-index: 2;
   top: 0;
   transform: translate(0, -50%);
+
+  fill: var(--primary);
   /* Translate Y-axis center to be center of element, don't touch x */
 }
 
@@ -19,7 +21,10 @@
   cursor: pointer;
   transition-duration: 0.25s;
 }
-
+#magnifying_glass svg{
+  aspect-ratio: 1/1;
+  height: 1.5rem;
+}
 #search_button:active {
   opacity: 0.5;
 }
