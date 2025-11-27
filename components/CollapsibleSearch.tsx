@@ -32,41 +32,35 @@ const CollapsibleSearch = () => {
 
   return (
     <div id={styles.collapsible_search_parent}>
-      <form onSubmit={submitSearchRequest}>
+      <form onSubmit={submitSearchRequest} className={styles.formContainer}>
         <div
-          style={{
-            display: !searchBar ? "block" : "none", // Icon is always the opposite visibility of the textbox
-          }}
-          id={styles.search_button}
+          className={styles.magnifyingGlassContainer}
           onClick={onSearchFocus}
+          style={{
+            visibility: searchBar ? "hidden" : "visible"
+          }}
         >
-          {/* <Image
-            alt="Search"
-            src="/svg/search.svg"
-            width={24}
-            height={24}
-          /> */}
           <span id={styles.magnifying_glass} aria-label="search button">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
             </svg>
           </span>
         </div>
-        <input
-          id={styles.search_textbox}
-          style={{
-            right: searchBar ? "0" : "-100px", // To animate coming from the right side
-            opacity: searchBar ? "1" : "0",
-            cursor: searchBar ? "auto" : "pointer",
-            zIndex: searchBar ? 3 : -1,
-            top: 0,
-          }}
-          placeholder="Search"
-          onFocus={onSearchFocus}
-          onChange={(e) => setSearchValue(e.target.value)}
-          onBlur={onSearchBlur}
-          ref={textInput}
-        />
+
+        <div className={styles.seachBoxContainer}>
+          <input
+            style={{
+              // visibility: searchBar ? "visible" : "hidden",
+              transform: searchBar ? "translateX(0%)" : "translateX(150%)"
+            }}
+            id={styles.search_textbox}
+            placeholder="Search"
+            onFocus={onSearchFocus}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onBlur={onSearchBlur}
+            ref={textInput}
+          />
+        </div>
       </form>
     </div>
   );

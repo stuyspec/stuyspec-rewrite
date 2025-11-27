@@ -189,7 +189,7 @@ FORTHE GRID CONTIANER
 }
 #hiddenExpandedSection {
   visibility: hidden;
-  animation: hp 2s cubic-bezier(0.165, 0.84, 0.44, 1) 100ms 1 forwards;
+  animation: hp 2s cubic-bezier(0.165, 0.84, 0.44, 1) 50ms 1 forwards;
 
   #subsectionList {
     height: 0;
