@@ -4,7 +4,7 @@
   position: relative;
   width: fit-content;
 
-  
+
 }
 .formContainer {
   display: grid;
@@ -37,6 +37,7 @@
   display: flex;
   justify-content: right;
 
+
   overflow: hidden;
 }
 #search_textbox {
@@ -46,9 +47,11 @@
   border: solid var(--primary) 1px;
   border-radius: 2px;
 
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.5rem;
 
   transition: ease-in-out 200ms;
+
+  
 }
 .goButton {
   width: 0;
@@ -73,7 +76,7 @@
     width: 100%;
     border-radius: 1px;
 
-    font-size: 0.75em;
+    font-size: 0.8em;
   }
   .magnifyingGlassContainer {
     width: 0;

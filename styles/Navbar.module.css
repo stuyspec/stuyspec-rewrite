@@ -28,7 +28,6 @@
   height: 100%;
   width: fit-content;
   padding: 0.5rem 0;
-  
 
   display: flex;
   justify-content: center;
@@ -88,9 +87,6 @@ FORTHE GRID CONTIANER
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-
-
-  
 }
 #media_buttons {
   width: 100%;
@@ -168,8 +164,9 @@ FORTHE GRID CONTIANER
   visibility: hidden;
 
   width: 0;
-  height:0;
+  height: 0;
   overflow: hidden;
+  padding: 2rem;
 }
 .expanded_section {
   interpolate-size: allow-keywords;
@@ -228,10 +225,13 @@ FORTHE GRID CONTIANER
 }
 
 @media screen and (max-width: 1050px) {
-  #nav_parent_content{
+  #nav_parent {
+    position: relative;
+  }
+  #nav_parent_content {
     width: 100%;
   }
-  #subscribe_search{
+  #subscribe_search {
     width: 0;
     height: 0;
     overflow: hidden;
@@ -255,8 +255,20 @@ FORTHE GRID CONTIANER
   .navBarSideBar {
     visibility: visible;
     width: 100%;
-  
+    height: 100vh;
+    overflow-y: scroll;
 
+    position: fixed;
+    top: 0;
+    z-index: 999;
+  }
+  #closeButton {
+    all: unset;
+    cursor: pointer;
+  }
+  #closeButton svg {
+    aspect-ratio: 1/1;
+    width: 20px;
   }
 
   .date,
@@ -267,19 +279,7 @@ FORTHE GRID CONTIANER
     display: none;
   }
 
-  #ghost {
-    height: 95px;
-  }
-
   #nav_parent {
-    height: 95px;
-    position: fixed;
-    /* background-color: var(--secondary-nav); */
-    right: 0;
-    left: 0;
-    top: 0;
-    z-index: 3;
-    width: 100%;
     overflow: visible;
   }
 
@@ -295,7 +295,6 @@ FORTHE GRID CONTIANER
     justify-content: flex-start;
     align-items: center;
   }
-
 }
 
 @media screen and (max-width: 490px) {
@@ -305,12 +304,6 @@ FORTHE GRID CONTIANER
 
   #subscribe {
     display: none;
-  }
-
-  #navbar_hero,
-  #ghost,
-  #nav_parent {
-    height: 65px;
   }
 }
 

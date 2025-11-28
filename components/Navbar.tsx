@@ -54,7 +54,9 @@ function currentDate() {
 
 const Navbar = () => {
   const [viewSubSection, setViewSubSection] = useState(false);
+  const [viewSidebar, setViewSidebar] = useState(false);
   const [scroll, setScroll] = useState(0);
+
   const [weather, setWeather] = useState({
     temp: null,
     city: "Loading...",
@@ -202,8 +204,6 @@ const Navbar = () => {
 
   return (
     <>
-      <div id={styles.ghost} style={scroll > 121.6 ? { height: "40px" } : {}} />
-
       <div id={styles.nav_parent}>
         <div id={styles.nav_parent_content}>
           <nav id={styles.nav}>
@@ -304,13 +304,19 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className={styles.navBarSideBar} style={scroll > 10 ? {position: "fixed"} : {position: "static"}}>
+            <dialog className={styles.navBarSideBar} open={viewSubSection}>
+              <form method="dialog">
+                <button autoFocus onClick={toggleMenu} id={styles.closeButton}>
+                  <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                  </svg>
+                </button>
+              </form>
               <Sidebar
                 showSidebar={viewSubSection}
                 setShowSidebar={setViewSubSection}
               />
-              <h1>HELLO</h1>
-            </div>
+            </dialog>
           </nav>
 
           <div

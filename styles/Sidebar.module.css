@@ -1,6 +1,6 @@
 #sidebar_parent {
   width: 100%;
-  background-color: var(--secondary);
+
   height: auto;
   z-index: 9999;
 
@@ -10,18 +10,15 @@
 #sidebar {
   font-family: var(--secondary-font);
   font-weight: 600;
-  padding: 15px;
+  padding: 0;
   color: var(--primary);
 
-
-
   width: 100%;
-  position: fixed;
-  height: 100vh;
-  overflow-y: scroll;
-  background-color: var(--secondary);
-}
 
+  background-color: var(--secondary); 
+
+  list-style-type: none;
+}
 .department {
   width: 100%;
   display: flex;
@@ -32,8 +29,10 @@
   border-bottom: solid 2px var(--light-grey);
 }
 #search {
-  padding: 0;
+
   border: none;
+  padding: 1rem 0;
+  padding-bottom: 0rem;
 }
 
 #socialsBar {
