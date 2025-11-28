@@ -1,10 +1,10 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Router from "next/router";
 import styles from "../styles/CollapsibleSearch.module.css";
 import { useRouter } from "next/navigation";
 
-const CollapsibleSearch = () => {
+const CollapsibleSearch = ({ setShowSidebar }: any) => {
   const [searchValue, setSearchValue] = useState("");
   const [searchBar, setSearchBar] = useState(false);
   const textInput = useRef<HTMLInputElement>(null);
@@ -24,44 +24,67 @@ const CollapsibleSearch = () => {
   };
   function submitSearchRequest(e: FormEvent) {
     e.preventDefault();
+    if (setShowSidebar) {
+      setShowSidebar(false)
+    }
     if (searchValue.trim()) {
       Router.push(String("/search?query=" + searchValue));
     }
     //router.refresh();
   }
 
+  //GET THE WINDOW WIDTH TO DETERMINE VISIBILITY
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+
+    const getWidth = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', getWidth)
+    getWidth()
+
+    return () => window.removeEventListener('resize', getWidth)
+  }, [])
+
+
   return (
     <div id={styles.collapsible_search_parent}>
-      <form onSubmit={submitSearchRequest}>
+      <form onSubmit={submitSearchRequest} className={styles.formContainer}>
         <div
-          style={{
-            display: !searchBar ? "block" : "none", // Icon is always the opposite visibility of the textbox
-          }}
-          id={styles.search_button}
+          className={styles.magnifyingGlassContainer}
           onClick={onSearchFocus}
-        >
-          <Image
-            alt="Search"
-            src="/images/search-button.svg"
-            width={24}
-            height={24}
-          />
-        </div>
-        <input
-          id={styles.search_textbox}
           style={{
-            right: searchBar ? "0" : "-100px", // To animate coming from the right side
-            opacity: searchBar ? "1" : "0",
-            cursor: searchBar ? "auto" : "pointer",
-            zIndex: searchBar ? 3 : -1,
-            top: 0,
+            visibility: searchBar ? "hidden" : "visible"
           }}
-          placeholder="Search"
-          onFocus={onSearchFocus}
-          onChange={(e) => setSearchValue(e.target.value)}
-          onBlur={onSearchBlur}
-          ref={textInput}
-        />
+        >
+          <span id={styles.magnifying_glass} aria-label="search button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+          </span>
+        </div>
+
+        <div className={styles.seachBoxContainer}>
+          <input
+            style={{
+              // visibility: searchBar ? "visible" : "hidden",
+              transform: searchBar || windowWidth < 1050 ? "translateX(0%)" : "translateX(150%)"
+            }}
+            id={styles.search_textbox}
+            placeholder="Search"
+            onFocus={onSearchFocus}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onBlur={onSearchBlur}
+            ref={textInput}
+          />
+
+
+          <button type="submit" className={styles.goButton}>
+            GO
+          </button>
+
+
+        </div>
       </form>
     </div>
   );
