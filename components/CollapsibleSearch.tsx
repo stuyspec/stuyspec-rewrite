@@ -1,10 +1,10 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Router from "next/router";
 import styles from "../styles/CollapsibleSearch.module.css";
 import { useRouter } from "next/navigation";
 
-const CollapsibleSearch = () => {
+const CollapsibleSearch = ({ setShowSidebar }: any) => {
   const [searchValue, setSearchValue] = useState("");
   const [searchBar, setSearchBar] = useState(false);
   const textInput = useRef<HTMLInputElement>(null);
@@ -24,11 +24,28 @@ const CollapsibleSearch = () => {
   };
   function submitSearchRequest(e: FormEvent) {
     e.preventDefault();
+    if (setShowSidebar) {
+      setShowSidebar(false)
+    }
     if (searchValue.trim()) {
       Router.push(String("/search?query=" + searchValue));
     }
     //router.refresh();
   }
+
+  //GET THE WINDOW WIDTH TO DETERMINE VISIBILITY
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+
+    const getWidth = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', getWidth)
+    getWidth()
+
+    return () => window.removeEventListener('resize', getWidth)
+  }, [])
+
 
   return (
     <div id={styles.collapsible_search_parent}>
@@ -51,7 +68,7 @@ const CollapsibleSearch = () => {
           <input
             style={{
               // visibility: searchBar ? "visible" : "hidden",
-              transform: searchBar ? "translateX(0%)" : "translateX(150%)"
+              transform: searchBar || windowWidth < 1050 ? "translateX(0%)" : "translateX(150%)"
             }}
             id={styles.search_textbox}
             placeholder="Search"
@@ -60,6 +77,13 @@ const CollapsibleSearch = () => {
             onBlur={onSearchBlur}
             ref={textInput}
           />
+
+
+          <button type="submit" className={styles.goButton}>
+            GO
+          </button>
+
+
         </div>
       </form>
     </div>

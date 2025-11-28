@@ -3,6 +3,8 @@
 
   position: relative;
   width: fit-content;
+
+  
 }
 .formContainer {
   display: grid;
@@ -41,11 +43,66 @@
   height: 100%;
   width: 75%;
 
-  border: solid var(--primary) 1.75px;
-  border-radius: 13px;
+  border: solid var(--primary) 1px;
+  border-radius: 2px;
 
   padding: 0.25rem 0.5rem;
 
-
   transition: ease-in-out 200ms;
+}
+.goButton {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1050px) {
+  #collapsible_search_parent {
+    width: 100%;
+  }
+  .formContainer {
+    justify-items: left;
+  }
+  .seachBoxContainer {
+    justify-content: left;
+    width: 100%;
+
+    gap: 0.2rem;
+  }
+  #search_textbox {
+    width: 100%;
+    border-radius: 1px;
+
+    font-size: 0.75em;
+  }
+  .magnifyingGlassContainer {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .goButton {
+    all: unset;
+
+    padding: 0.4em;
+    cursor: pointer;
+
+    aspect-ratio: 1/1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: var(--medium-grey);
+    color: var(--secondary);
+
+    border-radius: 0.1rem;
+
+    transition: ease-in 200ms;
+
+  }
+  .goButton:hover{
+    background-color: var(--primary);
+  }
 }

@@ -283,7 +283,7 @@ const Navbar = () => {
                     </p>
                   </Link>
                 </div> */}
-                  <div>
+                  <div id={styles.collapsibleSearch}>
                     <CollapsibleSearch />
                   </div>
                 </div>
@@ -302,6 +302,14 @@ const Navbar = () => {
                 )}
               </div> */}
               </div>
+            </div>
+
+            <div className={styles.navBarSideBar} style={scroll > 10 ? {position: "fixed"} : {position: "static"}}>
+              <Sidebar
+                showSidebar={viewSubSection}
+                setShowSidebar={setViewSubSection}
+              />
+              <h1>HELLO</h1>
             </div>
           </nav>
 
@@ -369,7 +377,7 @@ const Navbar = () => {
                 // TODO: MAKE IT MORE SPECIFIC FOR WHAT IT IS BEING HOVERED
                 showSectionBar ? (
                   <div className={styles.expanded_section} onMouseEnter={() => { setShowSectionBar(true) }} id={styles.visibleExpandedSection}>
-                    <Subsections/>
+                    <Subsections />
                   </div>
                 ) : (
                   <div className={styles.expanded_section} onMouseEnter={() => { setShowSectionBar(true) }} id={styles.hiddenExpandedSection}>
@@ -378,12 +386,6 @@ const Navbar = () => {
                 )
               }
             </div>
-          </div>
-          <div className={styles.navBarSideBar}>
-            <Sidebar
-              showSidebar={viewSubSection}
-              setShowSidebar={setViewSubSection}
-            />
           </div>
           <div id={styles.nav_parent_content_border}>
           </div>

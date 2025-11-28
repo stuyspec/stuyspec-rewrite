@@ -28,6 +28,7 @@
   height: 100%;
   width: fit-content;
   padding: 0.5rem 0;
+  
 
   display: flex;
   justify-content: center;
@@ -87,6 +88,9 @@ FORTHE GRID CONTIANER
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+
+
+  
 }
 #media_buttons {
   width: 100%;
@@ -162,6 +166,10 @@ FORTHE GRID CONTIANER
 } */
 .navBarSideBar {
   visibility: hidden;
+
+  width: 0;
+  height:0;
+  overflow: hidden;
 }
 .expanded_section {
   interpolate-size: allow-keywords;
@@ -220,6 +228,14 @@ FORTHE GRID CONTIANER
 }
 
 @media screen and (max-width: 1050px) {
+  #nav_parent_content{
+    width: 100%;
+  }
+  #subscribe_search{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
   .weatherTempBar {
     display: none;
   }
@@ -238,9 +254,13 @@ FORTHE GRID CONTIANER
   }
   .navBarSideBar {
     visibility: visible;
+    width: 100%;
+  
+
   }
 
   .date,
+  .department_bar_container,
   #department_bar,
   #media_buttons,
   #nav_parent_content_border {
@@ -261,7 +281,6 @@ FORTHE GRID CONTIANER
     z-index: 3;
     width: 100%;
     overflow: visible;
-    padding-right: 1rem;
   }
 
   #logo_container {
@@ -277,10 +296,6 @@ FORTHE GRID CONTIANER
     align-items: center;
   }
 
-  #subscribe_search {
-    margin-left: auto;
-    padding-top: 0.5rem;
-  }
 }
 
 @media screen and (max-width: 490px) {
