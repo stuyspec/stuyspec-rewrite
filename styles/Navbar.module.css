@@ -166,7 +166,8 @@ FORTHE GRID CONTIANER
   width: 0;
   height: 0;
   overflow: hidden;
-  padding: 2rem;
+  padding: 1rem;
+  padding-top: 2rem;
 }
 .expanded_section {
   interpolate-size: allow-keywords;
