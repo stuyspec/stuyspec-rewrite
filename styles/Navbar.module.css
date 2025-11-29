@@ -253,15 +253,22 @@ FORTHE GRID CONTIANER
     aspect-ratio: 1/1;
     width: 24px;
   }
+  .dialogContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    width: 100vw;
+    height: 0px;
+    z-index: 999;
+  }
   .navBarSideBar {
     visibility: visible;
     width: 100%;
     height: 100vh;
-    overflow-y: scroll;
 
-    position: fixed;
-    top: 0;
-    z-index: 999;
+    overflow-y: scroll;
   }
   #closeButton {
     all: unset;
