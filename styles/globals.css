@@ -41,6 +41,13 @@
   font-weight: bold;
 }
 
+
+/*MAKES SURE THAT WHEN THE DIALOG MENU IS OPEN THEN THERE IS NO SCROLL.*/
+html:has(dialog[open]){
+  overflow: hidden;
+}
+
+
 :root {
   --primary-immutable: #ffffff;
   --accent: #4283e4;
