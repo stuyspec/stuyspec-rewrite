@@ -1,20 +1,25 @@
 @font-face {
   font-family: "Playfair Display";
-  src: url("/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-display: auto;
+  src: url("/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf")
+    format("truetype");
 }
 
 @font-face {
   font-family: "Lato";
+  font-display: auto;
   src: url("/fonts/Lato/Lato-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Old English Text MT";
+  font-display: auto;
   src: url("/fonts/OldEnglishTextMT/OldEnglishTextMT.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Minion Pro";
+  font-display: auto;
   src: url("/fonts/MinionPro/MinionPro_Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
@@ -22,6 +27,7 @@
 
 @font-face {
   font-family: "Minion Pro";
+  font-display: auto;
   src: url("/fonts/MinionPro/MinionPro_Italic.ttf") format("truetype");
   font-style: italic;
   font-weight: normal;
@@ -29,6 +35,7 @@
 
 @font-face {
   font-family: "Minion Pro";
+  font-display: auto;
   src: url("/fonts/MinionPro/MinionPro_Bold.ttf") format("truetype");
   font-style: normal;
   font-weight: bold;
@@ -36,17 +43,16 @@
 
 @font-face {
   font-family: "Minion Pro";
+  font-display: auto;
   src: url("/fonts/MinionPro/MinionPro_Bold_Italic.ttf") format("truetype");
   font-style: italic;
   font-weight: bold;
 }
 
-
 /*MAKES SURE THAT WHEN THE DIALOG MENU IS OPEN THEN THERE IS NO SCROLL.*/
-html:has(dialog[open]){
+html:has(dialog[open]) {
   overflow: hidden;
 }
-
 
 :root {
   --primary-immutable: #ffffff;
@@ -66,29 +72,28 @@ html:has(dialog[open]){
   --medium-grey: #555555;
 
   --EIC-color: hsl(0, 62%, 42%);
-	--news-color: hsl(195, 24%, 52%);
-	--features-color: hsl(47, 36%, 49%);
-	--opinions-color: hsl(233, 53%, 75%);
-	--science-color: hsl(104, 57%, 63%);
-	--ae-color: hsl(350, 62%, 37%);
-	--humor-color: hsl(60, 42%, 55%);
-	--sports-color: hsl(180, 68%, 58%);
-	--photos-color: hsl(39, 88%, 54%);
-	--art-color: hsl(282, 47%, 52%);
-	--layout-color: hsl(0, 0%, 75%);
-	--copy-color: hsl(25, 32%, 45%);
-	--buisness-color: hsl(130, 28%, 55%);
-	--web-color: hsl(177, 100%, 75%);
-	--faculty-color: hsl(0, 39%, 44%);
+  --news-color: hsl(195, 24%, 52%);
+  --features-color: hsl(47, 36%, 49%);
+  --opinions-color: hsl(233, 53%, 75%);
+  --science-color: hsl(104, 57%, 63%);
+  --ae-color: hsl(350, 62%, 37%);
+  --humor-color: hsl(60, 42%, 55%);
+  --sports-color: hsl(180, 68%, 58%);
+  --photos-color: hsl(39, 88%, 54%);
+  --art-color: hsl(282, 47%, 52%);
+  --layout-color: hsl(0, 0%, 75%);
+  --copy-color: hsl(25, 32%, 45%);
+  --buisness-color: hsl(130, 28%, 55%);
+  --web-color: hsl(177, 100%, 75%);
+  --faculty-color: hsl(0, 39%, 44%);
 
   --cardShadowColor: hsl(0, 0%, 90%);
-	--cardImageShadowColor: hsl(0, 0%, 76%);
+  --cardImageShadowColor: hsl(0, 0%, 76%);
 
   /* SIZING @MEDIA VARIABLES */
   --small-media: 576px;
   --medium-media: 768px;
   --large-media: 992px;
-
 }
 
 [data-theme="dark"] {
@@ -100,24 +105,23 @@ html:has(dialog[open]){
   --medium-grey: #e9e8e8;
 
   --EIC-color: hsl(0, 62%, 58%);
-	--news-color: hsl(195, 24%, 48%);
-	--features-color: hsl(47, 36%, 51%);
-	--opinions-color: hsl(233, 53%, 60%);
-	--science-color: hsl(104, 57%, 37%);
-	--ae-color: hsl(350, 62%, 63%);
-	--humor-color: hsl(60, 40%, 45%);
-	--sports-color: hsl(180, 68%, 42%);
-	--photos-color: hsl(39, 88%, 46%);
-	--art-color: hsl(282, 47%, 48%);
-	--layout-color: hsl(0, 0%, 53%);
-	--copy-color: hsl(25, 32%, 55%);
-	--buisness-color: hsl(130, 28%, 45%);
-	--web-color: hsl(177, 100%, 25%);
-	--faculty-color: hsl(0, 39%, 44%);
+  --news-color: hsl(195, 24%, 48%);
+  --features-color: hsl(47, 36%, 51%);
+  --opinions-color: hsl(233, 53%, 60%);
+  --science-color: hsl(104, 57%, 37%);
+  --ae-color: hsl(350, 62%, 63%);
+  --humor-color: hsl(60, 40%, 45%);
+  --sports-color: hsl(180, 68%, 42%);
+  --photos-color: hsl(39, 88%, 46%);
+  --art-color: hsl(282, 47%, 48%);
+  --layout-color: hsl(0, 0%, 53%);
+  --copy-color: hsl(25, 32%, 55%);
+  --buisness-color: hsl(130, 28%, 45%);
+  --web-color: hsl(177, 100%, 25%);
+  --faculty-color: hsl(0, 39%, 44%);
 
   --cardShadowColor: hsl(0, 0%, 10%);
-	--cardImageShadowColor: hsl(0, 0%, 24%);
-
+  --cardImageShadowColor: hsl(0, 0%, 24%);
 }
 
 [data-theme="dark"] [data-hide-on-theme="dark"],
@@ -167,7 +171,8 @@ a {
 }
 
 .link {
-  background: linear-gradient(to right, var(--primary), var(--primary)),
+  background:
+    linear-gradient(to right, var(--primary), var(--primary)),
     linear-gradient(to right, var(--accent), var(--accent));
   background-size:
     100% 0.1em,

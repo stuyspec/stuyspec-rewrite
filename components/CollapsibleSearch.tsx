@@ -50,25 +50,28 @@ const CollapsibleSearch = ({ setShowSidebar }: any) => {
   return (
     <div id={styles.collapsible_search_parent}>
       <form onSubmit={submitSearchRequest} className={styles.formContainer}>
+
         <div
           className={styles.magnifyingGlassContainer}
           onClick={onSearchFocus}
           style={{
-            visibility: searchBar ? "hidden" : "visible"
+            visibility: searchBar ? "hidden" : "visible",
+            display: searchBar ? "none" : "initial"
           }}
         >
           <span id={styles.magnifying_glass} aria-label="search button">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
             </svg>
           </span>
         </div>
 
+
         <div className={styles.seachBoxContainer}>
           <input
             style={{
-              // visibility: searchBar ? "visible" : "hidden",
-              transform: searchBar || windowWidth < 1050 ? "translateX(0%)" : "translateX(150%)"
+              transform: searchBar || windowWidth < 1050 ? "translateX(0%)" : "translateX(150%)",
+              transition: "200ms ease-in-out",
             }}
             id={styles.search_textbox}
             placeholder="Search"
