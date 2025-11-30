@@ -5,7 +5,7 @@ import Script from "next/script";
 import Head from "next/head";
 import LoadingBar from "react-top-loading-bar";
 import { generateMetaTags } from "../utils/generateMetaTags";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
@@ -25,6 +25,11 @@ function MyApp(props: AppProps) {
 			setProgress(100); // route loaded
 		});
 	}, [router.events]);
+
+
+	//block automatic transitons when the userloads the page
+
+
 
 	// Variables for the (base) meta tags
 	const title = "The Stuyvesant Spectator";

@@ -5,7 +5,6 @@
   z-index: 9999;
 
   font-size: 1.1rem;
-
 }
 
 #sidebar {
@@ -15,8 +14,6 @@
   color: var(--primary);
 
   width: 100%;
-
-  background-color: var(--secondary);
 
   list-style-type: none;
 }

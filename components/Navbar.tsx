@@ -4,7 +4,7 @@ import Link from "next/link";
 import CollapsibleSearch from "./CollapsibleSearch";
 import Image from "next/image";
 import Sidebar from "./Sidebar";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   FaFacebookF,
@@ -160,38 +160,6 @@ const Navbar = () => {
     )
   }
 
-
-  // async function fetchWeather() {
-  //   const apiKey = "a1ed29a92d2a434190f45751250803";
-  //   const zipCode = 10282;
-
-  //   try {
-  //     const response = await fetch(
-  //       `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${zipCode}`
-  //     );
-  //     const data = await response.json();
-
-  //     if (data.error) throw new Error(data.error.message);
-  //     else
-  //       setWeather({
-  //         city: "STUYVESANT, NY",
-  //         temp: data.current.temp_f,
-  //         icon:
-  //           data.current.is_day == 1
-  //             ? "//cdn.weatherapi.com/weather/64x64/day/116.png"
-  //             : "//cdn.weatherapi.com/weather/64x64/night/116.png",
-  //         isDay: data.current.is_day,
-  //       });
-  //   } catch (error) {
-  //     setWeather({
-  //       city: "Error loading weather",
-  //       temp: null,
-  //       icon: "",
-  //       isDay: true,
-  //     });
-  //   }
-  // }
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -201,6 +169,19 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  //GET THE WINDOW WIDTH
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+
+    const getWidth = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', getWidth)
+    getWidth()
+
+    return () => window.removeEventListener('resize', getWidth)
+  }, [])
 
   return (
     <>
@@ -217,7 +198,7 @@ const Navbar = () => {
                 onClick={toggleMenu}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                  <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                 </svg>
               </div>
               {
@@ -269,55 +250,33 @@ const Navbar = () => {
               <div className={styles.right}>
                 <div id={styles.subscribe_search}>
                   {
-                    // SUBSCRIBE IS TEMPORARILY REMOVED BECAUSE THE MAILING DOES NOT EXIST ANYMORE
-                    // WHEN IT IS REINSTATED, SUBSCRIBE WILL BE ACTIVE AGAIN.
-                    // TODO: ADD SUBSCRIBE BUTTON BACK WHEN EVERYTHING IS FIXED PROPERLY.
+                    windowWidth >= 1050 ? (
+                      <div id={styles.collapsibleSearch}>
+                        <CollapsibleSearch />
+                      </div>) : null
+
                   }
-                  {/* <div
-                  id={styles.subscribe}
-                  className={styles.clickable_nav_element}
-                >
-                  <Link href="/subscribe">
-                    <p id={subscribe_button_styles.subscribe_button_navbar}>
-                      Subscribe
-                    </p>
-                  </Link>
-                </div> */}
-                  <div id={styles.collapsibleSearch}>
-                    <CollapsibleSearch />
-                  </div>
                 </div>
-                {/* <div id={styles.weather_bar}>
-                {weather.temp !== null ? (
-                  <div className={styles.weatherTempBar}>
-                    <img
-                      src={weather.icon}
-                      alt="Day/Night Icon"
-                      className={styles.weatherIcon}
-                    />
-                    {`${weather.temp}°F ${weather.city}`}
-                  </div>
-                ) : (
-                  <div className={styles.weatherTempBar}>{weather.city}</div>
-                )}
-              </div> */}
               </div>
             </div>
 
             <div className={styles.dialogContainer}>
-              <dialog className={styles.navBarSideBar} open={viewSubSection}>
-                <form method="dialog">
-                  <button autoFocus onClick={toggleMenu} id={styles.closeButton}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
-                      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                    </svg>
-                  </button>
-                </form>
-                <Sidebar
-                  showSidebar={viewSubSection}
-                  setShowSidebar={setViewSubSection}
-                />
-              </dialog>
+              {
+                windowWidth < 1050 ? (
+                  <dialog className={styles.navBarSideBar} open={viewSubSection}>
+                    <form method="dialog">
+                      <button autoFocus onClick={toggleMenu} id={styles.closeButton} aria-label="close sidebar">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+                          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg>
+                      </button>
+                    </form>
+                    <Sidebar
+                      showSidebar={viewSubSection}
+                      setShowSidebar={setViewSubSection}
+                    />
+                  </dialog>) : null
+              }
             </div>
           </nav>
 
@@ -338,7 +297,7 @@ const Navbar = () => {
             }
           >
             <div className={styles.department_bar_container} onMouseLeave={() => setShowSectionBar(false)}>
-              <div id={styles.department_bar} >
+              <div id={styles.department_bar}>
                 <span className={department === "news" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(0)}>
                   <Link href="/department/news">News</Link>
                 </span>
@@ -379,20 +338,9 @@ const Navbar = () => {
               <Link href="/about/recruitments">Recruitments</Link>
             </span> */}
               </div>
-
-              {
-                //DETERMINE WHEATHER OR NOT TO SHOW TEMPORARY SECTION BAR
-                // TODO: MAKE IT MORE SPECIFIC FOR WHAT IT IS BEING HOVERED
-                showSectionBar ? (
-                  <div className={styles.expanded_section} onMouseEnter={() => { setShowSectionBar(true) }} id={styles.visibleExpandedSection}>
-                    <Subsections />
-                  </div>
-                ) : (
-                  <div className={styles.expanded_section} onMouseEnter={() => { setShowSectionBar(true) }} id={styles.hiddenExpandedSection}>
-                    <Subsections />
-                  </div>
-                )
-              }
+              <div className={styles.expanded_section} onMouseEnter={() => { setShowSectionBar(true) }} id={showSectionBar ? styles.visibleExpandedSection : styles.hiddenExpandedSection}>
+                <Subsections />
+              </div>
             </div>
           </div>
           <div id={styles.nav_parent_content_border}>

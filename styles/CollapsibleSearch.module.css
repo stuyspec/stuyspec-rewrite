@@ -5,6 +5,8 @@
   width: fit-content;
 
 
+  user-select: none;
+
 }
 .formContainer {
   display: grid;
@@ -49,14 +51,14 @@
 
   padding: 0.5rem 0.5rem;
 
-  transition: ease-in-out 200ms;
-
-  
 }
 .goButton {
   width: 0;
   height: 0;
   overflow: hidden;
+  display: none;
+  background-color: transparent;
+  
 }
 
 @media screen and (max-width: 1050px) {
