@@ -5,6 +5,8 @@
   z-index: 9999;
 
   font-size: 1.1rem;
+
+  user-select: none;
 }
 
 #sidebar {
