@@ -15,7 +15,7 @@ import CollapsibleSearch from "./CollapsibleSearch";
 
 const Sidebar = (props: { showSidebar: boolean; setShowSidebar: (v: boolean) => void }) => {
 	const { showSidebar, setShowSidebar } = props;
-	const autoClose = () => window.innerWidth <= 940 && setShowSidebar(false);
+	const autoClose = () => window.innerWidth < 1050 && setShowSidebar(false);
 
 	return (
 		<div
