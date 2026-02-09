@@ -4,6 +4,11 @@ const MixedAdvertisements: {
   url: string;
 }[] = [
   {
+    name: "Revolution Driving",
+    image_src: "/images/ads/revolutiondriving.png",
+    url: "https://revolutiondrivingschools.com/"
+  },
+  {
     name: "Write The World",
     image_src: "/images/ads/write-the-world.png",
     url: "https://workshops.writetheworld.org/college-essay/?utm_campaign=23841340-Stuyvesant%20Spectator&utm_source=ads",
@@ -15,11 +20,6 @@ const MixedAdvertisements: {
     name: "Kingfisher Prep",
     image_src: "/images/ads/KFPBox.jpg",
     url: "https://www.kingfisherprep.com/sat-act-college-application-coaching-for-stuyvesant-students" 
-  },
-  {
-    name: "Revolution Writing",
-    image_src: "/images/ads/revolutiondriving.png",
-    url: "https://revolutiondrivingschools.com/"
   }
 ]; // duplicate ads cuz just 2 causes repeats on home page
 export default MixedAdvertisements;
