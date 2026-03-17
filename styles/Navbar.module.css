@@ -187,15 +187,19 @@ FORTHE GRID CONTIANER
 
   /* transition: 300ms ease-in-out; */
 }
+/*
+REMOVED ANIMATION WHEN USER SCROLLS OFF BECAUSE IT IS DISTRACTING AND BAD :(.
 @keyframes hp {
   to {
     height: 0;
     padding: 0;
   }
-}
+} */
 #hiddenExpandedSection {
   visibility: hidden;
-  animation: hp 2s cubic-bezier(0.165, 0.84, 0.44, 1) 50ms 1 forwards;
+  height: 0;
+  padding: 0;
+  /* animation: hp 2s cubic-bezier(0.165, 0.84, 0.44, 1) 50ms 1 forwards; */
 
   #subsectionList {
     height: 0;

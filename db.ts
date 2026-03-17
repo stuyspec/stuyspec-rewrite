@@ -6,6 +6,7 @@ import {
 	DepartmentsArray,
 	mongoObjectId,
 	ReceivedArticleExtra,
+	ReceivedEditor,
 } from "./ts_types/db_types";
 import { Db, ObjectId } from "mongodb";
 
@@ -439,6 +440,32 @@ async function get_staffs_by_query(query: any): Promise<ReceivedStaff[]> {
 	return staff;
 }
 
+//this function will get the editors and return all the recieved editors
+// with their images
+async function get_editors(): Promise<ReceivedEditor[]>{
+	const db = (await clientPromise).db();
+	//fetch the editors from the editors array
+	let editors_collection =  db.collection("editors");
+
+	//get all the editors. Using the 
+	// staff_id _id attribute, look up
+	// the proper staff to assosiate the images
+	// with
+	let editors = (await editors_collection.aggregate([
+		{
+					$lookup: {
+						from: "staffs",
+						localField: "staff_id",
+						foreignField: "_id",
+						as: "staff_details",
+					},
+				},
+	]).toArray()) as ReceivedEditor[];
+	
+	//return the editos
+	return editors;
+}
+
 export {
 	get_articles_by_department,
 	get_article_by_id,
@@ -451,4 +478,5 @@ export {
 	get_staffs_by_query,
 	get_media_by_author,
 	get_articles_by_string_query,
+	get_editors,
 };

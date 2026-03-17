@@ -4,9 +4,13 @@ import cardStyles from "../../styles/Card.module.css";
 import { generateMetaTags } from "../../utils/generateMetaTags";
 import Link from "next/link";
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import unknownPhoto from "../../public/images/SpectatorCollageUnknown.png";
 import { StaticImageData } from "next/image";
+import { get_editors } from "../../db";
+import { NextPageContext } from "next";
+import { ReceivedStaff, ReceivedEditor } from "../../ts_types/db_types";
+
 
 interface CardProps {
   name: string;
@@ -31,17 +35,19 @@ interface CardProps {
 	NOTES
 	MB: Managing Board (NOT INCLUDED)
 	EIT: Editors-in-training
+  EIC: Editor-in-chief
 	E: Editor
 	*/
   photo?: StaticImageData | string;
   //This string will be the src of the image in the memory.
   //If the photo is not chosen, then a gradient will be set in the CSS
+  slug: string;
 }
 function Card(cardProps: CardProps) {
-  const urlLink = "/staff/".concat(
-    cardProps.name.toLowerCase().replace("-", " ").split(" ").join("-")
-  );
-  console.log(urlLink);
+  //RETIRED URL GENERATION MECHANISM. NOW FOUND IN CARDPROPS AS "slug"
+  // const urlLink = "/staff/".concat(
+  //   cardProps.name.toLowerCase().replace("-", " ").split(" ").join("-")
+  // );
   let imageSrcComponent;
   if (cardProps.photo &&  typeof cardProps.photo === 'string') {
     imageSrcComponent = {
@@ -59,7 +65,7 @@ function Card(cardProps: CardProps) {
         // If the photo exists from the imageSrcComponent, then there will be a abckground iamge
         // If it does not exist then a gradient will be chosen depending on the department
       }
-      <Link href={urlLink}>
+      <Link href={"/staff/".concat(cardProps.slug)}>
         <div className={cardStyles.imageArea}>
           {
             //Renders the image component
@@ -98,264 +104,54 @@ function Card(cardProps: CardProps) {
     </article>
   );
 }
-function cardGen() {
-  //! IMPORTANT TODO
-  //TODO: MAKE SOMETHING THAT GRABS THIS INFORMATION FROM THE DATABASE RATHER THAN US HARD CODING IT
-  //TODO: WILL SAVE A LOT OF TIME.
-  const staff: CardProps[] = [
-    {
-      name: "Myles Vuong",
-      position: "EIC",
-      department: "news",
-    },
-    {
-      name: "Hifza Kaleem",
-      position: "EIC",
-      department: "features",
-    },
-    {
-      name: "Dinara Gargu",
-      position: "E",
-      department: "news",
-    },
-    {
-      name: "Brendan Tan",
-      position: "E",
-      department: "news",
-    },
-    {
-      name: "Lauren Yang",
-      position: "E",
-      department: "news",
-    },
-    {
-      name: "William Chen",
-      position: "EIT",
-      department: "features",
-    },
-    {
-      name: "Ada Gordon",
-      position: "E",
-      department: "features",
-    },
-    {
-      name: "Grace Jung",
-      position: "E",
-      department: "features",
-    },
-    {
-      name: "Leah Riegel",
-      position: "E",
-      department: "features",
-    },
-    {
-      name: "Noa Salas Adam",
-      position: "EIT",
-      department: "features",
-    },
-    {
-      name: "Dean Hevenstone",
-      position: "E",
-      department: "opinions",
-    },
-    {
-      name: "Joanne Hwang",
-      position: "E",
-      department: "opinions",
-    },
-    {
-      name: "Stella Krajka",
-      position: "E",
-      department: "opinions",
-    },
-    {
-      name: "Evelyn Lifton",
-      position: "EIT",
-      department: "opinions",
-    },
-    {
-      name: "Aarya Balakrishnan",
-      position: "E",
-      department: "science",
-    },
-    {
-      name: "Isabel Cho",
-      position: "EIT",
-      department: "science",
-    },
-    {
-      name: "Sonya Cisse",
-      position: "E",
-      department: "science",
-    },
-    {
-      name: "Narnia Poddar",
-      position: "EIT",
-      department: "science",
-    },
-    {
-      name: "Benson Chen",
-      position: "E",
-      department: "arts and entertainment",
-    },
-    {
-      name: "Galen Jack",
-      position: "E",
-      department: "arts and entertainment",
-    },
-    {
-      name: "Emile Lee-Suk",
-      position: "E",
-      department: "arts and entertainment",
-    },
-    {
-      name: "Somerset Seidenberg",
-      position: "E",
-      department: "arts and entertainment",
-    },
-    {
-      name: "Selina Lin",
-      position: "E",
-      department: "humor",
-    },
-    {
-      name: "Alexis Qian",
-      position: "E",
-      department: "humor",
-    },
-    {
-      name: "Nina Benson",
-      position: "EIT",
-      department: "sports",
-    },
-    {
-      name: "Elijah Choi",
-      position: "E",
-      department: "sports",
-    },
-    {
-      name: "Leonardo Guidi",
-      position: "E",
-      department: "sports",
-    },
-    {
-      name: "Saif Iftikhar",
-      position: "EIT",
-      department: "sports",
-    },
-    {
-      name: "Boone Ireland",
-      position: "E",
-      department: "sports",
-    },
-    {
-      name: "Eva Kastoun",
-      position: "E",
-      department: "photos",
-    },
-    {
-      name: "Emma Nakhle",
-      position: "E",
-      department: "photos",
-    },
-    {
-      name: "Karina Huang",
-      position: "E",
-      department: "art",
-    },
-    {
-      name: "Yuma Kono",
-      position: "EIT",
-      department: "art",
-    },
-    {
-      name: "Rhea Malhotra",
-      position: "E",
-      department: "art",
-    },
-    {
-      name: "Lixin Zhang",
-      position: "E",
-      department: "art",
-    },
-    {
-      name: "Anjali Bechu",
-      position: "E",
-      department: "layout",
-    },
-    {
-      name: "Elysia Chen",
-      position: "E",
-      department: "layout",
-    },
-    {
-      name: "Isabel Noh",
-      position: "E",
-      department: "layout",
-    },
-    {
-      name: "Karen Xu",
-      position: "E",
-      department: "layout",
-    },
-    {
-      name: "Naomi Hsieh",
-      position: "E",
-      department: "copy",
-    },
-    {
-      name: "Yuna Lee",
-      position: "E",
-      department: "copy",
-    },
-    {
-      name: "Emma Lin",
-      position: "E",
-      department: "copy",
-    },
-    {
-      name: "Fiona Cai",
-      position: "E",
-      department: "business",
-    },
-    {
-      name: "Anderson Oh",
-      position: "E",
-      department: "business",
-    },
-    {
-      name: "Everett Yu-Dawidowicz",
-      position: "E",
-      department: "business",
-    },
-    {
-      name: "Arnav Malhotra",
-      position: "EIT",
-      department: "web",
-    },
-    {
-      name: "Maximiliano Pettica",
-      position: "E",
-      department: "web",
-    },
-    {
-      name: "Owen Shi",
-      position: "E",
-      department: "web",
-    },
-  ];
+function cardGen(staff:CardProps[]) {
+  //Loop over the cardprops and automatically generate the cards.
   return staff.map((e, key) => {
     return (
-      <Card key={key} name={e.name} department={e.department} position={e.position} photo={unknownPhoto}/>
+      <Card key={key} name={e.name} department={e.department} position={e.position} photo={e.photo} slug={e.slug}/>
     );
   });
 }
-function StaffPage() {
+
+//The next page context allows for the StaffPage which takes in the props
+// attribute to take in values from this function
+// when it is done loading (note that this function is async).
+export async function getServerSideProps(context: NextPageContext){
+  //Get all the editors from the db.ts
+  let editors = await get_editors();
+  if(editors){
+    return {
+      //turn it into JSON and return the props.
+      props: {
+        editors: JSON.parse(JSON.stringify(editors))
+      }
+    }
+  }
+
+}
+
+function StaffPage(props: any) {
   const page_title = "Staff - The Stuyvesant Spectator";
   const meta_url = `https://stuyspec.com/about/staff`;
   const meta_description = `The members of The Stuyvesant Spectator's 2024-2025 Editorial Board.`;
 
-  const cards = cardGen()
+
+  //Take the information from the editors area and clean them to fit the interface of CardProps
+  //After doing that feed it into the card gen.
+  const cleaned_editors:CardProps[] = props.editors.map((value: ReceivedEditor) => {return {
+    //Automatically cast the value.staff_details to Received to remove type warning since value.staff_details is ReceivedStaff[]
+    name: (value.staff_details as ReceivedStaff[])[0].name,
+    department: value.department,
+    position: value.position,
+    photo: value.image_src,
+    slug: (value.staff_details as ReceivedStaff[])[0].slug
+  }}
+)
+  const cards = cardGen(cleaned_editors)
+
+  
+
+
 
   return (
     <>
