@@ -41,6 +41,27 @@ export interface ReceivedArticleExtra {
   image_src: string;
 }
 
+export interface ReceivedPhotoExtra {
+  _id: mongoObjectId;
+  article: ReceivedArticle[];
+  contributors: ReceivedStaff[];
+  type: "image";
+  index: number;
+  image_src: string;
+}
+
+export interface ReceivedCoverImage {
+  _id: mongoObjectId;
+  title: string;
+  slug: string;
+  volume: number;
+  issue: number;
+  summary: string;
+  contributors: ReceivedStaff[];
+  cover_image: string;
+  cover_image_contributor: ReceivedStaff[];
+}
+
 export interface ReceivedEditor {
   _id: mongoObjectId;
   staff_id: mongoObjectId;

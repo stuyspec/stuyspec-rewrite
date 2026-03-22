@@ -4,11 +4,9 @@ import cardStyles from "../../styles/Card.module.css";
 import { generateMetaTags } from "../../utils/generateMetaTags";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useMemo } from "react";
 import unknownPhoto from "../../public/images/SpectatorCollageUnknown.png";
 import { StaticImageData } from "next/image";
 import { get_editors } from "../../db";
-import { NextPageContext } from "next";
 import { ReceivedStaff, ReceivedEditor } from "../../ts_types/db_types";
 
 
@@ -71,7 +69,8 @@ function Card(cardProps: CardProps) {
             //Renders the image component
           }
           {imageSrcComponent !== null ? (
-            <div style={imageSrcComponent} id={cardStyles.imagePhoto}></div>
+            <div style={imageSrcComponent} id={cardStyles.imagePhoto}>
+            </div>
           ) : cardProps.photo !== null ? (
             // TODO: WORK ON THE GRADIENT COLOR FOR EACH DEPARTMENT
             <div id={cardStyles.imageStatic}>
@@ -116,7 +115,7 @@ function cardGen(staff:CardProps[]) {
 //The next page context allows for the StaffPage which takes in the props
 // attribute to take in values from this function
 // when it is done loading (note that this function is async).
-export async function getServerSideProps(context: NextPageContext){
+export async function getServerSideProps(){
   //Get all the editors from the db.ts
   let editors = await get_editors();
   if(editors){
