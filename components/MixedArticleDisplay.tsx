@@ -11,6 +11,9 @@ import generate_contributors_jsx from "./GenerateContributorsJSX";
 import { useCallback, useEffect, useState, Fragment } from "react";
 import MixedAdvertisement from "../advertisements/MixedAdvertisement";
 
+
+//MAKES AN ARTICLE COMPONENT ON THE MAIN PAGE
+//DESPITE WHAT THE NAME SUGGESTS
 function CenterArticle(props: {
 	article: ReceivedArticle;
 	display_image?: boolean;
@@ -89,7 +92,10 @@ export default function MixedArticleDisplay(props: {
 	const returnProcessedArticles = useCallback(
 		(articles_input: ReceivedArticle[]) => {
 			let image_articles = Math.floor(articles_input.length / 3.5);
+			//Make the grouping of articles with images and those without images
 			const grouping = groupByImageExists(articles_input);
+
+			//Sort the articles with the photos based on rank issue and volume
 			const articlesWithPhotos = grouping["withPhotos"]
 				.slice(0)
 				.slice(0, image_articles)
@@ -105,6 +111,7 @@ export default function MixedArticleDisplay(props: {
 				.slice(0)
 				.sort((a, b) => b.volume - a.volume)
 				.sort((a, b) => b.issue - a.issue);
+
 			process_sorted_articles.splice(
 				process_sorted_articles.findIndex(
 					(v) => v._id == grouping["withPhotos"][0]._id
@@ -172,14 +179,14 @@ export default function MixedArticleDisplay(props: {
 		}
 	};
 
-	const ad_spacing = 6;
+	const ad_spacing = 3;
 	let adsShown: boolean = true;
 	if(MixedAdvertisement({index: 0}) == -1) adsShown = false;
 
 	return (
 		<div id={styles.mixed_article_view_container}>
 			<div id={styles.mixed_article_view}>
-				
+				{/*FOR DISPLAYING ON THE COMPOUTER. LEFT CENTER_DESKTOP AND RIGHT */}
 				<section id={styles.left}>
 					{articlesProcessed.articlesWithoutPhotos
 						.slice(0)
@@ -263,6 +270,9 @@ export default function MixedArticleDisplay(props: {
 							</Fragment>
 						))}
 				</section>
+
+				{/*FOR MOBILE VIEWING. MOBILE VIEWING DOES NOT HAVE
+				3X3 LAYOUT AND DOES NOT NEED ANYTHING FANCY */}
 				<section id={styles.top_mobile}>
 					{articlesProcessed.sortedArticles
 						.slice(0)
