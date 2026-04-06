@@ -64,6 +64,29 @@ export interface ReceivedEditor {
   position: "EIT" | "E" | "EIC";
 }
 
+//Interface for Recruitments to get it from the database
+export interface ReceivedRecruitmentsArrayDisplay {
+  _id: mongoObjectId;
+  link: string;
+  department: [
+    | "opinions"
+    | "arts and Entertainment"
+    | "news"
+    | "features"
+    | "web"
+    | "business"
+    | "copy"
+    | "layout"
+    | "sports"
+    | "humor"
+    | "science"
+    | "photos"
+    | "art",
+  ][number];
+  date: string;
+  description: string;
+}
+
 export type Department =
   | "news"
   | "features"
@@ -85,7 +108,7 @@ export const DepartmentsArray = [
   "ae",
   "media",
   "spec-plus",
-];
+] as const;
 
 export const DepartmentsArrayDisplay = [
   "News",

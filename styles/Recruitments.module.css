@@ -10,7 +10,7 @@
   padding-right: 1rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  
+
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -157,8 +157,8 @@
   -webkit-box-shadow: 5px 5px 5px 0px var(--cardImageShadowColor);
   -moz-box-shadow: 5px 5px 5px 0px var(--cardImageShadowColor);
   box-shadow: 5px 5px 5px 0px var(--cardImageShadowColor);
- 
-  background-size:cover;
+
+  background-size: cover;
   border-radius: 1rem;
   overflow: hidden;
 }
@@ -190,6 +190,18 @@
   -webkit-box-shadow: 5px 5px 5px 0px var(--cardShadowColor);
   -moz-box-shadow: 5px 5px 5px 0px var(--cardShadowColor);
   box-shadow: 5px 5px 5px 0px var(--cardShadowColor);
+}
+.blackTheme {
+  :where(#link, .dateContainer) {
+    background-color: var(--primary);
+    color: var(--secondary);
+  }
+  :is(#link) p{
+    color: var(--secondary);
+  }
+  #departmentName {
+    text-decoration-color: var(--primary);
+  }
 }
 .newsTheme {
   :where(#link, .dateContainer) {
@@ -379,42 +391,42 @@
   }
 }
 @media screen and (max-width: 1400px) {
-  #link{
+  #link {
     padding-right: 1.5rem;
     padding-left: 1.5rem;
   }
-  #link p{
+  #link p {
     margin: 0;
     text-align: center;
   }
-  #link:hover p{
+  #link:hover p {
     text-align: center;
     margin: 0;
   }
-  #leftArrow{
+  #leftArrow {
     width: 0px;
   }
-  #rightArrow{
+  #rightArrow {
     width: 0px;
   }
-  #application:has(#link:hover){
-    #leftArrow{
+  #application:has(#link:hover) {
+    #leftArrow {
       visibility: hidden;
       width: 0;
       transform: translateX(-100px);
     }
-    #rightArrow{
+    #rightArrow {
       transform: translateX(0);
       visibility: hidden;
       width: 0;
     }
   }
 
-  .heading{
+  .heading {
     display: grid;
     grid-template-columns: 3fr 1fr 3fr;
   }
-  .recruitmentsVideo{
+  .recruitmentsVideo {
     align-self: center;
   }
   .heading:has(.headingText:hover) {
@@ -423,7 +435,6 @@
   .heading:has(.recruitmentsVideo:hover) {
     grid-template-columns: 3fr 1fr 3fr;
   }
-
 }
 :where(#rightArrow, #leftArrow) {
   transition: ease-in-out 200ms;

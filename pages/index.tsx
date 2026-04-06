@@ -4,6 +4,8 @@ import { get_articles_by_query } from "../db";
 import { ReceivedArticle } from "../ts_types/db_types";
 
 import MixedArticleDisplay from "../components/MixedArticleDisplay";
+import Banner from "../components/Banner";
+import BannerText from "../advertisements/BannerText";
 //import BannerText from "../advertisements/BannerText";
 interface Props {
 	articles: [ReceivedArticle];
@@ -25,6 +27,7 @@ async function fetch_addtional_articles(skip?: number, max?: number) {
 function Home(props: Props) {
 	return (
 		<main id={styles.main}>
+			<BannerText text="Spring recruitment applications are out!" url="/about/recruitments" /> 
 			{/* <BannerText text="Read The Spectator's special issue covering all levels of the 2024 election!" url="/volume/115/issue/0" /> */}
 		<MixedArticleDisplay
 				articles={props.articles}
