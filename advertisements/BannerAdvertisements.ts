@@ -23,5 +23,10 @@ const BannerAdvertisements: {
     image_src: "/images/ads/sparkadmissions.jpg",
     url: "https://www.sparkadmissions.com/stuyvesant/?utm_source=stuyvesant&utm_medium=banner&utm_campaign=stuyvesant_banner_ad",
   },
+  {
+    name: "Ivy Wise Pro Bono Scholars Program",
+    image_src: "/images/ads/IvyWiseBanner.jpg",
+    url: "https://www.ivywise.com/about-ivywise/ivywise-gives-back/ivywise-scholars/?utm_source=stuyvesant&utm_medium=advertisement&utm_campaign=may+2026&utm_content=digital"
+  },
 ];
 export default BannerAdvertisements;
