@@ -84,7 +84,7 @@ function RecruitmentPage(props: Props) {
                 <div id={styles.OVERLAY}></div>
               ) : null}
               <h1 id={styles.headingMainText}>
-                {!videoHovered || windowWidth < 1400 ? (
+                {/* {!videoHovered || windowWidth < 1400 ? (
                   <span aria-hidden="true" id={styles.LIVE}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -95,12 +95,11 @@ function RecruitmentPage(props: Props) {
                       <circle cx="8" cy="8" r="8" />
                     </svg>
                   </span>
-                ) : null}
+                ) : null} */}
                 Recruitments
               </h1>
               <p id={styles.headingParagraph}>
-                Spring Recruitments 2026  are now LIVE! Send in your applications
-                before it is too late.
+                Spring Recruitments 2026 are closed.
               </p>
             </section>
             <div id={styles.SEPERATORCONT}>
