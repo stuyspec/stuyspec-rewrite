@@ -28,5 +28,10 @@ const BannerAdvertisements: {
     image_src: "/images/ads/IvyWiseBanner.jpg",
     url: "https://www.ivywise.com/about-ivywise/ivywise-gives-back/ivywise-scholars/?utm_source=stuyvesant&utm_medium=advertisement&utm_campaign=may+2026&utm_content=digital"
   },
+  {
+    name: "Prime Academics",
+    image_src: "/images/ads/PrimeAcademics.png",
+    url: "https://www.primeacademics.nyc/",
+  }
 ];
 export default BannerAdvertisements;
