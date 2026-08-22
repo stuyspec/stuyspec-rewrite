@@ -106,7 +106,7 @@ const Navbar = () => {
     {
       name: "Science",
       mainLink: 'science',
-      subsecitonTitles: null,
+      subsectionTitles: null,
       subsectionLinks: null
     },
     {
@@ -126,7 +126,13 @@ const Navbar = () => {
       mainLink: 'sports',
       subsectionTitles: ['Professional Sports', 'Sports at Stuyvesant'],
       subsectionLinks: ['professional-sports', 'sports-at-stuyvesant']
-    }
+		},
+		{
+			name: "Games",
+			mainLink: 'games',
+			subsectionTitles: null,
+			subsectionLinks: null
+		}
   ]
 
   function showSectionAndPiece(ss: number) {
@@ -146,7 +152,7 @@ const Navbar = () => {
           <h3 id={styles.subsectionsHeader}>Subsections</h3>
           <div id={styles.subsectionList}>
             {
-              subsectionToSections[showWhichSection].subsecitonTitles !== null ?
+              subsectionToSections[showWhichSection].subsectionTitles !== null ? //subseciton? really?
                 subsectionToSections[showWhichSection].subsectionTitles.map((value: string, index: number) => {
                   return (value === 'Israel-Hamas War' ? <Link key={index} href='/topic/israel-palestine'>{value}</Link> :
                     <Link key={index} href={`/department/${subsectionToSections[showWhichSection].mainLink}/${subsectionToSections[showWhichSection].subsectionLinks[index]}`}>
@@ -318,6 +324,9 @@ const Navbar = () => {
                 </span>
                 <span className={department === "sports" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(6)} >
                   <Link href="/department/sports">Sports</Link>
+								</span>
+								<span className={department === "games" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(7)} >
+                  <Link href="/department/games">Games</Link>
                 </span>
                 {
                   // ! IMPORTANT READ BELOW

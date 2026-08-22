@@ -60,6 +60,7 @@ export interface ReceivedEditor {
     | "science"
     | "photos"
     | "art"
+    | "games"
     | "faculty";
   position: "EIT" | "E" | "EIC";
 }
@@ -81,7 +82,8 @@ export interface ReceivedRecruitmentsArrayDisplay {
     | "humor"
     | "science"
     | "photos"
-    | "art",
+		| "art"
+    | "games"
   ][number];
   date: string;
   description: string;
@@ -95,7 +97,8 @@ export type Department =
   | "humor"
   | "sports"
   | "ae"
-  | "media"
+	| "media"
+  | "games"
   | "spec-plus";
 
 export const DepartmentsArray = [
@@ -107,7 +110,8 @@ export const DepartmentsArray = [
   "sports",
   "ae",
   "media",
-  "spec-plus",
+	"spec-plus",
+  "games",
 ] as const;
 
 export const DepartmentsArrayDisplay = [
@@ -120,4 +124,5 @@ export const DepartmentsArrayDisplay = [
   "Arts and Entertainment",
   "Media",
   "Spec+",
+  "Games",
 ];
