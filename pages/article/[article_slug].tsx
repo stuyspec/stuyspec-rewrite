@@ -37,6 +37,7 @@ function Article(props: Props) {
 		cover_image_source,
 		summary,
 		slug,
+		type, //either "article", "crossword", "sudoku", "the other"
 	} = props.article;
 
 	const generateApproxReadingTime = () => {
@@ -53,7 +54,7 @@ function Article(props: Props) {
 	const providers = ["facebook", "twitter", "linkedin", "email"];
 
 	const isAdvertisingAllowed: boolean = section_id != 2 && section_id != 4; // forbid ads on Opinions and Humor as per charter
-	
+
 	return (
 		<div>
 			<Head>
@@ -108,9 +109,11 @@ function Article(props: Props) {
 					</p>
 					<h1 id={styles.title} dangerouslySetInnerHTML={{ __html: title }}></h1>
 					<h2 id={styles.summary}>{summary}</h2>
+					{type === "article" &&
 					<h3 id={styles.reading_time}>
 						{generateApproxReadingTime()}
-					</h3>
+					</h3>}
+
 
 					<div id={styles.infoBar}>
 						<div>
@@ -168,10 +171,11 @@ function Article(props: Props) {
 						</>
 					)}
 
+					{type === "article" &&
 					<div
 						id={styles.content}
 						dangerouslySetInnerHTML={{ __html: text }}
-					></div>
+					></div>}
 
 					{/* <RecommendedArticles /> */}
 				</article>
