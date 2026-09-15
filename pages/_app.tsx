@@ -85,12 +85,12 @@ function MyApp(props: AppProps) {
 			<Footer />
 			<Script
 				async
-				src="https://umami.stuyspec.com/script.js"
+				src="https://umami.stuyspec.com/script.js?id=webstats"
 				data-website-id="37284781-2b87-4063-8035-5a7f3e7ab6d3"
 			></Script>
 			<Script
 				async
-				src="https://umami.stuyspec.com/script.js"
+				src="https://umami.stuyspec.com/script.js?id=bizstats"
 				data-website-id="6be609cd-6bd5-418f-8698-fa703f404c25"
 			></Script>
 		</ThemeProvider>
