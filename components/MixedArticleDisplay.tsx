@@ -70,16 +70,31 @@ function CenterArticle(props: {
 				{generate_contributors_jsx(article.contributors)}
 			</p>
 			<Link passHref href={"/article/" + article.slug}>
-				<p id={styles.summary} className="discrete-link">
+				<p id={styles.summary}>
 					{article.summary}
 				</p>
 			</Link>
 
 			<p className={styles.article_volume_issue}>
 				<Link href={`/volume/${article.volume}/issue/${article.issue}`} className="discrete-link">
-					Issue {article.issue}, Volume {article.volume}
+					Issue {article.issue}, Volume {article.volume} || 
 				</Link>
 			</p>
+			{(() => {
+  				const date = article.created_at ? new Date(article.created_at) : null;
+  				const isValidDate = date && !isNaN(date.getTime());
+
+  				return isValidDate ? (
+    				<span id={styles.month_year}>
+      					{" "}
+      					{date.toLocaleDateString("en-US", {
+        					month: "long",
+        					year: "numeric",
+        					timeZone: "UTC",
+      					})}
+    				</span>
+  				) : <span id={styles.month_year}>{" "}{article.volume + 1909}{"-"}{article.volume + 1910}</span>; // if ISOdate does not exist
+			})()}
 		</div>
 	);
 }
