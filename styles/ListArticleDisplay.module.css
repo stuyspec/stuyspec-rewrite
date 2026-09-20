@@ -54,3 +54,13 @@
 .authors {
 	font-family: var(--secondary-font);
 }
+
+#article_volume_issue {
+	display: inline;
+	font-family: var(--secondary-font);
+}
+
+#month_year {
+	font-style: italic;
+	font-family: var(--secondary-font);
+}

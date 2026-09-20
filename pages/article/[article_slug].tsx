@@ -37,6 +37,7 @@ function Article(props: Props) {
 		cover_image_source,
 		summary,
 		slug,
+		created_at
 	} = props.article;
 
 	const generateApproxReadingTime = () => {
@@ -123,9 +124,24 @@ function Article(props: Props) {
 								className="discrete-link"
 							>
 								<Link href={`/volume/${volume}/issue/${issue}`}>
-									Issue {issue}, Volume {volume}
+									Issue {issue}, Volume {volume} ||  
 								</Link>
 							</h3>
+  							{(() => {
+  								const date = created_at ? new Date(created_at) : null;
+  								const isValidDate = date && !isNaN(date.getTime());
+
+  								return isValidDate ? (
+    								<span id={styles.month_year}>
+										{" "}
+      									{date.toLocaleDateString("en-US", {
+        								month: "long",
+        								year: "numeric",
+        								timeZone: "UTC",
+      								})}
+    								</span>
+  								) : <span id={styles.month_year}>{" "}{volume + 1909}{"-"}{volume + 1910}</span>; // if ISOdate does not exist
+							})()}
 						</div>
 						<div id={styles.shareButtons}>
 							{providers.map((provider) => (
