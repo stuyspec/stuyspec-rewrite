@@ -54,9 +54,10 @@ export default function ListArticleDisplay(props: {
 									href={`/volume/${article.volume}/issue/${article.issue}`}
 								>
 									Issue {article.issue}, Volume{" "}
-									{article.volume} || 
+									{article.volume}
 								</Link>
 							</p>
+							<span>{" || "}</span>
 							{(() => {
   								const date = article.created_at ? new Date(article.created_at) : null;
   								const isValidDate = date && !isNaN(date.getTime());
@@ -70,7 +71,7 @@ export default function ListArticleDisplay(props: {
         								timeZone: "UTC",
       								})}
     								</span>
-  								) : <span id={styles.month_year}>{" "}{article.volume + 1909}{"-"}{article.volume + 1910}</span>; // if ISOdate does not exist
+  								) : <span id={styles.month_year}>{article.volume + 1909}{"-"}{article.volume + 1910}</span>; // if ISOdate does not exist
 							})()}
 						</div>
 

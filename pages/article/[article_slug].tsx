@@ -124,9 +124,10 @@ function Article(props: Props) {
 								className="discrete-link"
 							>
 								<Link href={`/volume/${volume}/issue/${issue}`}>
-									Issue {issue}, Volume {volume} ||  
+									Issue {issue}, Volume {volume}
 								</Link>
 							</h3>
+							<span>{" || "}</span>
   							{(() => {
   								const date = created_at ? new Date(created_at) : null;
   								const isValidDate = date && !isNaN(date.getTime());
@@ -140,7 +141,7 @@ function Article(props: Props) {
         								timeZone: "UTC",
       								})}
     								</span>
-  								) : <span id={styles.month_year}>{" "}{volume + 1909}{"-"}{volume + 1910}</span>; // if ISOdate does not exist
+  								) : <span id={styles.month_year}>{volume + 1909}{"-"}{volume + 1910}</span>; // if ISOdate does not exist
 							})()}
 						</div>
 						<div id={styles.shareButtons}>
