@@ -4,11 +4,6 @@ const BannerAdvertisements: {
   url: string;
 }[] = [
   {
-    name: "Five Iron Golf",
-    image_src: "/images/ads/FiveIronGolfBanner.png",
-    url: "https://fiveirongolf.com/book-now",
-  },
-  {
     name: "Cooper Test Prep",
     image_src: "/images/ads/CooperTestPrep.png",
     url: "https://www.cooperprep.com/sat-classes?gad_source=1&gad_campaignid=21199327581",
@@ -27,6 +22,16 @@ const BannerAdvertisements: {
     name: "Prime Academics",
     image_src: "/images/ads/PrimeAcademics.png",
     url: "https://www.primeacademics.nyc/",
+  },
+  {
+    name: "Friedman College",
+    image_src: "/images/ads/FriedmanCollege.png",
+    url: "http://friedmancollegeconsulting.com/stuyvesant",
+  },
+  {
+    name: "Kweller Prep",
+    image_src: "/images/ads/KwellerPrep.png",
+    url: "https://www.kwellerprep.com/",
   }
 ];
 export default BannerAdvertisements;
