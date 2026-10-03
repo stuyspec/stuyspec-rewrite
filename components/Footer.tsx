@@ -242,25 +242,25 @@ const Footer = () => {
             </div>
             <div id={styles.cell}>
               <h3 id={styles.department}>
-                <Link href="/about">About Us</Link>
+                <Link href="../about">About Us</Link>
               </h3>
               <p id={styles.subdepartment}>
-                <Link href="/about/our-charter">Our Charter</Link>
+                <Link href="../about/our-charter">Our Charter</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/advertise">Advertise</Link>
+                <Link href="../about/advertise">Advertise</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/sponsors">Sponsors</Link>
+                <Link href="../about/sponsors">Sponsors</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/staff">Staff</Link>
+                <Link href="../about/staff">Staff</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/developers">Developers</Link>
+                <Link href="../about/developers">Developers</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/contact">Contact</Link>
+                <Link href="../about/contact">Contact</Link>
               </p>
             </div>
             <div id={styles.cell}>
