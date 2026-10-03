@@ -110,12 +110,6 @@ const Navbar = () => {
       subsectionLinks: null
     },
     {
-      name: "Arts and Entertainment",
-      mainLink: 'ae',
-      subsectionTitles: ['Fashion', 'Art', 'Culture', 'Film', 'Food', 'Literature', 'Music', 'Television', 'Theater', 'Thinkpiece', 'SING!', 'STC'],
-      subsectionLinks: ['fashion', 'art', 'culture', 'film', 'food', 'literature', 'music', 'television', 'theater', 'thinkpiece', 'sing!', 'stc']
-    },
-    {
       name: "Humor",
       mainLink: 'humor',
       subsectionTitles: ['Disrespectator', 'Spooktator'],
@@ -126,6 +120,12 @@ const Navbar = () => {
       mainLink: 'sports',
       subsectionTitles: ['Professional Sports', 'Sports at Stuyvesant'],
       subsectionLinks: ['professional-sports', 'sports-at-stuyvesant']
+    },
+    {
+      name: "Arts and Entertainment",
+      mainLink: 'ae',
+      subsectionTitles: ['Fashion', 'Art', 'Culture', 'Film', 'Food', 'Literature', 'Music', 'Television', 'Theater', 'Thinkpiece', 'SING!', 'STC'],
+      subsectionLinks: ['fashion', 'art', 'culture', 'film', 'food', 'literature', 'music', 'television', 'theater', 'thinkpiece', 'sing!', 'stc']
     }
   ]
 
@@ -310,14 +310,14 @@ const Navbar = () => {
                 <span className={department === "science" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(3)} >
                   <Link href="/department/science">Science</Link>
                 </span>
-                <span className={department === "ae" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(4)}>
-                  <Link href="/department/ae">Arts & Entertainment</Link>
-                </span>
                 <span className={department === "humor" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(5)} >
                   <Link href="/department/humor">Humor</Link>
                 </span>
                 <span className={department === "sports" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(6)} >
                   <Link href="/department/sports">Sports</Link>
+                </span>
+                <span className={department === "ae" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(4)}>
+                  <Link href="/department/ae">Arts & Entertainment</Link>
                 </span>
                 {
                   // ! IMPORTANT READ BELOW
