@@ -319,13 +319,13 @@ const Navbar = () => {
                 <span className={department === "science" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(3)} >
                   <Link href="/department/science">Science</Link>
                 </span>
-                <span className={department === "ae" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(6)}>
+                <span className={department === "ae" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(4)}>
                   <Link href="/department/ae">Arts & Entertainment</Link>
                 </span>
-                <span className={department === "humor" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(4)} >
+                <span className={department === "humor" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(5)} >
                   <Link href="/department/humor">Humor</Link>
                 </span>
-                <span className={department === "sports" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(5)} >
+                <span className={department === "sports" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(6)} >
                   <Link href="/department/sports">Sports</Link>
                 </span>
                 <span className={department === "about" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(7)}>
