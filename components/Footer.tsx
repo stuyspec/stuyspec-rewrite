@@ -242,7 +242,7 @@ const Footer = () => {
             </div>
             <div id={styles.cell}>
               <h3 id={styles.department}>
-                <Link href="../about">About Us</Link>
+                <Link href="/about">About Us</Link>
               </h3>
               <p id={styles.subdepartment}>
                 <Link href="../about/our-charter">Our Charter</Link>
