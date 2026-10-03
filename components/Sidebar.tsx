@@ -57,17 +57,7 @@ const Sidebar = (props: { showSidebar: boolean; setShowSidebar: (v: boolean) => 
 				</li>
 
 				<li className={styles.department}>
-					<Link href="/department/spec-plus" onClick={autoClose}>Spec+</Link>
-				</li>
-
-				<li className={styles.department}>
-					<Link href="/about/recruitments" onClick={autoClose}>Recruitments</Link>
-				</li>
-
-				<li className={styles.department}>
-					<Link href="https://pdf.stuyspec.com" onClick={autoClose}>
-						Virtual Archives
-					</Link>
+					<Link href="/about" onClick={autoClose}>About Us</Link>
 				</li>
 				<li id={styles.socialsBar}>
 
