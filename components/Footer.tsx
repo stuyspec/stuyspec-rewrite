@@ -89,6 +89,8 @@ const Footer = () => {
                 <Link href="/department/features/9-11">9/11</Link>
               </p>
             </div>
+          </div>
+          <div id={styles.column}>
             <div id={styles.cell}>
               <h3 id={styles.department}>
                 <Link href="/department/opinions">Opinions</Link>
@@ -112,8 +114,6 @@ const Footer = () => {
                 </Link>
               </p>
             </div>
-          </div>
-          <div id={styles.column}>
             <div id={styles.cell}>
               <h3 id={styles.department}>
                 <Link href="/department/science">Science</Link>
@@ -146,21 +146,6 @@ const Footer = () => {
               </p>
               <p id={styles.subdepartment}>
                 <Link href="/department/humor/spooktator">Spooktator</Link>
-              </p>
-            </div>
-            <div id={styles.cell}>
-              <h3 id={styles.department}>
-                <Link href="/department/sports">Sports</Link>
-              </h3>
-              <p id={styles.subdepartment}>
-                <Link href="/department/sports/professional-sports">
-                  Professional Sports
-                </Link>
-              </p>
-              <p id={styles.subdepartment}>
-                <Link href="/department/sports/sports-at-stuyvesant">
-                  Sports At Stuy
-                </Link>
               </p>
             </div>
           </div>
@@ -216,6 +201,21 @@ const Footer = () => {
 						</div> */}
             <div id={styles.cell}>
               <h3 id={styles.department}>
+                <Link href="/department/sports">Sports</Link>
+              </h3>
+              <p id={styles.subdepartment}>
+                <Link href="/department/sports/professional-sports">
+                  Professional Sports
+                </Link>
+              </p>
+              <p id={styles.subdepartment}>
+                <Link href="/department/sports/sports-at-stuyvesant">
+                  Sports At Stuy
+                </Link>
+              </p>
+            </div>
+            <div id={styles.cell}>
+              <h3 id={styles.department}>
                 <Link href="/department/spec-plus">Spec+</Link>
               </h3>
               <p id={styles.subdepartment}>
@@ -245,22 +245,22 @@ const Footer = () => {
                 <Link href="/about">About Us</Link>
               </h3>
               <p id={styles.subdepartment}>
-                <Link href="/about/our-charter">Our Charter</Link>
+                <Link href="../about/our-charter">Our Charter</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/advertise">Advertise</Link>
+                <Link href="../about/advertise">Advertise</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/sponsors">Sponsors</Link>
+                <Link href="../about/sponsors">Sponsors</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/staff">Staff</Link>
+                <Link href="../about/staff">Staff</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/developers">Developers</Link>
+                <Link href="../about/developers">Developers</Link>
               </p>
               <p id={styles.subdepartment}>
-                <Link href="/about/contact">Contact</Link>
+                <Link href="../about/contact">Contact</Link>
               </p>
             </div>
             <div id={styles.cell}>

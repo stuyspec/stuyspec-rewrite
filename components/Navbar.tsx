@@ -106,7 +106,7 @@ const Navbar = () => {
     {
       name: "Science",
       mainLink: 'science',
-      subsecitonTitles: null,
+      subsectionTitles: null,
       subsectionLinks: null
     },
     {
@@ -126,6 +126,12 @@ const Navbar = () => {
       mainLink: 'sports',
       subsectionTitles: ['Professional Sports', 'Sports at Stuyvesant'],
       subsectionLinks: ['professional-sports', 'sports-at-stuyvesant']
+    },
+    {
+      name: "About Us",
+      mainLink: 'about',
+      subsectionTitles: ['Our Charter', 'Advertise', 'Sponsors', 'Staff', 'Developers', 'Contact'],
+      subsectionLinks: ['our-charter', 'advertise', 'sponsors', 'staff', 'developers', 'contact']
     }
   ]
 
@@ -135,10 +141,13 @@ const Navbar = () => {
   }
 
   function Subsections() {
+    const section = subsectionToSections[showWhichSection];
+    const base = section.mainLink === "about" ? "/about" : `/department/${section.mainLink}`; // handles the about us case separately from other departments
+
     return (
       <>
         <div id={styles.sectionID}>
-          <Link href={`/department/${subsectionToSections[showWhichSection].mainLink}/`}>
+          <Link href={`${base}/`}>
             <h2>{subsectionToSections[showWhichSection].name}</h2>
           </Link>
         </div>
@@ -146,10 +155,10 @@ const Navbar = () => {
           <h3 id={styles.subsectionsHeader}>Subsections</h3>
           <div id={styles.subsectionList}>
             {
-              subsectionToSections[showWhichSection].subsecitonTitles !== null ?
+              subsectionToSections[showWhichSection].subsectionTitles !== null ?
                 subsectionToSections[showWhichSection].subsectionTitles.map((value: string, index: number) => {
                   return (value === 'Israel-Hamas War' ? <Link key={index} href='/topic/israel-palestine'>{value}</Link> :
-                    <Link key={index} href={`/department/${subsectionToSections[showWhichSection].mainLink}/${subsectionToSections[showWhichSection].subsectionLinks[index]}`}>
+                    <Link key={index} href={`${base}/${section.subsectionLinks[index]}`}>
                       {value}
                     </Link>)
                 }) : null
@@ -310,14 +319,17 @@ const Navbar = () => {
                 <span className={department === "science" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(3)} >
                   <Link href="/department/science">Science</Link>
                 </span>
-                <span className={department === "ae" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(4)}>
+                <span className={department === "ae" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(6)}>
                   <Link href="/department/ae">Arts & Entertainment</Link>
                 </span>
-                <span className={department === "humor" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(5)} >
+                <span className={department === "humor" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(4)} >
                   <Link href="/department/humor">Humor</Link>
                 </span>
-                <span className={department === "sports" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(6)} >
+                <span className={department === "sports" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(5)} >
                   <Link href="/department/sports">Sports</Link>
+                </span>
+                <span className={department === "about" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(7)}>
+                  <Link href="/about">About Us</Link>
                 </span>
                 {
                   // ! IMPORTANT READ BELOW
