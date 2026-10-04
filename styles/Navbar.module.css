@@ -274,6 +274,7 @@ REMOVED ANIMATION WHEN USER SCROLLS OFF BECAUSE IT IS DISTRACTING AND BAD :(.
   }
   #recruitments_banner {
     width: 100%;
+    white-space: nowrap;
   }
   .right {
     display: block;
