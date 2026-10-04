@@ -1,3 +1,31 @@
+/* ONLY SHOW DURING RECRUITMENTS */
+#recruitments_banner {
+  width: 95vw;
+  height: 2.25rem;
+  margin: 0 auto;
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  font-family: var(--secondary-font);
+  font-size: var(--small-text);
+  display: flex;
+  position: relative;
+}
+#recruitments_banner_link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#recruitments_banner_close {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--secondary);
+  cursor: pointer;
+}
+
 #nav_parent {
   overflow: hidden;
   background-color: var(--secondary);
@@ -244,7 +272,9 @@ REMOVED ANIMATION WHEN USER SCROLLS OFF BECAUSE IT IS DISTRACTING AND BAD :(.
   .weatherTempBar {
     display: none;
   }
-
+  #recruitments_banner {
+    width: 100%;
+  }
   .right {
     display: block;
     margin-left: auto;

@@ -341,14 +341,12 @@ const Navbar = () => {
                   // SPEC+ SHOULD NOT COME BACK ON THE NAVBAR. IT SHOULD
                   // STAY IN THE FOOTER.
                 }
-                {/* <span className={department === "spec-plus" ? styles.active : ""}>
-              <Link href="/department/spec-plus">Spec+</Link>
-            </span>
+                {
             <span
               className={department === "recruitments" ? styles.active : ""}
             >
               <Link href="/about/recruitments">Recruitments</Link>
-            </span> */}
+            </span> }
               </div>
               <div className={styles.expanded_section} onMouseEnter={() => { setShowSectionBar(true) }} id={showSectionBar ? styles.visibleExpandedSection : styles.hiddenExpandedSection}>
                 <Subsections />
@@ -359,6 +357,12 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      { /* RECRUITMENTS BANNER ONLY ACTIVE DURING RECRUITMENT PERIOD! REMEMBER FOR SIDEBAR AS WELL*/
+      <div id ={styles.recruitments_banner}>
+          <Link id={styles.recruitments_banner_link} href="/about/recruitments">Fall 2026 Recruitments are open!</Link>
+          <button type="button" id={styles.recruitments_banner_close} onClick={() => {document.getElementById(styles.recruitments_banner)?.remove()}}>✖</button>
+      </div>
+      }
     </>
   );
 };

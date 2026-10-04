@@ -59,6 +59,9 @@ const Sidebar = (props: { showSidebar: boolean; setShowSidebar: (v: boolean) => 
 				<li className={styles.department}>
 					<Link href="/about" onClick={autoClose}>About Us</Link>
 				</li>
+				<li className={styles.department}>
+					<Link href="/about/recruitments" onClick={autoClose}>Recruitments</Link>
+				</li>
 				<li id={styles.socialsBar}>
 
 					<div id={styles.mediaButtons}>
