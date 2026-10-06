@@ -116,7 +116,7 @@ function RecruitmentPage(props: Props) {
             >
               <iframe
                 id={styles.VIDEO}
-                src="https://www.youtube-nocookie.com/embed/X0kVU_fd6J0"
+                src="https://www.youtube.com/embed/AmlI2zUZjVI?si=yqs3M7jqcDUHDxPa"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
