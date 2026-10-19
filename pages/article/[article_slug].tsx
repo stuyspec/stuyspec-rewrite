@@ -16,6 +16,8 @@ import { generateMetaTags } from "../../utils/generateMetaTags";
 import BannerAdvertisements from "../../advertisements/BannerAdvertisements";
 import BannerAdvertisement from "../../advertisements/BannerAdvertisement";
 import { propagateServerField } from "next/dist/server/lib/render-server";
+import Crossword from "../../components/Crossword";
+import Sudoku from "../../components/Sudoku";
 
 interface Props {
 	article: ReceivedArticle;
@@ -37,7 +39,7 @@ function Article(props: Props) {
 		cover_image_source,
 		summary,
 		slug,
-		type, //either "article", "crossword", "sudoku", "the other"
+		arttype, //either "article", "crossword", "sudoku"
 	} = props.article;
 
 	const generateApproxReadingTime = () => {
@@ -109,7 +111,7 @@ function Article(props: Props) {
 					</p>
 					<h1 id={styles.title} dangerouslySetInnerHTML={{ __html: title }}></h1>
 					<h2 id={styles.summary}>{summary}</h2>
-					{type === "article" &&
+					{(arttype === "article") || (!arttype) &&
 					<h3 id={styles.reading_time}>
 						{generateApproxReadingTime()}
 					</h3>}
@@ -171,11 +173,19 @@ function Article(props: Props) {
 						</>
 					)}
 
-					{type === "article" &&
+					{(arttype === "article") || (!arttype) && (
 					<div
 						id={styles.content}
 						dangerouslySetInnerHTML={{ __html: text }}
-					></div>}
+					></div>)}
+
+					{(arttype === "crossword") && (
+						<Crossword puzzle={props.article}/>)
+					}
+
+					{(arttype === "sudoku") && (
+						<Sudoku puzzle={props.article}/>)
+					}
 
 					{/* <RecommendedArticles /> */}
 				</article>
