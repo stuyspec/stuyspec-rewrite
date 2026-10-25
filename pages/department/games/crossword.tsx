@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import CrosswordReader from "../../../utils/crosswordReader";
 import type { Clue } from "@xwordly/xword-parser";
-import Keyboard, { type KeyboardReactInterface } from 'react-simple-keyboard';
+import Keyboard, { type KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 
 function crossword() {
@@ -15,6 +15,8 @@ function crossword() {
   // website puzzle state
   const [volume, setVolume] = useState(67);
   const [issue, setIssue] = useState(1);
+
+  const [settingsDisplaying, setSettingsDisplaying] = useState(false);
 
   // Puzzle info variables
   const [puzzleSolution, setPuzzleSolution] = useState<string[]>([]);
@@ -36,14 +38,16 @@ function crossword() {
   const [viewport, setViewport] = useState({ w: 0, h: 0 });
 
   useEffect(() => {
-    const onResize = () => setViewport({ w: window.innerWidth, h: window.innerHeight });
-    +    onResize();
+    const onResize = () =>
+      setViewport({ w: window.innerWidth, h: window.innerHeight });
+    +onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
   useEffect(() => {
-    const onResize = () => setViewport({ w: window.innerWidth, h: window.innerHeight });
+    const onResize = () =>
+      setViewport({ w: window.innerWidth, h: window.innerHeight });
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -55,14 +59,16 @@ function crossword() {
     18,
     Math.min(
       44,
-      Math.floor(Math.min(
-        (viewport.w - SIDE) / (rowLength || 15),
-        (viewport.h - CHROME_H) / (rowCount || 15),
-      )),
+      Math.floor(
+        Math.min(
+          (viewport.w - SIDE) / (rowLength || 15),
+          (viewport.h - CHROME_H) / (rowCount || 15),
+        ),
+      ),
     ),
   );
 
-  // toolbar 
+  // toolbar
   const [mergedClues, setMergedClues] = useState<Clue[]>([]);
   const [clueIndex, setClueIndex] = useState(0);
 
@@ -423,6 +429,43 @@ function crossword() {
   }
     */
 
+  function Settings() {
+    function changeSettingsDisplaying(): void {
+      setSettingsDisplaying((current) => !current);
+    }
+
+    return (
+      <>
+        <button onClick={changeSettingsDisplaying} className="btn-modal">
+          Settings
+        </button>
+
+        {settingsDisplaying && (
+          <div
+            className="modal"
+            style={{
+              display: "inline-flex",
+              border: "2px solid black",
+              borderRadius: "5px",
+              zIndex: 1000,
+            }}
+          >
+            <div onClick={changeSettingsDisplaying} className="overlay"></div>
+            <div className="modal-content">
+              <h2>Settings</h2>
+              <p>hiya</p>
+              <button
+                className="close-modal"
+                onClick={changeSettingsDisplaying}
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  }
 
   return (
     <>
@@ -440,7 +483,8 @@ function crossword() {
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
-          }}>
+          }}
+        >
           <div
             style={{
               display: "flex",
@@ -448,22 +492,14 @@ function crossword() {
               alignItems: "center",
               justifyContent: "space-between",
               width: rowLength ? rowLength * cellSize + 10 : "auto",
-            }}>
+            }}
+          >
             <div className="header" style={{ fontSize: "1rem" }}>
               <h2>{crosswordInfo?.title}</h2>
               <h2>{crosswordInfo?.author}</h2>
             </div>
             <div>
-              <button
-                style={{
-                  display: "inline-flex",
-                  border: "2px solid black",
-                  borderRadius: "5px",
-                }}>
-                <img>
-                </img>
-                Settings
-              </button>
+              <Settings />
             </div>
           </div>
           <div
@@ -471,8 +507,9 @@ function crossword() {
               display: "flex",
               flexDirection: "row",
               alignItems: "flex-start",
-              gap: "20px"
-            }}>
+              gap: "20px",
+            }}
+          >
             {
               // GRID PLUS TOOLBAR AND SUBMIT
             }
@@ -525,11 +562,11 @@ function crossword() {
                               : cellInputIndex === selectedCell
                                 ? "#4fe34f"
                                 : (vertical &&
-                                  cellInputIndex % rowLength ==
-                                  selectedCell % rowLength) ||
-                                  (!vertical &&
-                                    Math.floor(cellInputIndex / rowLength) ==
-                                    Math.floor(selectedCell / rowLength))
+                                      cellInputIndex % rowLength ==
+                                        selectedCell % rowLength) ||
+                                    (!vertical &&
+                                      Math.floor(cellInputIndex / rowLength) ==
+                                        Math.floor(selectedCell / rowLength))
                                   ? "#a6f2a6"
                                   : "white",
                         }}
@@ -585,7 +622,8 @@ function crossword() {
 
                         for (let i = 0; i < grid.length; i++) {
                           if (
-                            numberLabelGrid[i] === mergedClues[newIndex].number &&
+                            numberLabelGrid[i] ===
+                              mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -622,7 +660,8 @@ function crossword() {
 
                         for (let i = 0; i < grid.length; i++) {
                           if (
-                            numberLabelGrid[i] === mergedClues[newIndex].number &&
+                            numberLabelGrid[i] ===
+                              mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -656,7 +695,8 @@ function crossword() {
 
                         for (let i = 0; i < grid.length; i++) {
                           if (
-                            numberLabelGrid[i] === mergedClues[newIndex].number &&
+                            numberLabelGrid[i] ===
+                              mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -714,39 +754,51 @@ function crossword() {
                     Status: {won ? "Completed" : "Not done yet"}
                   </p>
                   <button
-                    onClick={() => { setKeyboardActive(!keyboardActive) }}
+                    onClick={() => {
+                      setKeyboardActive(!keyboardActive);
+                    }}
                     style={{
                       width: `${cellSize}px`,
                       height: `${cellSize}px`,
                     }}
-                  > { /* keyboard toggle button */}
-                    <img src={keyboardActive ? "/svg/keyboard-shown.svg" : "/svg/keyboard-hidden.svg"}></img>
+                  >
+                    {" "}
+                    {/* keyboard toggle button */}
+                    <img
+                      src={
+                        keyboardActive
+                          ? "/svg/keyboard-shown.svg"
+                          : "/svg/keyboard-hidden.svg"
+                      }
+                    ></img>
                   </button>
                 </div>
 
                 {
                   // FIXED KEYBOARD
                 }
-                <div style={{
-                  height: 140, // 3 rows × 40px + 2×5px gaps + 2×5px theme padding
-                  width: "100%",
-                  visibility: keyboardActive ? "visible" : "hidden",
-                  pointerEvents: keyboardActive ? "auto" : "none",
-                }}>
+                <div
+                  style={{
+                    height: 140, // 3 rows × 40px + 2×5px gaps + 2×5px theme padding
+                    width: "100%",
+                    visibility: keyboardActive ? "visible" : "hidden",
+                    pointerEvents: keyboardActive ? "auto" : "none",
+                  }}
+                >
                   <Keyboard
                     className="Keyboard"
-                    keyboardRef={r => (keyboard.current = r)}
+                    keyboardRef={(r) => (keyboard.current = r)}
                     layout={LAYOUTS}
                     layoutName={layout}
                     mergeDisplay
                     display={{
                       "{bksp}": "⌫",
                       "{enter}": "↵",
-                      "{rev}": "🔄︎"
+                      "{rev}": "🔄︎",
                     }}
                     onChange={onChange}
-                    onKeyPress={onKeyPress}>
-                  </Keyboard>
+                    onKeyPress={onKeyPress}
+                  ></Keyboard>
                 </div>
               </div>
             </div>
@@ -757,10 +809,15 @@ function crossword() {
               // HELL. READING MY OWN CODE IS HELL.
             }
 
-            <div className="clues" style={{ '--height': `${cellSize * rowCount}px` } as React.CSSProperties}>
-              <div
-                className="cluesAcrossContainer"
-              >
+            <div
+              className="clues"
+              style={
+                {
+                  "--height": `${cellSize * rowCount}px`,
+                } as React.CSSProperties
+              }
+            >
+              <div className="cluesAcrossContainer">
                 <h4
                   style={{
                     textAlign: "center",
@@ -795,9 +852,7 @@ function crossword() {
                   </ul>
                 </div>
               </div>
-              <div
-                className="cluesDownContainer"
-              >
+              <div className="cluesDownContainer">
                 <h4
                   style={{
                     textAlign: "center",
@@ -842,7 +897,7 @@ function crossword() {
             // <button onClick={fillWithAnswers}>Complete grid</button>
           }
         </div>
-      </div >
+      </div>
     </>
   );
 }
