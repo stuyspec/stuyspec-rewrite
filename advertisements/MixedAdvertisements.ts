@@ -7,6 +7,11 @@ const MixedAdvertisements: {
     name: "Mirelle Education",
     image_src: "/images/ads/MirelleEducation.webp",
     url: "https://mirelleeducation.com/essay"
+  },
+  {
+    name: "Mirelle Education",
+    image_src: "/images/ads/MirelleEducation2.webp",
+    url: "https://mirelleeducation.com"
   }
 ];
 export default MixedAdvertisements;
