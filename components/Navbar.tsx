@@ -128,11 +128,17 @@ const Navbar = () => {
       subsectionLinks: ['professional-sports', 'sports-at-stuyvesant']
     },
     {
+      name: "Games",
+      mainLink: 'games',
+      subsectionTitles: ['Crossword'],
+      subsectionLinks: ['crossword']
+    },
+    {
       name: "About Us",
       mainLink: 'about',
       subsectionTitles: ['Our Charter', 'Advertise', 'Sponsors', 'Staff', 'Developers', 'Contact'],
       subsectionLinks: ['our-charter', 'advertise', 'sponsors', 'staff', 'developers', 'contact']
-    }
+    },
   ]
 
   function showSectionAndPiece(ss: number) {
@@ -328,7 +334,10 @@ const Navbar = () => {
                 <span className={department === "sports" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(6)} >
                   <Link href="/department/sports">Sports</Link>
                 </span>
-                <span className={department === "about" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(7)}>
+                <span className={department === "games" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(7)}>
+                  <Link href="/games">Games</Link>
+                </span>
+                <span className={department === "about" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(8)}>
                   <Link href="/about">About Us</Link>
                 </span>
                 {
@@ -342,11 +351,11 @@ const Navbar = () => {
                   // STAY IN THE FOOTER.
                 }
                 {
-            <span
-              className={department === "recruitments" ? styles.active : ""}
-            >
-              <Link href="/about/recruitments">Recruitments</Link>
-            </span> }
+                  <span
+                    className={department === "recruitments" ? styles.active : ""}
+                  >
+                    <Link href="/about/recruitments">Recruitments</Link>
+                  </span>}
               </div>
               <div className={styles.expanded_section} onMouseEnter={() => { setShowSectionBar(true) }} id={showSectionBar ? styles.visibleExpandedSection : styles.hiddenExpandedSection}>
                 <Subsections />
@@ -358,10 +367,10 @@ const Navbar = () => {
         </div>
       </div>
       { /* RECRUITMENTS BANNER ONLY ACTIVE DURING RECRUITMENT PERIOD! REMEMBER FOR SIDEBAR AS WELL*/
-      <div id ={styles.recruitments_banner}>
+        <div id={styles.recruitments_banner}>
           <Link id={styles.recruitments_banner_link} href="/about/recruitments">Fall 2026 Recruitments are open!</Link>
-          <button type="button" id={styles.recruitments_banner_close} onClick={() => {document.getElementById(styles.recruitments_banner)?.remove()}}>✖</button>
-      </div>
+          <button type="button" id={styles.recruitments_banner_close} onClick={() => { document.getElementById(styles.recruitments_banner)?.remove() }}>✖</button>
+        </div>
       }
     </>
   );

@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
+import "../styles/crossword.css";
 
 function MyApp(props: AppProps) {
 	let { Component, pageProps } = props;

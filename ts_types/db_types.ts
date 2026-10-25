@@ -48,20 +48,20 @@ export interface ReceivedEditor {
   staff_details: ReceivedStaff[];
   image_src: string;
   department:
-    | "opinions"
-    | "arts and entertainment"
-    | "news"
-    | "features"
-    | "web"
-    | "business"
-    | "copy"
-    | "layout"
-    | "sports"
-    | "humor"
-    | "science"
-    | "photos"
-    | "art"
-    | "faculty";
+  | "opinions"
+  | "arts and entertainment"
+  | "news"
+  | "features"
+  | "web"
+  | "business"
+  | "copy"
+  | "layout"
+  | "sports"
+  | "humor"
+  | "science"
+  | "photos"
+  | "art"
+  | "faculty";
   position: "EIT" | "E" | "EIC";
 }
 
@@ -96,6 +96,7 @@ export type Department =
   | "humor"
   | "sports"
   | "ae"
+  | "games"
   | "media"
   | "spec-plus";
 
@@ -107,6 +108,7 @@ export const DepartmentsArray = [
   "humor",
   "sports",
   "ae",
+  "games",
   "media",
   "spec-plus",
 ] as const;
@@ -119,6 +121,7 @@ export const DepartmentsArrayDisplay = [
   "Humor",
   "Sports",
   "Arts and Entertainment",
+  "Games",
   "Media",
   "Spec+",
 ];
