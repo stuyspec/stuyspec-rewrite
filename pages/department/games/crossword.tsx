@@ -16,6 +16,7 @@ function crossword() {
   const [volume, setVolume] = useState(67);
   const [issue, setIssue] = useState(1);
 
+  const [greetingsDisplaying, setGreetingsDisplaying] = useState(true);
   const [settingsDisplaying, setSettingsDisplaying] = useState(false);
 
   // Puzzle info variables
@@ -458,7 +459,41 @@ function crossword() {
                 className="close-modal"
                 onClick={changeSettingsDisplaying}
               >
-                CLOSE
+                X
+              </button>
+            </div>
+          </div>
+        )}
+      </>
+    );
+  }
+
+  function Greetings() {
+    function changeGreetingsDisplaying(): void {
+      setGreetingsDisplaying((current) => !current);
+    }
+
+    return (
+      <>
+        {greetingsDisplaying && (
+          <div
+            className="modal"
+            style={{
+              display: "inline-flex",
+              border: "2px solid black",
+              borderRadius: "5px",
+              zIndex: 1000,
+            }}
+          >
+            <div onClick={changeGreetingsDisplaying} className="overlay"></div>
+            <div className="modal-content">
+              <h2>Welcome to the Spectator Crossword</h2>
+              <p>Select the Volume and Issue, then begin.</p>
+              <button
+                className="close-modal"
+                onClick={changeGreetingsDisplaying}
+              >
+                X
               </button>
             </div>
           </div>
@@ -478,6 +513,7 @@ function crossword() {
           justifyContent: "center",
         }}
       >
+        <Greetings />
         <div
           style={{
             display: "flex",
