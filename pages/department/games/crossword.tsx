@@ -181,20 +181,115 @@ function crossword() {
     };
 
     asyncPuzzleLoader();
-  }, []);
+  }, [volume, issue]);
 
   /*
       This useEffect() hook updates the most recent key.
     */
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Nothing is typed until the puzzle has actually loaded.
-      if (!rowLength || !rowCount) return;
+    if (!greetingsDisplaying) {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        // Nothing is typed until the puzzle has actually loaded.
+        if (!rowLength || !rowCount) return;
 
-      let key = e.key.toUpperCase();
-      if (/^[a-z]$/i.test(e.key)) {
-        setLastKey(key);
-        if (vertical) {
+        let key = e.key.toUpperCase();
+        if (/^[a-z]$/i.test(e.key)) {
+          setLastKey(key);
+          if (vertical) {
+            let newCell = selectedCell;
+            if (puzzleSolution[newCell] != "N/A") {
+              newCell = (newCell + rowLength) % (rowLength * rowCount);
+            }
+            let maxSteps = 0;
+            while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
+              newCell = (newCell + rowLength) % (rowLength * rowCount);
+              maxSteps++;
+            }
+            setSelectedCell(newCell);
+          } else {
+            let newCell = selectedCell;
+            if (puzzleSolution[newCell] != "N/A") {
+              newCell =
+                (((newCell % rowLength) + 1) % rowLength) +
+                newCell -
+                (newCell % rowLength);
+            }
+            let maxSteps = 0;
+            while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
+              newCell =
+                (((newCell % rowLength) + 1) % rowLength) +
+                newCell -
+                (newCell % rowLength);
+              maxSteps++;
+            }
+            setSelectedCell(newCell);
+          }
+        } else if (key === "BACKSPACE") {
+          key = "";
+          setLastKey(key);
+          if (vertical) {
+            let newCell = selectedCell;
+            if (puzzleSolution[newCell] != "N/A") {
+              const wrap = rowLength * rowCount;
+              newCell = (newCell - rowLength + wrap) % (rowLength * rowCount);
+            }
+            let maxSteps = 0;
+            while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
+              const wrap = rowLength * rowCount;
+              newCell = (newCell - rowLength + wrap) % wrap;
+              maxSteps++;
+            }
+            setSelectedCell(newCell);
+          } else {
+            let newCell = selectedCell;
+            if (puzzleSolution[newCell] != "N/A") {
+              newCell =
+                (((newCell % rowLength) - 1 + rowLength) % rowLength) +
+                newCell -
+                (newCell % rowLength);
+            }
+            let maxSteps = 0;
+            while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
+              newCell =
+                (((newCell % rowLength) - 1 + rowLength) % rowLength) +
+                newCell -
+                (newCell % rowLength);
+              maxSteps++;
+            }
+            setSelectedCell(newCell);
+          }
+        } else if (key === "TAB") {
+          if (vertical) {
+            let newCell = selectedCell;
+            if (puzzleSolution[newCell] != "N/A") {
+              newCell = (newCell + rowLength) % (rowLength * rowCount);
+            }
+            let maxSteps = 0;
+            while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
+              newCell = (newCell + rowLength) % (rowLength * rowCount);
+              maxSteps++;
+            }
+            setSelectedCell(newCell);
+          } else {
+            let newCell = selectedCell;
+            if (puzzleSolution[newCell] != "N/A") {
+              newCell =
+                (((newCell % rowLength) + 1) % rowLength) +
+                newCell -
+                (newCell % rowLength);
+            }
+            let maxSteps = 0;
+            while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
+              newCell =
+                (((newCell % rowLength) + 1) % rowLength) +
+                newCell -
+                (newCell % rowLength);
+              maxSteps++;
+            }
+            setSelectedCell(newCell);
+          }
+          return;
+        } else if (key === "ARROWDOWN") {
           let newCell = selectedCell;
           if (puzzleSolution[newCell] != "N/A") {
             newCell = (newCell + rowLength) % (rowLength * rowCount);
@@ -205,41 +300,42 @@ function crossword() {
             maxSteps++;
           }
           setSelectedCell(newCell);
-        } else {
+          return;
+        } else if (key === "ARROWRIGHT") {
           let newCell = selectedCell;
           if (puzzleSolution[newCell] != "N/A") {
             newCell =
-              (((newCell % rowLength) + 1) % rowLength) +
+              (((newCell % rowLength) + 1 + rowLength) % rowLength) +
               newCell -
               (newCell % rowLength);
           }
           let maxSteps = 0;
           while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
             newCell =
-              (((newCell % rowLength) + 1) % rowLength) +
+              (((newCell % rowLength) + 1 + rowLength) % rowLength) +
               newCell -
               (newCell % rowLength);
             maxSteps++;
           }
           setSelectedCell(newCell);
-        }
-      } else if (key === "BACKSPACE") {
-        key = "";
-        setLastKey(key);
-        if (vertical) {
+          return;
+        } else if (key === "ARROWUP") {
           let newCell = selectedCell;
           if (puzzleSolution[newCell] != "N/A") {
-            const wrap = rowLength * rowCount;
-            newCell = (newCell - rowLength + wrap) % (rowLength * rowCount);
+            newCell =
+              (newCell - rowLength + rowLength * rowCount) %
+              (rowLength * rowCount);
           }
           let maxSteps = 0;
           while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
-            const wrap = rowLength * rowCount;
-            newCell = (newCell - rowLength + wrap) % wrap;
+            newCell =
+              (newCell - rowLength + rowLength * rowCount) %
+              (rowLength * rowCount);
             maxSteps++;
           }
           setSelectedCell(newCell);
-        } else {
+          return;
+        } else if (key === "ARROWLEFT") {
           let newCell = selectedCell;
           if (puzzleSolution[newCell] != "N/A") {
             newCell =
@@ -256,121 +352,27 @@ function crossword() {
             maxSteps++;
           }
           setSelectedCell(newCell);
-        }
-      } else if (key === "TAB") {
-        if (vertical) {
-          let newCell = selectedCell;
-          if (puzzleSolution[newCell] != "N/A") {
-            newCell = (newCell + rowLength) % (rowLength * rowCount);
-          }
-          let maxSteps = 0;
-          while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
-            newCell = (newCell + rowLength) % (rowLength * rowCount);
-            maxSteps++;
-          }
-          setSelectedCell(newCell);
+          return;
         } else {
-          let newCell = selectedCell;
-          if (puzzleSolution[newCell] != "N/A") {
-            newCell =
-              (((newCell % rowLength) + 1) % rowLength) +
-              newCell -
-              (newCell % rowLength);
-          }
-          let maxSteps = 0;
-          while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
-            newCell =
-              (((newCell % rowLength) + 1) % rowLength) +
-              newCell -
-              (newCell % rowLength);
-            maxSteps++;
-          }
-          setSelectedCell(newCell);
+          return;
         }
-        return;
-      } else if (key === "ARROWDOWN") {
-        let newCell = selectedCell;
-        if (puzzleSolution[newCell] != "N/A") {
-          newCell = (newCell + rowLength) % (rowLength * rowCount);
-        }
-        let maxSteps = 0;
-        while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
-          newCell = (newCell + rowLength) % (rowLength * rowCount);
-          maxSteps++;
-        }
-        setSelectedCell(newCell);
-        return;
-      } else if (key === "ARROWRIGHT") {
-        let newCell = selectedCell;
-        if (puzzleSolution[newCell] != "N/A") {
-          newCell =
-            (((newCell % rowLength) + 1 + rowLength) % rowLength) +
-            newCell -
-            (newCell % rowLength);
-        }
-        let maxSteps = 0;
-        while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
-          newCell =
-            (((newCell % rowLength) + 1 + rowLength) % rowLength) +
-            newCell -
-            (newCell % rowLength);
-          maxSteps++;
-        }
-        setSelectedCell(newCell);
-        return;
-      } else if (key === "ARROWUP") {
-        let newCell = selectedCell;
-        if (puzzleSolution[newCell] != "N/A") {
-          newCell =
-            (newCell - rowLength + rowLength * rowCount) %
-            (rowLength * rowCount);
-        }
-        let maxSteps = 0;
-        while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
-          newCell =
-            (newCell - rowLength + rowLength * rowCount) %
-            (rowLength * rowCount);
-          maxSteps++;
-        }
-        setSelectedCell(newCell);
-        return;
-      } else if (key === "ARROWLEFT") {
-        let newCell = selectedCell;
-        if (puzzleSolution[newCell] != "N/A") {
-          newCell =
-            (((newCell % rowLength) - 1 + rowLength) % rowLength) +
-            newCell -
-            (newCell % rowLength);
-        }
-        let maxSteps = 0;
-        while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
-          newCell =
-            (((newCell % rowLength) - 1 + rowLength) % rowLength) +
-            newCell -
-            (newCell % rowLength);
-          maxSteps++;
-        }
-        setSelectedCell(newCell);
-        return;
-      } else {
-        return;
-      }
-      setGrid((currentGrid) =>
-        currentGrid.map((cell, index) =>
-          puzzleSolution[index] === "N/A"
-            ? ""
-            : index === selectedCell
-              ? key
-              : cell,
-        ),
-      );
-    };
+        setGrid((currentGrid) =>
+          currentGrid.map((cell, index) =>
+            puzzleSolution[index] === "N/A"
+              ? ""
+              : index === selectedCell
+                ? key
+                : cell,
+          ),
+        );
+      };
 
-    window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
   }, [selectedCell, vertical, puzzleSolution, rowLength, rowCount]);
 
   /*
@@ -468,9 +470,117 @@ function crossword() {
     );
   }
 
+  async function fileExists(path: string) {
+    const response = await fetch(path, {
+      method: "HEAD",
+      cache: "no-store",
+    });
+
+    return response.ok;
+  }
+
   function Greetings() {
-    function changeGreetingsDisplaying(): void {
-      setGreetingsDisplaying((current) => !current);
+    function LimitingInput() {
+      const [vol, setVol] = useState("");
+      const [iss, setIss] = useState("");
+
+      const [volumeExists, setVolumeExists] = useState(false);
+      const [issueExists, setIssueExists] = useState(false);
+
+      const [submitClicked, setSubmitClicked] = useState(false);
+
+      const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        // Replace anything that is NOT a digit with an empty string
+        const cleanValue = inputValue.replace(/\D/g, "");
+        setVol(cleanValue);
+        setSubmitClicked(false);
+      };
+
+      const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        // Replace anything that is NOT a digit with an empty string
+        const cleanValue = inputValue.replace(/\D/g, "");
+        setIss(cleanValue);
+        setSubmitClicked(false);
+      };
+
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <h2>Welcome to the Spectator Crossword!</h2>
+          <p>Type a Volume and Issue, then hit Submit to begin.</p>
+          <p>Volume:</p>
+          <input
+            type="text"
+            inputMode="numeric" // Optimizes the mobile keyboard layout
+            value={vol}
+            onChange={handleChangeVol}
+            style={{
+              outline: "none",
+            }}
+          />
+          <p>Issue:</p>
+          <input
+            type="text"
+            inputMode="numeric" // Optimizes the mobile keyboard layout
+            value={iss}
+            onChange={handleChangeIssue}
+            style={{
+              outline: "none",
+            }}
+          />
+          <button
+            style={{
+              padding: "5px",
+              outline: "none",
+            }}
+            onClick={async () => {
+              setSubmitClicked(true);
+              setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
+              setIssueExists(
+                await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
+              );
+              if (
+                vol !== "" &&
+                iss !== "" &&
+                (await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`))
+              ) {
+                setGreetingsDisplaying(false);
+                setVolume(Number(vol));
+                setIssue(Number(iss));
+                return;
+              }
+            }}
+          >
+            Submit
+          </button>
+          <div
+            style={{
+              visibility:
+                (!volumeExists || !issueExists) &&
+                vol != "" &&
+                iss != "" &&
+                submitClicked == true
+                  ? "visible"
+                  : "hidden",
+            }}
+          >
+            <p>
+              Error:{" "}
+              {!issueExists || !volumeExists
+                ? "The volume/issue you are looking for doesn't exist."
+                : "No error."}
+            </p>
+          </div>
+        </div>
+      );
     }
 
     return (
@@ -485,16 +595,9 @@ function crossword() {
               zIndex: 1000,
             }}
           >
-            <div onClick={changeGreetingsDisplaying} className="overlay"></div>
+            <div className="overlay"></div>
             <div className="modal-content">
-              <h2>Welcome to the Spectator Crossword</h2>
-              <p>Select the Volume and Issue, then begin.</p>
-              <button
-                className="close-modal"
-                onClick={changeGreetingsDisplaying}
-              >
-                X
-              </button>
+              <LimitingInput />
             </div>
           </div>
         )}
@@ -688,6 +791,10 @@ function crossword() {
                     style={{
                       flex: 1,
                       minWidth: 0,
+                      width: rowLength
+                        ? (rowLength - 3) * cellSize + 10
+                        : "auto",
+                      overflowWrap: "anywhere",
                     }}
                     onClick={() => {
                       if (mergedClues.length > 0) {
@@ -796,6 +903,7 @@ function crossword() {
                     style={{
                       width: `${cellSize}px`,
                       height: `${cellSize}px`,
+                      padding: "0",
                     }}
                   >
                     {" "}

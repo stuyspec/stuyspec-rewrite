@@ -125,7 +125,6 @@ body.active-modal {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  line-height: 1.4;
   background: #f1f1f1;
   padding: 20px 28px;
   border-radius: 10px;
