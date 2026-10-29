@@ -227,37 +227,37 @@ function crossword() {
         } else if (key === "BACKSPACE") {
           key = "";
           setLastKey(key);
-          if (vertical) {
-            let newCell = selectedCell;
-            if (puzzleSolution[newCell] != "N/A") {
-              const wrap = rowLength * rowCount;
-              newCell = (newCell - rowLength + wrap) % (rowLength * rowCount);
+          let newCell = selectedCell;
+          if (grid[selectedCell] == "") {
+            if (vertical) {
+              if (puzzleSolution[newCell] != "N/A") {
+                const wrap = rowLength * rowCount;
+                newCell = (newCell - rowLength + wrap) % (rowLength * rowCount);
+              }
+              let maxSteps = 0;
+              while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
+                const wrap = rowLength * rowCount;
+                newCell = (newCell - rowLength + wrap) % wrap;
+                maxSteps++;
+              }
+            } else {
+              if (puzzleSolution[newCell] != "N/A") {
+                newCell =
+                  (((newCell % rowLength) - 1 + rowLength) % rowLength) +
+                  newCell -
+                  (newCell % rowLength);
+              }
+              let maxSteps = 0;
+              while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
+                newCell =
+                  (((newCell % rowLength) - 1 + rowLength) % rowLength) +
+                  newCell -
+                  (newCell % rowLength);
+                maxSteps++;
+              }
             }
-            let maxSteps = 0;
-            while (puzzleSolution[newCell] == "N/A" && maxSteps < rowCount) {
-              const wrap = rowLength * rowCount;
-              newCell = (newCell - rowLength + wrap) % wrap;
-              maxSteps++;
-            }
-            setSelectedCell(newCell);
-          } else {
-            let newCell = selectedCell;
-            if (puzzleSolution[newCell] != "N/A") {
-              newCell =
-                (((newCell % rowLength) - 1 + rowLength) % rowLength) +
-                newCell -
-                (newCell % rowLength);
-            }
-            let maxSteps = 0;
-            while (puzzleSolution[newCell] == "N/A" && maxSteps < rowLength) {
-              newCell =
-                (((newCell % rowLength) - 1 + rowLength) % rowLength) +
-                newCell -
-                (newCell % rowLength);
-              maxSteps++;
-            }
-            setSelectedCell(newCell);
           }
+          setSelectedCell(newCell);
         } else if (key === "TAB") {
           if (vertical) {
             let newCell = selectedCell;
@@ -497,7 +497,7 @@ function crossword() {
               outline: "none",
             }}
             onClick={async () => {
-              changeSettingsDisplaying
+              changeSettingsDisplaying;
               setSubmitClicked(true);
               setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
               setIssueExists(
