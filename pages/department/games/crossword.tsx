@@ -437,6 +437,108 @@ function crossword() {
       setSettingsDisplaying((current) => !current);
     }
 
+    function LimitingInput() {
+      const [vol, setVol] = useState("");
+      const [iss, setIss] = useState("");
+
+      const [volumeExists, setVolumeExists] = useState(false);
+      const [issueExists, setIssueExists] = useState(false);
+
+      const [submitClicked, setSubmitClicked] = useState(false);
+
+      const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        // Replace anything that is NOT a digit with an empty string
+        const cleanValue = inputValue.replace(/\D/g, "");
+        setVol(cleanValue);
+        setSubmitClicked(false);
+      };
+
+      const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        // Replace anything that is NOT a digit with an empty string
+        const cleanValue = inputValue.replace(/\D/g, "");
+        setIss(cleanValue);
+        setSubmitClicked(false);
+      };
+
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <p>Volume:</p>
+          <input
+            type="text"
+            inputMode="numeric" // Optimizes the mobile keyboard layout
+            value={vol}
+            onChange={handleChangeVol}
+            style={{
+              outline: "none",
+            }}
+          />
+          <p>Issue:</p>
+          <input
+            type="text"
+            inputMode="numeric" // Optimizes the mobile keyboard layout
+            value={iss}
+            onChange={handleChangeIssue}
+            style={{
+              outline: "none",
+            }}
+          />
+          <button
+            style={{
+              padding: "5px",
+              outline: "none",
+            }}
+            onClick={async () => {
+              changeSettingsDisplaying
+              setSubmitClicked(true);
+              setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
+              setIssueExists(
+                await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
+              );
+              if (
+                vol !== "" &&
+                iss !== "" &&
+                (await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`))
+              ) {
+                setGreetingsDisplaying(false);
+                setVolume(Number(vol));
+                setIssue(Number(iss));
+                return;
+              }
+            }}
+          >
+            Change Crossword
+          </button>
+          <div
+            style={{
+              visibility:
+                (!volumeExists || !issueExists) &&
+                  vol != "" &&
+                  iss != "" &&
+                  submitClicked == true
+                  ? "visible"
+                  : "hidden",
+            }}
+          >
+            <p>
+              Error:{" "}
+              {!issueExists || !volumeExists
+                ? "The volume/issue you are looking for doesn't exist."
+                : "No error."}
+            </p>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <>
         <button onClick={changeSettingsDisplaying} className="btn-modal">
@@ -456,7 +558,7 @@ function crossword() {
             <div onClick={changeSettingsDisplaying} className="overlay"></div>
             <div className="modal-content">
               <h2>Settings</h2>
-              <p>hiya</p>
+              <LimitingInput />
               <button
                 className="close-modal"
                 onClick={changeSettingsDisplaying}
@@ -565,9 +667,9 @@ function crossword() {
             style={{
               visibility:
                 (!volumeExists || !issueExists) &&
-                vol != "" &&
-                iss != "" &&
-                submitClicked == true
+                  vol != "" &&
+                  iss != "" &&
+                  submitClicked == true
                   ? "visible"
                   : "hidden",
             }}
@@ -701,11 +803,11 @@ function crossword() {
                               : cellInputIndex === selectedCell
                                 ? "#4fe34f"
                                 : (vertical &&
-                                      cellInputIndex % rowLength ==
-                                        selectedCell % rowLength) ||
-                                    (!vertical &&
-                                      Math.floor(cellInputIndex / rowLength) ==
-                                        Math.floor(selectedCell / rowLength))
+                                  cellInputIndex % rowLength ==
+                                  selectedCell % rowLength) ||
+                                  (!vertical &&
+                                    Math.floor(cellInputIndex / rowLength) ==
+                                    Math.floor(selectedCell / rowLength))
                                   ? "#a6f2a6"
                                   : "white",
                         }}
@@ -762,7 +864,7 @@ function crossword() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -804,7 +906,7 @@ function crossword() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -839,7 +941,7 @@ function crossword() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
