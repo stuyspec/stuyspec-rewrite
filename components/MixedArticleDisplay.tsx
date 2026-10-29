@@ -123,7 +123,7 @@ export default function MixedArticleDisplay(props: {
 				grouping["withPhotos"][0],
 				...process_sorted_articles,
 			];
-			
+
 			return {
 				articlesWithPhotos,
 				articlesWithoutPhotos,
@@ -140,7 +140,7 @@ export default function MixedArticleDisplay(props: {
 	useEffect(() => {
 		setArticlesProcessed(returnProcessedArticles(props.articles));
 	}, [props.articles, returnProcessedArticles]);
-	
+
 	const num_articles_each_side = Math.floor(
 		articlesProcessed.articlesWithoutPhotos.length / 2
 	);
