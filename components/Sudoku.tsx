@@ -1,5 +1,5 @@
 import { ReceivedArticle } from "../ts_types/db_types";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "../styles/Sudoku.module.css";
 
 interface TileObj {
@@ -107,27 +107,23 @@ function createTileObj(index: number, value: string, given: boolean): TileObj {
   };
 }
 
-function whatColorShouldIPaintThisElement(
+function howShouldIStyleThisCell(
   obj: TileObj,
+  focused: boolean,
   won: boolean,
   errors: Set<number>,
 ): string {
-  if (won) {
-    return "green";
-  }
-  if (errors.has(obj.index)) {
-    return "red";
-  } else {
-    if (obj.selected) {
-      return "yellow";
-    } else {
-      return "";
-    }
-  }
+  const classes = [styles.cell];
+  if (obj.given) classes.push(styles.given);
+  if (won) classes.push(styles.won);
+  else if (errors.has(obj.index)) classes.push(styles.error);
+  else if (focused) classes.push(styles.focused);
+  else if (obj.selected) classes.push(styles.highlighted);
+  return classes.join(" ");
 }
 
 function Sudoku(props: { puzzle: ReceivedArticle }) {
-  const base = Array(81).fill(""); //this is the given values
+  const base = Array(81).fill(""); //this are the given values
   // DO NOT SET BASE TO [] IT WILL Break IDIOT
   let i = 0;
   const newbase: TileObj[] = [];
@@ -140,64 +136,79 @@ function Sudoku(props: { puzzle: ReceivedArticle }) {
     i++;
   });
   const [boardState, setBoardState] = useState(newbase);
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+  const cellRefs = useRef<(HTMLInputElement | null)[]>([]); //just now realized i wasn't storing the individual cells :sob:
+
+  function moveFocus(index: number, key: string) {
+    const row = Math.floor(index / 9);
+    const col = index % 9;
+    //wrap around the edges of the board
+    const moves: Record<string, [number, number]> = {
+      ArrowUp: [(row + 8) % 9, col],
+      ArrowDown: [(row + 1) % 9, col],
+      ArrowLeft: [row, (col + 8) % 9],
+      ArrowRight: [row, (col + 1) % 9],
+    };
+    const [newRow, newCol] = moves[key];
+    cellRefs.current[newRow * 9 + newCol]?.focus();
+  }
 
   const [errors, won] = checkBoard(boardState);
 
   return (
-    <>
-      {Array(9)
-        .fill("")
-        .map((_, i) => {
-          return (
-            <div key={i}>
-              {Array(9)
-                .fill("")
-                .map((_, j) => {
-                  const currindex = i * 9 + j;
-                  return (
-                    <textarea
-                      maxLength={1}
-                      rows={1}
-                      cols={2}
-                      key={currindex}
-                      readOnly={boardState[currindex].given}
-                      style={{
-                        backgroundColor: whatColorShouldIPaintThisElement(
-                          boardState[currindex],
-                          won,
-                          errors,
-                        ),
-                      }}
-                      className={styles.sudokuTextArea}
-                      value={boardState[currindex].value}
-                      onChange={(e) => {
-                        // EDIT VALUE
-                        if (!/^[1-9]?$/.test(e.target.value)) return; //reject anything that isn't a single digit 1-9 (or empty)
-                        const temp = boardState.slice(0);
-                        temp[currindex].value = e.target.value;
-                        setBoardState(temp);
-                      }}
-                      onFocus={() => {
-                        // SELECTION
-                        const temp = boardState.slice(0);
-                        shadeBoard(currindex, temp);
-                        setBoardState(temp);
-                      }}
-                      onBlur={() => {
-                        // DESELECTION
-                        const temp = boardState.slice(0);
-                        for (let i = 0; i < 81; i++) {
-                          temp[i].selected = false;
-                        }
-                        setBoardState(temp);
-                      }}
-                    />
-                  );
-                })}
-            </div>
-          );
-        })}
-    </>
+    <div className={styles.board}>
+      {boardState.map((tile, currindex) => (
+        <input
+          type="text"
+          inputMode="numeric"
+          autoComplete="off"
+          aria-label={`Row ${Math.floor(currindex / 9) + 1}, column ${(currindex % 9) + 1}`}
+          key={currindex}
+          ref={(el) => {
+            cellRefs.current[currindex] = el;
+          }}
+          readOnly={tile.given}
+          className={howShouldIStyleThisCell(
+            tile,
+            currindex === focusedIndex,
+            won,
+            errors,
+          )}
+          value={tile.value}
+          onChange={(e) => {
+            // EDIT VALUE: keep only the last typed digit so typing over a cell replaces it
+            const value = e.target.value.slice(-1);
+            if (!/^[1-9]?$/.test(value)) return; //reject anything that isn't a single digit 1-9 (or empty)
+            const temp = boardState.slice(0);
+            temp[currindex].value = value;
+            setBoardState(temp);
+          }}
+          onKeyDown={(e) => {
+            // move about
+            if (e.key.startsWith("Arrow")) {
+              e.preventDefault(); // stop the cursor moving inside the input / page scrolling
+              moveFocus(currindex, e.key);
+            }
+          }}
+          onFocus={() => {
+            // SELECTION
+            const temp = boardState.slice(0);
+            shadeBoard(currindex, temp);
+            setBoardState(temp);
+            setFocusedIndex(currindex);
+          }}
+          onBlur={() => {
+            // DESELECTION
+            const temp = boardState.slice(0);
+            for (let i = 0; i < 81; i++) {
+              temp[i].selected = false;
+            }
+            setBoardState(temp);
+            setFocusedIndex(null);
+          }}
+        />
+      ))}
+    </div>
   );
 }
 
