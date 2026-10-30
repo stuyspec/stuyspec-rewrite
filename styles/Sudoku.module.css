@@ -50,7 +50,7 @@
 }
 
 .given {
-  color: var(--medium-grey);
+  background-color: #dddddd;
   font-weight: bold;
   cursor: default;
 }
@@ -69,5 +69,5 @@
 }
 
 .won {
-  background-color: #2fd929;
+  background-color: #b3e3b3;
 }

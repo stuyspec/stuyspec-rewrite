@@ -1,6 +1,7 @@
 import { ReceivedArticle } from "../ts_types/db_types";
 import { useRef, useState } from "react";
 import styles from "../styles/Sudoku.module.css";
+import { BsPuzzle } from "react-icons/bs";
 
 interface TileObj {
   index: number;
@@ -96,6 +97,11 @@ function shadeBoard(index: number, bs: TileObj[]) {
       bs[i * 9 + j + blockx * 3 + blocky * 27].selected = true;
     }
   }
+
+  if (bs[index].value === "") return;
+  for (let i = 0; i < 81; i++) {
+    if (bs[i].value === bs[index].value) bs[i].selected = true;
+  }
 }
 
 function createTileObj(index: number, value: string, given: boolean): TileObj {
@@ -123,11 +129,15 @@ function howShouldIStyleThisCell(
 }
 
 function Sudoku(props: { puzzle: ReceivedArticle }) {
-  const base = Array(81).fill(""); //this are the given values
+  const base =
+    JSON.parse(props.puzzle.text) != undefined
+      ? JSON.parse(props.puzzle.text)
+      : Array(81).fill(""); //this are the given values
+
   // DO NOT SET BASE TO [] IT WILL Break IDIOT
   let i = 0;
   const newbase: TileObj[] = [];
-  base.map((tile) => {
+  base.map((tile: string) => {
     if (tile === "") {
       newbase.push(createTileObj(i, tile, false));
     } else {
@@ -181,6 +191,10 @@ function Sudoku(props: { puzzle: ReceivedArticle }) {
             if (!/^[1-9]?$/.test(value)) return; //reject anything that isn't a single digit 1-9 (or empty)
             const temp = boardState.slice(0);
             temp[currindex].value = value;
+            for (let i = 0; i < 81; i++) {
+              temp[i].selected = false;
+            }
+            shadeBoard(currindex, temp);
             setBoardState(temp);
           }}
           onKeyDown={(e) => {
