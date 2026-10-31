@@ -434,6 +434,9 @@ const Navbar = () => {
                   onMouseEnter={() => showSectionAndPiece(6)}
                 >
                   <Link href="/department/sports">Sports</Link>
+								</span>
+								<span className={department === "games" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(7)} >
+                  <Link href="/department/games">Games</Link>
                 </span>
                 <span
                   className={department === "games" ? styles.active : ""}
