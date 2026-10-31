@@ -50,6 +50,14 @@
 	font-size: var(--small-text);
 	font-family: var(--secondary-font);
 	font-weight: normal;
+	display: inline;
+}
+
+#month_year {
+	font-size: var(--small-text);
+	font-family: var(--secondary-font);
+	font-weight: normal;
+	font-style: italic;
 }
 
 #shareButtons {

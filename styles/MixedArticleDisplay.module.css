@@ -107,3 +107,13 @@
 	text-align: center;
 	border-radius: 5px;
 }
+
+.article_volume_issue {
+	display: inline;
+	font-family: var(--secondary-font);
+}
+
+#month_year {
+	font-style: italic;
+	font-family: var(--secondary-font);
+}

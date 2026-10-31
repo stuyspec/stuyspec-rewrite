@@ -87,83 +87,154 @@ const Navbar = () => {
   const subsectionToSections: any = [
     {
       name: "News",
-      mainLink: 'news',
-      subsectionTitles: ["Campaign Coverage", "10/31 Terrorist Attack", 'Black Lives Matters', 'Israel-Hamas War'],
-      subsectionLinks: ['campaign-coverage', '1031-terror-attack', 'black-lives-matter', 'israel-palestine']
+      mainLink: "news",
+      subsectionTitles: [
+        "Campaign Coverage",
+        "10/31 Terrorist Attack",
+        "Black Lives Matters",
+        "Israel-Hamas War",
+      ],
+      subsectionLinks: [
+        "campaign-coverage",
+        "1031-terror-attack",
+        "black-lives-matter",
+        "israel-palestine",
+      ],
     },
     {
       name: "Features",
-      mainLink: 'features',
-      subsectionTitles: ['VOICES', '9/11'],
-      subsectionLinks: ['voices', '9-11']
+      mainLink: "features",
+      subsectionTitles: ["VOICES", "9/11"],
+      subsectionLinks: ["voices", "9-11"],
     },
     {
       name: "Opinions",
-      mainLink: 'opinions',
-      subsectionTitles: ['Staff Editorials', 'Writing Competition'],
-      subsectionLinks: ['staff-editorials', 'writing-competition']
+      mainLink: "opinions",
+      subsectionTitles: ["Staff Editorials", "Writing Competition"],
+      subsectionLinks: ["staff-editorials", "writing-competition"],
     },
     {
       name: "Science",
-      mainLink: 'science',
+      mainLink: "science",
       subsectionTitles: null,
-      subsectionLinks: null
+      subsectionLinks: null,
     },
     {
       name: "Arts and Entertainment",
-      mainLink: 'ae',
-      subsectionTitles: ['Fashion', 'Art', 'Culture', 'Film', 'Food', 'Literature', 'Music', 'Television', 'Theater', 'Thinkpiece', 'SING!', 'STC'],
-      subsectionLinks: ['fashion', 'art', 'culture', 'film', 'food', 'literature', 'music', 'television', 'theater', 'thinkpiece', 'sing!', 'stc']
+      mainLink: "ae",
+      subsectionTitles: [
+        "Fashion",
+        "Art",
+        "Culture",
+        "Film",
+        "Food",
+        "Literature",
+        "Music",
+        "Television",
+        "Theater",
+        "Thinkpiece",
+        "SING!",
+        "STC",
+      ],
+      subsectionLinks: [
+        "fashion",
+        "art",
+        "culture",
+        "film",
+        "food",
+        "literature",
+        "music",
+        "television",
+        "theater",
+        "thinkpiece",
+        "sing!",
+        "stc",
+      ],
     },
     {
       name: "Humor",
-      mainLink: 'humor',
-      subsectionTitles: ['Disrespectator', 'Spooktator'],
-      subsectionLinks: ['disrespectator', 'spooktator']
+      mainLink: "humor",
+      subsectionTitles: ["Disrespectator", "Spooktator"],
+      subsectionLinks: ["disrespectator", "spooktator"],
     },
     {
-      name: 'Sports',
-      mainLink: 'sports',
-      subsectionTitles: ['Professional Sports', 'Sports at Stuyvesant'],
-      subsectionLinks: ['professional-sports', 'sports-at-stuyvesant']
-		},
-		{
-			name: "Games",
-			mainLink: 'games',
-			subsectionTitles: null,
-			subsectionLinks: null
-		}
-  ]
+      name: "Sports",
+      mainLink: "sports",
+      subsectionTitles: ["Professional Sports", "Sports at Stuyvesant"],
+      subsectionLinks: ["professional-sports", "sports-at-stuyvesant"],
+    },
+    {
+      name: "Games",
+      mainLink: "games",
+      subsectionTitles: ["Crossword"],
+      subsectionLinks: ["crossword"],
+    },
+    {
+      name: "About Us",
+      mainLink: "about",
+      subsectionTitles: [
+        "Our Charter",
+        "Advertise",
+        "Sponsors",
+        "Staff",
+        "Developers",
+        "Contact",
+      ],
+      subsectionLinks: [
+        "our-charter",
+        "advertise",
+        "sponsors",
+        "staff",
+        "developers",
+        "contact",
+      ],
+    },
+  ];
 
   function showSectionAndPiece(ss: number) {
-    setShowSectionBar(true)
-    setShowWhichSection(ss)
+    setShowSectionBar(true);
+    setShowWhichSection(ss);
   }
 
   function Subsections() {
+    const section = subsectionToSections[showWhichSection];
+    const base =
+      section.mainLink === "about"
+        ? "/about"
+        : `/department/${section.mainLink}`; // handles the about us case separately from other departments
+
     return (
       <>
         <div id={styles.sectionID}>
-          <Link href={`/department/${subsectionToSections[showWhichSection].mainLink}/`}>
+          <Link href={`${base}/`}>
             <h2>{subsectionToSections[showWhichSection].name}</h2>
           </Link>
         </div>
-        <div id={styles.subsections} >
+        <div id={styles.subsections}>
           <h3 id={styles.subsectionsHeader}>Subsections</h3>
           <div id={styles.subsectionList}>
-            {
-              subsectionToSections[showWhichSection].subsectionTitles !== null ? //subseciton? really?
-                subsectionToSections[showWhichSection].subsectionTitles.map((value: string, index: number) => {
-                  return (value === 'Israel-Hamas War' ? <Link key={index} href='/topic/israel-palestine'>{value}</Link> :
-                    <Link key={index} href={`/department/${subsectionToSections[showWhichSection].mainLink}/${subsectionToSections[showWhichSection].subsectionLinks[index]}`}>
-                      {value}
-                    </Link>)
-                }) : null
-            }
+            {subsectionToSections[showWhichSection].subsectionTitles !== null
+              ? subsectionToSections[showWhichSection].subsectionTitles.map(
+                  (value: string, index: number) => {
+                    return value === "Israel-Hamas War" ? (
+                      <Link key={index} href="/topic/israel-palestine">
+                        {value}
+                      </Link>
+                    ) : (
+                      <Link
+                        key={index}
+                        href={`${base}/${section.subsectionLinks[index]}`}
+                      >
+                        {value}
+                      </Link>
+                    );
+                  },
+                )
+              : null}
           </div>
         </div>
       </>
-    )
+    );
   }
 
   useEffect(() => {
@@ -179,15 +250,14 @@ const Navbar = () => {
   //GET THE WINDOW WIDTH
   const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => {
-
     const getWidth = () => {
-      setWindowWidth(window.innerWidth)
-    }
-    window.addEventListener('resize', getWidth)
-    getWidth()
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", getWidth);
+    getWidth();
 
-    return () => window.removeEventListener('resize', getWidth)
-  }, [])
+    return () => window.removeEventListener("resize", getWidth);
+  }, []);
 
   return (
     <>
@@ -203,8 +273,16 @@ const Navbar = () => {
                 className="button"
                 onClick={toggleMenu}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  className="bi bi-list"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+                  />
                 </svg>
               </div>
               {
@@ -255,34 +333,42 @@ const Navbar = () => {
               </div>
               <div className={styles.right}>
                 <div id={styles.subscribe_search}>
-                  {
-                    windowWidth >= 1050 ? (
-                      <div id={styles.collapsibleSearch}>
-                        <CollapsibleSearch />
-                      </div>) : null
-
-                  }
+                  {windowWidth >= 1050 ? (
+                    <div id={styles.collapsibleSearch}>
+                      <CollapsibleSearch />
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </div>
 
             <div className={styles.dialogContainer}>
-              {
-                windowWidth < 1050 ? (
-                  <dialog className={styles.navBarSideBar} open={viewSubSection}>
-                    <form method="dialog">
-                      <button autoFocus onClick={toggleMenu} id={styles.closeButton} aria-label="close sidebar">
-                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
-                          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                        </svg>
-                      </button>
-                    </form>
-                    <Sidebar
-                      showSidebar={viewSubSection}
-                      setShowSidebar={setViewSubSection}
-                    />
-                  </dialog>) : null
-              }
+              {windowWidth < 1050 ? (
+                <dialog className={styles.navBarSideBar} open={viewSubSection}>
+                  <form method="dialog">
+                    <button
+                      autoFocus
+                      onClick={toggleMenu}
+                      id={styles.closeButton}
+                      aria-label="close sidebar"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        className="bi bi-x-lg"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                      </svg>
+                    </button>
+                  </form>
+                  <Sidebar
+                    showSidebar={viewSubSection}
+                    setShowSidebar={setViewSubSection}
+                  />
+                </dialog>
+              ) : null}
             </div>
           </nav>
 
@@ -290,43 +376,79 @@ const Navbar = () => {
             style={
               scroll > 121.6
                 ? {
-                  position: "fixed",
-                  top: 0,
-                  boxShadow:
-                    "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
-                  right: 0,
-                  left: 0,
-                  zIndex: 3,
-                  backgroundColor: "var(--secondary)",
-                }
+                    position: "fixed",
+                    top: 0,
+                    boxShadow:
+                      "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+                    right: 0,
+                    left: 0,
+                    zIndex: 3,
+                    backgroundColor: "var(--secondary)",
+                  }
                 : {}
             }
           >
-            <div className={styles.department_bar_container} onMouseLeave={() => setShowSectionBar(false)}>
+            <div
+              className={styles.department_bar_container}
+              onMouseLeave={() => setShowSectionBar(false)}
+            >
               <div id={styles.department_bar}>
-                <span className={department === "news" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(0)}>
+                <span
+                  className={department === "news" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(0)}
+                >
                   <Link href="/department/news">News</Link>
                 </span>
-                <span className={department === "features" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(1)} >
+                <span
+                  className={department === "features" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(1)}
+                >
                   <Link href="/department/features">Features</Link>
                 </span>
-                <span className={department === "opinions" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(2)}>
+                <span
+                  className={department === "opinions" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(2)}
+                >
                   <Link href="/department/opinions">Opinions</Link>
                 </span>
-                <span className={department === "science" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(3)} >
+                <span
+                  className={department === "science" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(3)}
+                >
                   <Link href="/department/science">Science</Link>
                 </span>
-                <span className={department === "ae" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(4)}>
+                <span
+                  className={department === "ae" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(4)}
+                >
                   <Link href="/department/ae">Arts & Entertainment</Link>
                 </span>
-                <span className={department === "humor" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(5)} >
+                <span
+                  className={department === "humor" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(5)}
+                >
                   <Link href="/department/humor">Humor</Link>
                 </span>
-                <span className={department === "sports" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(6)} >
+                <span
+                  className={department === "sports" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(6)}
+                >
                   <Link href="/department/sports">Sports</Link>
 								</span>
 								<span className={department === "games" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(7)} >
                   <Link href="/department/games">Games</Link>
+                </span>
+                <span
+                  className={department === "games" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(7)}
+                >
+                  <Link href="/department/games">Games</Link>
+                </span>
+                <span
+                  className={department === "about" ? styles.active : ""}
+                  onMouseEnter={() => showSectionAndPiece(8)}
+                >
+                  <Link href="/about">About Us</Link>
                 </span>
                 {
                   // ! IMPORTANT READ BELOW
@@ -338,24 +460,51 @@ const Navbar = () => {
                   // SPEC+ SHOULD NOT COME BACK ON THE NAVBAR. IT SHOULD
                   // STAY IN THE FOOTER.
                 }
-                {/* <span className={department === "spec-plus" ? styles.active : ""}>
-              <Link href="/department/spec-plus">Spec+</Link>
-            </span>
-            <span
-              className={department === "recruitments" ? styles.active : ""}
-            >
-              <Link href="/about/recruitments">Recruitments</Link>
-            </span> */}
+                {
+                  <span
+                    className={
+                      department === "recruitments" ? styles.active : ""
+                    }
+                  >
+                    <Link href="/about/recruitments">Recruitments</Link>
+                  </span>
+                }
               </div>
-              <div className={styles.expanded_section} onMouseEnter={() => { setShowSectionBar(true) }} id={showSectionBar ? styles.visibleExpandedSection : styles.hiddenExpandedSection}>
+              <div
+                className={styles.expanded_section}
+                onMouseEnter={() => {
+                  setShowSectionBar(true);
+                }}
+                id={
+                  showSectionBar
+                    ? styles.visibleExpandedSection
+                    : styles.hiddenExpandedSection
+                }
+              >
                 <Subsections />
               </div>
             </div>
           </div>
-          <div id={styles.nav_parent_content_border}>
-          </div>
+          <div id={styles.nav_parent_content_border}></div>
         </div>
       </div>
+      {
+        /* RECRUITMENTS BANNER ONLY ACTIVE DURING RECRUITMENT PERIOD! REMEMBER FOR SIDEBAR AS WELL*/
+        <div id={styles.recruitments_banner}>
+          <Link id={styles.recruitments_banner_link} href="/about/recruitments">
+            Fall 2026 Recruitments are open!
+          </Link>
+          <button
+            type="button"
+            id={styles.recruitments_banner_close}
+            onClick={() => {
+              document.getElementById(styles.recruitments_banner)?.remove();
+            }}
+          >
+            ✖
+          </button>
+        </div>
+      }
     </>
   );
 };

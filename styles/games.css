@@ -1,0 +1,17 @@
+.game {
+  display: flex;
+  flex-direction: row;
+  outline: 2px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  width: 20vw;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.game img {
+  width: clamp(3rem, 15vw, 10rem);
+  height: auto;
+  display: block;
+}

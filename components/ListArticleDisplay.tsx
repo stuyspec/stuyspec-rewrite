@@ -45,12 +45,11 @@ export default function ListArticleDisplay(props: {
 							<p className={styles.summary}>
 								<Link
 									href={"/article/" + article.slug}
-									className="discrete-link"
 								>
 									{article.summary}
 								</Link>
 							</p>
-							<p className={styles.article_volume_issue}>
+							<p id={styles.article_volume_issue} className="discrete-link">
 								<Link
 									href={`/volume/${article.volume}/issue/${article.issue}`}
 								>
@@ -58,6 +57,22 @@ export default function ListArticleDisplay(props: {
 									{article.volume}
 								</Link>
 							</p>
+							<span>{" || "}</span>
+							{(() => {
+  								const date = article.created_at ? new Date(article.created_at) : null;
+  								const isValidDate = date && !isNaN(date.getTime());
+
+  								return isValidDate ? (
+    								<span id={styles.month_year}>
+      									{" "}
+      									{date.toLocaleDateString("en-US", {
+        								month: "long",
+        								year: "numeric",
+        								timeZone: "UTC",
+      								})}
+    								</span>
+  								) : <span id={styles.month_year}>{article.volume + 1909}{"-"}{article.volume + 1910}</span>; // if ISOdate does not exist
+							})()}
 						</div>
 
 						{article.cover_image ? (

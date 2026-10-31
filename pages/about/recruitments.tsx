@@ -99,7 +99,7 @@ function RecruitmentPage(props: Props) {
                 Recruitments
               </h1>
               <p id={styles.headingParagraph}>
-                Spring Recruitments 2026 have concluded. See you for Fall Recruitments 2026!
+                Fall 2026 Recruitments are now LIVE! Send in your applications!
               </p>
             </section>
             <div id={styles.SEPERATORCONT}>
@@ -116,7 +116,7 @@ function RecruitmentPage(props: Props) {
             >
               <iframe
                 id={styles.VIDEO}
-                src="https://www.youtube-nocookie.com/embed/X0kVU_fd6J0"
+                src="https://www.youtube.com/embed/AmlI2zUZjVI?si=yqs3M7jqcDUHDxPa"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen

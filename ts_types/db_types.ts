@@ -16,7 +16,8 @@ export interface ReceivedArticle {
   cover_image_contributor: ReceivedStaff[];
   cover_image_source: string;
   sub_section: string | undefined;
-	rank: number | undefined;
+  rank: number | undefined;
+  created_at: string | Date;
 	arttype: string;
 }
 
@@ -98,8 +99,8 @@ export type Department =
   | "humor"
   | "sports"
   | "ae"
-	| "media"
   | "games"
+  | "media"
   | "spec-plus";
 
 export const DepartmentsArray = [
@@ -110,6 +111,7 @@ export const DepartmentsArray = [
   "humor",
   "sports",
   "ae",
+  "games",
   "media",
 	"spec-plus",
   "games",
@@ -123,6 +125,7 @@ export const DepartmentsArrayDisplay = [
   "Humor",
   "Sports",
   "Arts and Entertainment",
+  "Games",
   "Media",
   "Spec+",
   "Games",

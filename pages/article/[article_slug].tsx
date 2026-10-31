@@ -39,6 +39,7 @@ function Article(props: Props) {
 		cover_image_source,
 		summary,
 		slug,
+		created_at,
 		arttype, //either "article", "crossword", "sudoku"
 	} = props.article;
 
@@ -131,6 +132,22 @@ function Article(props: Props) {
 									Issue {issue}, Volume {volume}
 								</Link>
 							</h3>
+							<span>{" || "}</span>
+  							{(() => {
+  								const date = created_at ? new Date(created_at) : null;
+  								const isValidDate = date && !isNaN(date.getTime());
+
+  								return isValidDate ? (
+    								<span id={styles.month_year}>
+										{" "}
+      									{date.toLocaleDateString("en-US", {
+        								month: "long",
+        								year: "numeric",
+        								timeZone: "UTC",
+      								})}
+    								</span>
+  								) : <span id={styles.month_year}>{volume + 1909}{"-"}{volume + 1910}</span>; // if ISOdate does not exist
+							})()}
 						</div>
 						<div id={styles.shareButtons}>
 							{providers.map((provider) => (
