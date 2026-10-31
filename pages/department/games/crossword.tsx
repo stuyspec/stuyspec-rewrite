@@ -5,7 +5,331 @@ import type { Clue } from "@xwordly/xword-parser";
 import Keyboard, { type KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 
-function crossword() {
+async function fileExists(path: string) {
+  const response = await fetch(path, {
+    method: "HEAD",
+    cache: "no-store",
+  });
+
+  return response.ok;
+}
+
+interface SettingsProps {
+  displaying: boolean
+  changeDisplaying: (displaying: boolean) => void
+  changeVolume: (volume: number) => void
+  changeIssue: (issue: number) => void
+}
+
+type LimitingInputSettingsProps = Pick<
+  SettingsProps,
+  "changeDisplaying" | "changeVolume" | "changeIssue"
+>;
+
+function LimitingInputSettings({ changeDisplaying, changeVolume, changeIssue }: LimitingInputSettingsProps) {
+  const [vol, setVol] = useState("");
+  const [iss, setIss] = useState("");
+
+  const [volumeExists, setVolumeExists] = useState(false);
+  const [issueExists, setIssueExists] = useState(false);
+
+  const [submitClicked, setSubmitClicked] = useState(false);
+
+  const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    // Replace anything that is NOT a digit with an empty string
+    const cleanValue = inputValue.replace(/\D/g, "");
+    setVol(cleanValue);
+    setSubmitClicked(false);
+  };
+
+  const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    // Replace anything that is NOT a digit with an empty string
+    const cleanValue = inputValue.replace(/\D/g, "");
+    setIss(cleanValue);
+    setSubmitClicked(false);
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        textAlign: "center",
+        gap: "10px",
+      }}
+    >
+      <p>Volume:</p>
+      <input
+        type="text"
+        inputMode="numeric" // Optimizes the mobile keyboard layout
+        value={vol}
+        onChange={handleChangeVol}
+        style={{
+          outline: "none",
+        }}
+      />
+      <p>Issue:</p>
+      <input
+        type="text"
+        inputMode="numeric" // Optimizes the mobile keyboard layout
+        value={iss}
+        onChange={handleChangeIssue}
+        style={{
+          outline: "none",
+        }}
+      />
+      <button
+        style={{
+          alignSelf: "center",
+          outline: "2px solid black",
+          width: "6rem",
+          textAlign: "center",
+          borderRadius: "5px",
+        }}
+        onClick={async () => {
+          setSubmitClicked(true);
+          setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
+          setIssueExists(
+            await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
+          );
+          if (
+            vol !== "" &&
+            iss !== "" &&
+            (await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`))
+          ) {
+            changeDisplaying(false);
+            changeVolume(Number(vol));
+            changeIssue(Number(iss));
+            return;
+          }
+        }}
+      >
+        Change Crossword
+      </button>
+      <div
+        style={{
+          visibility:
+            (!volumeExists || !issueExists) &&
+              vol != "" &&
+              iss != "" &&
+              submitClicked == true
+              ? "visible"
+              : "hidden",
+        }}
+      >
+        <p>
+          Error:{" "}
+          {!issueExists || !volumeExists
+            ? "The volume/issue you are looking for doesn't exist."
+            : "No error."}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Settings({ displaying, changeDisplaying, changeVolume, changeIssue }: SettingsProps) {
+  function swapDisplaying() {
+    changeDisplaying(!displaying);
+  }
+  return (
+    <>
+      <button onClick={swapDisplaying} className="btn-modal">
+        Settings
+      </button>
+
+      {displaying && (
+        <div
+          className="modal"
+          style={{
+            display: "inline-flex",
+            border: "2px solid black",
+            borderRadius: "5px",
+            zIndex: 1000,
+          }}
+        >
+          <div onClick={swapDisplaying} className="overlay"></div>
+          <div className="modal-content">
+            <h2>Settings</h2>
+            <LimitingInputSettings
+              changeDisplaying={changeDisplaying}
+              changeVolume={changeVolume}
+              changeIssue={changeIssue} />
+            <button
+              className="close-modal"
+              onClick={swapDisplaying}
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+interface GreetingsProps {
+  displaying: boolean
+  changeDisplaying: (displaying: boolean) => void
+  changeVolume: (volume: number) => void
+  changeIssue: (issue: number) => void
+}
+
+type LimitingInputGreetingsProps = Pick<
+  SettingsProps,
+  "changeDisplaying" | "changeVolume" | "changeIssue"
+>;
+
+function LimitingInputGreetings({ changeDisplaying, changeVolume, changeIssue }: LimitingInputGreetingsProps) {
+  const [vol, setVol] = useState("");
+  const [iss, setIss] = useState("");
+
+  const [volumeExists, setVolumeExists] = useState(false);
+  const [issueExists, setIssueExists] = useState(false);
+
+  const [submitClicked, setSubmitClicked] = useState(false);
+
+  const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    // Replace anything that is NOT a digit with an empty string
+    const cleanValue = inputValue.replace(/\D/g, "");
+    setVol(cleanValue);
+    setSubmitClicked(false);
+  };
+
+  const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    // Replace anything that is NOT a digit with an empty string
+    const cleanValue = inputValue.replace(/\D/g, "");
+    setIss(cleanValue);
+    setSubmitClicked(false);
+  };
+
+  async function handleSubmit() {
+    setSubmitClicked(false);
+
+    const [nextVolumeExists, nextIssueExists] = await Promise.all([
+      fileExists(`/puzzles/crosswords/${vol}`),
+      fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
+    ]);
+
+    if (vol !== "" && iss !== "" && nextIssueExists) {
+      changeDisplaying(false);
+      changeVolume(Number(vol));
+      changeIssue(Number(iss));
+      return;
+    }
+    setSubmitClicked(true);
+  }
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        textAlign: "center",
+        gap: "10px",
+      }}
+    >
+      <h2>Welcome to the Spectator Crossword!</h2>
+      <p>Type a Volume and Issue, then hit Submit to begin.</p>
+      <p>Volume:</p>
+      <input
+        type="text"
+        inputMode="numeric" // Optimizes the mobile keyboard layout
+        value={vol}
+        onChange={handleChangeVol}
+        style={{
+          outline: "none",
+        }}
+        onKeyDown={(e) => (
+          e.key === 'Enter' ? handleSubmit : null
+        )}
+      />
+      <p>Issue:</p>
+      <input
+        type="text"
+        inputMode="numeric" // Optimizes the mobile keyboard layout
+        value={iss}
+        onChange={handleChangeIssue}
+        style={{
+          outline: "none",
+        }}
+        onKeyDown={(e) => (
+          e.key === 'Enter' ? handleSubmit : null
+        )}
+      />
+      <button
+        style={{
+          alignSelf: "center",
+          outline: "2px solid black",
+          width: "6rem",
+          textAlign: "center",
+          borderRadius: "5px",
+        }}
+        onClick={handleSubmit}
+      >
+        Submit
+      </button>
+      <div
+        style={{
+          visibility:
+            (!volumeExists || !issueExists) &&
+              vol != "" &&
+              iss != "" &&
+              submitClicked == true
+              ? "visible"
+              : "hidden",
+        }}
+      >
+        <p>
+          Error:{" "}
+          {!issueExists || !volumeExists
+            ? "The volume/issue you are looking for doesn't exist."
+            : "No error."}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Greetings({ displaying, changeDisplaying, changeVolume, changeIssue }: GreetingsProps) {
+  const router = useRouter();
+  return (
+    <>
+      {displaying && (
+        <div
+          className="modal"
+          style={{
+            display: "inline-flex",
+            border: "2px solid black",
+            borderRadius: "5px",
+            zIndex: 1000,
+          }}
+        >
+          <div className="overlay"></div>
+          <div className="modal-content">
+            <LimitingInputGreetings changeDisplaying={changeDisplaying} changeVolume={changeVolume} changeIssue={changeIssue} />
+            <button
+              className="close-modal"
+              onClick={async () => {
+                await router.push("/");
+              }}
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function Crossword() {
   const router = useRouter();
 
   const [won, setWon] = useState(false);
@@ -435,307 +759,6 @@ function crossword() {
   }
     */
 
-  function Settings() {
-    function changeSettingsDisplaying(): void {
-      setSettingsDisplaying((current) => !current);
-    }
-
-    function LimitingInput() {
-      const [vol, setVol] = useState("");
-      const [iss, setIss] = useState("");
-
-      const [volumeExists, setVolumeExists] = useState(false);
-      const [issueExists, setIssueExists] = useState(false);
-
-      const [submitClicked, setSubmitClicked] = useState(false);
-
-      const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        // Replace anything that is NOT a digit with an empty string
-        const cleanValue = inputValue.replace(/\D/g, "");
-        setVol(cleanValue);
-        setSubmitClicked(false);
-      };
-
-      const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        // Replace anything that is NOT a digit with an empty string
-        const cleanValue = inputValue.replace(/\D/g, "");
-        setIss(cleanValue);
-        setSubmitClicked(false);
-      };
-
-      return (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            textAlign: "center",
-            gap: "10px",
-          }}
-        >
-          <p>Volume:</p>
-          <input
-            type="text"
-            inputMode="numeric" // Optimizes the mobile keyboard layout
-            value={vol}
-            onChange={handleChangeVol}
-            style={{
-              outline: "none",
-            }}
-          />
-          <p>Issue:</p>
-          <input
-            type="text"
-            inputMode="numeric" // Optimizes the mobile keyboard layout
-            value={iss}
-            onChange={handleChangeIssue}
-            style={{
-              outline: "none",
-            }}
-          />
-          <button
-            style={{
-              alignSelf: "center",
-              outline: "2px solid black",
-              width: "6rem",
-              textAlign: "center",
-              borderRadius: "5px",
-            }}
-            onClick={async () => {
-              changeSettingsDisplaying;
-              setSubmitClicked(true);
-              setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
-              setIssueExists(
-                await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
-              );
-              if (
-                vol !== "" &&
-                iss !== "" &&
-                (await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`))
-              ) {
-                setGreetingsDisplaying(false);
-                setVolume(Number(vol));
-                setIssue(Number(iss));
-                return;
-              }
-            }}
-          >
-            Change Crossword
-          </button>
-          <div
-            style={{
-              visibility:
-                (!volumeExists || !issueExists) &&
-                  vol != "" &&
-                  iss != "" &&
-                  submitClicked == true
-                  ? "visible"
-                  : "hidden",
-            }}
-          >
-            <p>
-              Error:{" "}
-              {!issueExists || !volumeExists
-                ? "The volume/issue you are looking for doesn't exist."
-                : "No error."}
-            </p>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <>
-        <button onClick={changeSettingsDisplaying} className="btn-modal">
-          Settings
-        </button>
-
-        {settingsDisplaying && (
-          <div
-            className="modal"
-            style={{
-              display: "inline-flex",
-              border: "2px solid black",
-              borderRadius: "5px",
-              zIndex: 1000,
-            }}
-          >
-            <div onClick={changeSettingsDisplaying} className="overlay"></div>
-            <div className="modal-content">
-              <h2>Settings</h2>
-              <LimitingInput />
-              <button
-                className="close-modal"
-                onClick={changeSettingsDisplaying}
-              >
-                X
-              </button>
-            </div>
-          </div>
-        )}
-      </>
-    );
-  }
-
-  async function fileExists(path: string) {
-    const response = await fetch(path, {
-      method: "HEAD",
-      cache: "no-store",
-    });
-
-    return response.ok;
-  }
-
-  function Greetings() {
-    function LimitingInput() {
-      const [vol, setVol] = useState("");
-      const [iss, setIss] = useState("");
-
-      const [volumeExists, setVolumeExists] = useState(false);
-      const [issueExists, setIssueExists] = useState(false);
-
-      const [submitClicked, setSubmitClicked] = useState(false);
-
-      const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        // Replace anything that is NOT a digit with an empty string
-        const cleanValue = inputValue.replace(/\D/g, "");
-        setVol(cleanValue);
-        setSubmitClicked(false);
-      };
-
-      const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        // Replace anything that is NOT a digit with an empty string
-        const cleanValue = inputValue.replace(/\D/g, "");
-        setIss(cleanValue);
-        setSubmitClicked(false);
-      };
-
-      async function handleSubmit() {
-        setSubmitClicked(false);
-
-        const [nextVolumeExists, nextIssueExists] = await Promise.all([
-          fileExists(`/puzzles/crosswords/${vol}`),
-          fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
-        ]);
-
-        setVolumeExists(nextVolumeExists);
-        setIssueExists(nextIssueExists);
-
-        if (vol !== "" && iss !== "" && nextIssueExists) {
-          setGreetingsDisplaying(false);
-          setVolume(Number(vol));
-          setIssue(Number(iss));
-          return;
-        }
-        setSubmitClicked(true);
-      }
-
-      return (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            textAlign: "center",
-            gap: "10px",
-          }}
-        >
-          <h2>Welcome to the Spectator Crossword!</h2>
-          <p>Type a Volume and Issue, then hit Submit to begin.</p>
-          <p>Volume:</p>
-          <input
-            type="text"
-            inputMode="numeric" // Optimizes the mobile keyboard layout
-            value={vol}
-            onChange={handleChangeVol}
-            style={{
-              outline: "none",
-            }}
-            onKeyDown={(e) => (
-              e.key === 'Enter' ? handleSubmit : null
-            )}
-          />
-          <p>Issue:</p>
-          <input
-            type="text"
-            inputMode="numeric" // Optimizes the mobile keyboard layout
-            value={iss}
-            onChange={handleChangeIssue}
-            style={{
-              outline: "none",
-            }}
-            onKeyDown={(e) => (
-              e.key === 'Enter' ? handleSubmit : null
-            )}
-          />
-          <button
-            style={{
-              alignSelf: "center",
-              outline: "2px solid black",
-              width: "6rem",
-              textAlign: "center",
-              borderRadius: "5px",
-            }}
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
-          <div
-            style={{
-              visibility:
-                (!volumeExists || !issueExists) &&
-                  vol != "" &&
-                  iss != "" &&
-                  submitClicked == true
-                  ? "visible"
-                  : "hidden",
-            }}
-          >
-            <p>
-              Error:{" "}
-              {!issueExists || !volumeExists
-                ? "The volume/issue you are looking for doesn't exist."
-                : "No error."}
-            </p>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <>
-        {greetingsDisplaying && (
-          <div
-            className="modal"
-            style={{
-              display: "inline-flex",
-              border: "2px solid black",
-              borderRadius: "5px",
-              zIndex: 1000,
-            }}
-          >
-            <div className="overlay"></div>
-            <div className="modal-content">
-              <LimitingInput />
-              <button
-                className="close-modal"
-                onClick={async () => {
-                  await router.push("/");
-                }}
-              >
-                X
-              </button>
-            </div>
-          </div>
-        )}
-      </>
-    );
-  }
-
   return (
     <>
       <div
@@ -747,7 +770,11 @@ function crossword() {
           justifyContent: "center",
         }}
       >
-        <Greetings />
+        <Greetings
+          displaying={greetingsDisplaying}
+          changeDisplaying={setGreetingsDisplaying}
+          changeVolume={setVolume}
+          changeIssue={setIssue} />
         <div
           style={{
             display: "flex",
@@ -769,7 +796,12 @@ function crossword() {
               <h2>{crosswordInfo?.author}</h2>
             </div>
             <div>
-              <Settings />
+              <Settings
+                displaying={settingsDisplaying}
+                changeDisplaying={setSettingsDisplaying}
+                changeVolume={setVolume}
+                changeIssue={setIssue}
+              />
             </div>
           </div>
           <div
@@ -1177,4 +1209,4 @@ function crossword() {
   );
 }
 
-export default crossword;
+export default Crossword;
