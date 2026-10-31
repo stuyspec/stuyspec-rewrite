@@ -528,9 +528,9 @@ function crossword() {
             style={{
               visibility:
                 (!volumeExists || !issueExists) &&
-                vol != "" &&
-                iss != "" &&
-                submitClicked == true
+                  vol != "" &&
+                  iss != "" &&
+                  submitClicked == true
                   ? "visible"
                   : "hidden",
             }}
@@ -614,6 +614,26 @@ function crossword() {
         setSubmitClicked(false);
       };
 
+      async function handleSubmit() {
+        setSubmitClicked(false);
+
+        const [nextVolumeExists, nextIssueExists] = await Promise.all([
+          fileExists(`/puzzles/crosswords/${vol}`),
+          fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
+        ]);
+
+        setVolumeExists(nextVolumeExists);
+        setIssueExists(nextIssueExists);
+
+        if (vol !== "" && iss !== "" && nextIssueExists) {
+          setGreetingsDisplaying(false);
+          setVolume(Number(vol));
+          setIssue(Number(iss));
+          return;
+        }
+        setSubmitClicked(true);
+      }
+
       return (
         <div
           style={{
@@ -635,6 +655,9 @@ function crossword() {
             style={{
               outline: "none",
             }}
+            onKeyDown={(e) => (
+              e.key === 'Enter' ? handleSubmit : null
+            )}
           />
           <p>Issue:</p>
           <input
@@ -645,6 +668,9 @@ function crossword() {
             style={{
               outline: "none",
             }}
+            onKeyDown={(e) => (
+              e.key === 'Enter' ? handleSubmit : null
+            )}
           />
           <button
             style={{
@@ -654,25 +680,7 @@ function crossword() {
               textAlign: "center",
               borderRadius: "5px",
             }}
-            onClick={async () => {
-              setSubmitClicked(false);
-
-              const [nextVolumeExists, nextIssueExists] = await Promise.all([
-                fileExists(`/puzzles/crosswords/${vol}`),
-                fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
-              ]);
-
-              setVolumeExists(nextVolumeExists);
-              setIssueExists(nextIssueExists);
-
-              if (vol !== "" && iss !== "" && nextIssueExists) {
-                setGreetingsDisplaying(false);
-                setVolume(Number(vol));
-                setIssue(Number(iss));
-                return;
-              }
-              setSubmitClicked(true);
-            }}
+            onClick={handleSubmit}
           >
             Submit
           </button>
@@ -680,9 +688,9 @@ function crossword() {
             style={{
               visibility:
                 (!volumeExists || !issueExists) &&
-                vol != "" &&
-                iss != "" &&
-                submitClicked == true
+                  vol != "" &&
+                  iss != "" &&
+                  submitClicked == true
                   ? "visible"
                   : "hidden",
             }}
@@ -824,11 +832,11 @@ function crossword() {
                               : cellInputIndex === selectedCell
                                 ? "#4fe34f"
                                 : (vertical &&
-                                      cellInputIndex % rowLength ==
-                                        selectedCell % rowLength) ||
-                                    (!vertical &&
-                                      Math.floor(cellInputIndex / rowLength) ==
-                                        Math.floor(selectedCell / rowLength))
+                                  cellInputIndex % rowLength ==
+                                  selectedCell % rowLength) ||
+                                  (!vertical &&
+                                    Math.floor(cellInputIndex / rowLength) ==
+                                    Math.floor(selectedCell / rowLength))
                                   ? "#a6f2a6"
                                   : "white",
                         }}
@@ -885,7 +893,7 @@ function crossword() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -927,7 +935,7 @@ function crossword() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -962,7 +970,7 @@ function crossword() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
