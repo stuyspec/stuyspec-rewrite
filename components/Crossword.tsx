@@ -4,6 +4,7 @@ import CrosswordReader from "../utils/crosswordReader";
 import type { Clue } from "@xwordly/xword-parser";
 import Keyboard, { type KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
+import styles from "../styles/Crossword.module.css";
 
 async function fileExists(path: string) {
   const response = await fetch(path, {
@@ -12,170 +13,6 @@ async function fileExists(path: string) {
   });
 
   return response.ok;
-}
-
-interface SettingsProps {
-  displaying: boolean;
-  changeDisplaying: (displaying: boolean) => void;
-  changeVolume: (volume: number) => void;
-  changeIssue: (issue: number) => void;
-}
-
-type LimitingInputSettingsProps = Pick<
-  SettingsProps,
-  "changeDisplaying" | "changeVolume" | "changeIssue"
->;
-
-function LimitingInputSettings({
-  changeDisplaying,
-  changeVolume,
-  changeIssue,
-}: LimitingInputSettingsProps) {
-  const [vol, setVol] = useState("");
-  const [iss, setIss] = useState("");
-
-  const [volumeExists, setVolumeExists] = useState(false);
-  const [issueExists, setIssueExists] = useState(false);
-
-  const [submitClicked, setSubmitClicked] = useState(false);
-
-  const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    // Replace anything that is NOT a digit with an empty string
-    const cleanValue = inputValue.replace(/\D/g, "");
-    setVol(cleanValue);
-    setSubmitClicked(false);
-  };
-
-  const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    // Replace anything that is NOT a digit with an empty string
-    const cleanValue = inputValue.replace(/\D/g, "");
-    setIss(cleanValue);
-    setSubmitClicked(false);
-  };
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        textAlign: "center",
-        gap: "10px",
-      }}
-    >
-      <p>Volume:</p>
-      <input
-        type="text"
-        inputMode="numeric" // Optimizes the mobile keyboard layout
-        value={vol}
-        onChange={handleChangeVol}
-        style={{
-          outline: "none",
-        }}
-      />
-      <p>Issue:</p>
-      <input
-        type="text"
-        inputMode="numeric" // Optimizes the mobile keyboard layout
-        value={iss}
-        onChange={handleChangeIssue}
-        style={{
-          outline: "none",
-        }}
-      />
-      <button
-        style={{
-          alignSelf: "center",
-          outline: "2px solid black",
-          width: "6rem",
-          textAlign: "center",
-          borderRadius: "5px",
-        }}
-        onClick={async () => {
-          setSubmitClicked(true);
-          setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
-          setIssueExists(
-            await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
-          );
-          if (
-            vol !== "" &&
-            iss !== "" &&
-            (await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`))
-          ) {
-            changeDisplaying(false);
-            changeVolume(Number(vol));
-            changeIssue(Number(iss));
-            return;
-          }
-        }}
-      >
-        Change Crossword
-      </button>
-      <div
-        style={{
-          visibility:
-            (!volumeExists || !issueExists) &&
-            vol != "" &&
-            iss != "" &&
-            submitClicked == true
-              ? "visible"
-              : "hidden",
-        }}
-      >
-        <p>
-          Error:{" "}
-          {!issueExists || !volumeExists
-            ? "The volume/issue you are looking for doesn't exist."
-            : "No error."}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function Settings({
-  displaying,
-  changeDisplaying,
-  changeVolume,
-  changeIssue,
-}: SettingsProps) {
-  function swapDisplaying() {
-    changeDisplaying(!displaying);
-  }
-  return (
-    <>
-      <button onClick={swapDisplaying} className="btn-modal">
-        Settings
-      </button>
-
-      {displaying && (
-        <div
-          className="modal"
-          style={{
-            display: "inline-flex",
-            border: "2px solid black",
-            borderRadius: "5px",
-            zIndex: 1000,
-          }}
-        >
-          <div onClick={swapDisplaying} className="overlay"></div>
-          <div className="modal-content">
-            <h2>Settings</h2>
-            <LimitingInputSettings
-              changeDisplaying={changeDisplaying}
-              changeVolume={changeVolume}
-              changeIssue={changeIssue}
-            />
-            <button className="close-modal" onClick={swapDisplaying}>
-              X
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
 }
 
 function Crossword(props: { puzzle: ReceivedArticle }) {
@@ -344,7 +181,6 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
         const across = loadingPuzzle.clues.across;
         const down = loadingPuzzle.clues.down;
         setMergedClues([...across, ...down]);
-        console.log(mergedClues);
 
         // console.log(numberPlacer(loadingPuzzleSolution, loadingPuzzle.clues.across, loadingPuzzle.clues.down, loadingPuzzle.grid.width, loadingPuzzle.grid.height))
         console.log(loadingPuzzle);
@@ -606,7 +442,7 @@ function fillWithAnswers() {
   return (
     <>
       <div
-        className="all"
+        className={styles.all}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -630,17 +466,9 @@ function fillWithAnswers() {
               width: rowLength ? rowLength * cellSize + 10 : "auto",
             }}
           >
-            <div className="header" style={{ fontSize: "1rem" }}>
+            <div className={styles.header} style={{ fontSize: "1rem" }}>
               <h2>{crosswordInfo?.title}</h2>
               <h2>{crosswordInfo?.author}</h2>
-            </div>
-            <div>
-              <Settings
-                displaying={settingsDisplaying}
-                changeDisplaying={setSettingsDisplaying}
-                changeVolume={setVolume}
-                changeIssue={setIssue}
-              />
             </div>
           </div>
           <div
@@ -672,7 +500,7 @@ function fillWithAnswers() {
                 }}
               >
                 <div
-                  className="grid"
+                  className={styles.grid}
                   style={{
                     display: "grid",
                     gridTemplateColumns: `repeat(${rowLength}, ${cellSize}px)`,
@@ -682,7 +510,7 @@ function fillWithAnswers() {
                 >
                   {grid.map((cellInput, cellInputIndex) => (
                     <div
-                      className="container"
+                      className={styles.container}
                       key={`${cellInputIndex}`}
                       style={{
                         width: `${cellSize}px`,
@@ -691,7 +519,7 @@ function fillWithAnswers() {
                       }}
                     >
                       <button
-                        className="cell"
+                        className={styles.cell}
                         disabled={puzzleSolution[cellInputIndex] === "N/A"}
                         style={{
                           width: `${cellSize}px`,
@@ -723,7 +551,7 @@ function fillWithAnswers() {
                           : cellInput}
                       </button>
                       <p
-                        className="numberOverlay"
+                        className={styles.numberOverlay}
                         style={{
                           fontSize: `${cellSize * 0.25}px`,
                           userSelect: "none",
@@ -883,7 +711,7 @@ function fillWithAnswers() {
                   }}
                 >
                   <button
-                    className="submitButton"
+                    className={styles.submitButton}
                     tabIndex={-1}
                     onClick={() => {
                       if (answerCheck()) {
@@ -895,7 +723,7 @@ function fillWithAnswers() {
                   >
                     Submit
                   </button>
-                  <p className="winStatus">
+                  <p className={styles.winStatus}>
                     Status: {won ? "Completed" : "Not done yet"}
                   </p>
                   <button
@@ -953,17 +781,19 @@ function fillWithAnswers() {
               // CLUES SECTION START
               // THIS COMMENT IS HERE AS A CLEAR DIVIDER SO I DO NOT GET MIXED UP.
               // HELL. READING MY OWN CODE IS HELL.
+              //
+              // it doesn't have to be justin :D
             }
 
             <div
-              className="clues"
+              className={styles.clues}
               style={
                 {
                   "--height": `${cellSize * rowCount}px`,
                 } as React.CSSProperties
               }
             >
-              <div className="cluesAcrossContainer">
+              <div className={styles.cluesAcrossContainer}>
                 <h4
                   style={{
                     textAlign: "center",
@@ -972,11 +802,14 @@ function fillWithAnswers() {
                 >
                   Across:
                 </h4>
-                <div className="cluesAcross">
+                <div className={styles.cluesAcross}>
                   <ul>
                     {crosswordInfo?.clues.across.map((clue) => {
                       return (
-                        <li className="clue" key={`across-${clue.number}`}>
+                        <li
+                          className={styles.clue}
+                          key={`across-${clue.number}`}
+                        >
                           <button
                             tabIndex={-1}
                             onClick={() => {
@@ -998,7 +831,7 @@ function fillWithAnswers() {
                   </ul>
                 </div>
               </div>
-              <div className="cluesDownContainer">
+              <div className={styles.cluesDownContainer}>
                 <h4
                   style={{
                     textAlign: "center",
@@ -1007,11 +840,14 @@ function fillWithAnswers() {
                 >
                   Down:
                 </h4>
-                <div className="cluesDown">
+                <div className={styles.cluesDown}>
                   <ul>
                     {crosswordInfo?.clues.down.map((clue) => {
                       return (
-                        <li className="clue" key={`across-${clue.number}`}>
+                        <li
+                          className={styles.clue}
+                          key={`across-${clue.number}`}
+                        >
                           <button
                             tabIndex={-1}
                             onClick={() => {

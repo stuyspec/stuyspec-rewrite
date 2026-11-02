@@ -1,7 +1,6 @@
 import { ReceivedArticle } from "../ts_types/db_types";
 import { useRef, useState } from "react";
 import styles from "../styles/Sudoku.module.css";
-import { BsPuzzle } from "react-icons/bs";
 
 interface TileObj {
   index: number;

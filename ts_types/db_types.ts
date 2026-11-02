@@ -111,9 +111,9 @@ export const DepartmentsArray = [
   "humor",
   "sports",
   "ae",
-  "games",
   "media",
   "spec-plus",
+  "games",
 ] as const;
 
 export const DepartmentsArrayDisplay = [
@@ -124,7 +124,6 @@ export const DepartmentsArrayDisplay = [
   "Humor",
   "Sports",
   "Arts and Entertainment",
-  "Games",
   "Media",
   "Spec+",
   "Games",

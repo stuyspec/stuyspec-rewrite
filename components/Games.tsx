@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import styles from "../styles/Games.module.css";
 
 export default function Games() {
   const router = useRouter();
@@ -13,13 +14,13 @@ export default function Games() {
       }}
     >
       <h1 style={{ display: "inline" }}>Games</h1>
-      <div style={{ display: "grid" }}>
+      <div style={{ display: "flex" }}>
         <button
           onClick={async () => {
             await router.push("games/crossword");
           }}
         >
-          <div className="game">
+          <div className={styles.game}>
             <div>
               <Image
                 src="/svg/crossword.svg"
@@ -48,7 +49,7 @@ export default function Games() {
             await router.push("games/sudoku");
           }}
         >
-          <div className="game">
+          <div className={styles.game}>
             <div>
               <Image
                 src="/svg/crossword.svg"
@@ -66,7 +67,7 @@ export default function Games() {
             >
               <h1 style={{ textAlign: "center" }}>Sudoku</h1>
               <p style={{ overflowWrap: "anywhere", textAlign: "center" }}>
-                Use logic and your stuyvesant brain to fill in the missing
+                Use logic and your problem-solving skills to fill in the missing
                 numbers.
               </p>
             </div>
