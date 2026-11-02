@@ -216,6 +216,17 @@ const Footer = () => {
             </div>
             <div id={styles.cell}>
               <h3 id={styles.department}>
+                <Link href="/department/games">Games</Link>
+              </h3>
+              <p id={styles.subdepartment}>
+                <Link href="/department/games/sudoku">Sudoku</Link>
+              </p>
+              <p id={styles.subdepartment}>
+                <Link href="/department/games/crossword">Crossword</Link>
+              </p>
+            </div>
+            <div id={styles.cell}>
+              <h3 id={styles.department}>
                 <Link href="/department/spec-plus">Spec+</Link>
               </h3>
               <p id={styles.subdepartment}>

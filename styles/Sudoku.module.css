@@ -1,0 +1,73 @@
+.board {
+  --thin: 1px solid #999;
+  --thick: 2px solid var(--primary);
+
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  width: min(100%, 450px);
+  aspect-ratio: 1;
+  margin: 2rem auto;
+  border: 3px solid var(--primary);
+  user-select: none;
+}
+
+.cell {
+  /* defaults */
+  appearance: none;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+
+  border-right: var(--thin);
+  border-bottom: var(--thin);
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family: var(--secondary-font), sans-serif;
+  font-size: clamp(1rem, 5vw, 1.75rem);
+  text-align: center;
+  caret-color: transparent;
+  cursor: pointer;
+}
+
+/* thick lines between 3x3 boxes */
+.cell:nth-child(3n) {
+  border-right: var(--thick);
+}
+.cell:nth-child(9n) {
+  border-right: none;
+}
+.cell:nth-child(n + 19):nth-child(-n + 27),
+.cell:nth-child(n + 46):nth-child(-n + 54) {
+  border-bottom: var(--thick);
+}
+.cell:nth-child(n + 73) {
+  border-bottom: none;
+}
+
+.given {
+  background-color: #dddddd;
+  font-weight: bold;
+  cursor: default;
+}
+
+.highlighted {
+  background-color: #f2e088;
+}
+
+.focused {
+  background-color: #f0d137;
+}
+
+.error {
+  background-color: #f7cfd6;
+  color: #c3002f;
+}
+
+.won {
+  background-color: #b3e3b3;
+}

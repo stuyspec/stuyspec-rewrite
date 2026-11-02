@@ -1,0 +1,28 @@
+.game {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  outline: 2px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  width: clamp(9rem, 42vw, 26rem);
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.game img {
+  width: clamp(3rem, 8vw, 8rem);
+  height: auto;
+  display: block;
+}
+
+@media screen and (max-width: 700px) {
+  .game {
+    flex-direction: column;
+  }
+
+  .game h1 {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+  }
+}
