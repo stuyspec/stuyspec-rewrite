@@ -18,6 +18,7 @@ export interface ReceivedArticle {
   sub_section: string | undefined;
   rank: number | undefined;
   created_at: string | Date;
+  arttype: string;
 }
 
 export interface ReceivedStaff {
@@ -61,6 +62,7 @@ export interface ReceivedEditor {
     | "science"
     | "photos"
     | "art"
+    | "games"
     | "faculty";
   position: "EIT" | "E" | "EIC";
 }
@@ -82,7 +84,8 @@ export interface ReceivedRecruitmentsArrayDisplay {
     | "humor"
     | "science"
     | "photos"
-    | "art",
+    | "art"
+    | "games",
   ][number];
   date: string;
   description: string;
@@ -96,6 +99,7 @@ export type Department =
   | "humor"
   | "sports"
   | "ae"
+  | "games"
   | "media"
   | "spec-plus";
 
@@ -109,6 +113,7 @@ export const DepartmentsArray = [
   "ae",
   "media",
   "spec-plus",
+  "games",
 ] as const;
 
 export const DepartmentsArrayDisplay = [
@@ -121,4 +126,5 @@ export const DepartmentsArrayDisplay = [
   "Arts and Entertainment",
   "Media",
   "Spec+",
+  "Games",
 ];

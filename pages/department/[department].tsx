@@ -9,6 +9,7 @@ import { get_articles_by_department } from "../../db";
 import { NextPageContext } from "next";
 import styles from "../../styles/[department].module.css";
 import MixedArticleDisplay from "../../components/MixedArticleDisplay";
+import Games from "../../components/Games";
 import { generateMetaTags } from "../../utils/generateMetaTags";
 
 interface Props {
@@ -44,15 +45,21 @@ function Article(props: Props) {
       <Head>{generateMetaTags(page_title, meta_description, meta_url)}</Head>
 
       <main id={styles.main}>
-        <hgroup className={styles.departmentHeadingContainer}>
-          <h1 id={styles.departmentTitle}>{props.department_display}</h1>
-        </hgroup>
+        {DepartmentsArray[props.section_id] === "games" ? (
+          <Games />
+        ) : (
+          <>
+            <hgroup className={styles.departmentHeadingContainer}>
+              <h1 id={styles.departmentTitle}>{props.department_display}</h1>
+            </hgroup>
 
-        <MixedArticleDisplay
-          articles={props.articles}
-          display_department={false}
-          additional_article_function={fetch_addtional_articles}
-        />
+            <MixedArticleDisplay
+              articles={props.articles}
+              display_department={false}
+              additional_article_function={fetch_addtional_articles}
+            />
+          </>
+        )}
       </main>
     </div>
   );
@@ -79,7 +86,8 @@ export async function getServerSideProps(context: NextPageContext) {
   const department_display = DepartmentsArrayDisplay[department_id];
 
   let articles = await get_articles_by_department(department_param, 42);
-  if (articles.length > 0) {
+  // the games page lists games rather than articles, so it can't 404 on having none
+  if (articles.length > 0 || department_param === "games") {
     return {
       props: {
         articles: JSON.parse(JSON.stringify(articles)),
