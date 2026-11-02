@@ -52,7 +52,7 @@ export default function Games() {
           <div className={styles.game}>
             <div>
               <Image
-                src="/svg/crossword.svg"
+                src="/svg/sudoku.svg"
                 alt="A symbol representing a crossword puzzle."
                 width={25}
                 height={25}

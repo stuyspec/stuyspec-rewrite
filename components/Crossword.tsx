@@ -6,6 +6,170 @@ import Keyboard, { type KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import styles from "../styles/Crossword.module.css";
 
+/*interface SettingsProps {
+  displaying: boolean;
+  changeDisplaying: (displaying: boolean) => void;
+  changeVolume: (volume: number) => void;
+  changeIssue: (issue: number) => void;
+}
+
+type LimitingInputSettingsProps = Pick<
+  SettingsProps,
+  "changeDisplaying" | "changeVolume" | "changeIssue"
+>;
+
+function LimitingInputSettings({
+  changeDisplaying,
+  changeVolume,
+  changeIssue,
+}: LimitingInputSettingsProps) {
+  const [vol, setVol] = useState("");
+  const [iss, setIss] = useState("");
+
+  const [volumeExists, setVolumeExists] = useState(false);
+  const [issueExists, setIssueExists] = useState(false);
+
+  const [submitClicked, setSubmitClicked] = useState(false);
+
+  const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    // Replace anything that is NOT a digit with an empty string
+    const cleanValue = inputValue.replace(/\D/g, "");
+    setVol(cleanValue);
+    setSubmitClicked(false);
+  };
+
+  const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    // Replace anything that is NOT a digit with an empty string
+    const cleanValue = inputValue.replace(/\D/g, "");
+    setIss(cleanValue);
+    setSubmitClicked(false);
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        textAlign: "center",
+        gap: "10px",
+      }}
+    >
+      <p>Volume:</p>
+      <input
+        type="text"
+        inputMode="numeric" // Optimizes the mobile keyboard layout
+        value={vol}
+        onChange={handleChangeVol}
+        style={{
+          outline: "none",
+        }}
+      />
+      <p>Issue:</p>
+      <input
+        type="text"
+        inputMode="numeric" // Optimizes the mobile keyboard layout
+        value={iss}
+        onChange={handleChangeIssue}
+        style={{
+          outline: "none",
+        }}
+      />
+      <button
+        style={{
+          alignSelf: "center",
+          outline: "2px solid black",
+          width: "6rem",
+          textAlign: "center",
+          borderRadius: "5px",
+        }}
+        onClick={async () => {
+          setSubmitClicked(true);
+          setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
+          setIssueExists(
+            await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
+          );
+          if (
+            vol !== "" &&
+            iss !== "" &&
+            (await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`))
+          ) {
+            changeDisplaying(false);
+            changeVolume(Number(vol));
+            changeIssue(Number(iss));
+            return;
+          }
+        }}
+      >
+        Change Crossword
+      </button>
+      <div
+        style={{
+          visibility:
+            (!volumeExists || !issueExists) &&
+            vol != "" &&
+            iss != "" &&
+            submitClicked == true
+              ? "visible"
+              : "hidden",
+        }}
+      >
+        <p>
+          Error:{" "}
+          {!issueExists || !volumeExists
+            ? "The volume/issue you are looking for doesn't exist."
+            : "No error."}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Settings({
+  displaying,
+  changeDisplaying,
+  changeVolume,
+  changeIssue,
+}: SettingsProps) {
+  function swapDisplaying() {
+    changeDisplaying(!displaying);
+  }
+  return (
+    <>
+      <button onClick={swapDisplaying} className="btn-modal">
+        Settings
+      </button>
+
+      {displaying && (
+        <div
+          className="modal"
+          style={{
+            display: "inline-flex",
+            border: "2px solid black",
+            borderRadius: "5px",
+            zIndex: 1000,
+          }}
+        >
+          <div onClick={swapDisplaying} className="overlay"></div>
+          <div className="modal-content">
+            <h2>Settings</h2>
+            <LimitingInputSettings
+              changeDisplaying={changeDisplaying}
+              changeVolume={changeVolume}
+              changeIssue={changeIssue}
+            />
+            <button className="close-modal" onClick={swapDisplaying}>
+              X
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}*/
+
 async function fileExists(path: string) {
   const response = await fetch(path, {
     method: "HEAD",
@@ -471,6 +635,14 @@ function fillWithAnswers() {
               <h2>{crosswordInfo?.author}</h2>
             </div>
           </div>
+          {/*<div>
+            <Settings
+              displaying={settingsDisplaying}
+              changeDisplaying={setSettingsDisplaying}
+              changeVolume={setVolume}
+              changeIssue={setIssue}
+            />
+          </div>*/}
           <div
             style={{
               display: "flex",
