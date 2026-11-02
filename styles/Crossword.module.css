@@ -44,13 +44,13 @@
   align-items: flex-start;
   justify-content: center;
   align-items: center;
-  padding-inline: 10px;
+  padding-inline: 0;
   padding-block: clamp(6dvh, 16dvh, 48px);
   color: #2e2e2e;
 }
 
 .header {
-  padding: 5px;
+  padding: 5px 0;
 }
 
 .container {
@@ -65,7 +65,7 @@
 }
 
 .grid {
-  padding: 5px 5px 5px 5px;
+  padding: 5px 1px;
 }
 
 .cell {
@@ -145,11 +145,13 @@ body.active-modal {
 */
 @media (min-width: 1600px) {
   .clues {
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
     font-size: 0.8rem;
     gap: 25px;
     height: var(--height);
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .cluesAcross,
@@ -175,7 +177,7 @@ body.active-modal {
     color: white;
     border-radius: var(--radius-3xl);
     container-type: inline-size;
-    width: 20rem;
+    width: 100%;
     flex: 1 1 0;
     min-height: 0;
   }
@@ -209,6 +211,8 @@ body.active-modal {
     flex-direction: column;
     display: flex;
     height: var(--height);
+    flex: 1 1 0;
+    min-width: 0;
     font-size: 0.8rem;
     gap: 25px;
   }
@@ -236,7 +240,7 @@ body.active-modal {
     color: white;
     border-radius: var(--radius-3xl);
     container-type: inline-size;
-    width: 20rem;
+    width: 100%;
     flex: 1 1 0;
     min-height: 0;
   }
@@ -266,7 +270,7 @@ body.active-modal {
   SMALL DISPLAY SECTION
 */
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   .clues {
     display: none;
   }

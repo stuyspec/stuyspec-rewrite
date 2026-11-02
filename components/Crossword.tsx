@@ -227,21 +227,42 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const SIDE = viewport.w >= 1024 ? 320 + 48 : 48;
+  // the grid is sized from the article column so it lines up with the title block
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setContainerWidth(entry.contentRect.width),
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const showClues = viewport.w >= 768; // keep in sync with Crossword.module.css
+  const CLUES_W = 240 + 20; // minimum clue column width + gap
+  const GRID_OUTLINE = 2; // cell outlines draw 1px outside the grid on each side
   const CHROME_H = 220;
 
-  const cellSize = Math.max(
-    18,
-    Math.min(
-      44,
-      Math.floor(
+  const availableW = containerWidth - GRID_OUTLINE - (showClues ? CLUES_W : 0);
+
+  // with clues, the clue column absorbs leftover width. without them, the grid
+  // has to fill the column by itself, so the cells can't be rounded or capped.
+  const cellSize = showClues
+    ? Math.max(
+        18,
         Math.min(
-          (viewport.w - SIDE) / (rowLength || 15),
-          (viewport.h - CHROME_H) / (rowCount || 15),
+          44,
+          Math.floor(
+            Math.min(
+              availableW / (rowLength || 15),
+              (viewport.h - CHROME_H) / (rowCount || 15),
+            ),
+          ),
         ),
-      ),
-    ),
-  );
+      )
+    : Math.max(18, availableW / (rowLength || 15));
 
   // toolbar
   const [mergedClues, setMergedClues] = useState<Clue[]>([]);
@@ -607,6 +628,7 @@ function fillWithAnswers() {
     <>
       <div
         className={styles.all}
+        ref={containerRef}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -619,6 +641,7 @@ function fillWithAnswers() {
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
+            width: "100%",
           }}
         >
           <div
@@ -627,7 +650,7 @@ function fillWithAnswers() {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
-              width: rowLength ? rowLength * cellSize + 10 : "auto",
+              width: "100%",
             }}
           >
             <div className={styles.header} style={{ fontSize: "1rem" }}>
@@ -649,6 +672,7 @@ function fillWithAnswers() {
               flexDirection: "row",
               alignItems: "flex-start",
               gap: "20px",
+              width: "100%",
             }}
           >
             {
@@ -660,6 +684,10 @@ function fillWithAnswers() {
                 flexDirection: "column",
                 alignItems: "stretch",
                 justifyContent: "flex-start",
+                flexShrink: 0,
+                width: rowLength
+                  ? rowLength * cellSize + GRID_OUTLINE
+                  : "auto",
               }}
             >
               <div
