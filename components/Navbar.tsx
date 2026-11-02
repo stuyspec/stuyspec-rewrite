@@ -166,8 +166,8 @@ const Navbar = () => {
     {
       name: "Games",
       mainLink: "games",
-      subsectionTitles: ["Crossword"],
-      subsectionLinks: ["crossword"],
+      subsectionTitles: ["Crossword", "Sudoku"],
+      subsectionLinks: ["crossword", "sudoku"],
     },
     {
       name: "About Us",
@@ -434,9 +434,6 @@ const Navbar = () => {
                   onMouseEnter={() => showSectionAndPiece(6)}
                 >
                   <Link href="/department/sports">Sports</Link>
-								</span>
-								<span className={department === "games" ? styles.active : ""} onMouseEnter={() => showSectionAndPiece(7)} >
-                  <Link href="/department/games">Games</Link>
                 </span>
                 <span
                   className={department === "games" ? styles.active : ""}

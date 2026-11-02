@@ -18,7 +18,7 @@ export interface ReceivedArticle {
   sub_section: string | undefined;
   rank: number | undefined;
   created_at: string | Date;
-	arttype: string;
+  arttype: string;
 }
 
 export interface ReceivedStaff {
@@ -84,8 +84,8 @@ export interface ReceivedRecruitmentsArrayDisplay {
     | "humor"
     | "science"
     | "photos"
-		| "art"
-    | "games"
+    | "art"
+    | "games",
   ][number];
   date: string;
   description: string;
@@ -113,8 +113,7 @@ export const DepartmentsArray = [
   "ae",
   "games",
   "media",
-	"spec-plus",
-  "games",
+  "spec-plus",
 ] as const;
 
 export const DepartmentsArrayDisplay = [
