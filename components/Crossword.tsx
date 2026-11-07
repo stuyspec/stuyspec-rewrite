@@ -1162,6 +1162,12 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                                   correctIndex = i;
                                 }
                               }
+                              for (let i = 0; i < crosswordInfo.clues.across.length; i++) {
+                                if (mergedClues[i].number == clue.number) {
+                                  setClueIndex(i);
+                                  break;
+                                }
+                              }
                               setVertical(false);
                               setSelectedCell(correctIndex);
                             }}
@@ -1198,6 +1204,12 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                               for (let i = 0; i < numberLabelGrid.length; i++) {
                                 if (numberLabelGrid[i] == clue.number) {
                                   correctIndex = i;
+                                }
+                              }
+                              for (let i = crosswordInfo.clues.across.length; i < mergedClues.length; i++) {
+                                if (mergedClues[i].number == clue.number) {
+                                  setClueIndex(i);
+                                  break;
                                 }
                               }
                               setVertical(true);
