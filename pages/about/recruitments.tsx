@@ -99,7 +99,7 @@ function RecruitmentPage(props: Props) {
                 Recruitments
               </h1>
               <p id={styles.headingParagraph}>
-                Fall 2026 Recruitments are now LIVE! Send in your applications!
+                Fall 2026 Recruitments are CLOSED! See you for Spring 2027 Recruitments!
               </p>
             </section>
             <div id={styles.SEPERATORCONT}>

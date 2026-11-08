@@ -458,13 +458,14 @@ const Navbar = () => {
                   // STAY IN THE FOOTER.
                 }
                 {
+                  /* UNCOMMENT BELOW DURING RECRUITMENTS
                   <span
                     className={
                       department === "recruitments" ? styles.active : ""
                     }
                   >
-                    <Link href="/about/recruitments">Recruitments</Link>
-                  </span>
+                    </div><Link href="/about/recruitments">Recruitments</Link>
+                  </span> */
                 }
               </div>
               <div
@@ -486,7 +487,7 @@ const Navbar = () => {
         </div>
       </div>
       {
-        /* RECRUITMENTS BANNER ONLY ACTIVE DURING RECRUITMENT PERIOD! REMEMBER FOR SIDEBAR AS WELL*/
+        /* RECRUITMENTS BANNER ONLY ACTIVE DURING RECRUITMENT PERIOD! REMEMBER FOR SIDEBAR AS WELL
         <div id={styles.recruitments_banner}>
           <Link id={styles.recruitments_banner_link} href="/about/recruitments">
             Fall 2026 Recruitments are open!
@@ -501,6 +502,7 @@ const Navbar = () => {
             ✖
           </button>
         </div>
+        */
       }
     </>
   );

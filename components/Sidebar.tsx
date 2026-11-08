@@ -86,11 +86,13 @@ const Sidebar = (props: {
             About Us
           </Link>
         </li>
+        { /* UNCOMMENT BELOW DURING RECRUITMENTS 
         <li className={styles.department}>
           <Link href="/about/recruitments" onClick={autoClose}>
             Recruitments
-          </Link>
-        </li>
+          </Link> 
+        </li> */
+        }
         <li id={styles.socialsBar}>
           <div id={styles.mediaButtons}>
             <Link href="https://open.spotify.com/show/1D0i5KdRFdMNNUwsKVfpYb">
