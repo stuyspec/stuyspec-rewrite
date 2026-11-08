@@ -569,6 +569,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
           }
           setSelectedCell(newCell);
         }
+        e.preventDefault();
         return;
       } else if (key === "ARROWDOWN") {
         let newCell = selectedCell;
@@ -711,10 +712,6 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
     // user info
     setLastKey("");
     setVertical(true);
-
-    // website puzzle state
-    setVolume(props.puzzle.volume);
-    setIssue(props.puzzle.issue);
 
     // Puzzle info variables
     setPuzzleSolution([]);
