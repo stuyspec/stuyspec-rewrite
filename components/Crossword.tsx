@@ -580,6 +580,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
           newCell = (newCell + rowLength) % (rowLength * rowCount);
           maxSteps++;
         }
+        e.preventDefault();
         setSelectedCell(newCell);
         return;
       } else if (key === "ARROWRIGHT") {
@@ -614,6 +615,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
             (rowLength * rowCount);
           maxSteps++;
         }
+        e.preventDefault();
         setSelectedCell(newCell);
         return;
       } else if (key === "ARROWLEFT") {

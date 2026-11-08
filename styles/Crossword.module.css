@@ -164,7 +164,7 @@ body.active-modal {
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: inline-flex;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
