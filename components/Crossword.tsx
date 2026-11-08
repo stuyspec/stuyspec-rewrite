@@ -5,6 +5,7 @@ import type { Clue } from "@xwordly/xword-parser";
 import Keyboard, { type KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import styles from "../styles/Crossword.module.css";
+import { FaRulerVertical } from "react-icons/fa";
 
 interface SettingsProps {
   displaying: boolean;
@@ -455,9 +456,8 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
         const down = loadingPuzzle.clues.down;
         setMergedClues([...across, ...down]);
 
-        // console.log(numberPlacer(loadingPuzzleSolution, loadingPuzzle.clues.across, loadingPuzzle.clues.down, loadingPuzzle.grid.width, loadingPuzzle.grid.height))
         console.log(loadingPuzzle);
-      } catch {
+      } catch {-
         console.error("Unable to read crossword file. Lock in.");
       }
     };
@@ -653,6 +653,8 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
 
     window.addEventListener("keydown", handleKeyDown);
 
+    // console.log(grid);
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -688,6 +690,45 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
 
   // console.log(lastKey);
   // console.log(grid);
+
+  useEffect(() => {
+    if (crosswordInfo != null) {
+      let cellIndex = selectedCell || 0;
+      let width = crosswordInfo.grid.width;
+      let height = crosswordInfo.grid.height;
+      let cells = crosswordInfo.grid.cells;
+      if (vertical) {
+        while (cellIndex >= width) {
+          const above =
+          cells[Math.floor((cellIndex - width) / width)]?.[cellIndex % width];
+
+          if (above === undefined || above.isBlack) break;
+          cellIndex -= width;
+        }
+        for (let i = crosswordInfo.clues.across.length; i < mergedClues.length; i++) {
+        if (mergedClues[i].number === cells[Math.floor(cellIndex / width)][cellIndex % width].number) {
+          setClueIndex(i);
+          break;
+          }
+        }
+      }
+      else {
+        while (cellIndex % width > 0) {
+          const left =
+          cells[Math.floor(cellIndex / width)]?.[(cellIndex - 1) % width];
+
+          if (left === undefined || left.isBlack) break;
+          cellIndex -= 1;
+        }
+        for (let i = 0; i < crosswordInfo.clues.down.length; i++) {
+        if (mergedClues[i].number === cells[Math.floor(cellIndex / width)][cellIndex % width].number) {
+          setClueIndex(i);
+          break;
+          }
+        }
+      }
+    }
+  }, [grid, selectedCell, vertical, mergedClues])
 
   /*
   Checks the currently input letters in the grid against the answer grid
