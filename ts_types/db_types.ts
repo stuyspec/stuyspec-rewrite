@@ -18,7 +18,7 @@ export interface ReceivedArticle {
   sub_section: string | undefined;
   rank: number | undefined;
   created_at: string | Date;
-  arttype: string;
+  article_type: string;
 }
 
 export interface ReceivedStaff {

@@ -40,7 +40,7 @@ function Article(props: Props) {
     summary,
     slug,
     created_at,
-    arttype, //either "article", "crossword", "sudoku"
+    article_type, //either "article", "crossword", "sudoku"
   } = props.article;
 
   const generateApproxReadingTime = () => {
@@ -105,8 +105,8 @@ function Article(props: Props) {
             dangerouslySetInnerHTML={{ __html: title }}
           ></h1>
           <h2 id={styles.summary}>{summary}</h2>
-          {arttype === "article" ||
-            (!arttype && (
+          {article_type === "article" ||
+            (!article_type && (
               <h3 id={styles.reading_time}>{generateApproxReadingTime()}</h3>
             ))}
 
@@ -180,16 +180,16 @@ function Article(props: Props) {
             </>
           )}
 
-          {(arttype === "article" || !arttype) && (
+          {(article_type === "article" || !article_type) && (
             <div
               id={styles.content}
               dangerouslySetInnerHTML={{ __html: text }}
             ></div>
           )}
 
-          {arttype === "crossword" && <Crossword puzzle={props.article} />}
+          {article_type === "crossword" && <Crossword puzzle={props.article} />}
 
-          {arttype === "sudoku" && <Sudoku puzzle={props.article} />}
+          {article_type === "sudoku" && <Sudoku puzzle={props.article} />}
 
           {/* <RecommendedArticles /> */}
         </article>
