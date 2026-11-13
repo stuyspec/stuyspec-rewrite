@@ -6,6 +6,7 @@ import Keyboard, { type KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import styles from "../styles/Crossword.module.css";
 import { FaRulerVertical } from "react-icons/fa";
+import Dropdown from "./Dropdown";
 
 interface SettingsProps {
   displaying: boolean;
@@ -107,6 +108,7 @@ function LimitingInputSettings({
       >
         Change Crossword
       </button>
+      <Dropdown list={["Option 1", "Option 2", "Option 3"]}></Dropdown>
       <div
         style={{
           visibility:
