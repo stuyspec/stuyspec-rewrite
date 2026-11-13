@@ -5,12 +5,16 @@ import type { Clue } from "@xwordly/xword-parser";
 import Keyboard, { type KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import styles from "../styles/Crossword.module.css";
+import { FaRulerVertical } from "react-icons/fa";
+import Dropdown from "./Dropdown";
 
-/*interface SettingsProps {
+interface SettingsProps {
   displaying: boolean;
   changeDisplaying: (displaying: boolean) => void;
   changeVolume: (volume: number) => void;
   changeIssue: (issue: number) => void;
+  clearGrid: () => void;
+  showAnswers: () => void;
 }
 
 type LimitingInputSettingsProps = Pick<
@@ -55,9 +59,13 @@ function LimitingInputSettings({
         justifyContent: "center",
         textAlign: "center",
         gap: "10px",
+        minWidth: 0,
+        maxWidth: "10rem",
+        alignItems: "center"
       }}
     >
-      <p>Volume:</p>
+      <p style={{fontSize: "16px",
+                  fontWeight: "600"}}>Volume:</p>
       <input
         type="text"
         inputMode="numeric" // Optimizes the mobile keyboard layout
@@ -67,7 +75,8 @@ function LimitingInputSettings({
           outline: "none",
         }}
       />
-      <p>Issue:</p>
+      <p style={{fontSize: "16px",
+                  fontWeight: "600"}}>Issue:</p>
       <input
         type="text"
         inputMode="numeric" // Optimizes the mobile keyboard layout
@@ -78,13 +87,7 @@ function LimitingInputSettings({
         }}
       />
       <button
-        style={{
-          alignSelf: "center",
-          outline: "2px solid black",
-          width: "6rem",
-          textAlign: "center",
-          borderRadius: "5px",
-        }}
+        className={styles["standard-button"]}
         onClick={async () => {
           setSubmitClicked(true);
           setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
@@ -105,13 +108,14 @@ function LimitingInputSettings({
       >
         Change Crossword
       </button>
+      <Dropdown list={["Option 1", "Option 2", "Option 3"]}></Dropdown>
       <div
         style={{
           visibility:
             (!volumeExists || !issueExists) &&
-            vol != "" &&
-            iss != "" &&
-            submitClicked == true
+              vol != "" &&
+              iss != "" &&
+              submitClicked == true
               ? "visible"
               : "hidden",
         }}
@@ -132,19 +136,33 @@ function Settings({
   changeDisplaying,
   changeVolume,
   changeIssue,
+  clearGrid,
+  showAnswers
 }: SettingsProps) {
   function swapDisplaying() {
     changeDisplaying(!displaying);
   }
+
+  const [resetConfirmDisplaying, setResetConfirmDisplaying] = useState(false);
+  const [showAnswersConfirmDisplaying, setShowAnswersConfirmDisplaying] = useState(false);
+
+  function swapResetDisplaying() {
+    setResetConfirmDisplaying(!resetConfirmDisplaying);
+  }
+
+  function swapShowAnswersDisplaying() {
+    setShowAnswersConfirmDisplaying(!showAnswersConfirmDisplaying);
+  }
+
   return (
     <>
-      <button onClick={swapDisplaying} className="btn-modal">
+      <button onClick={swapDisplaying} className={styles["standard-button"]}>
         Settings
       </button>
 
       {displaying && (
         <div
-          className="modal"
+          className={styles.modal}
           style={{
             display: "inline-flex",
             border: "2px solid black",
@@ -152,23 +170,94 @@ function Settings({
             zIndex: 1000,
           }}
         >
-          <div onClick={swapDisplaying} className="overlay"></div>
-          <div className="modal-content">
+          <div onClick={swapDisplaying} className={styles["overlay"]}></div>
+          <div className={styles["modal-content"]}>
             <h2>Settings</h2>
-            <LimitingInputSettings
-              changeDisplaying={changeDisplaying}
-              changeVolume={changeVolume}
-              changeIssue={changeIssue}
-            />
-            <button className="close-modal" onClick={swapDisplaying}>
+            <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "10rem auto 10rem",
+              alignItems: "start",
+              columnGap: "20px",
+            }}
+>
+              <LimitingInputSettings
+                changeDisplaying={changeDisplaying}
+                changeVolume={changeVolume}
+                changeIssue={changeIssue}
+              />
+              <div className={styles["divider"]}/>
+              <div style={{ display: "flex", flexDirection: "column", gap: "20px", }}>
+                <button className={styles["standard-button"]} onClick={swapShowAnswersDisplaying}>Reveal Answers</button>
+                <button className={styles["standard-button"]} onClick={swapResetDisplaying}>Reset Grid</button>
+              </div>
+            </div>
+            <button className={styles["close-modal"]} onClick={swapDisplaying}>
               X
             </button>
+            <Confirmation
+              displaying={resetConfirmDisplaying}
+              changeDisplaying={setResetConfirmDisplaying}
+              actionOnConfirm={clearGrid}
+            ></Confirmation>
+            <Confirmation
+              displaying={showAnswersConfirmDisplaying}
+              changeDisplaying={setShowAnswersConfirmDisplaying}
+              actionOnConfirm={showAnswers}
+            ></Confirmation>
           </div>
         </div>
       )}
     </>
   );
-}*/
+}
+
+interface confirmationProps {
+  displaying: boolean;
+  changeDisplaying: (displaying: boolean) => void;
+  actionOnConfirm: () => void;
+}
+
+function Confirmation({ displaying, changeDisplaying, actionOnConfirm }: confirmationProps) {
+  function swapDisplaying() {
+    changeDisplaying(!displaying);
+  }
+  return (
+    <>
+      {displaying && (
+        <div
+          className={styles["confirm-modal-content"]}
+          style={{
+            display: "inline-flex",
+            borderRadius: "5px",
+            zIndex: 1000,
+            textAlign: "center"
+          }}
+        >
+          <h2>Are you sure?</h2>
+          <div style={{ display: "flex", flexDirection: "row", gap: "20px"}}>
+            <button
+              className={styles["standard-button"]}
+              onClick={() => {
+                actionOnConfirm();
+                swapDisplaying();
+              }}
+            >
+              Yes
+            </button>
+            <button className={styles["standard-button"]} onClick={swapDisplaying}>
+              No
+            </button>
+          </div>
+
+          <button className={styles["close-modal"]} onClick={swapDisplaying}>
+            X
+          </button>
+        </div>
+      )}
+    </>
+  );
+}
 
 async function fileExists(path: string) {
   const response = await fetch(path, {
@@ -191,7 +280,9 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
   const [volume, setVolume] = useState(props.puzzle.volume);
   const [issue, setIssue] = useState(props.puzzle.issue);
 
+  // modals active or not
   const [settingsDisplaying, setSettingsDisplaying] = useState(false);
+  const [confirmationDisplaying, setConfirmationDisplaying] = useState(false);
 
   // Puzzle info variables
   const [puzzleSolution, setPuzzleSolution] = useState<string[]>([]);
@@ -251,17 +342,17 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
   // has to fill the column by itself, so the cells can't be rounded or capped.
   const cellSize = showClues
     ? Math.max(
-        18,
-        Math.min(
-          44,
-          Math.floor(
-            Math.min(
-              availableW / (rowLength || 15),
-              (viewport.h - CHROME_H) / (rowCount || 15),
-            ),
+      18,
+      Math.min(
+        44,
+        Math.floor(
+          Math.min(
+            availableW / (rowLength || 15),
+            (viewport.h - CHROME_H) / (rowCount || 15),
           ),
         ),
-      )
+      ),
+    )
     : Math.max(18, availableW / (rowLength || 15));
 
   // toolbar
@@ -367,9 +458,8 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
         const down = loadingPuzzle.clues.down;
         setMergedClues([...across, ...down]);
 
-        // console.log(numberPlacer(loadingPuzzleSolution, loadingPuzzle.clues.across, loadingPuzzle.clues.down, loadingPuzzle.grid.width, loadingPuzzle.grid.height))
         console.log(loadingPuzzle);
-      } catch {
+      } catch {-
         console.error("Unable to read crossword file. Lock in.");
       }
     };
@@ -481,6 +571,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
           }
           setSelectedCell(newCell);
         }
+        e.preventDefault();
         return;
       } else if (key === "ARROWDOWN") {
         let newCell = selectedCell;
@@ -492,6 +583,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
           newCell = (newCell + rowLength) % (rowLength * rowCount);
           maxSteps++;
         }
+        e.preventDefault();
         setSelectedCell(newCell);
         return;
       } else if (key === "ARROWRIGHT") {
@@ -526,6 +618,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
             (rowLength * rowCount);
           maxSteps++;
         }
+        e.preventDefault();
         setSelectedCell(newCell);
         return;
       } else if (key === "ARROWLEFT") {
@@ -561,6 +654,8 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
     };
 
     window.addEventListener("keydown", handleKeyDown);
+
+    // console.log(grid);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
@@ -598,6 +693,45 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
   // console.log(lastKey);
   // console.log(grid);
 
+  useEffect(() => {
+    if (crosswordInfo != null) {
+      let cellIndex = selectedCell || 0;
+      let width = crosswordInfo.grid.width;
+      let height = crosswordInfo.grid.height;
+      let cells = crosswordInfo.grid.cells;
+      if (vertical) {
+        while (cellIndex >= width) {
+          const above =
+          cells[Math.floor((cellIndex - width) / width)]?.[cellIndex % width];
+
+          if (above === undefined || above.isBlack) break;
+          cellIndex -= width;
+        }
+        for (let i = crosswordInfo.clues.across.length; i < mergedClues.length; i++) {
+        if (mergedClues[i].number === cells[Math.floor(cellIndex / width)][cellIndex % width].number) {
+          setClueIndex(i);
+          break;
+          }
+        }
+      }
+      else {
+        while (cellIndex % width > 0) {
+          const left =
+          cells[Math.floor(cellIndex / width)]?.[(cellIndex - 1) % width];
+
+          if (left === undefined || left.isBlack) break;
+          cellIndex -= 1;
+        }
+        for (let i = 0; i < crosswordInfo.clues.down.length; i++) {
+        if (mergedClues[i].number === cells[Math.floor(cellIndex / width)][cellIndex % width].number) {
+          setClueIndex(i);
+          break;
+          }
+        }
+      }
+    }
+  }, [grid, selectedCell, vertical, mergedClues])
+
   /*
   Checks the currently input letters in the grid against the answer grid
 */
@@ -614,15 +748,66 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
     );
   }
 
-  /* CURRENTLY UNUSED FUNCTION THAT FILLS THE WHOLE GRID
-function fillWithAnswers() {
-  setGrid(
-    puzzleSolution.map((cell) => {
-      return cell === "N/A" ? "" : cell;
-    }),
-  );
-}
-  */
+  function clearGrid() {
+    setWon(false);
+    setSelectedCell(0);
+
+    // user info
+    setLastKey("");
+    setVertical(true);
+
+    // Puzzle info variables
+    setPuzzleSolution([]);
+    setRowCount(0);
+    setRowLength(0);
+    setNumberLabelGrid([]);
+    const asyncPuzzleLoader = async () => {
+      try {
+        const loadingPuzzle = await CrosswordReader(volume, issue);
+        setCrosswordInfo(loadingPuzzle);
+        const loadingPuzzleSolution = loadingPuzzle.grid.cells.flatMap(
+          (row) => {
+            return row.map((cell) => cell.solution ?? "N/A");
+          },
+        );
+        setPuzzleSolution(loadingPuzzleSolution);
+        // console.log(puzzleSolution);
+        setRowCount(loadingPuzzle.grid.height);
+        setRowLength(loadingPuzzle.grid.width);
+        setGrid(
+          loadingPuzzle.grid.cells.flatMap((row) => {
+            return row.map((_) => "");
+          }),
+        );
+
+        // number init
+        setNumberLabelGrid(
+          loadingPuzzle.grid.cells.flatMap((row) => {
+            return row.map((cell) => cell.number ?? -1);
+          }),
+        );
+
+        // set big clue array with a  ll clues
+        const across = loadingPuzzle.clues.across;
+        const down = loadingPuzzle.clues.down;
+        setMergedClues([...across, ...down]);
+
+        // console.log(numberPlacer(loadingPuzzleSolution, loadingPuzzle.clues.across, loadingPuzzle.clues.down, loadingPuzzle.grid.width, loadingPuzzle.grid.height))
+        console.log(loadingPuzzle);
+      } catch {
+        console.error("Unable to read crossword file. Lock in.");
+      }
+    };
+    asyncPuzzleLoader();
+  }
+
+  function fillWithAnswers() {
+    setGrid(
+      puzzleSolution.map((cell) => {
+        return cell === "N/A" ? "" : cell;
+      }),
+    );
+  }
 
   return (
     <>
@@ -657,15 +842,15 @@ function fillWithAnswers() {
               <h2>{crosswordInfo?.title}</h2>
               <h2>{crosswordInfo?.author}</h2>
             </div>
-          </div>
-          {/*<div>
             <Settings
               displaying={settingsDisplaying}
               changeDisplaying={setSettingsDisplaying}
               changeVolume={setVolume}
               changeIssue={setIssue}
+              clearGrid={clearGrid}
+              showAnswers={fillWithAnswers}
             />
-          </div>*/}
+          </div>
           <div
             style={{
               display: "flex",
@@ -731,11 +916,11 @@ function fillWithAnswers() {
                               : cellInputIndex === selectedCell
                                 ? "#4fe34f"
                                 : (vertical &&
-                                      cellInputIndex % rowLength ==
-                                        selectedCell % rowLength) ||
-                                    (!vertical &&
-                                      Math.floor(cellInputIndex / rowLength) ==
-                                        Math.floor(selectedCell / rowLength))
+                                  cellInputIndex % rowLength ==
+                                  selectedCell % rowLength) ||
+                                  (!vertical &&
+                                    Math.floor(cellInputIndex / rowLength) ==
+                                    Math.floor(selectedCell / rowLength))
                                   ? "#a6f2a6"
                                   : "white",
                         }}
@@ -792,7 +977,7 @@ function fillWithAnswers() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -834,7 +1019,7 @@ function fillWithAnswers() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -869,7 +1054,7 @@ function fillWithAnswers() {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                              mergedClues[newIndex].number &&
+                            mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -1019,6 +1204,12 @@ function fillWithAnswers() {
                                   correctIndex = i;
                                 }
                               }
+                              for (let i = 0; i < crosswordInfo.clues.across.length; i++) {
+                                if (mergedClues[i].number == clue.number) {
+                                  setClueIndex(i);
+                                  break;
+                                }
+                              }
                               setVertical(false);
                               setSelectedCell(correctIndex);
                             }}
@@ -1055,6 +1246,12 @@ function fillWithAnswers() {
                               for (let i = 0; i < numberLabelGrid.length; i++) {
                                 if (numberLabelGrid[i] == clue.number) {
                                   correctIndex = i;
+                                }
+                              }
+                              for (let i = crosswordInfo.clues.across.length; i < mergedClues.length; i++) {
+                                if (mergedClues[i].number == clue.number) {
+                                  setClueIndex(i);
+                                  break;
                                 }
                               }
                               setVertical(true);
