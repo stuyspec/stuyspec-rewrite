@@ -1,24 +1,56 @@
+import { useState } from "react";
 
 interface dropDownProps {
-    list: Array<string>
+  list: Array<string>;
+  setSelected: (selected: number) => void;
 }
 
-export default function Dropdown({list}: dropDownProps) {
-    return(
-        <>
-        <button>
-            {list[0] || "Pick an option"}
-            <ul 
-            style={{
-                position: "absolute",
-                bottom: "0",
-                left: "0",
-            }}>
-                {list.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul>
+export default function Dropdown({ list, setSelected }: dropDownProps) {
+  const [dropDownShowing, setDropDownShowing] = useState(false);
+  return (
+    <>
+      <div
+        style={{
+          justifyContent: "left",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <button
+          style={{
+            textAlign: "left",
+          }}
+          onClick={() => {
+            setDropDownShowing(!dropDownShowing);
+          }}
+        >
+          Pick an option
         </button>
-        </>
-    )
+        <ul
+          style={{
+            position: "absolute",
+            display: dropDownShowing ? "block" : "none",
+            translate: "0 1rem",
+          }}
+        >
+          {list.map((item, index) => (
+            <li
+              key={index}
+              style={{
+                height: "1rem",
+              }}
+            >
+              <button
+                onClick={() => {
+                  setSelected(index);
+                }}
+              >
+                {item}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
 }
