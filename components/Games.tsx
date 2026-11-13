@@ -6,16 +6,9 @@ export default function Games() {
   const router = useRouter();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <h1 style={{ display: "inline" }}>Games</h1>
-      <div style={{ display: "flex" }}>
-        <button
+    <div>
+      <div className={styles.gamesContainer}>
+        <button className={styles.gamesButtonContainer}
           onClick={async () => {
             await router.push("games/crossword");
           }}
@@ -37,14 +30,14 @@ export default function Games() {
               }}
             >
               <h1 style={{ textAlign: "center" }}>Crossword</h1>
-              <p style={{ overflowWrap: "anywhere", textAlign: "center" }}>
+              <p style={{ overflowWrap: "anywhere", textAlign: "center", paddingTop:"0.4rem" }}>
                 Fill in the blanks using the clues provided to complete the
                 puzzle.
               </p>
             </div>
           </div>
         </button>
-        <button
+        <button className={styles.gamesButtonContainer}
           onClick={async () => {
             await router.push("games/sudoku");
           }}
@@ -66,7 +59,7 @@ export default function Games() {
               }}
             >
               <h1 style={{ textAlign: "center" }}>Sudoku</h1>
-              <p style={{ overflowWrap: "anywhere", textAlign: "center" }}>
+              <p style={{ overflowWrap: "anywhere", textAlign: "center", paddingTop:"0.4rem"}}>
                 Use logic and your problem-solving skills to fill in the missing
                 numbers.
               </p>
