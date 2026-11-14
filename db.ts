@@ -207,6 +207,20 @@ async function get_articles_by_author(
   return articles;
 }
 
+async function get_articles_by_type(
+  article_type: string,
+  num?: number,
+): Promise<ReceivedArticle[]> {
+  let articles = await get_articles_by_query(
+    {
+      article_type: article_type,
+    },
+    num,
+  );
+
+  return articles;
+}
+
 async function get_articles_by_query(
   query: any,
   num?: number,
@@ -502,6 +516,7 @@ export {
   get_article_by_id,
   get_article_by_slug,
   get_articles_by_author,
+  get_articles_by_type,
   get_articles_by_query,
   get_staff_by_id,
   get_staff_by_position,

@@ -128,7 +128,7 @@ body.active-modal {
   border-radius: 10px;
   width: fit-content;
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 .confirm-modal-content {
@@ -144,7 +144,7 @@ body.active-modal {
   max-width: 450px;
   min-width: 200px;
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 .close-modal {
@@ -156,9 +156,9 @@ body.active-modal {
 
 .standard-button {
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .75rem;
+  border-radius: 0.75rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.85);
@@ -170,7 +170,7 @@ body.active-modal {
   line-height: 1.25;
   margin: 0;
   min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
   transition: all 250ms;
@@ -193,7 +193,7 @@ body.active-modal {
 }
 
 .standard-button:active {
-  background-color: #F0F0F1;
+  background-color: #f0f0f1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);

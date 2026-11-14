@@ -7,6 +7,7 @@ import "react-simple-keyboard/build/css/index.css";
 import styles from "../styles/Crossword.module.css";
 import { FaRulerVertical } from "react-icons/fa";
 import Dropdown from "./Dropdown";
+import { get_articles_by_type } from "../db";
 
 interface SettingsProps {
   displaying: boolean;
@@ -21,6 +22,10 @@ type LimitingInputSettingsProps = Pick<
   SettingsProps,
   "changeDisplaying" | "changeVolume" | "changeIssue"
 >;
+
+async function fetchCrosswords() {
+  return get_articles_by_type("crossword");
+}
 
 function LimitingInputSettings({
   changeDisplaying,
@@ -61,11 +66,10 @@ function LimitingInputSettings({
         gap: "10px",
         minWidth: 0,
         maxWidth: "10rem",
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
-      <p style={{fontSize: "16px",
-                  fontWeight: "600"}}>Volume:</p>
+      <p style={{ fontSize: "16px", fontWeight: "600" }}>Volume:</p>
       <input
         type="text"
         inputMode="numeric" // Optimizes the mobile keyboard layout
@@ -75,8 +79,7 @@ function LimitingInputSettings({
           outline: "none",
         }}
       />
-      <p style={{fontSize: "16px",
-                  fontWeight: "600"}}>Issue:</p>
+      <p style={{ fontSize: "16px", fontWeight: "600" }}>Issue:</p>
       <input
         type="text"
         inputMode="numeric" // Optimizes the mobile keyboard layout
@@ -108,14 +111,23 @@ function LimitingInputSettings({
       >
         Change Crossword
       </button>
-      <Dropdown list={["Option 1", "Option 2", "Option 3"]}></Dropdown>
+      <Dropdown
+        list={[
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4",
+          "Option 5",
+          "Option 6",
+        ]}
+      ></Dropdown>
       <div
         style={{
           visibility:
             (!volumeExists || !issueExists) &&
-              vol != "" &&
-              iss != "" &&
-              submitClicked == true
+            vol != "" &&
+            iss != "" &&
+            submitClicked == true
               ? "visible"
               : "hidden",
         }}
@@ -137,14 +149,15 @@ function Settings({
   changeVolume,
   changeIssue,
   clearGrid,
-  showAnswers
+  showAnswers,
 }: SettingsProps) {
   function swapDisplaying() {
     changeDisplaying(!displaying);
   }
 
   const [resetConfirmDisplaying, setResetConfirmDisplaying] = useState(false);
-  const [showAnswersConfirmDisplaying, setShowAnswersConfirmDisplaying] = useState(false);
+  const [showAnswersConfirmDisplaying, setShowAnswersConfirmDisplaying] =
+    useState(false);
 
   function swapResetDisplaying() {
     setResetConfirmDisplaying(!resetConfirmDisplaying);
@@ -174,22 +187,38 @@ function Settings({
           <div className={styles["modal-content"]}>
             <h2>Settings</h2>
             <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "10rem auto 10rem",
-              alignItems: "start",
-              columnGap: "20px",
-            }}
->
+              style={{
+                display: "grid",
+                gridTemplateColumns: "10rem auto 10rem",
+                alignItems: "start",
+                columnGap: "20px",
+              }}
+            >
               <LimitingInputSettings
                 changeDisplaying={changeDisplaying}
                 changeVolume={changeVolume}
                 changeIssue={changeIssue}
               />
-              <div className={styles["divider"]}/>
-              <div style={{ display: "flex", flexDirection: "column", gap: "20px", }}>
-                <button className={styles["standard-button"]} onClick={swapShowAnswersDisplaying}>Reveal Answers</button>
-                <button className={styles["standard-button"]} onClick={swapResetDisplaying}>Reset Grid</button>
+              <div className={styles["divider"]} />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                }}
+              >
+                <button
+                  className={styles["standard-button"]}
+                  onClick={swapShowAnswersDisplaying}
+                >
+                  Reveal Answers
+                </button>
+                <button
+                  className={styles["standard-button"]}
+                  onClick={swapResetDisplaying}
+                >
+                  Reset Grid
+                </button>
               </div>
             </div>
             <button className={styles["close-modal"]} onClick={swapDisplaying}>
@@ -218,7 +247,11 @@ interface confirmationProps {
   actionOnConfirm: () => void;
 }
 
-function Confirmation({ displaying, changeDisplaying, actionOnConfirm }: confirmationProps) {
+function Confirmation({
+  displaying,
+  changeDisplaying,
+  actionOnConfirm,
+}: confirmationProps) {
   function swapDisplaying() {
     changeDisplaying(!displaying);
   }
@@ -231,11 +264,11 @@ function Confirmation({ displaying, changeDisplaying, actionOnConfirm }: confirm
             display: "inline-flex",
             borderRadius: "5px",
             zIndex: 1000,
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <h2>Are you sure?</h2>
-          <div style={{ display: "flex", flexDirection: "row", gap: "20px"}}>
+          <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
             <button
               className={styles["standard-button"]}
               onClick={() => {
@@ -245,7 +278,10 @@ function Confirmation({ displaying, changeDisplaying, actionOnConfirm }: confirm
             >
               Yes
             </button>
-            <button className={styles["standard-button"]} onClick={swapDisplaying}>
+            <button
+              className={styles["standard-button"]}
+              onClick={swapDisplaying}
+            >
               No
             </button>
           </div>
@@ -342,17 +378,17 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
   // has to fill the column by itself, so the cells can't be rounded or capped.
   const cellSize = showClues
     ? Math.max(
-      18,
-      Math.min(
-        44,
-        Math.floor(
-          Math.min(
-            availableW / (rowLength || 15),
-            (viewport.h - CHROME_H) / (rowCount || 15),
+        18,
+        Math.min(
+          44,
+          Math.floor(
+            Math.min(
+              availableW / (rowLength || 15),
+              (viewport.h - CHROME_H) / (rowCount || 15),
+            ),
           ),
         ),
-      ),
-    )
+      )
     : Math.max(18, availableW / (rowLength || 15));
 
   // toolbar
@@ -459,8 +495,8 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
         setMergedClues([...across, ...down]);
 
         console.log(loadingPuzzle);
-      } catch {-
-        console.error("Unable to read crossword file. Lock in.");
+      } catch {
+        -console.error("Unable to read crossword file. Lock in.");
       }
     };
 
@@ -702,35 +738,44 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
       if (vertical) {
         while (cellIndex >= width) {
           const above =
-          cells[Math.floor((cellIndex - width) / width)]?.[cellIndex % width];
+            cells[Math.floor((cellIndex - width) / width)]?.[cellIndex % width];
 
           if (above === undefined || above.isBlack) break;
           cellIndex -= width;
         }
-        for (let i = crosswordInfo.clues.across.length; i < mergedClues.length; i++) {
-        if (mergedClues[i].number === cells[Math.floor(cellIndex / width)][cellIndex % width].number) {
-          setClueIndex(i);
-          break;
+        for (
+          let i = crosswordInfo.clues.across.length;
+          i < mergedClues.length;
+          i++
+        ) {
+          if (
+            mergedClues[i].number ===
+            cells[Math.floor(cellIndex / width)][cellIndex % width].number
+          ) {
+            setClueIndex(i);
+            break;
           }
         }
-      }
-      else {
+      } else {
         while (cellIndex % width > 0) {
           const left =
-          cells[Math.floor(cellIndex / width)]?.[(cellIndex - 1) % width];
+            cells[Math.floor(cellIndex / width)]?.[(cellIndex - 1) % width];
 
           if (left === undefined || left.isBlack) break;
           cellIndex -= 1;
         }
         for (let i = 0; i < crosswordInfo.clues.down.length; i++) {
-        if (mergedClues[i].number === cells[Math.floor(cellIndex / width)][cellIndex % width].number) {
-          setClueIndex(i);
-          break;
+          if (
+            mergedClues[i].number ===
+            cells[Math.floor(cellIndex / width)][cellIndex % width].number
+          ) {
+            setClueIndex(i);
+            break;
           }
         }
       }
     }
-  }, [grid, selectedCell, vertical, mergedClues])
+  }, [grid, selectedCell, vertical, mergedClues]);
 
   /*
   Checks the currently input letters in the grid against the answer grid
@@ -870,9 +915,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                 alignItems: "stretch",
                 justifyContent: "flex-start",
                 flexShrink: 0,
-                width: rowLength
-                  ? rowLength * cellSize + GRID_OUTLINE
-                  : "auto",
+                width: rowLength ? rowLength * cellSize + GRID_OUTLINE : "auto",
               }}
             >
               <div
@@ -916,11 +959,11 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                               : cellInputIndex === selectedCell
                                 ? "#4fe34f"
                                 : (vertical &&
-                                  cellInputIndex % rowLength ==
-                                  selectedCell % rowLength) ||
-                                  (!vertical &&
-                                    Math.floor(cellInputIndex / rowLength) ==
-                                    Math.floor(selectedCell / rowLength))
+                                      cellInputIndex % rowLength ==
+                                        selectedCell % rowLength) ||
+                                    (!vertical &&
+                                      Math.floor(cellInputIndex / rowLength) ==
+                                        Math.floor(selectedCell / rowLength))
                                   ? "#a6f2a6"
                                   : "white",
                         }}
@@ -977,7 +1020,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                            mergedClues[newIndex].number &&
+                              mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -1019,7 +1062,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                            mergedClues[newIndex].number &&
+                              mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -1054,7 +1097,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                         for (let i = 0; i < grid.length; i++) {
                           if (
                             numberLabelGrid[i] ===
-                            mergedClues[newIndex].number &&
+                              mergedClues[newIndex].number &&
                             crosswordInfo != null
                           ) {
                             const across =
@@ -1204,7 +1247,11 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                                   correctIndex = i;
                                 }
                               }
-                              for (let i = 0; i < crosswordInfo.clues.across.length; i++) {
+                              for (
+                                let i = 0;
+                                i < crosswordInfo.clues.across.length;
+                                i++
+                              ) {
                                 if (mergedClues[i].number == clue.number) {
                                   setClueIndex(i);
                                   break;
@@ -1248,7 +1295,11 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
                                   correctIndex = i;
                                 }
                               }
-                              for (let i = crosswordInfo.clues.across.length; i < mergedClues.length; i++) {
+                              for (
+                                let i = crosswordInfo.clues.across.length;
+                                i < mergedClues.length;
+                                i++
+                              ) {
                                 if (mergedClues[i].number == clue.number) {
                                   setClueIndex(i);
                                   break;
