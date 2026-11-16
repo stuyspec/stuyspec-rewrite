@@ -29,12 +29,16 @@ export default function Dropdown({ list, type, setSelected }: dropDownProps) {
           flexDirection: "column",
           alignItems: "center",
           border: "1px solid black",
+          borderRadius: "5px",
+          width: "100%",
+          boxSizing: "border-box",
         }}
       >
         <button
           style={{
-            textAlign: "left",
+            textAlign: "center",
             padding: "0 0 5px 0",
+            width: "100%",
           }}
           onClick={() => {
             setDropDownShowing(!dropDownShowing);

@@ -8,6 +8,7 @@ import styles from "../styles/Crossword.module.css";
 import { FaRulerVertical } from "react-icons/fa";
 import Dropdown from "./Dropdown";
 import fetchCrosswords from "../utils/fetchCrosswords";
+import { fetchCrosswordVolIss } from "../utils/fetchCrosswords";
 
 interface SettingsProps {
   displaying: boolean;
@@ -58,6 +59,7 @@ function LimitingInputSettings({
     loadCrosswords();
   }, []);
 
+  // loads available issues on volume selection/change
   useEffect(() => {
     const loadCrosswords = async () => {
       const articles = await fetchCrosswords();
@@ -72,6 +74,16 @@ function LimitingInputSettings({
     loadCrosswords();
   }, [vol]);
 
+  const [ selectedArticle, setSelectedArticle ]: ReceivedArticle | null = useState(null);
+  // loads the crossword from db when iss is finally imported/changed
+  useEffect(() => {
+    const loadCrossword = async () => {
+      const article = await fetchCrosswordVolIss(vol, iss);
+      setSelectedArticle(article);
+    };
+    loadCrossword();
+  }, [iss]);
+
   return (
     <div
       style={{
@@ -82,10 +94,10 @@ function LimitingInputSettings({
         gap: "10px",
         minWidth: 0,
         maxWidth: "10rem",
-        alignItems: "center",
+        alignItems: "stretch",
       }}
     >
-      <div>
+      <div style={{ width: "100%" }}>
         <Dropdown
           list={crosswordVolumes}
           type="volume"
@@ -94,7 +106,8 @@ function LimitingInputSettings({
       </div>
       <div
         style={{
-          display: vol != -1 ? "flex" : "none",
+          display: vol != -1 ? "inline-flex" : "none",
+          width: "100%",
         }}
       >
         <Dropdown
@@ -103,13 +116,19 @@ function LimitingInputSettings({
           setSelected={setIss}
         ></Dropdown>
       </div>
-      <div>
+      <div style={{ width: "100%" }}>
         <button
           onClick={() => {
             if (vol != -1 && iss != -1) {
               changeVolume(vol);
               changeIssue(iss);
             }
+          }}
+          style={{
+            display: vol != -1 && iss != -1 ? "inline-flex" : "none",
+            width: "100%",
+            textAlign: "center",
+            justifyContent: "center",
           }}
         >
           Confirm
