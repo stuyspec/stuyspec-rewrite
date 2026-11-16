@@ -7,7 +7,7 @@ import "react-simple-keyboard/build/css/index.css";
 import styles from "../styles/Crossword.module.css";
 import { FaRulerVertical } from "react-icons/fa";
 import Dropdown from "./Dropdown";
-import { get_articles_by_type } from "../db";
+import fetchCrosswords from "../utils/fetchCrosswords";
 
 interface SettingsProps {
   displaying: boolean;
@@ -23,38 +23,54 @@ type LimitingInputSettingsProps = Pick<
   "changeDisplaying" | "changeVolume" | "changeIssue"
 >;
 
-async function fetchCrosswords() {
-  return get_articles_by_type("crossword");
-}
-
 function LimitingInputSettings({
   changeDisplaying,
   changeVolume,
   changeIssue,
 }: LimitingInputSettingsProps) {
-  const [vol, setVol] = useState("");
-  const [iss, setIss] = useState("");
+  const [vol, setVol] = useState(-1);
+  const [iss, setIss] = useState(-1);
 
-  const [volumeExists, setVolumeExists] = useState(false);
-  const [issueExists, setIssueExists] = useState(false);
+  /*
+      This useEffect hook basically fetches all of the availables crossword volumes and issues
+      asynchronously. This hook is primarily related to the Settings section for the crossword.
+  
+      The algorithm is:
+      1. Find all available volumes from the db.
+      2. Throw the available volumes from the db into a list, no repeats.
+      3. The user selects a volume through the dropdown menu.
+      4. The issue drop down menu opens up, and then finds all available issues from that volume.
+      5. Display those issues in the dropdown, then let the user select one.
+      6. When change crossword is clicked, those values are pushed to the actual volume and issue variables, and the crossword is updated.
+    */
 
-  const [submitClicked, setSubmitClicked] = useState(false);
+  const [crosswordVolumes, setCrosswordVolumes] = useState<number[]>([]);
+  const [crosswordIssues, setCrosswordIssues] = useState<number[]>([]);
 
-  const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    // Replace anything that is NOT a digit with an empty string
-    const cleanValue = inputValue.replace(/\D/g, "");
-    setVol(cleanValue);
-    setSubmitClicked(false);
-  };
+  // loads the available volumes on component mount
+  useEffect(() => {
+    const loadCrosswords = async () => {
+      const articles = await fetchCrosswords();
+      let volumes = articles.map((article: ReceivedArticle) => article.volume);
+      volumes = Array.from(new Set(volumes));
+      setCrosswordVolumes(volumes);
+    };
+    loadCrosswords();
+  }, []);
 
-  const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    // Replace anything that is NOT a digit with an empty string
-    const cleanValue = inputValue.replace(/\D/g, "");
-    setIss(cleanValue);
-    setSubmitClicked(false);
-  };
+  useEffect(() => {
+    const loadCrosswords = async () => {
+      const articles = await fetchCrosswords();
+      let issues = articles.map((article: ReceivedArticle) => {
+        if (article.volume == vol) {
+          return article.issue;
+        }
+      });
+      issues = Array.from(new Set(issues));
+      setCrosswordIssues(issues);
+    };
+    loadCrosswords();
+  }, [vol]);
 
   return (
     <div
@@ -69,75 +85,35 @@ function LimitingInputSettings({
         alignItems: "center",
       }}
     >
-      <p style={{ fontSize: "16px", fontWeight: "600" }}>Volume:</p>
-      <input
-        type="text"
-        inputMode="numeric" // Optimizes the mobile keyboard layout
-        value={vol}
-        onChange={handleChangeVol}
-        style={{
-          outline: "none",
-        }}
-      />
-      <p style={{ fontSize: "16px", fontWeight: "600" }}>Issue:</p>
-      <input
-        type="text"
-        inputMode="numeric" // Optimizes the mobile keyboard layout
-        value={iss}
-        onChange={handleChangeIssue}
-        style={{
-          outline: "none",
-        }}
-      />
-      <button
-        className={styles["standard-button"]}
-        onClick={async () => {
-          setSubmitClicked(true);
-          setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
-          setIssueExists(
-            await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
-          );
-          if (
-            vol !== "" &&
-            iss !== "" &&
-            (await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`))
-          ) {
-            changeDisplaying(false);
-            changeVolume(Number(vol));
-            changeIssue(Number(iss));
-            return;
-          }
-        }}
-      >
-        Change Crossword
-      </button>
-      <Dropdown
-        list={[
-          "Option 1",
-          "Option 2",
-          "Option 3",
-          "Option 4",
-          "Option 5",
-          "Option 6",
-        ]}
-      ></Dropdown>
+      <div>
+        <Dropdown
+          list={crosswordVolumes}
+          type="volume"
+          setSelected={setVol}
+        ></Dropdown>
+      </div>
       <div
         style={{
-          visibility:
-            (!volumeExists || !issueExists) &&
-            vol != "" &&
-            iss != "" &&
-            submitClicked == true
-              ? "visible"
-              : "hidden",
+          display: vol != -1 ? "flex" : "none",
         }}
       >
-        <p>
-          Error:{" "}
-          {!issueExists || !volumeExists
-            ? "The volume/issue you are looking for doesn't exist."
-            : "No error."}
-        </p>
+        <Dropdown
+          list={crosswordIssues}
+          type="issue"
+          setSelected={setIss}
+        ></Dropdown>
+      </div>
+      <div>
+        <button
+          onClick={() => {
+            if (vol != -1 && iss != -1) {
+              changeVolume(vol);
+              changeIssue(iss);
+            }
+          }}
+        >
+          Confirm
+        </button>
       </div>
     </div>
   );

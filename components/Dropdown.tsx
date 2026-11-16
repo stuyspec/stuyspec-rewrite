@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface dropDownProps {
-  list: Array<string>;
+  list: Array<number>;
+  type: string;
   setSelected: (selected: number) => void;
 }
 /*
@@ -15,8 +16,10 @@ interface dropDownProps {
   pretty simple stuff except i can't style for my life so it does not look like the other settings buttons at all
   but whatever
 */
-export default function Dropdown({ list, setSelected }: dropDownProps) {
+
+export default function Dropdown({ list, type, setSelected }: dropDownProps) {
   const [dropDownShowing, setDropDownShowing] = useState(false);
+
   return (
     <>
       <div
@@ -37,7 +40,7 @@ export default function Dropdown({ list, setSelected }: dropDownProps) {
             setDropDownShowing(!dropDownShowing);
           }}
         >
-          Pick an option
+          {type == "volume" ? "Pick a Volume: " : "Pick an Issue: "}
         </button>
         <ul
           style={{
@@ -67,7 +70,10 @@ export default function Dropdown({ list, setSelected }: dropDownProps) {
             >
               <button
                 onClick={() => {
-                  setSelected(index);
+                  console.log(
+                    `changed ${type === "volume" ? "vol" : "iss"} to ${list[index]}`,
+                  );
+                  setSelected(list[index]);
                 }}
               >
                 {item}
