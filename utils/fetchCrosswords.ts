@@ -11,18 +11,18 @@ export async function fetchCrosswordVolIss(volume: number, issue: number) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      query: { article_type: "crossword", volume: volume, issue: issue},
+      query: { article_type: "crossword", volume: volume, issue: issue },
       max: 100,
     }),
   });
-  if (!response.ok) {
+  const data = await response.json();
+  const article = data.articles?.[0];
+
+  if (!response.ok || !article) {
     throw new Error("fetching crosswords failed");
   }
-
-  const data = await response.json();
-  return data.articles;
+  return article;
 }
-
 
 export default async function fetchCrosswords() {
   let response = await fetch("/api/articles", {

@@ -9,6 +9,7 @@ import { FaRulerVertical } from "react-icons/fa";
 import Dropdown from "./Dropdown";
 import fetchCrosswords from "../utils/fetchCrosswords";
 import { fetchCrosswordVolIss } from "../utils/fetchCrosswords";
+import { useRouter } from "next/router";
 
 interface SettingsProps {
   displaying: boolean;
@@ -48,6 +49,9 @@ function LimitingInputSettings({
   const [crosswordVolumes, setCrosswordVolumes] = useState<number[]>([]);
   const [crosswordIssues, setCrosswordIssues] = useState<number[]>([]);
 
+  // creates router for redirect
+  const router = useRouter();
+
   // loads the available volumes on component mount
   useEffect(() => {
     const loadCrosswords = async () => {
@@ -74,14 +78,16 @@ function LimitingInputSettings({
     loadCrosswords();
   }, [vol]);
 
-  const [ selectedArticle, setSelectedArticle ]: ReceivedArticle | null = useState(null);
+  const [selectedArticle, setSelectedArticle] = useState<ReceivedArticle>();
   // loads the crossword from db when iss is finally imported/changed
   useEffect(() => {
-    const loadCrossword = async () => {
-      const article = await fetchCrosswordVolIss(vol, iss);
-      setSelectedArticle(article);
-    };
-    loadCrossword();
+    if (vol != -1 && iss != -1) {
+      const loadCrossword = async () => {
+        const article: ReceivedArticle = await fetchCrosswordVolIss(vol, iss);
+        setSelectedArticle(article);
+      };
+      loadCrossword();
+    }
   }, [iss]);
 
   return (
@@ -122,6 +128,10 @@ function LimitingInputSettings({
             if (vol != -1 && iss != -1) {
               changeVolume(vol);
               changeIssue(iss);
+
+              if (selectedArticle) {
+                router.push(`/article/${selectedArticle.slug}`);
+              }
             }
           }}
           style={{
