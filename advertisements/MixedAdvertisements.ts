@@ -4,14 +4,9 @@ const MixedAdvertisements: {
   url: string;
 }[] = [
   {
-    name: "Mirelle Education",
-    image_src: "/images/ads/MirelleEducation.webp",
-    url: "https://mirelleeducation.com/essay"
+    name: "Merrill College of Journalism",
+    image_src: "/images/ads/MerrillJournalism.gif",
+    url: "https://merrill.umd.edu/",
   },
-  {
-    name: "Mirelle Education",
-    image_src: "/images/ads/MirelleEducation2.webp",
-    url: "https://mirelleeducation.com"
-  }
 ];
 export default MixedAdvertisements;
