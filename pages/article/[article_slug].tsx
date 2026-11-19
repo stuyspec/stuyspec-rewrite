@@ -38,7 +38,7 @@ function Article(props: Props) {
     cover_image_contributor,
     cover_image_source,
     summary,
-    slug,
+    slug, // this is just the part of the link that comes right after ../article/
     created_at,
     article_type, //either "article", "crossword", "sudoku"
   } = props.article;

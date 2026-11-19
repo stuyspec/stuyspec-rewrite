@@ -5,12 +5,19 @@ import type { Clue } from "@xwordly/xword-parser";
 import Keyboard, { type KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import styles from "../styles/Crossword.module.css";
+import { FaRulerVertical } from "react-icons/fa";
+import Dropdown from "./Dropdown";
+import fetchCrosswords from "../utils/fetchCrosswords";
+import { fetchCrosswordVolIss } from "../utils/fetchCrosswords";
+import { useRouter } from "next/router";
 
-/*interface SettingsProps {
+interface SettingsProps {
   displaying: boolean;
   changeDisplaying: (displaying: boolean) => void;
   changeVolume: (volume: number) => void;
   changeIssue: (issue: number) => void;
+  clearGrid: () => void;
+  showAnswers: () => void;
 }
 
 type LimitingInputSettingsProps = Pick<
@@ -23,29 +30,65 @@ function LimitingInputSettings({
   changeVolume,
   changeIssue,
 }: LimitingInputSettingsProps) {
-  const [vol, setVol] = useState("");
-  const [iss, setIss] = useState("");
+  const [vol, setVol] = useState(-1);
+  const [iss, setIss] = useState(-1);
 
-  const [volumeExists, setVolumeExists] = useState(false);
-  const [issueExists, setIssueExists] = useState(false);
+  /*
+      This useEffect hook basically fetches all of the availables crossword volumes and issues
+      asynchronously. This hook is primarily related to the Settings section for the crossword.
+  
+      The algorithm is:
+      1. Find all available volumes from the db.
+      2. Throw the available volumes from the db into a list, no repeats.
+      3. The user selects a volume through the dropdown menu.
+      4. The issue drop down menu opens up, and then finds all available issues from that volume.
+      5. Display those issues in the dropdown, then let the user select one.
+      6. When change crossword is clicked, those values are pushed to the actual volume and issue variables, and the crossword is updated.
+    */
 
-  const [submitClicked, setSubmitClicked] = useState(false);
+  const [crosswordVolumes, setCrosswordVolumes] = useState<number[]>([]);
+  const [crosswordIssues, setCrosswordIssues] = useState<number[]>([]);
 
-  const handleChangeVol = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    // Replace anything that is NOT a digit with an empty string
-    const cleanValue = inputValue.replace(/\D/g, "");
-    setVol(cleanValue);
-    setSubmitClicked(false);
-  };
+  // creates router for redirect
+  const router = useRouter();
 
-  const handleChangeIssue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    // Replace anything that is NOT a digit with an empty string
-    const cleanValue = inputValue.replace(/\D/g, "");
-    setIss(cleanValue);
-    setSubmitClicked(false);
-  };
+  // loads the available volumes on component mount
+  useEffect(() => {
+    const loadCrosswords = async () => {
+      const articles = await fetchCrosswords();
+      let volumes = articles.map((article: ReceivedArticle) => article.volume);
+      volumes = Array.from(new Set(volumes));
+      setCrosswordVolumes(volumes);
+    };
+    loadCrosswords();
+  }, []);
+
+  // loads available issues on volume selection/change
+  useEffect(() => {
+    const loadCrosswords = async () => {
+      const articles = await fetchCrosswords();
+      let issues = articles.map((article: ReceivedArticle) => {
+        if (article.volume == vol) {
+          return article.issue;
+        }
+      });
+      issues = Array.from(new Set(issues));
+      setCrosswordIssues(issues);
+    };
+    loadCrosswords();
+  }, [vol]);
+
+  const [selectedArticle, setSelectedArticle] = useState<ReceivedArticle>();
+  // loads the crossword from db when iss is finally imported/changed
+  useEffect(() => {
+    if (vol != -1 && iss != -1) {
+      const loadCrossword = async () => {
+        const article: ReceivedArticle = await fetchCrosswordVolIss(vol, iss);
+        setSelectedArticle(article);
+      };
+      loadCrossword();
+    }
+  }, [iss]);
 
   return (
     <div
@@ -55,73 +98,51 @@ function LimitingInputSettings({
         justifyContent: "center",
         textAlign: "center",
         gap: "10px",
+        minWidth: 0,
+        maxWidth: "10rem",
+        alignItems: "stretch",
       }}
     >
-      <p>Volume:</p>
-      <input
-        type="text"
-        inputMode="numeric" // Optimizes the mobile keyboard layout
-        value={vol}
-        onChange={handleChangeVol}
+      <div className={styles["dropdown-container"]} style={{ width: "100%" }}>
+        <Dropdown
+          list={crosswordVolumes}
+          type="volume"
+          setSelected={setVol}
+        ></Dropdown>
+      </div>
+      <div className={styles["dropdown-container"]}
         style={{
-          outline: "none",
-        }}
-      />
-      <p>Issue:</p>
-      <input
-        type="text"
-        inputMode="numeric" // Optimizes the mobile keyboard layout
-        value={iss}
-        onChange={handleChangeIssue}
-        style={{
-          outline: "none",
-        }}
-      />
-      <button
-        style={{
-          alignSelf: "center",
-          outline: "2px solid black",
-          width: "6rem",
-          textAlign: "center",
-          borderRadius: "5px",
-        }}
-        onClick={async () => {
-          setSubmitClicked(true);
-          setVolumeExists(await fileExists(`/puzzles/crosswords/${vol}`));
-          setIssueExists(
-            await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`),
-          );
-          if (
-            vol !== "" &&
-            iss !== "" &&
-            (await fileExists(`/puzzles/crosswords/${vol}/${iss}.puz`))
-          ) {
-            changeDisplaying(false);
-            changeVolume(Number(vol));
-            changeIssue(Number(iss));
-            return;
-          }
+          display: vol != -1 ? "inline-flex" : "none",
+          width: "100%",
         }}
       >
-        Change Crossword
-      </button>
-      <div
-        style={{
-          visibility:
-            (!volumeExists || !issueExists) &&
-            vol != "" &&
-            iss != "" &&
-            submitClicked == true
-              ? "visible"
-              : "hidden",
-        }}
-      >
-        <p>
-          Error:{" "}
-          {!issueExists || !volumeExists
-            ? "The volume/issue you are looking for doesn't exist."
-            : "No error."}
-        </p>
+        <Dropdown
+          list={crosswordIssues}
+          type="issue"
+          setSelected={setIss}
+        ></Dropdown>
+      </div>
+      <div style={{ width: "100%" }}>
+        <button className={styles["confirm-button"]}
+          onClick={() => {
+            if (vol != -1 && iss != -1) {
+              changeVolume(vol);
+              changeIssue(iss);
+
+              if (selectedArticle) {
+                router.push(`/article/${selectedArticle.slug}`);
+              }
+            }
+          }}
+          style={{
+            display: vol != -1 && iss != -1 ? "inline-flex" : "none",
+            width: "100%",
+            textAlign: "center",
+            justifyContent: "center",
+          }}
+        >
+          Confirm
+        </button>
       </div>
     </div>
   );
@@ -132,19 +153,34 @@ function Settings({
   changeDisplaying,
   changeVolume,
   changeIssue,
+  clearGrid,
+  showAnswers,
 }: SettingsProps) {
   function swapDisplaying() {
     changeDisplaying(!displaying);
   }
+
+  const [resetConfirmDisplaying, setResetConfirmDisplaying] = useState(false);
+  const [showAnswersConfirmDisplaying, setShowAnswersConfirmDisplaying] =
+    useState(false);
+
+  function swapResetDisplaying() {
+    setResetConfirmDisplaying(!resetConfirmDisplaying);
+  }
+
+  function swapShowAnswersDisplaying() {
+    setShowAnswersConfirmDisplaying(!showAnswersConfirmDisplaying);
+  }
+
   return (
     <>
-      <button onClick={swapDisplaying} className="btn-modal">
+      <button onClick={swapDisplaying} className={styles["standard-button"]}>
         Settings
       </button>
 
       {displaying && (
         <div
-          className="modal"
+          className={styles.modal}
           style={{
             display: "inline-flex",
             border: "2px solid black",
@@ -152,23 +188,117 @@ function Settings({
             zIndex: 1000,
           }}
         >
-          <div onClick={swapDisplaying} className="overlay"></div>
-          <div className="modal-content">
+          <div onClick={swapDisplaying} className={styles["overlay"]}></div>
+          <div className={styles["modal-content"]}>
             <h2>Settings</h2>
-            <LimitingInputSettings
-              changeDisplaying={changeDisplaying}
-              changeVolume={changeVolume}
-              changeIssue={changeIssue}
-            />
-            <button className="close-modal" onClick={swapDisplaying}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "10rem auto 10rem",
+                alignItems: "start",
+                columnGap: "20px",
+              }}
+            >
+              <LimitingInputSettings
+                changeDisplaying={changeDisplaying}
+                changeVolume={changeVolume}
+                changeIssue={changeIssue}
+              />
+              <div className={styles["divider"]} />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "15px",
+                }}
+              >
+                <button
+                  className={styles["standard-button"]}
+                  onClick={swapShowAnswersDisplaying}
+                >
+                  Reveal Answers
+                </button>
+                <button
+                  className={styles["standard-button"]}
+                  onClick={swapResetDisplaying}
+                >
+                  Reset Grid
+                </button>
+              </div>
+            </div>
+            <button className={styles["close-modal"]} onClick={swapDisplaying}>
               X
             </button>
+            <Confirmation
+              displaying={resetConfirmDisplaying}
+              changeDisplaying={setResetConfirmDisplaying}
+              actionOnConfirm={clearGrid}
+            ></Confirmation>
+            <Confirmation
+              displaying={showAnswersConfirmDisplaying}
+              changeDisplaying={setShowAnswersConfirmDisplaying}
+              actionOnConfirm={showAnswers}
+            ></Confirmation>
           </div>
         </div>
       )}
     </>
   );
-}*/
+}
+
+interface confirmationProps {
+  displaying: boolean;
+  changeDisplaying: (displaying: boolean) => void;
+  actionOnConfirm: () => void;
+}
+
+function Confirmation({
+  displaying,
+  changeDisplaying,
+  actionOnConfirm,
+}: confirmationProps) {
+  function swapDisplaying() {
+    changeDisplaying(!displaying);
+  }
+  return (
+    <>
+      {displaying && (
+        <div
+          className={styles["confirm-modal-content"]}
+          style={{
+            display: "inline-flex",
+            borderRadius: "5px",
+            zIndex: 1000,
+            textAlign: "center",
+          }}
+        >
+          <h2>Are you sure?</h2>
+          <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+            <button
+              className={styles["standard-button"]}
+              onClick={() => {
+                actionOnConfirm();
+                swapDisplaying();
+              }}
+            >
+              Yes
+            </button>
+            <button
+              className={styles["standard-button"]}
+              onClick={swapDisplaying}
+            >
+              No
+            </button>
+          </div>
+
+          <button className={styles["close-modal"]} onClick={swapDisplaying}>
+            X
+          </button>
+        </div>
+      )}
+    </>
+  );
+}
 
 async function fileExists(path: string) {
   const response = await fetch(path, {
@@ -191,7 +321,9 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
   const [volume, setVolume] = useState(props.puzzle.volume);
   const [issue, setIssue] = useState(props.puzzle.issue);
 
+  // modals active or not
   const [settingsDisplaying, setSettingsDisplaying] = useState(false);
+  const [confirmationDisplaying, setConfirmationDisplaying] = useState(false);
 
   // Puzzle info variables
   const [puzzleSolution, setPuzzleSolution] = useState<string[]>([]);
@@ -367,10 +499,9 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
         const down = loadingPuzzle.clues.down;
         setMergedClues([...across, ...down]);
 
-        // console.log(numberPlacer(loadingPuzzleSolution, loadingPuzzle.clues.across, loadingPuzzle.clues.down, loadingPuzzle.grid.width, loadingPuzzle.grid.height))
         console.log(loadingPuzzle);
       } catch {
-        console.error("Unable to read crossword file. Lock in.");
+        -console.error("Unable to read crossword file. Lock in.");
       }
     };
 
@@ -481,6 +612,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
           }
           setSelectedCell(newCell);
         }
+        e.preventDefault();
         return;
       } else if (key === "ARROWDOWN") {
         let newCell = selectedCell;
@@ -492,6 +624,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
           newCell = (newCell + rowLength) % (rowLength * rowCount);
           maxSteps++;
         }
+        e.preventDefault();
         setSelectedCell(newCell);
         return;
       } else if (key === "ARROWRIGHT") {
@@ -526,6 +659,7 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
             (rowLength * rowCount);
           maxSteps++;
         }
+        e.preventDefault();
         setSelectedCell(newCell);
         return;
       } else if (key === "ARROWLEFT") {
@@ -561,6 +695,8 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
     };
 
     window.addEventListener("keydown", handleKeyDown);
+
+    // console.log(grid);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
@@ -598,6 +734,54 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
   // console.log(lastKey);
   // console.log(grid);
 
+  useEffect(() => {
+    if (crosswordInfo != null) {
+      let cellIndex = selectedCell || 0;
+      let width = crosswordInfo.grid.width;
+      let height = crosswordInfo.grid.height;
+      let cells = crosswordInfo.grid.cells;
+      if (vertical) {
+        while (cellIndex >= width) {
+          const above =
+            cells[Math.floor((cellIndex - width) / width)]?.[cellIndex % width];
+
+          if (above === undefined || above.isBlack) break;
+          cellIndex -= width;
+        }
+        for (
+          let i = crosswordInfo.clues.across.length;
+          i < mergedClues.length;
+          i++
+        ) {
+          if (
+            mergedClues[i].number ===
+            cells[Math.floor(cellIndex / width)][cellIndex % width].number
+          ) {
+            setClueIndex(i);
+            break;
+          }
+        }
+      } else {
+        while (cellIndex % width > 0) {
+          const left =
+            cells[Math.floor(cellIndex / width)]?.[(cellIndex - 1) % width];
+
+          if (left === undefined || left.isBlack) break;
+          cellIndex -= 1;
+        }
+        for (let i = 0; i < crosswordInfo.clues.down.length; i++) {
+          if (
+            mergedClues[i].number ===
+            cells[Math.floor(cellIndex / width)][cellIndex % width].number
+          ) {
+            setClueIndex(i);
+            break;
+          }
+        }
+      }
+    }
+  }, [grid, selectedCell, vertical, mergedClues]);
+
   /*
   Checks the currently input letters in the grid against the answer grid
 */
@@ -614,15 +798,66 @@ function Crossword(props: { puzzle: ReceivedArticle }) {
     );
   }
 
-  /* CURRENTLY UNUSED FUNCTION THAT FILLS THE WHOLE GRID
-function fillWithAnswers() {
-  setGrid(
-    puzzleSolution.map((cell) => {
-      return cell === "N/A" ? "" : cell;
-    }),
-  );
-}
-  */
+  function clearGrid() {
+    setWon(false);
+    setSelectedCell(0);
+
+    // user info
+    setLastKey("");
+    setVertical(true);
+
+    // Puzzle info variables
+    setPuzzleSolution([]);
+    setRowCount(0);
+    setRowLength(0);
+    setNumberLabelGrid([]);
+    const asyncPuzzleLoader = async () => {
+      try {
+        const loadingPuzzle = await CrosswordReader(volume, issue);
+        setCrosswordInfo(loadingPuzzle);
+        const loadingPuzzleSolution = loadingPuzzle.grid.cells.flatMap(
+          (row) => {
+            return row.map((cell) => cell.solution ?? "N/A");
+          },
+        );
+        setPuzzleSolution(loadingPuzzleSolution);
+        // console.log(puzzleSolution);
+        setRowCount(loadingPuzzle.grid.height);
+        setRowLength(loadingPuzzle.grid.width);
+        setGrid(
+          loadingPuzzle.grid.cells.flatMap((row) => {
+            return row.map((_) => "");
+          }),
+        );
+
+        // number init
+        setNumberLabelGrid(
+          loadingPuzzle.grid.cells.flatMap((row) => {
+            return row.map((cell) => cell.number ?? -1);
+          }),
+        );
+
+        // set big clue array with a  ll clues
+        const across = loadingPuzzle.clues.across;
+        const down = loadingPuzzle.clues.down;
+        setMergedClues([...across, ...down]);
+
+        // console.log(numberPlacer(loadingPuzzleSolution, loadingPuzzle.clues.across, loadingPuzzle.clues.down, loadingPuzzle.grid.width, loadingPuzzle.grid.height))
+        console.log(loadingPuzzle);
+      } catch {
+        console.error("Unable to read crossword file. Lock in.");
+      }
+    };
+    asyncPuzzleLoader();
+  }
+
+  function fillWithAnswers() {
+    setGrid(
+      puzzleSolution.map((cell) => {
+        return cell === "N/A" ? "" : cell;
+      }),
+    );
+  }
 
   return (
     <>
@@ -657,15 +892,15 @@ function fillWithAnswers() {
               <h2>{crosswordInfo?.title}</h2>
               <h2>{crosswordInfo?.author}</h2>
             </div>
-          </div>
-          {/*<div>
             <Settings
               displaying={settingsDisplaying}
               changeDisplaying={setSettingsDisplaying}
               changeVolume={setVolume}
               changeIssue={setIssue}
+              clearGrid={clearGrid}
+              showAnswers={fillWithAnswers}
             />
-          </div>*/}
+          </div>
           <div
             style={{
               display: "flex",
@@ -685,9 +920,7 @@ function fillWithAnswers() {
                 alignItems: "stretch",
                 justifyContent: "flex-start",
                 flexShrink: 0,
-                width: rowLength
-                  ? rowLength * cellSize + GRID_OUTLINE
-                  : "auto",
+                width: rowLength ? rowLength * cellSize + GRID_OUTLINE : "auto",
               }}
             >
               <div
@@ -1019,6 +1252,16 @@ function fillWithAnswers() {
                                   correctIndex = i;
                                 }
                               }
+                              for (
+                                let i = 0;
+                                i < crosswordInfo.clues.across.length;
+                                i++
+                              ) {
+                                if (mergedClues[i].number == clue.number) {
+                                  setClueIndex(i);
+                                  break;
+                                }
+                              }
                               setVertical(false);
                               setSelectedCell(correctIndex);
                             }}
@@ -1055,6 +1298,16 @@ function fillWithAnswers() {
                               for (let i = 0; i < numberLabelGrid.length; i++) {
                                 if (numberLabelGrid[i] == clue.number) {
                                   correctIndex = i;
+                                }
+                              }
+                              for (
+                                let i = crosswordInfo.clues.across.length;
+                                i < mergedClues.length;
+                                i++
+                              ) {
+                                if (mergedClues[i].number == clue.number) {
+                                  setClueIndex(i);
+                                  break;
                                 }
                               }
                               setVertical(true);
