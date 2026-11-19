@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "../styles/Crossword.module.css";
 
 interface dropDownProps {
   list: Array<number>;
@@ -19,41 +20,35 @@ interface dropDownProps {
 
 export default function Dropdown({ list, type, setSelected }: dropDownProps) {
   const [dropDownShowing, setDropDownShowing] = useState(false);
+  const [selectedItem, setSelectedLocal] = useState<number | null>(null);
+
+  const label = selectedItem !== null ? `${type === "volume" ? "Volume" : "Issue"}: ${selectedItem}` : `${type === "volume" ? "Pick a Volume:" : "Pick an Issue:"}`;
 
   return (
     <>
       <div
-        style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          border: "1px solid black",
-          borderRadius: "5px",
-          width: "100%",
-          boxSizing: "border-box",
-        }}
+        className={styles["dropdown-container"]}
       >
         <button
           style={{
             textAlign: "center",
-            padding: "0 0 5px 0",
-            width: "100%",
+            padding: "2.5px 0",
           }}
           onClick={() => {
-            setDropDownShowing(!dropDownShowing);
+            setDropDownShowing((prev) => !prev);
           }}
         >
-          {type == "volume" ? "Pick a Volume: " : "Pick an Issue: "}
+          {label}
         </button>
-        <ul
+        <ul className={styles["dropdown-list"]}
           style={{
             position: "absolute",
             display: dropDownShowing ? "flex" : "none",
+            alignItems: "center",
+            justifyContent: "center",
             flexDirection: "column",
-            translate: "0 1rem",
+            translate: "0 1.75rem",
             flex: "1 1 auto",
-            gap: "5px",
             overflowY: "auto",
             scrollbarWidth: "thin",
             scrollbarColor: "#555555 transparent",
@@ -62,6 +57,10 @@ export default function Dropdown({ list, type, setSelected }: dropDownProps) {
             alignSelf: "stretch",
             width: "100%",
             boxSizing: "border-box",
+            borderRadius: "var(--radius-md)",
+            backgroundColor: "var(--secondary)",
+            zIndex: 1,
+            padding: "5px 0 10px 0",
           }}
         >
           {list.map((item, index) => (
@@ -78,6 +77,8 @@ export default function Dropdown({ list, type, setSelected }: dropDownProps) {
                     `changed ${type === "volume" ? "vol" : "iss"} to ${list[index]}`,
                   );
                   setSelected(list[index]);
+                  setSelectedLocal(list[index]);
+                  setDropDownShowing(false);
                 }}
               >
                 {item}

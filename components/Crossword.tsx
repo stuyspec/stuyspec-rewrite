@@ -103,14 +103,14 @@ function LimitingInputSettings({
         alignItems: "stretch",
       }}
     >
-      <div style={{ width: "100%" }}>
+      <div className={styles["dropdown-container"]} style={{ width: "100%" }}>
         <Dropdown
           list={crosswordVolumes}
           type="volume"
           setSelected={setVol}
         ></Dropdown>
       </div>
-      <div
+      <div className={styles["dropdown-container"]}
         style={{
           display: vol != -1 ? "inline-flex" : "none",
           width: "100%",
@@ -123,7 +123,7 @@ function LimitingInputSettings({
         ></Dropdown>
       </div>
       <div style={{ width: "100%" }}>
-        <button
+        <button className={styles["confirm-button"]}
           onClick={() => {
             if (vol != -1 && iss != -1) {
               changeVolume(vol);
@@ -209,7 +209,7 @@ function Settings({
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "20px",
+                  gap: "15px",
                 }}
               >
                 <button

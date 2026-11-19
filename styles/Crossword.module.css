@@ -124,11 +124,11 @@ body.active-modal {
   left: 50%;
   transform: translate(-50%, -50%);
   background: #f1f1f1;
-  padding: 20px 28px;
+  padding: 20px 28px 28px 28px;
   border-radius: 10px;
   width: fit-content;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .confirm-modal-content {
@@ -362,4 +362,31 @@ body.active-modal {
   100% {
     transform: scale(1);
   }
+}
+
+.confirm-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  background-color: var(--primary);
+  color:white;
+  border-radius: var(--radius-3xl);
+  transition: all 0.2s ease-in-out;
+}
+
+.confirm-button:hover {
+  background-color: var(--medium-grey);
+  transition: all 0.2s ease-in-out;
+}
+
+.dropdown-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-3xl);
+  width: 100%;
+  box-sizing: border-box;
 }
