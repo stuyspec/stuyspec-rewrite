@@ -227,7 +227,7 @@ function Settings({
               </div>
             </div>
             <button className={styles["close-modal"]} onClick={swapDisplaying}>
-              X
+              ✖
             </button>
             <Confirmation
               displaying={resetConfirmDisplaying}
@@ -292,7 +292,7 @@ function Confirmation({
           </div>
 
           <button className={styles["close-modal"]} onClick={swapDisplaying}>
-            X
+            ✖
           </button>
         </div>
       )}
