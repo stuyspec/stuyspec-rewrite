@@ -44,14 +44,17 @@ function Article(props: Props) {
   } = props.article;
 
   const generateApproxReadingTime = () => {
-    let count = text.split(" ");
-    let readTime = Math.round(count.length / 250); // average reading time in min
+    if (article_type === "article" || !article_type) {
+      let count = text.split(" ");
+      let readTime = Math.round(count.length / 250); // average reading time in min
 
-    return (
-      <span>
-        Reading Time: {readTime} minute{readTime === 1 ? "" : "s"}
-      </span>
-    );
+      return (
+        <span>
+          Reading Time: {readTime} minute{readTime === 1 ? "" : "s"}
+        </span>
+      );
+    }
+    return null;
   };
 
   const providers = ["facebook", "twitter", "linkedin", "email"];
@@ -105,10 +108,7 @@ function Article(props: Props) {
             dangerouslySetInnerHTML={{ __html: title }}
           ></h1>
           <h2 id={styles.summary}>{summary}</h2>
-          {article_type === "article" ||
-            (!article_type && (
-              <h3 id={styles.reading_time}>{generateApproxReadingTime()}</h3>
-            ))}
+          <h3 id={styles.reading_time}>{generateApproxReadingTime()}</h3>
 
           <div id={styles.infoBar}>
             <div>
