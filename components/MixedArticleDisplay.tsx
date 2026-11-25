@@ -105,9 +105,15 @@ export default function MixedArticleDisplay(props: {
 	display_department?: boolean;
 	additional_article_function?: any;
 }) {
+	const ad_spacing = 3;
+	let adsShown: boolean = true;
+	if(MixedAdvertisement({index: 0}) == -1) adsShown = false;
+
 	const returnProcessedArticles = useCallback(
 		(articles_input: ReceivedArticle[]) => {
-			let image_articles = Math.floor(articles_input.length / 3.5);
+			let image_articles; 
+			if (!adsShown) { image_articles = Math.floor(articles_input.length / 3.5)-1; }
+			else { image_articles = Math.floor(articles_input.length / 3.5); }
 			//Make the grouping of articles with images and those without images
 			const grouping = groupByImageExists(articles_input);
 
@@ -157,9 +163,9 @@ export default function MixedArticleDisplay(props: {
 		setArticlesProcessed(returnProcessedArticles(props.articles));
 	}, [props.articles, returnProcessedArticles]);
 
-	const num_articles_each_side = Math.floor(
-		articlesProcessed.articlesWithoutPhotos.length / 2
-	);
+	let num_articles_each_side;
+	if (!adsShown) { num_articles_each_side = Math.floor(articlesProcessed.articlesWithoutPhotos.length / 2); }
+	else { num_articles_each_side = Math.floor(articlesProcessed.articlesWithoutPhotos.length / 3); }
 
 	const handle_load_more = async () => {
 		if (props.additional_article_function) {
@@ -173,7 +179,7 @@ export default function MixedArticleDisplay(props: {
 					.sort((a, b) => b.volume - a.volume)
 					.sort((a, b) => b.issue - a.issue)
 			);
-			const image_articles = Math.floor(articles.length / 3);
+			const image_articles = Math.floor(articles.length / 3.5);
 			const grouping = groupByImageExists(articles);
 			const articles_with_photos =
 				articlesProcessed.articlesWithPhotos.concat(
@@ -194,10 +200,6 @@ export default function MixedArticleDisplay(props: {
 			});
 		}
 	};
-
-	const ad_spacing = 3;
-	let adsShown: boolean = true;
-	if(MixedAdvertisement({index: 0}) == -1) adsShown = false;
 
 	return (
 		<div id={styles.mixed_article_view_container}>
@@ -262,7 +264,7 @@ export default function MixedArticleDisplay(props: {
 				<section id={styles.right}>
 					{articlesProcessed.articlesWithoutPhotos
 						.slice(0)
-						.slice(num_articles_each_side + 1)
+						.slice(0, num_articles_each_side + 1)
 						.map((article, index) => (
 							<Fragment key={index}>
 								<CenterArticle
@@ -274,10 +276,7 @@ export default function MixedArticleDisplay(props: {
 								{index % ad_spacing == 1 && adsShown ? (
 									<div className={styles.ad_parent}>
 										<MixedAdvertisement
-											index={
-												Math.floor(index / ad_spacing) +
-												2
-											}
+											index={Math.floor(index / ad_spacing)}
 										/>
 									</div>
 								) : (
