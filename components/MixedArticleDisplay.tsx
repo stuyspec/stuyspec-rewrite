@@ -264,7 +264,7 @@ export default function MixedArticleDisplay(props: {
 				<section id={styles.right}>
 					{articlesProcessed.articlesWithoutPhotos
 						.slice(0)
-						.slice(0, num_articles_each_side + 1)
+						.slice(num_articles_each_side, num_articles_each_side * 2 + 1)
 						.map((article, index) => (
 							<Fragment key={index}>
 								<CenterArticle
