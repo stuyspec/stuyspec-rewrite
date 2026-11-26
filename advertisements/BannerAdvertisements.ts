@@ -16,7 +16,7 @@ const BannerAdvertisements: {
   {
     name: "Men's Wearhouse",
     image_src: "/images/ads/MensWearhouse.jpg",
-    url: "https://www.menswearhouse.com/?srsltid=AYCX9vId84dbr0c-Jw7DKkAFtlvoaAvsKzGkwajx9Jep0SLOtE8LqWgU"
+    url: "https://www.menswearhouse.com/c/mens-clothing-accessories/gifts"
   }
 ];
 export default BannerAdvertisements;

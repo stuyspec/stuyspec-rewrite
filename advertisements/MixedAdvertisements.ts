@@ -4,9 +4,9 @@ const MixedAdvertisements: {
   url: string;
 }[] = [
   {
-    name: "Merrill College of Journalism",
-    image_src: "/images/ads/MerrillJournalism.gif",
-    url: "https://merrill.umd.edu/",
+    name: "Score Samurai",
+    image_src: "/images/ads/ScoreSamurai.jpg",
+    url: "https://scoresamurai.com/diagnostic/?utm_source=spectator&utm_medium=webad",
   },
 ];
 export default MixedAdvertisements;
